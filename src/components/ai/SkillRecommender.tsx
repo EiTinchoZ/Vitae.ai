@@ -11,7 +11,6 @@ import {
   BookOpen,
   Sparkles,
   ChevronRight,
-  ExternalLink,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -34,7 +33,7 @@ interface Recommendations {
 }
 
 export function SkillRecommender() {
-  const { language } = useTranslation();
+  const { t, language } = useTranslation();
   const [recommendations, setRecommendations] = useState<Recommendations | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -73,66 +72,36 @@ export function SkillRecommender() {
         throw new Error('Invalid response format');
       }
     } catch (err) {
-      setError(language === 'es'
-        ? 'Error al generar recomendaciones. Intenta de nuevo.'
-        : 'Error generating recommendations. Try again.');
+      setError(t('skillRecommender.error'));
       console.error(err);
     } finally {
       setIsLoading(false);
     }
   };
 
-  const getDifficultyColor = (difficulty: string) => {
+  const normalizeDifficulty = (difficulty: string) => {
     const normalized = difficulty.toLowerCase();
-    if (normalized === 'easy' || normalized === 'facil') return 'bg-green-500/10 text-green-500';
-    if (normalized === 'medium' || normalized === 'medio') return 'bg-amber-500/10 text-amber-500';
+    if (['easy', 'facil', 'fácil'].includes(normalized)) return 'easy';
+    if (['medium', 'medio'].includes(normalized)) return 'medium';
+    if (['hard', 'dificil', 'difícil'].includes(normalized)) return 'hard';
+    return normalized;
+  };
+
+  const getDifficultyColor = (difficulty: string) => {
+    const normalized = normalizeDifficulty(difficulty);
+    if (normalized === 'easy') return 'bg-green-500/10 text-green-500';
+    if (normalized === 'medium') return 'bg-amber-500/10 text-amber-500';
     return 'bg-red-500/10 text-red-500';
   };
 
   const getDifficultyLabel = (difficulty: string) => {
-    const normalized = difficulty.toLowerCase();
-    if (language === 'es') {
-      if (normalized === 'easy') return 'Facil';
-      if (normalized === 'medium') return 'Medio';
-      if (normalized === 'hard') return 'Dificil';
-      return difficulty;
-    }
-    if (normalized === 'facil') return 'Easy';
-    if (normalized === 'medio') return 'Medium';
-    if (normalized === 'dificil') return 'Hard';
+    const normalized = normalizeDifficulty(difficulty);
+    if (normalized === 'easy') return t('skillRecommender.difficultyLabels.easy');
+    if (normalized === 'medium') return t('skillRecommender.difficultyLabels.medium');
+    if (normalized === 'hard') return t('skillRecommender.difficultyLabels.hard');
     return difficulty;
   };
 
-  const labels = {
-    es: {
-      title: 'Recomendador de Habilidades',
-      subtitle: 'Descubre que habilidades complementarias potenciarian tu perfil',
-      generate: 'Obtener Recomendaciones',
-      regenerate: 'Regenerar',
-      loading: 'Analizando tu perfil...',
-      recommended: 'Habilidades Recomendadas',
-      trends: 'Tendencias del Mercado',
-      advice: 'Consejo de Carrera',
-      difficulty: 'Dificultad',
-      time: 'Tiempo estimado',
-      resources: 'Recursos',
-    },
-    en: {
-      title: 'Skill Recommender',
-      subtitle: 'Discover complementary skills to boost your profile',
-      generate: 'Get Recommendations',
-      regenerate: 'Regenerate',
-      loading: 'Analyzing your profile...',
-      recommended: 'Recommended Skills',
-      trends: 'Market Trends',
-      advice: 'Career Advice',
-      difficulty: 'Difficulty',
-      time: 'Estimated time',
-      resources: 'Resources',
-    },
-  };
-
-  const l = labels[language as keyof typeof labels] || labels.es;
 
   return (
     <div className="py-8">
@@ -148,8 +117,8 @@ export function SkillRecommender() {
               <Lightbulb className="h-6 w-6 text-amber-500" />
             </div>
             <div>
-              <h3 className="text-xl font-bold">{l.title}</h3>
-              <p className="text-sm text-muted-foreground">{l.subtitle}</p>
+              <h3 className="text-xl font-bold">{t('skillRecommender.title')}</h3>
+              <p className="text-sm text-muted-foreground">{t('skillRecommender.subtitle')}</p>
             </div>
           </div>
 
@@ -168,17 +137,17 @@ export function SkillRecommender() {
             {isLoading ? (
               <>
                 <Loader2 className="h-4 w-4 animate-spin" />
-                {l.loading}
+                {t('skillRecommender.loading')}
               </>
             ) : recommendations ? (
               <>
                 <RefreshCw className="h-4 w-4" />
-                {l.regenerate}
+                {t('skillRecommender.regenerate')}
               </>
             ) : (
               <>
                 <Sparkles className="h-4 w-4" />
-                {l.generate}
+                {t('skillRecommender.generate')}
               </>
             )}
           </Button>
@@ -205,7 +174,7 @@ export function SkillRecommender() {
                 <div>
                   <h4 className="text-lg font-semibold mb-4 flex items-center gap-2">
                     <Lightbulb className="h-5 w-5 text-amber-500" />
-                    {l.recommended}
+                    {t('skillRecommender.recommended')}
                   </h4>
                   <div className="grid md:grid-cols-2 gap-4">
                     {recommendations.recommendedSkills.map((skill, i) => (
@@ -223,12 +192,12 @@ export function SkillRecommender() {
 
                           <div className="flex items-center gap-2 text-xs text-muted-foreground">
                             <Clock className="h-3 w-3" />
-                            <span>{l.time}: {skill.timeToLearn}</span>
+                            <span>{t('skillRecommender.time')}: {skill.timeToLearn}</span>
                           </div>
 
                           {skill.resources && skill.resources.length > 0 && (
                             <div>
-                              <p className="text-xs text-muted-foreground mb-1">{l.resources}:</p>
+                              <p className="text-xs text-muted-foreground mb-1">{t('skillRecommender.resources')}:</p>
                               <div className="flex flex-wrap gap-1">
                                 {skill.resources.slice(0, 2).map((resource, j) => (
                                   <Badge key={j} variant="outline" className="text-xs gap-1">
@@ -250,7 +219,7 @@ export function SkillRecommender() {
                   <CardHeader className="pb-2">
                     <CardTitle className="text-base flex items-center gap-2">
                       <TrendingUp className="h-5 w-5 text-green-500" />
-                      {l.trends}
+                      {t('skillRecommender.trends')}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -271,7 +240,7 @@ export function SkillRecommender() {
                     <div className="flex gap-3">
                       <Sparkles className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                       <div>
-                        <p className="font-medium text-sm mb-1">{l.advice}</p>
+                        <p className="font-medium text-sm mb-1">{t('skillRecommender.advice')}</p>
                         <p className="text-sm text-muted-foreground">
                           {recommendations.careerAdvice}
                         </p>
@@ -285,7 +254,7 @@ export function SkillRecommender() {
             {isLoading && !recommendations && (
               <div className="flex flex-col items-center justify-center py-12">
                 <Loader2 className="h-8 w-8 animate-spin text-primary mb-4" />
-                <p className="text-muted-foreground">{l.loading}</p>
+                <p className="text-muted-foreground">{t('skillRecommender.loading')}</p>
               </div>
             )}
           </motion.div>

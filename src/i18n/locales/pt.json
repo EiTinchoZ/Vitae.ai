@@ -61,7 +61,8 @@
     "subtitle": "Minha trajetoria academica e formacao profissional",
     "completed": "Concluido",
     "inProgress": "Em andamento",
-    "estimatedProgress": "Progresso estimado"
+    "estimatedProgress": "Progresso estimado",
+    "completionLabel": "Conclus?o"
   },
   "certificates": {
     "title": "Certificacoes",
@@ -81,7 +82,8 @@
     "downloadPDF": "Baixar PDF",
     "previous": "Anterior",
     "next": "Proximo",
-    "close": "Fechar"
+    "close": "Fechar",
+    "descriptionLabel": "Descri??o"
   },
   "projects": {
     "title": "Projetos",
@@ -140,7 +142,8 @@
       "Quais certificacoes ele possui?"
     ],
     "typing": "Digitando...",
-    "error": "Erro ao obter resposta. Tente novamente."
+    "error": "Erro ao obter resposta. Tente novamente.",
+    "suggestedLabel": "Perguntas sugeridas:"
   },
   "common": {
     "loading": "Carregando...",
@@ -153,5 +156,106 @@
   "metadata": {
     "title": "Vitae.ai | Martin Bundy - CV Digital com IA",
     "description": "Vitae.ai - CV digital interativo com IA de Martin Bundy, com analises, recomendacoes e chat inteligente."
+  },
+  "qa": {
+    "ask": "Pergunte-me",
+    "placeholder": "Digite sua pergunta...",
+    "suggested": "Perguntas sugeridas:",
+    "thinking": "Pensando...",
+    "error": "Erro ao obter resposta. Tente novamente.",
+    "suggestions": {
+      "skills": [
+        "Por que voc? escolheu se especializar em IA?",
+        "Qual ? sua habilidade mais forte?",
+        "Como voc? aprendeu essas tecnologias?"
+      ],
+      "projects": [
+        "Qual foi o maior desafio do Conecta Panam??",
+        "Quais tecnologias voc? mais usou?",
+        "Voc? tem mais projetos de IA?"
+      ],
+      "experience": [
+        "O que voc? aprendeu nas suas experi?ncias?",
+        "Qual foi sua maior conquista profissional?",
+        "Que tipo de trabalho voc? procura?"
+      ],
+      "education": [
+        "Por que voc? estuda duas gradua??es?",
+        "Como voc? combina IA com Engenharia Industrial?",
+        "Quais s?o suas metas acad?micas?"
+      ]
+    }
+  },
+  "insights": {
+    "title": "An?lise de Carreira com IA",
+    "subtitle": "Obtenha insights personalizados sobre seu perfil profissional",
+    "generate": "Gerar an?lise",
+    "regenerate": "Regerar",
+    "careerScore": "Pontua??o de Carreira",
+    "strengths": "Principais For?as",
+    "uniqueValue": "Proposta de Valor",
+    "marketFit": "Adequa??o ao Mercado",
+    "recommendations": "Recomenda??es",
+    "skillsRadar": "Radar de Habilidades",
+    "salaryRange": "Faixa Salarial Estimada",
+    "careerPaths": "Caminhos de Carreira",
+    "loading": "Analisando seu perfil...",
+    "error": "Erro ao gerar insights. Tente novamente.",
+    "scoreNote": {
+      "excellent": "Excelente perfil profissional",
+      "good": "Bom potencial de crescimento",
+      "improve": "Oportunidades de melhoria"
+    },
+    "salaryPeriod": "ano",
+    "radar": {
+      "ai": "IA/ML",
+      "programming": "Programa??o",
+      "industrial": "Industrial",
+      "softSkills": "Soft Skills",
+      "languages": "Idiomas"
+    }
+  },
+  "resumeAnalyzer": {
+    "title": "Analisador de CV",
+    "subtitle": "Obtenha uma an?lise detalhada do seu CV com sugest?es de melhoria",
+    "analyze": "Analisar CV",
+    "reanalyze": "Reanalisar",
+    "loading": "Analisando CV...",
+    "completeness": "Completude do CV",
+    "atsScore": "Compatibilidade ATS",
+    "sections": "An?lise por Se??o",
+    "gaps": "?reas de Melhoria",
+    "strengths": "For?as",
+    "improvements": "Recomenda??es",
+    "overall": "Resumo Geral",
+    "error": "Erro ao analisar o CV. Tente novamente.",
+    "sectionNames": {
+      "personal": "Informa??es pessoais",
+      "profile": "Perfil",
+      "education": "Educa??o",
+      "experience": "Experi?ncia",
+      "skills": "Habilidades",
+      "certificates": "Certificados",
+      "projects": "Projetos"
+    }
+  },
+  "skillRecommender": {
+    "title": "Recomendador de Habilidades",
+    "subtitle": "Descubra habilidades complementares para potencializar seu perfil",
+    "generate": "Obter recomenda??es",
+    "regenerate": "Regerar",
+    "loading": "Analisando seu perfil...",
+    "recommended": "Habilidades recomendadas",
+    "trends": "Tend?ncias do Mercado",
+    "advice": "Conselho de Carreira",
+    "difficulty": "Dificuldade",
+    "time": "Tempo estimado",
+    "resources": "Recursos",
+    "error": "Erro ao gerar recomenda??es. Tente novamente.",
+    "difficultyLabels": {
+      "easy": "F?cil",
+      "medium": "M?dio",
+      "hard": "Dif?cil"
+    }
   }
 }

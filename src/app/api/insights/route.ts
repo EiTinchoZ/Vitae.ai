@@ -1,8 +1,9 @@
 import { createGroq } from '@ai-sdk/groq';
 import { streamText } from 'ai';
-import { cvData } from '@/data/cv-data';
+import { getCvData } from '@/data/cv-data';
+import { getLanguageInstruction } from '@/lib/ai-language';
 
-export async function POST() {
+export async function POST(req: Request) {
   try {
     if (!process.env.GROQ_API_KEY) {
       return new Response(
@@ -15,30 +16,56 @@ export async function POST() {
       apiKey: process.env.GROQ_API_KEY,
     });
 
-    const insightsPrompt = `Eres un experto en carreras profesionales y analisis de CVs. Analiza el siguiente perfil y proporciona insights en formato JSON.
+    const { language = 'es' } = await req.json();
+    const cvData = getCvData(language);
 
-PERFIL:
-Nombre: ${cvData.personal.name}
-Ubicacion: ${cvData.personal.location}
+    const cvSummary = `
+Name: ${cvData.personal.name}
+Location: ${cvData.personal.location}
 
-Perfil: ${cvData.profile}
+Profile:
+${cvData.profile}
 
-Habilidades: ${cvData.skills.map((s) => s.name).join(', ')}
+Skills:
+${cvData.skills.map((s) => s.name).join(', ')}
 
-Educacion:
-${cvData.education.map((e) => `- ${e.title} en ${e.institution} (${e.status})`).join('\n')}
+Education:
+${cvData.education
+  .map((e) => `- ${e.title} (${e.institution}) [${e.status}]`)
+  .join('\n')}
 
-Certificaciones: ${cvData.certificates.length} certificaciones
-Experiencia: ${cvData.experience.length} posiciones
+Certifications:
+${cvData.certificates
+  .map((c) => `- ${c.name} (${c.institution}) [${c.status}]`)
+  .join('\n')}
 
-INSTRUCCIONES:
-Responde SOLO con un JSON valido (sin markdown, sin backticks) con esta estructura exacta:
+Experience:
+${cvData.experience
+  .map((e) => `- ${e.position} at ${e.company} (${e.startPeriod} - ${e.endPeriod})`)
+  .join('\n')}
+
+Projects:
+${cvData.projects.map((p) => `- ${p.name} (${p.year})`).join('\n')}
+`.trim();
+
+    const insightsPrompt = `You are a career expert. Analyze the CV summary below and provide insights.
+
+${getLanguageInstruction(language)}
+Use only the CV data provided. Do not assume or invent.
+Prioritize AI, ML, generative AI, data science, automation, and industrial engineering.
+The electrical distribution internship was a learning experience and is not the main focus.
+
+CV SUMMARY:
+${cvSummary}
+
+INSTRUCTIONS:
+Respond ONLY with valid JSON (no markdown, no backticks) using this exact structure:
 {
-  "careerScore": <numero 0-100>,
-  "strengths": ["fortaleza1", "fortaleza2", "fortaleza3"],
-  "uniqueValue": "<propuesta de valor unica en 1 oracion>",
-  "marketFit": "<descripcion de como encaja en el mercado actual>",
-  "recommendations": ["recomendacion1", "recomendacion2", "recomendacion3"],
+  "careerScore": <number 0-100>,
+  "strengths": ["strength1", "strength2", "strength3"],
+  "uniqueValue": "<one-sentence value proposition>",
+  "marketFit": "<how the profile fits the market>",
+  "recommendations": ["recommendation1", "recommendation2", "recommendation3"],
   "skillsRadar": {
     "ai": <0-100>,
     "programming": <0-100>,
@@ -47,8 +74,8 @@ Responde SOLO con un JSON valido (sin markdown, sin backticks) con esta estructu
     "languages": <0-100>
   },
   "salaryRange": {
-    "min": <numero>,
-    "max": <numero>,
+    "min": <number>,
+    "max": <number>,
     "currency": "USD"
   },
   "careerPaths": ["path1", "path2", "path3"]

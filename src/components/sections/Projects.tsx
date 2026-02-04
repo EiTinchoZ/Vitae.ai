@@ -16,7 +16,7 @@ import { SectionQA } from '@/components/ai/SectionQA';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { cvData } from '@/data/cv-data';
+import { getCvData } from '@/data/cv-data';
 import { useTranslation } from '@/i18n';
 import { getGitHubRepos, formatDate } from '@/lib/github-api';
 import type { GitHubRepo } from '@/types';
@@ -32,7 +32,8 @@ const languageColors: Record<string, string> = {
 };
 
 export function Projects() {
-  const { t, language } = useTranslation();
+  const { t, tArray, language } = useTranslation();
+  const cvData = getCvData(language);
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -47,17 +48,7 @@ export function Projects() {
 
   const featuredProject = cvData.projects[0]; // Conecta Panama
 
-  const suggestedQuestions = language === 'es'
-    ? [
-        '¿Cuál fue el mayor reto de Conecta Panamá?',
-        '¿Qué tecnologías usaste más?',
-        '¿Tienes más proyectos de IA?',
-      ]
-    : [
-        'What was the biggest challenge in Conecta Panama?',
-        'What technologies did you use most?',
-        'Do you have more AI projects?',
-      ];
+  const suggestedQuestions = tArray('qa.suggestions.projects');
 
   return (
     <SectionWrapper id="projects" className="bg-muted/20">
@@ -223,7 +214,7 @@ export function Projects() {
                 </div>
 
                 <p className="text-xs text-muted-foreground mt-3">
-                  {t('projects.updated')}: {formatDate(repo.updatedAt)}
+                  {t('projects.updated')}: {formatDate(repo.updatedAt, language)}
                 </p>
               </motion.a>
             ))}

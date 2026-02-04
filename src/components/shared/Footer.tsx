@@ -1,30 +1,31 @@
 'use client';
 
 import { Github, Linkedin, Mail } from 'lucide-react';
-import { cvData } from '@/data/cv-data';
+import { getCvData } from '@/data/cv-data';
 import { useTranslation } from '@/i18n';
 
-const socialLinks = [
-  {
-    name: 'GitHub',
-    href: cvData.personal.github,
-    icon: Github,
-  },
-  {
-    name: 'LinkedIn',
-    href: cvData.personal.linkedin,
-    icon: Linkedin,
-  },
-  {
-    name: 'Email',
-    href: `mailto:${cvData.personal.email}`,
-    icon: Mail,
-  },
-];
-
 export function Footer() {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
+  const cvData = getCvData(language);
   const currentYear = new Date().getFullYear();
+
+  const socialLinks = [
+    {
+      name: 'GitHub',
+      href: cvData.personal.github,
+      icon: Github,
+    },
+    {
+      name: 'LinkedIn',
+      href: cvData.personal.linkedin,
+      icon: Linkedin,
+    },
+    {
+      name: 'Email',
+      href: `mailto:${cvData.personal.email}`,
+      icon: Mail,
+    },
+  ];
 
   return (
     <footer className="border-t bg-muted/30">

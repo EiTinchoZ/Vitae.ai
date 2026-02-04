@@ -5,44 +5,34 @@ import { MapPin, GraduationCap, Briefcase, Languages } from 'lucide-react';
 import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
 import { InsightsDashboard } from '@/components/ai/InsightsDashboard';
 import { ResumeAnalyzer } from '@/components/ai/ResumeAnalyzer';
-import { cvData } from '@/data/cv-data';
+import { getCvData } from '@/data/cv-data';
 import { useTranslation } from '@/i18n';
 
 export function About() {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
+  const cvData = getCvData(language);
 
   const highlights = [
     {
       icon: GraduationCap,
       label: t('about.highlights.education'),
-      value: t('about.highlights.educationValue'),
+      value: cvData.about.highlights.educationValue,
     },
     {
       icon: Briefcase,
       label: t('about.highlights.specialization'),
-      value: t('about.highlights.specializationValue'),
+      value: cvData.about.highlights.specializationValue,
     },
     {
       icon: MapPin,
       label: t('about.highlights.location'),
-      value: t('about.highlights.locationValue'),
+      value: cvData.about.highlights.locationValue,
     },
     {
       icon: Languages,
       label: t('about.highlights.languages'),
-      value: t('about.highlights.languagesValue'),
+      value: cvData.about.highlights.languagesValue,
     },
-  ];
-
-  const specialties = [
-    'Machine Learning',
-    'Deep Learning',
-    'IA Generativa',
-    'RAG',
-    'Prompt Engineering',
-    'Agentes Inteligentes',
-    'Python',
-    'Automatizacion',
   ];
 
   return (
@@ -96,7 +86,7 @@ export function About() {
         >
           <h3 className="text-lg font-semibold mb-4">{t('about.specialtiesTitle')}</h3>
           <div className="flex flex-wrap gap-2">
-            {specialties.map((specialty, index) => (
+            {cvData.about.specialties.map((specialty, index) => (
               <motion.span
                 key={specialty}
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -113,7 +103,7 @@ export function About() {
           {/* Quote */}
           <div className="mt-6 pt-6 border-t">
             <p className="text-sm text-muted-foreground italic">
-              &ldquo;{t('about.quote')}&rdquo;
+              &ldquo;{cvData.about.quote}&rdquo;
             </p>
           </div>
         </motion.div>

@@ -5,11 +5,12 @@ import { Mail, Phone, MapPin, Github, Linkedin, Download, Send } from 'lucide-re
 import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { cvData } from '@/data/cv-data';
+import { getCvData } from '@/data/cv-data';
 import { useTranslation } from '@/i18n';
 
 export function Contact() {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
+  const cvData = getCvData(language);
 
   const contactInfo = [
     {

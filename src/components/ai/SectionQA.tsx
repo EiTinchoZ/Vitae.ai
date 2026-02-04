@@ -13,7 +13,7 @@ interface SectionQAProps {
 }
 
 export function SectionQA({ section, suggestedQuestions }: SectionQAProps) {
-  const { language } = useTranslation();
+  const { t, language } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
@@ -48,26 +48,11 @@ export function SectionQA({ section, suggestedQuestions }: SectionQAProps) {
         setAnswer(fullText);
       }
     } catch (err) {
-      setAnswer('Error al obtener respuesta. Intenta de nuevo.');
+      setAnswer(t('qa.error'));
     } finally {
       setIsLoading(false);
     }
   };
-
-  const labels = {
-    es: {
-      ask: 'Preguntame',
-      placeholder: 'Escribe tu pregunta...',
-      suggested: 'Preguntas sugeridas:',
-    },
-    en: {
-      ask: 'Ask me',
-      placeholder: 'Type your question...',
-      suggested: 'Suggested questions:',
-    },
-  };
-
-  const l = labels[language as keyof typeof labels] || labels.es;
 
   return (
     <div className="relative">
@@ -78,7 +63,7 @@ export function SectionQA({ section, suggestedQuestions }: SectionQAProps) {
         className="gap-2"
       >
         <MessageCircle className="h-4 w-4" />
-        {l.ask}
+        {t('qa.ask')}
         <Sparkles className="h-3 w-3 text-primary" />
       </Button>
 
@@ -105,7 +90,7 @@ export function SectionQA({ section, suggestedQuestions }: SectionQAProps) {
             {/* Suggested questions */}
             {!answer && (
               <div className="mb-4">
-                <p className="text-xs text-muted-foreground mb-2">{l.suggested}</p>
+                <p className="text-xs text-muted-foreground mb-2">{t('qa.suggested')}</p>
                 <div className="space-y-1">
                   {suggestedQuestions.map((q, i) => (
                     <button
@@ -129,7 +114,7 @@ export function SectionQA({ section, suggestedQuestions }: SectionQAProps) {
                   {isLoading && !answer ? (
                     <div className="flex items-center gap-2 text-muted-foreground">
                       <Loader2 className="h-4 w-4 animate-spin" />
-                      Pensando...
+                      {t('qa.thinking')}
                     </div>
                   ) : (
                     answer
@@ -145,7 +130,7 @@ export function SectionQA({ section, suggestedQuestions }: SectionQAProps) {
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && askQuestion(question)}
-                placeholder={l.placeholder}
+                placeholder={t('qa.placeholder')}
                 className="flex-1 px-3 py-2 text-sm rounded-lg border bg-background focus:outline-none focus:ring-2 focus:ring-primary/50"
               />
               <Button

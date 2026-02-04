@@ -75,6 +75,17 @@ export interface Language {
   description: string;
 }
 
+export interface AboutContent {
+  quote: string;
+  specialties: string[];
+  highlights: {
+    educationValue: string;
+    specializationValue: string;
+    locationValue: string;
+    languagesValue: string;
+  };
+}
+
 export interface GitHubRepo {
   id: number;
   name: string;
@@ -92,6 +103,7 @@ export interface GitHubRepo {
 export interface CVData {
   personal: PersonalInfo;
   profile: string;
+  about: AboutContent;
   skills: Skill[];
   education: Education[];
   certificates: Certificate[];

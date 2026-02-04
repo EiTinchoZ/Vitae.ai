@@ -7,7 +7,7 @@ import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper
 import { SectionQA } from '@/components/ai/SectionQA';
 import { SkillRecommender } from '@/components/ai/SkillRecommender';
 import { Button } from '@/components/ui/button';
-import { cvData, type SkillCategory } from '@/data/cv-data';
+import { getCvData, type SkillCategory } from '@/data/cv-data';
 import { useTranslation } from '@/i18n';
 import { cn } from '@/lib/utils';
 
@@ -21,7 +21,8 @@ const categoryIcons = {
 const categoryKeys: SkillCategory[] = ['ai', 'programming', 'industrial', 'technology'];
 
 export function Skills() {
-  const { t, language } = useTranslation();
+  const { t, tArray, language } = useTranslation();
+  const cvData = getCvData(language);
   const [activeCategory, setActiveCategory] = useState<SkillCategory | 'all'>('all');
 
   const filteredSkills =
@@ -29,17 +30,7 @@ export function Skills() {
       ? cvData.skills
       : cvData.skills.filter((skill) => skill.category === activeCategory);
 
-  const suggestedQuestions = language === 'es'
-    ? [
-        '¿Por qué elegiste especializarte en IA?',
-        '¿Cuál es tu habilidad más fuerte?',
-        '¿Cómo aprendiste estas tecnologías?',
-      ]
-    : [
-        'Why did you choose to specialize in AI?',
-        'What is your strongest skill?',
-        'How did you learn these technologies?',
-      ];
+  const suggestedQuestions = tArray('qa.suggestions.skills');
 
   return (
     <SectionWrapper id="skills" className="bg-muted/20">

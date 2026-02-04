@@ -26,7 +26,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useTranslation } from '@/i18n';
-import { cn } from '@/lib/utils';
 
 interface Insights {
   careerScore: number;
@@ -55,6 +54,7 @@ export function InsightsDashboard() {
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const numberFormat = new Intl.NumberFormat(language);
 
   const generateInsights = async () => {
     setIsLoading(true);
@@ -64,6 +64,7 @@ export function InsightsDashboard() {
       const response = await fetch('/api/insights', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ language }),
       });
 
       if (!response.ok) throw new Error('Failed to fetch insights');
@@ -88,7 +89,7 @@ export function InsightsDashboard() {
         throw new Error('Invalid response format');
       }
     } catch (err) {
-      setError('Error al generar insights. Intenta de nuevo.');
+      setError(t('insights.error'));
       console.error(err);
     } finally {
       setIsLoading(false);
@@ -97,48 +98,14 @@ export function InsightsDashboard() {
 
   const radarData = insights
     ? [
-        { skill: 'AI/ML', value: insights.skillsRadar.ai, fullMark: 100 },
-        { skill: 'Programming', value: insights.skillsRadar.programming, fullMark: 100 },
-        { skill: 'Industrial', value: insights.skillsRadar.industrial, fullMark: 100 },
-        { skill: 'Soft Skills', value: insights.skillsRadar.softSkills, fullMark: 100 },
-        { skill: 'Languages', value: insights.skillsRadar.languages, fullMark: 100 },
+        { skill: t('insights.radar.ai'), value: insights.skillsRadar.ai, fullMark: 100 },
+        { skill: t('insights.radar.programming'), value: insights.skillsRadar.programming, fullMark: 100 },
+        { skill: t('insights.radar.industrial'), value: insights.skillsRadar.industrial, fullMark: 100 },
+        { skill: t('insights.radar.softSkills'), value: insights.skillsRadar.softSkills, fullMark: 100 },
+        { skill: t('insights.radar.languages'), value: insights.skillsRadar.languages, fullMark: 100 },
       ]
     : [];
 
-  const labels = {
-    es: {
-      title: 'Analisis de Carrera con IA',
-      subtitle: 'Obtén insights personalizados sobre tu perfil profesional',
-      generate: 'Generar Analisis',
-      regenerate: 'Regenerar',
-      careerScore: 'Puntuacion de Carrera',
-      strengths: 'Fortalezas Clave',
-      uniqueValue: 'Propuesta de Valor',
-      marketFit: 'Ajuste al Mercado',
-      recommendations: 'Recomendaciones',
-      skillsRadar: 'Radar de Habilidades',
-      salaryRange: 'Rango Salarial Estimado',
-      careerPaths: 'Rutas de Carrera',
-      loading: 'Analizando tu perfil...',
-    },
-    en: {
-      title: 'AI Career Analysis',
-      subtitle: 'Get personalized insights about your professional profile',
-      generate: 'Generate Analysis',
-      regenerate: 'Regenerate',
-      careerScore: 'Career Score',
-      strengths: 'Key Strengths',
-      uniqueValue: 'Value Proposition',
-      marketFit: 'Market Fit',
-      recommendations: 'Recommendations',
-      skillsRadar: 'Skills Radar',
-      salaryRange: 'Estimated Salary Range',
-      careerPaths: 'Career Paths',
-      loading: 'Analyzing your profile...',
-    },
-  };
-
-  const l = labels[language as keyof typeof labels] || labels.es;
 
   return (
     <div className="py-8">
@@ -154,8 +121,8 @@ export function InsightsDashboard() {
               <Brain className="h-6 w-6 text-purple-500" />
             </div>
             <div>
-              <h3 className="text-xl font-bold">{l.title}</h3>
-              <p className="text-sm text-muted-foreground">{l.subtitle}</p>
+              <h3 className="text-xl font-bold">{t('insights.title')}</h3>
+              <p className="text-sm text-muted-foreground">{t('insights.subtitle')}</p>
             </div>
           </div>
 
@@ -174,17 +141,17 @@ export function InsightsDashboard() {
             {isLoading ? (
               <>
                 <Loader2 className="h-4 w-4 animate-spin" />
-                {l.loading}
+                {t('insights.loading')}
               </>
             ) : insights ? (
               <>
                 <RefreshCw className="h-4 w-4" />
-                {l.regenerate}
+                {t('insights.regenerate')}
               </>
             ) : (
               <>
                 <Sparkles className="h-4 w-4" />
-                {l.generate}
+                {t('insights.generate')}
               </>
             )}
           </Button>
@@ -212,7 +179,7 @@ export function InsightsDashboard() {
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm flex items-center gap-2">
                       <TrendingUp className="h-4 w-4 text-green-500" />
-                      {l.careerScore}
+                      {t('insights.careerScore')}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -246,10 +213,10 @@ export function InsightsDashboard() {
                       <div className="flex-1">
                         <p className="text-sm text-muted-foreground">
                           {insights.careerScore >= 80
-                            ? 'Excelente perfil profesional'
+                            ? t('insights.scoreNote.excellent')
                             : insights.careerScore >= 60
-                            ? 'Buen potencial de crecimiento'
-                            : 'Oportunidades de mejora'}
+                            ? t('insights.scoreNote.good')
+                            : t('insights.scoreNote.improve')}
                         </p>
                       </div>
                     </div>
@@ -261,16 +228,16 @@ export function InsightsDashboard() {
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm flex items-center gap-2">
                       <DollarSign className="h-4 w-4 text-green-500" />
-                      {l.salaryRange}
+                      {t('insights.salaryRange')}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="text-center">
                       <p className="text-3xl font-bold text-primary">
-                        ${insights.salaryRange.min.toLocaleString()} - ${insights.salaryRange.max.toLocaleString()}
+                        ${numberFormat.format(insights.salaryRange.min)} - ${numberFormat.format(insights.salaryRange.max)}
                       </p>
                       <p className="text-sm text-muted-foreground mt-1">
-                        {insights.salaryRange.currency} / year
+                        {insights.salaryRange.currency} / {t('insights.salaryPeriod')}
                       </p>
                     </div>
                   </CardContent>
@@ -281,7 +248,7 @@ export function InsightsDashboard() {
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm flex items-center gap-2">
                       <Target className="h-4 w-4 text-blue-500" />
-                      {l.uniqueValue}
+                      {t('insights.uniqueValue')}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -296,7 +263,7 @@ export function InsightsDashboard() {
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm flex items-center gap-2">
                       <BarChart3 className="h-4 w-4 text-purple-500" />
-                      {l.skillsRadar}
+                      {t('insights.skillsRadar')}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -327,7 +294,7 @@ export function InsightsDashboard() {
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm flex items-center gap-2">
                       <Sparkles className="h-4 w-4 text-amber-500" />
-                      {l.strengths}
+                      {t('insights.strengths')}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -347,7 +314,7 @@ export function InsightsDashboard() {
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm flex items-center gap-2">
                       <Compass className="h-4 w-4 text-indigo-500" />
-                      {l.careerPaths}
+                      {t('insights.careerPaths')}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -366,7 +333,7 @@ export function InsightsDashboard() {
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm flex items-center gap-2">
                       <Target className="h-4 w-4 text-green-500" />
-                      {l.recommendations}
+                      {t('insights.recommendations')}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -391,7 +358,7 @@ export function InsightsDashboard() {
             {isLoading && !insights && (
               <div className="flex flex-col items-center justify-center py-12">
                 <Loader2 className="h-8 w-8 animate-spin text-primary mb-4" />
-                <p className="text-muted-foreground">{l.loading}</p>
+                <p className="text-muted-foreground">{t('insights.loading')}</p>
               </div>
             )}
           </motion.div>

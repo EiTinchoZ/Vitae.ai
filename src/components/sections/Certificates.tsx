@@ -19,7 +19,7 @@ import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
-import { cvData } from '@/data/cv-data';
+import { getCvData } from '@/data/cv-data';
 import { useTranslation } from '@/i18n';
 import type { Certificate } from '@/types';
 import { cn } from '@/lib/utils';
@@ -35,7 +35,8 @@ const categoryIcons = {
 const categoryKeys = ['master', 'specialization', 'technical', 'languages', 'programming'] as const;
 
 export function Certificates() {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
+  const cvData = getCvData(language);
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
   const [activeCategory, setActiveCategory] = useState<string | 'all'>('all');
 
@@ -200,7 +201,7 @@ export function Certificates() {
                 </div>
 
                 <div>
-                  <h3 className="font-medium mb-2">Descripcion</h3>
+                  <h3 className="font-medium mb-2">{t('certificates.descriptionLabel')}</h3>
                   <p className="text-muted-foreground">{selectedCert.description}</p>
                 </div>
 

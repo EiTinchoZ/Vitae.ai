@@ -1,6 +1,7 @@
 import { createGroq } from '@ai-sdk/groq';
 import { streamText } from 'ai';
-import { cvData } from '@/data/cv-data';
+import { getCvData } from '@/data/cv-data';
+import { getLanguageInstruction } from '@/lib/ai-language';
 
 export async function POST(request: Request) {
   try {
@@ -16,47 +17,25 @@ export async function POST(request: Request) {
     });
 
     const { language = 'es' } = await request.json();
+    const cvData = getCvData(language);
 
     const currentSkills = cvData.skills.map((s) => s.name).join(', ');
 
-    const prompt = language === 'es'
-      ? `Eres un experto en desarrollo de carrera y tecnologia. Analiza las habilidades actuales de este profesional y recomienda habilidades complementarias para mejorar su perfil.
+    const prompt = `You are a career development and technology expert. Recommend complementary skills for this profile.
 
-HABILIDADES ACTUALES:
-${currentSkills}
-
-PERFIL:
-- Estudiante de Ingenieria Industrial
-- Tecnico Superior en IA
-- Especializado en Machine Learning y IA Generativa
-
-INSTRUCCIONES:
-Responde SOLO con un JSON valido (sin markdown, sin backticks) con esta estructura:
-{
-  "recommendedSkills": [
-    {
-      "name": "nombre de la habilidad",
-      "reason": "por que es complementaria",
-      "difficulty": "facil|medio|dificil",
-      "timeToLearn": "tiempo estimado",
-      "resources": ["recurso1", "recurso2"]
-    }
-  ],
-  "marketTrends": ["tendencia1", "tendencia2", "tendencia3"],
-  "careerAdvice": "consejo general de carrera"
-}`
-      : `You are a career development and technology expert. Analyze this professional's current skills and recommend complementary skills to improve their profile.
+${getLanguageInstruction(language)}
+Use only the CV data provided. Do not assume or invent.
+Prioritize AI, ML, generative AI, data science, automation, and industrial engineering.
 
 CURRENT SKILLS:
 ${currentSkills}
 
-PROFILE:
-- Industrial Engineering Student
-- AI Senior Technician
-- Specialized in Machine Learning and Generative AI
+PROFILE SUMMARY:
+${cvData.profile}
 
 INSTRUCTIONS:
-Respond ONLY with valid JSON (no markdown, no backticks) with this structure:
+Respond ONLY with valid JSON (no markdown, no backticks) using this structure.
+Use "easy|medium|hard" as difficulty values (do not translate those tokens).
 {
   "recommendedSkills": [
     {

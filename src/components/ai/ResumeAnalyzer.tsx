@@ -20,7 +20,6 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { useTranslation } from '@/i18n';
 import { cn } from '@/lib/utils';
 
@@ -58,7 +57,7 @@ const sectionIcons = {
 };
 
 export function ResumeAnalyzer() {
-  const { language } = useTranslation();
+  const { t, language } = useTranslation();
   const [analysis, setAnalysis] = useState<Analysis | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -97,9 +96,7 @@ export function ResumeAnalyzer() {
         throw new Error('Invalid response format');
       }
     } catch (err) {
-      setError(language === 'es'
-        ? 'Error al analizar el CV. Intenta de nuevo.'
-        : 'Error analyzing resume. Try again.');
+      setError(t('resumeAnalyzer.error'));
       console.error(err);
     } finally {
       setIsLoading(false);
@@ -118,56 +115,6 @@ export function ResumeAnalyzer() {
     return 'bg-red-500';
   };
 
-  const labels = {
-    es: {
-      title: 'Analizador de CV',
-      subtitle: 'Obtén un análisis detallado de tu CV con sugerencias de mejora',
-      analyze: 'Analizar CV',
-      reanalyze: 'Re-analizar',
-      loading: 'Analizando CV...',
-      completeness: 'Completitud del CV',
-      atsScore: 'Compatibilidad ATS',
-      sections: 'Análisis por Sección',
-      gaps: 'Áreas de Mejora',
-      strengths: 'Fortalezas',
-      improvements: 'Recomendaciones',
-      overall: 'Resumen General',
-      sectionNames: {
-        personal: 'Info Personal',
-        profile: 'Perfil',
-        education: 'Educación',
-        experience: 'Experiencia',
-        skills: 'Habilidades',
-        certificates: 'Certificados',
-        projects: 'Proyectos',
-      },
-    },
-    en: {
-      title: 'Resume Analyzer',
-      subtitle: 'Get a detailed analysis of your resume with improvement suggestions',
-      analyze: 'Analyze Resume',
-      reanalyze: 'Re-analyze',
-      loading: 'Analyzing resume...',
-      completeness: 'Resume Completeness',
-      atsScore: 'ATS Compatibility',
-      sections: 'Section Analysis',
-      gaps: 'Areas for Improvement',
-      strengths: 'Strengths',
-      improvements: 'Recommendations',
-      overall: 'Overall Summary',
-      sectionNames: {
-        personal: 'Personal Info',
-        profile: 'Profile',
-        education: 'Education',
-        experience: 'Experience',
-        skills: 'Skills',
-        certificates: 'Certificates',
-        projects: 'Projects',
-      },
-    },
-  };
-
-  const l = labels[language as keyof typeof labels] || labels.es;
 
   return (
     <div className="py-8">
@@ -183,8 +130,8 @@ export function ResumeAnalyzer() {
               <FileSearch className="h-6 w-6 text-blue-500" />
             </div>
             <div>
-              <h3 className="text-xl font-bold">{l.title}</h3>
-              <p className="text-sm text-muted-foreground">{l.subtitle}</p>
+              <h3 className="text-xl font-bold">{t('resumeAnalyzer.title')}</h3>
+              <p className="text-sm text-muted-foreground">{t('resumeAnalyzer.subtitle')}</p>
             </div>
           </div>
 
@@ -203,17 +150,17 @@ export function ResumeAnalyzer() {
             {isLoading ? (
               <>
                 <Loader2 className="h-4 w-4 animate-spin" />
-                {l.loading}
+                {t('resumeAnalyzer.loading')}
               </>
             ) : analysis ? (
               <>
                 <RefreshCw className="h-4 w-4" />
-                {l.reanalyze}
+                {t('resumeAnalyzer.reanalyze')}
               </>
             ) : (
               <>
                 <Sparkles className="h-4 w-4" />
-                {l.analyze}
+                {t('resumeAnalyzer.analyze')}
               </>
             )}
           </Button>
@@ -242,7 +189,7 @@ export function ResumeAnalyzer() {
                   <Card>
                     <CardContent className="pt-6">
                       <div className="flex items-center justify-between mb-4">
-                        <span className="text-sm font-medium">{l.completeness}</span>
+                        <span className="text-sm font-medium">{t('resumeAnalyzer.completeness')}</span>
                         <span className={cn('text-2xl font-bold', getScoreColor(analysis.completenessScore))}>
                           {analysis.completenessScore}%
                         </span>
@@ -262,7 +209,7 @@ export function ResumeAnalyzer() {
                   <Card>
                     <CardContent className="pt-6">
                       <div className="flex items-center justify-between mb-4">
-                        <span className="text-sm font-medium">{l.atsScore}</span>
+                        <span className="text-sm font-medium">{t('resumeAnalyzer.atsScore')}</span>
                         <span className={cn('text-2xl font-bold', getScoreColor(analysis.atsCompatibility))}>
                           {analysis.atsCompatibility}%
                         </span>
@@ -282,13 +229,13 @@ export function ResumeAnalyzer() {
                 {/* Section Analysis */}
                 <Card>
                   <CardHeader>
-                    <CardTitle className="text-base">{l.sections}</CardTitle>
+                    <CardTitle className="text-base">{t('resumeAnalyzer.sections')}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                       {Object.entries(analysis.sections).map(([key, section]) => {
                         const Icon = sectionIcons[key as keyof typeof sectionIcons];
-                        const sectionName = l.sectionNames[key as keyof typeof l.sectionNames];
+                        const sectionName = t(`resumeAnalyzer.sectionNames.${key}`);
                         return (
                           <div
                             key={key}
@@ -325,7 +272,7 @@ export function ResumeAnalyzer() {
                     <CardHeader className="pb-2">
                       <CardTitle className="text-base flex items-center gap-2">
                         <CheckCircle2 className="h-5 w-5 text-green-500" />
-                        {l.strengths}
+                        {t('resumeAnalyzer.strengths')}
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -344,7 +291,7 @@ export function ResumeAnalyzer() {
                     <CardHeader className="pb-2">
                       <CardTitle className="text-base flex items-center gap-2">
                         <AlertCircle className="h-5 w-5 text-amber-500" />
-                        {l.gaps}
+                        {t('resumeAnalyzer.gaps')}
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -363,7 +310,7 @@ export function ResumeAnalyzer() {
                 {/* Improvements */}
                 <Card>
                   <CardHeader className="pb-2">
-                    <CardTitle className="text-base">{l.improvements}</CardTitle>
+                    <CardTitle className="text-base">{t('resumeAnalyzer.improvements')}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="grid sm:grid-cols-3 gap-3">
@@ -385,7 +332,7 @@ export function ResumeAnalyzer() {
                 {/* Overall Feedback */}
                 <Card className="bg-gradient-to-br from-primary/5 to-background">
                   <CardHeader className="pb-2">
-                    <CardTitle className="text-base">{l.overall}</CardTitle>
+                    <CardTitle className="text-base">{t('resumeAnalyzer.overall')}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-muted-foreground">{analysis.overallFeedback}</p>
@@ -397,7 +344,7 @@ export function ResumeAnalyzer() {
             {isLoading && !analysis && (
               <div className="flex flex-col items-center justify-center py-12">
                 <Loader2 className="h-8 w-8 animate-spin text-primary mb-4" />
-                <p className="text-muted-foreground">{l.loading}</p>
+                <p className="text-muted-foreground">{t('resumeAnalyzer.loading')}</p>
               </div>
             )}
           </motion.div>

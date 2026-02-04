@@ -5,23 +5,14 @@ import { GraduationCap, Calendar, CheckCircle2, Clock } from 'lucide-react';
 import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
 import { SectionQA } from '@/components/ai/SectionQA';
 import { Badge } from '@/components/ui/badge';
-import { cvData } from '@/data/cv-data';
+import { getCvData } from '@/data/cv-data';
 import { useTranslation } from '@/i18n';
 
 export function Education() {
-  const { t, language } = useTranslation();
+  const { t, tArray, language } = useTranslation();
+  const cvData = getCvData(language);
 
-  const suggestedQuestions = language === 'es'
-    ? [
-        '¿Por qué estudias dos carreras?',
-        '¿Cómo combinas IA con Ingeniería Industrial?',
-        '¿Cuáles son tus metas académicas?',
-      ]
-    : [
-        'Why are you studying two degrees?',
-        'How do you combine AI with Industrial Engineering?',
-        'What are your academic goals?',
-      ];
+  const suggestedQuestions = tArray('qa.suggestions.education');
 
   return (
     <SectionWrapper id="education">
@@ -88,7 +79,7 @@ export function Education() {
                   {edu.startYear ? `${edu.startYear} - ` : ''}
                   {typeof edu.endYear === 'number'
                     ? edu.endYear
-                    : `Finalizacion: ${edu.endYear}`}
+                    : `${t('education.completionLabel')}: ${edu.endYear}`}
                 </div>
 
                 {edu.description && (

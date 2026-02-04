@@ -61,7 +61,8 @@
     "subtitle": "My academic journey and professional training",
     "completed": "Completed",
     "inProgress": "In Progress",
-    "estimatedProgress": "Estimated progress"
+    "estimatedProgress": "Estimated progress",
+    "completionLabel": "Completion"
   },
   "certificates": {
     "title": "Certifications",
@@ -81,7 +82,8 @@
     "downloadPDF": "Download PDF",
     "previous": "Previous",
     "next": "Next",
-    "close": "Close"
+    "close": "Close",
+    "descriptionLabel": "Description"
   },
   "projects": {
     "title": "Projects",
@@ -140,7 +142,8 @@
       "What certifications does he have?"
     ],
     "typing": "Typing...",
-    "error": "Error getting response. Please try again."
+    "error": "Error getting response. Please try again.",
+    "suggestedLabel": "Suggested questions:"
   },
   "common": {
     "loading": "Loading...",
@@ -153,5 +156,106 @@
   "metadata": {
     "title": "Vitae.ai | Martin Bundy - AI-Powered Digital CV",
     "description": "Vitae.ai - AI-powered interactive CV for Martin Bundy with career insights, recommendations, and smart chat."
+  },
+  "qa": {
+    "ask": "Ask me",
+    "placeholder": "Type your question...",
+    "suggested": "Suggested questions:",
+    "thinking": "Thinking...",
+    "error": "Error getting response. Try again.",
+    "suggestions": {
+      "skills": [
+        "Why did you choose to specialize in AI?",
+        "What is your strongest skill?",
+        "How did you learn these technologies?"
+      ],
+      "projects": [
+        "What was the biggest challenge in Conecta Panam??",
+        "What technologies did you use most?",
+        "Do you have more AI projects?"
+      ],
+      "experience": [
+        "What did you learn from your experiences?",
+        "What was your biggest professional achievement?",
+        "What type of work are you looking for?"
+      ],
+      "education": [
+        "Why are you studying two degrees?",
+        "How do you combine AI with Industrial Engineering?",
+        "What are your academic goals?"
+      ]
+    }
+  },
+  "insights": {
+    "title": "AI Career Analysis",
+    "subtitle": "Get personalized insights about your professional profile",
+    "generate": "Generate analysis",
+    "regenerate": "Regenerate",
+    "careerScore": "Career Score",
+    "strengths": "Key Strengths",
+    "uniqueValue": "Value Proposition",
+    "marketFit": "Market Fit",
+    "recommendations": "Recommendations",
+    "skillsRadar": "Skills Radar",
+    "salaryRange": "Estimated Salary Range",
+    "careerPaths": "Career Paths",
+    "loading": "Analyzing your profile...",
+    "error": "Error generating insights. Try again.",
+    "scoreNote": {
+      "excellent": "Excellent professional profile",
+      "good": "Strong growth potential",
+      "improve": "Opportunities for improvement"
+    },
+    "salaryPeriod": "year",
+    "radar": {
+      "ai": "AI/ML",
+      "programming": "Programming",
+      "industrial": "Industrial",
+      "softSkills": "Soft Skills",
+      "languages": "Languages"
+    }
+  },
+  "resumeAnalyzer": {
+    "title": "Resume Analyzer",
+    "subtitle": "Get a detailed analysis of your resume with improvement suggestions",
+    "analyze": "Analyze Resume",
+    "reanalyze": "Reanalyze",
+    "loading": "Analyzing resume...",
+    "completeness": "Resume Completeness",
+    "atsScore": "ATS Compatibility",
+    "sections": "Section Analysis",
+    "gaps": "Areas for Improvement",
+    "strengths": "Strengths",
+    "improvements": "Recommendations",
+    "overall": "Overall Summary",
+    "error": "Error analyzing resume. Try again.",
+    "sectionNames": {
+      "personal": "Personal Info",
+      "profile": "Profile",
+      "education": "Education",
+      "experience": "Experience",
+      "skills": "Skills",
+      "certificates": "Certificates",
+      "projects": "Projects"
+    }
+  },
+  "skillRecommender": {
+    "title": "Skill Recommender",
+    "subtitle": "Discover complementary skills to boost your profile",
+    "generate": "Get recommendations",
+    "regenerate": "Regenerate",
+    "loading": "Analyzing your profile...",
+    "recommended": "Recommended Skills",
+    "trends": "Market Trends",
+    "advice": "Career Advice",
+    "difficulty": "Difficulty",
+    "time": "Estimated time",
+    "resources": "Resources",
+    "error": "Error generating recommendations. Try again.",
+    "difficultyLabels": {
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard"
+    }
   }
 }

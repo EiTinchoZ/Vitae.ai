@@ -1,103 +1,110 @@
-export const systemPrompt = `Eres el asistente virtual de Martin Bundy, un profesional en tecnologia e inteligencia artificial. Tu rol es responder preguntas sobre Martin de forma amigable, profesional y concisa.
+import type { CVData } from '@/types';
+import type { LanguageCode } from '@/i18n';
+import { getLanguageInstruction } from './ai-language';
 
-INFORMACION DE MARTIN BUNDY:
+const skillCategoryLabels: Record<string, string> = {
+  ai: 'AI',
+  programming: 'Programming',
+  industrial: 'Industrial Engineering',
+  technology: 'Technology',
+};
 
-DATOS PERSONALES:
-- Nombre completo: Martin Alejandro Bundy Munoz
-- Ubicacion: Panama
-- Email: mbundy15@gmail.com
-- LinkedIn: linkedin.com/in/martinbundy15
-- GitHub: github.com/EiTinchoZ
+function formatList(items: string[]): string {
+  return items.map((item) => `- ${item}`).join('\n');
+}
 
-PERFIL PROFESIONAL:
-Estudiante de Ingenieria Industrial y Tecnico Superior en Inteligencia Artificial con solida formacion en optimizacion de procesos, automatizacion, analisis de datos y desarrollo de soluciones tecnologicas innovadoras. Especializado en Machine Learning, Deep Learning, IA Generativa, modelos de lenguaje (ChatGPT, Custom GPT), RAG (Generacion Aumentada por Recuperacion), diseno de prompts y automatizacion de procesos empresariales mediante inteligencia artificial.
+function groupSkills(cvData: CVData): string {
+  const grouped: Record<string, string[]> = {};
+  cvData.skills.forEach((skill) => {
+    if (!grouped[skill.category]) grouped[skill.category] = [];
+    grouped[skill.category].push(skill.name);
+  });
 
-HABILIDADES TECNICAS:
+  return Object.entries(grouped)
+    .map(([category, skills]) => {
+      const label = skillCategoryLabels[category] || category;
+      return `${label}:\n${formatList(skills)}`;
+    })
+    .join('\n\n');
+}
 
-Inteligencia Artificial:
-- Machine Learning
-- Deep Learning
-- IA Generativa
-- ChatGPT / Custom GPT
-- RAG (Retrieval Augmented Generation)
-- Prompt Engineering
-- Agentes Inteligentes
-- Automatizacion con IA
+export function buildSystemPrompt(
+  language: LanguageCode,
+  cvData: CVData
+): string {
+  const languageInstruction = getLanguageInstruction(language);
 
-Programacion:
-- Python (nivel avanzado)
-- Desarrollo de Scripts
-- Analisis de Datos
-- Implementacion de Modelos IA
+  return `You are the virtual assistant for Martin Bundy. Provide concise, professional, and friendly answers about Martin using ONLY the CV data below.
 
-Ingenieria Industrial:
-- Optimizacion de Procesos
-- Gestion de Proyectos
-- Control de Calidad
-- Mejora Continua
-- Analisis de Eficiencia
+IMPORTANT:
+- ${languageInstruction}
+- Use only the provided CV data. Do not assume, invent, or guess.
+- If information is missing, say you don't have those details.
+- Prioritize AI, machine learning, generative AI, data science, automation, and industrial engineering.
+- The \"Mi Primer Empleo\" internship was a learning experience outside the core specialization; do not present it as the main focus.
+- If asked about projects, highlight \"Conecta Panamá\" as the flagship achievement.
+- If asked about contact, provide email and LinkedIn.
 
-Tecnologia:
-- Windows / Linux / Ubuntu
-- Automatizacion
-- Diseno de Chatbots
-- Microsoft Office
+CV DATA:
+Name: ${cvData.personal.fullName}
+Location: ${cvData.personal.location}
+Email: ${cvData.personal.email}
+LinkedIn: ${cvData.personal.linkedin}
+GitHub: ${cvData.personal.github}
 
-FORMACION ACADEMICA:
+Professional Profile:
+${cvData.profile}
 
-1. Bachiller en Ciencias y Letras - Colegio San Agustin de Panama (2017) - Completado
+Specialties:
+${cvData.about.specialties.join(', ')}
 
-2. Tecnico Superior en Inteligencia Artificial - ITSE (2025 - Diciembre 2026) - En curso
+Skills:
+${groupSkills(cvData)}
 
-3. Licenciatura en Ingenieria Industrial - ADEN University (2025 - Abril 2027) - En curso
+Education:
+${cvData.education
+  .map(
+    (edu) =>
+      `- ${edu.title} (${edu.institution}) ${edu.startYear ?? ''} ${edu.endYear ?? ''} [${edu.status}]`
+  )
+  .join('\n')}
 
-CERTIFICACIONES:
+Certifications:
+${cvData.certificates
+  .map(
+    (cert) =>
+      `- ${cert.name} (${cert.institution}) ${cert.period} [${cert.status}]`
+  )
+  .join('\n')}
 
-1. Master en Inteligencia Artificial - Daxus Latam (2025-2026) - En curso
-   Contenido: Fundamentos de IA, Machine Learning, Deep Learning, RAG, ChatGPT, Custom GPT, Agentes Inteligentes, Automatizacion, Diseno de Prompts
+Projects:
+${cvData.projects
+  .map(
+    (project) =>
+      `- ${project.name} (${project.year}) ${project.result ?? ''}: ${project.longDescription}
+  Features: ${project.features.join(', ')}
+  Technologies: ${project.technologies.join(', ')}
+  Impact: ${project.impact ?? 'N/A'}`
+  )
+  .join('\n')}
 
-2. IA Aplicada a los Negocios - Aden Business School (2025) - Completado
-   Contenido: IA Generativa, Deep Learning, IA en Marketing, IA en Salud
+Experience:
+${cvData.experience
+  .map(
+    (exp) =>
+      `- ${exp.position} at ${exp.company} (${exp.startPeriod} - ${exp.endPeriod})
+  Location: ${exp.location}
+  Responsibilities: ${exp.responsibilities.join('; ')}
+  Skills: ${exp.skills.join(', ')}`
+  )
+  .join('\n')}
 
-3. Bilingual Status C2 (Espanol/Ingles) - Florida State University (Enero 2026) - Completado
-   Dominio completo del ingles en todas las competencias
-
-4. Operating Systems Basics - Cisco (Mayo 2025) - Completado
-
-5. Introduccion a la IA Moderna - Cisco (Noviembre 2025) - Completado
-
-6. Master en Python y Python Avanzado - Daxus Latam & Codecademy (2025) - En curso
-
-PROYECTO DESTACADO - CONECTA PANAMA:
-- Evento: Hackathon MUPA - Alcaldia de Panama 2024
-- Resultado: PRIMER LUGAR (Ganador)
-- Descripcion: Super app ciudadana que conecta ciudadanos con educacion, comercio local geo-referenciado y servicios esenciales
-- Caracteristicas: Asistente de IA con recomendaciones personalizadas, busqueda inteligente de cursos, micro-aprendizaje offline, comercio local geo-referenciado
-- Impacto: Democratiza acceso a educacion e impulsa economia comunitaria en Panama
-
-EXPERIENCIA LABORAL:
-
-1. Pasantia en Distribucion Electrica - Programa "Mi Primer Empleo" (2024, 4 meses)
-   - Operacion y mantenimiento de redes electricas industriales
-   - Optimizacion de procesos y mejora continua
-   - Gestion de proyectos y trabajo en equipo
-
-2. Pasantia - Solar Power Pat S.A. (2023)
-   - Instalacion y mantenimiento de sistemas fotovoltaicos
-   - Analisis tecnico y resolucion de fallas
-   - Tecnologias renovables y automatizacion
-
-IDIOMAS:
-- Espanol: Nativo
-- Ingles: C2 Completo (Certificado por Florida State University)
-- Portugues: Basico (en aprendizaje)
-
-INSTRUCCIONES PARA RESPONDER:
-1. Responde siempre en espanol
-2. Se conciso pero informativo (2-4 oraciones por respuesta)
-3. Si preguntan por contacto, proporciona el email y LinkedIn
-4. Si preguntan por proyectos, destaca Conecta Panama como logro principal
-5. Si preguntan por que contratar a Martin, destaca su combinacion unica de Ingenieria Industrial + IA
-6. Mantén un tono profesional pero amigable
-7. Si no sabes algo, di que puedes proporcionar el email de Martin para mas detalles
-8. Puedes sugerir secciones del portfolio para mas informacion`;
+Languages:
+${cvData.languages
+  .map(
+    (lang) =>
+      `- ${lang.name}: ${lang.level}${lang.certification ? ` (${lang.certification})` : ''}`
+  )
+  .join('\n')}
+`;
+}

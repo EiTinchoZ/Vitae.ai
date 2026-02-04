@@ -3,17 +3,18 @@
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, Download, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { cvData } from '@/data/cv-data';
+import { getCvData } from '@/data/cv-data';
 import { useTranslation } from '@/i18n';
 
-const socialLinks = [
-  { name: 'GitHub', href: cvData.personal.github, icon: Github },
-  { name: 'LinkedIn', href: cvData.personal.linkedin, icon: Linkedin },
-  { name: 'Email', href: `mailto:${cvData.personal.email}`, icon: Mail },
-];
-
 export function Hero() {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
+  const cvData = getCvData(language);
+
+  const socialLinks = [
+    { name: 'GitHub', href: cvData.personal.github, icon: Github },
+    { name: 'LinkedIn', href: cvData.personal.linkedin, icon: Linkedin },
+    { name: 'Email', href: `mailto:${cvData.personal.email}`, icon: Mail },
+  ];
 
   const scrollToAbout = () => {
     const element = document.querySelector('#about');
@@ -22,12 +23,7 @@ export function Hero() {
     }
   };
 
-  const specialties = [
-    t('hero.specialties.ml'),
-    t('hero.specialties.dl'),
-    t('hero.specialties.genai'),
-    t('hero.specialties.python'),
-  ];
+  const specialties = cvData.about.specialties.slice(0, 4);
 
   return (
     <section

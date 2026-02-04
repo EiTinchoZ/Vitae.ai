@@ -5,23 +5,14 @@ import { Briefcase, MapPin, Calendar } from 'lucide-react';
 import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
 import { SectionQA } from '@/components/ai/SectionQA';
 import { Badge } from '@/components/ui/badge';
-import { cvData } from '@/data/cv-data';
+import { getCvData } from '@/data/cv-data';
 import { useTranslation } from '@/i18n';
 
 export function Experience() {
-  const { t, language } = useTranslation();
+  const { t, tArray, language } = useTranslation();
+  const cvData = getCvData(language);
 
-  const suggestedQuestions = language === 'es'
-    ? [
-        '¿Qué aprendiste en tus experiencias?',
-        '¿Cuál fue tu mayor logro profesional?',
-        '¿Qué tipo de trabajo buscas?',
-      ]
-    : [
-        'What did you learn from your experiences?',
-        'What was your biggest professional achievement?',
-        'What type of work are you looking for?',
-      ];
+  const suggestedQuestions = tArray('qa.suggestions.experience');
 
   return (
     <SectionWrapper id="experience" className="bg-muted/20">

@@ -1,4 +1,5 @@
 import type { GitHubRepo } from '@/types';
+import type { LanguageCode } from '@/i18n';
 
 const GITHUB_API_BASE = 'https://api.github.com';
 const GITHUB_USERNAME = process.env.NEXT_PUBLIC_GITHUB_USERNAME || 'EiTinchoZ';
@@ -64,9 +65,23 @@ export async function getRepoLanguages(
   }
 }
 
-export function formatDate(dateString: string): string {
+const localeMap: Record<LanguageCode, string> = {
+  es: 'es-PA',
+  en: 'en-US',
+  pt: 'pt-PT',
+  de: 'de-DE',
+  fr: 'fr-FR',
+  zh: 'zh-CN',
+  ja: 'ja-JP',
+  ar: 'ar',
+  hi: 'hi-IN',
+  ko: 'ko-KR',
+};
+
+export function formatDate(dateString: string, language: LanguageCode = 'es'): string {
   const date = new Date(dateString);
-  return date.toLocaleDateString('es-PA', {
+  const locale = localeMap[language] || localeMap.es;
+  return date.toLocaleDateString(locale, {
     year: 'numeric',
     month: 'short',
     day: 'numeric',

@@ -39,6 +39,7 @@ interface LanguageContextType {
   language: LanguageCode;
   setLanguage: (lang: LanguageCode) => void;
   t: (key: string) => string;
+  tArray: (key: string) => string[];
   dir: 'ltr' | 'rtl';
   isLoading: boolean;
 }
@@ -49,7 +50,10 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
 
 const STORAGE_KEY = 'vitae-language';
 
-function getNestedValue(obj: Record<string, unknown>, path: string): string {
+function getNestedRawValue(
+  obj: Record<string, unknown>,
+  path: string
+): unknown {
   const keys = path.split('.');
   let value: unknown = obj;
 
@@ -57,11 +61,11 @@ function getNestedValue(obj: Record<string, unknown>, path: string): string {
     if (value && typeof value === 'object' && key in value) {
       value = (value as Record<string, unknown>)[key];
     } else {
-      return path;
+      return undefined;
     }
   }
 
-  return typeof value === 'string' ? value : path;
+  return value;
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
@@ -89,17 +93,27 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   const t = (key: string): string => {
     const currentTranslations = translations[language] || translations.es;
-    return getNestedValue(
+    const value = getNestedRawValue(
       currentTranslations as unknown as Record<string, unknown>,
       key
     );
+    return typeof value === 'string' ? value : key;
+  };
+
+  const tArray = (key: string): string[] => {
+    const currentTranslations = translations[language] || translations.es;
+    const value = getNestedRawValue(
+      currentTranslations as unknown as Record<string, unknown>,
+      key
+    );
+    return Array.isArray(value) ? value.map(String) : [];
   };
 
   const dir = languages.find((l) => l.code === language)?.dir || 'ltr';
 
   return (
     <LanguageContext.Provider
-      value={{ language, setLanguage, t, dir, isLoading }}
+      value={{ language, setLanguage, t, tArray, dir, isLoading }}
     >
       {children}
     </LanguageContext.Provider>
@@ -115,6 +129,6 @@ export function useLanguage() {
 }
 
 export function useTranslation() {
-  const { t, language, dir } = useLanguage();
-  return { t, language, dir };
+  const { t, tArray, language, dir } = useLanguage();
+  return { t, tArray, language, dir };
 }

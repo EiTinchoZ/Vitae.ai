@@ -61,7 +61,8 @@
     "subtitle": "Mon parcours academique et formation professionnelle",
     "completed": "Termine",
     "inProgress": "En cours",
-    "estimatedProgress": "Progression estimee"
+    "estimatedProgress": "Progression estimee",
+    "completionLabel": "Ach?vement"
   },
   "certificates": {
     "title": "Certifications",
@@ -81,7 +82,8 @@
     "downloadPDF": "Telecharger le PDF",
     "previous": "Precedent",
     "next": "Suivant",
-    "close": "Fermer"
+    "close": "Fermer",
+    "descriptionLabel": "Description"
   },
   "projects": {
     "title": "Projets",
@@ -140,7 +142,8 @@
       "Quelles certifications a-t-il?"
     ],
     "typing": "En train d'ecrire...",
-    "error": "Erreur lors de l'obtention de la reponse. Veuillez reessayer."
+    "error": "Erreur lors de l'obtention de la reponse. Veuillez reessayer.",
+    "suggestedLabel": "Questions sugg?r?es :"
   },
   "common": {
     "loading": "Chargement...",
@@ -153,5 +156,106 @@
   "metadata": {
     "title": "Vitae.ai | Martin Bundy - CV Numerique IA",
     "description": "Vitae.ai - CV numerique interactif de Martin Bundy avec analyses, recommandations et chat intelligent."
+  },
+  "qa": {
+    "ask": "Demande-moi",
+    "placeholder": "?cris ta question...",
+    "suggested": "Questions sugg?r?es :",
+    "thinking": "R?flexion...",
+    "error": "Erreur lors de la r?ponse. R?essaie.",
+    "suggestions": {
+      "skills": [
+        "Pourquoi as-tu choisi de te sp?cialiser en IA ?",
+        "Quelle est ta comp?tence la plus forte ?",
+        "Comment as-tu appris ces technologies ?"
+      ],
+      "projects": [
+        "Quel a ?t? le plus grand d?fi de Conecta Panam? ?",
+        "Quelles technologies as-tu le plus utilis?es ?",
+        "As-tu d'autres projets IA ?"
+      ],
+      "experience": [
+        "Qu'as-tu appris de tes exp?riences ?",
+        "Quelle a ?t? ta plus grande r?ussite professionnelle ?",
+        "Quel type de travail recherches-tu ?"
+      ],
+      "education": [
+        "Pourquoi ?tudies-tu deux cursus ?",
+        "Comment combines-tu l'IA et le g?nie industriel ?",
+        "Quels sont tes objectifs acad?miques ?"
+      ]
+    }
+  },
+  "insights": {
+    "title": "Analyse de carri?re IA",
+    "subtitle": "Obtiens des insights personnalis?s sur ton profil professionnel",
+    "generate": "G?n?rer l'analyse",
+    "regenerate": "R?g?n?rer",
+    "careerScore": "Score de carri?re",
+    "strengths": "Forces cl?s",
+    "uniqueValue": "Proposition de valeur",
+    "marketFit": "Ad?quation au march?",
+    "recommendations": "Recommandations",
+    "skillsRadar": "Radar de comp?tences",
+    "salaryRange": "Fourchette salariale estim?e",
+    "careerPaths": "Parcours de carri?re",
+    "loading": "Analyse de ton profil...",
+    "error": "Erreur lors de la g?n?ration des insights. R?essaie.",
+    "scoreNote": {
+      "excellent": "Excellent profil professionnel",
+      "good": "Bon potentiel de croissance",
+      "improve": "Opportunit?s d'am?lioration"
+    },
+    "salaryPeriod": "an",
+    "radar": {
+      "ai": "IA/ML",
+      "programming": "Programmation",
+      "industrial": "Industriel",
+      "softSkills": "Soft skills",
+      "languages": "Langues"
+    }
+  },
+  "resumeAnalyzer": {
+    "title": "Analyseur de CV",
+    "subtitle": "Obtiens une analyse d?taill?e de ton CV avec des suggestions d'am?lioration",
+    "analyze": "Analyser le CV",
+    "reanalyze": "R?analyser",
+    "loading": "Analyse du CV...",
+    "completeness": "Compl?tude du CV",
+    "atsScore": "Compatibilit? ATS",
+    "sections": "Analyse par section",
+    "gaps": "Axes d'am?lioration",
+    "strengths": "Forces",
+    "improvements": "Recommandations",
+    "overall": "R?sum? global",
+    "error": "Erreur lors de l'analyse du CV. R?essaie.",
+    "sectionNames": {
+      "personal": "Infos personnelles",
+      "profile": "Profil",
+      "education": "Formation",
+      "experience": "Exp?rience",
+      "skills": "Comp?tences",
+      "certificates": "Certificats",
+      "projects": "Projets"
+    }
+  },
+  "skillRecommender": {
+    "title": "Recommandations de comp?tences",
+    "subtitle": "D?couvre des comp?tences compl?mentaires pour renforcer ton profil",
+    "generate": "Obtenir des recommandations",
+    "regenerate": "R?g?n?rer",
+    "loading": "Analyse de ton profil...",
+    "recommended": "Comp?tences recommand?es",
+    "trends": "Tendances du march?",
+    "advice": "Conseil de carri?re",
+    "difficulty": "Difficult?",
+    "time": "Temps estim?",
+    "resources": "Ressources",
+    "error": "Erreur lors de la g?n?ration des recommandations. R?essaie.",
+    "difficultyLabels": {
+      "easy": "Facile",
+      "medium": "Moyen",
+      "hard": "Difficile"
+    }
   }
 }

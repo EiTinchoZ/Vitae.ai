@@ -14,7 +14,7 @@ interface Message {
 }
 
 export function ChatBot() {
-  const { t, language } = useTranslation();
+  const { t, tArray, language } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
@@ -117,7 +117,7 @@ export function ChatBot() {
     setInput(question);
   };
 
-  const suggestedQuestions = t('chat.suggestedQuestions') as unknown as string[];
+  const suggestedQuestions = tArray('chat.suggestedQuestions');
 
   return (
     <>
@@ -250,7 +250,7 @@ export function ChatBot() {
             {messages.length <= 1 && Array.isArray(suggestedQuestions) && (
               <div className="px-4 pb-2">
                 <p className="text-xs text-muted-foreground mb-2">
-                  {language === 'es' ? 'Preguntas sugeridas:' : 'Suggested questions:'}
+                  {t('chat.suggestedLabel')}
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {suggestedQuestions.map((question: string) => (
