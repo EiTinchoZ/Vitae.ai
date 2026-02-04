@@ -62,7 +62,7 @@
     "completed": "已完成",
     "inProgress": "进行中",
     "estimatedProgress": "预计进度",
-    "completionLabel": "????"
+    "completionLabel": "完成"
   },
   "certificates": {
     "title": "证书",
@@ -83,7 +83,7 @@
     "previous": "上一个",
     "next": "下一个",
     "close": "关闭",
-    "descriptionLabel": "??"
+    "descriptionLabel": "描述"
   },
   "projects": {
     "title": "项目",
@@ -143,7 +143,7 @@
     ],
     "typing": "正在输入...",
     "error": "获取回复时出错。请重试。",
-    "suggestedLabel": "?????"
+    "suggestedLabel": "推荐问题:"
   },
   "common": {
     "loading": "加载中...",
@@ -158,104 +158,104 @@
     "description": "Vitae.ai - AI-powered interactive CV for Martin Bundy with insights, recommendations, and smart chat."
   },
   "qa": {
-    "ask": "??",
-    "placeholder": "??????...",
-    "suggested": "?????",
-    "thinking": "???...",
-    "error": "??????????????",
+    "ask": "问我",
+    "placeholder": "输入你的问题...",
+    "suggested": "推荐问题:",
+    "thinking": "思考中...",
+    "error": "获取回复时出错。请重试。",
     "suggestions": {
       "skills": [
-        "??????? AI?",
-        "??????????",
-        "????????????"
+        "你为什么选择专注于AI？",
+        "你最强的技能是什么？",
+        "你是如何学习这些技术的？"
       ],
       "projects": [
-        "Conecta Panam? ?????????",
-        "???????????",
-        "????? AI ????"
+        "Conecta Panamá 最大的挑战是什么？",
+        "你最常用的技术是什么？",
+        "你还有更多AI项目吗？"
       ],
       "experience": [
-        "?????????????",
-        "????????????",
-        "????????????"
+        "你从这些经历中学到了什么？",
+        "你最大的职业成就是什么？",
+        "你在寻找什么类型的工作？"
       ],
       "education": [
-        "????????????",
-        "???? AI ????????",
-        "??????????"
+        "你为什么要学习两个学位？",
+        "你如何将AI与工业工程结合？",
+        "你的学术目标是什么？"
       ]
     }
   },
   "insights": {
-    "title": "AI ????",
-    "subtitle": "???????????????",
-    "generate": "????",
-    "regenerate": "????",
-    "careerScore": "????",
-    "strengths": "????",
-    "uniqueValue": "????",
-    "marketFit": "?????",
-    "recommendations": "??",
-    "skillsRadar": "????",
-    "salaryRange": "??????",
-    "careerPaths": "????",
-    "loading": "????????...",
-    "error": "??????????????",
+    "title": "AI职业分析",
+    "subtitle": "获取关于你职业档案的个性化洞察",
+    "generate": "生成分析",
+    "regenerate": "重新生成",
+    "careerScore": "职业评分",
+    "strengths": "核心优势",
+    "uniqueValue": "独特价值",
+    "marketFit": "市场契合度",
+    "recommendations": "建议",
+    "skillsRadar": "技能雷达",
+    "salaryRange": "预计薪资范围",
+    "careerPaths": "职业路径",
+    "loading": "正在分析你的档案...",
+    "error": "生成洞察时出错。请重试。",
     "scoreNote": {
-      "excellent": "??????",
-      "good": "??????",
-      "improve": "?????"
+      "excellent": "优秀的职业档案",
+      "good": "良好的成长潜力",
+      "improve": "提升空间"
     },
-    "salaryPeriod": "?",
+    "salaryPeriod": "年",
     "radar": {
       "ai": "AI/ML",
-      "programming": "??",
-      "industrial": "????",
-      "softSkills": "???",
-      "languages": "??"
+      "programming": "编程",
+      "industrial": "工业",
+      "softSkills": "软技能",
+      "languages": "语言"
     }
   },
   "resumeAnalyzer": {
-    "title": "????",
-    "subtitle": "??????????????",
-    "analyze": "????",
-    "reanalyze": "????",
-    "loading": "??????...",
-    "completeness": "?????",
-    "atsScore": "ATS ???",
-    "sections": "????",
-    "gaps": "????",
-    "strengths": "??",
-    "improvements": "????",
-    "overall": "????",
-    "error": "?????????????",
+    "title": "简历分析",
+    "subtitle": "获取包含改进建议的详细简历分析",
+    "analyze": "分析简历",
+    "reanalyze": "重新分析",
+    "loading": "正在分析简历...",
+    "completeness": "简历完整度",
+    "atsScore": "ATS兼容性",
+    "sections": "分段分析",
+    "gaps": "改进领域",
+    "strengths": "优势",
+    "improvements": "改进建议",
+    "overall": "总体总结",
+    "error": "简历分析出错。请重试。",
     "sectionNames": {
-      "personal": "????",
-      "profile": "????",
-      "education": "??",
-      "experience": "??",
-      "skills": "??",
-      "certificates": "??",
-      "projects": "??"
+      "personal": "个人信息",
+      "profile": "个人简介",
+      "education": "教育",
+      "experience": "经验",
+      "skills": "技能",
+      "certificates": "证书",
+      "projects": "项目"
     }
   },
   "skillRecommender": {
-    "title": "????",
-    "subtitle": "?????????????",
-    "generate": "????",
-    "regenerate": "????",
-    "loading": "????????...",
-    "recommended": "????",
-    "trends": "????",
-    "advice": "????",
-    "difficulty": "??",
-    "time": "????",
-    "resources": "??",
-    "error": "??????????????",
+    "title": "技能推荐",
+    "subtitle": "发现能强化你档案的补充技能",
+    "generate": "获取推荐",
+    "regenerate": "重新生成",
+    "loading": "正在分析你的档案...",
+    "recommended": "推荐技能",
+    "trends": "市场趋势",
+    "advice": "职业建议",
+    "difficulty": "难度",
+    "time": "预计时间",
+    "resources": "资源",
+    "error": "生成推荐时出错。请重试。",
     "difficultyLabels": {
-      "easy": "??",
-      "medium": "??",
-      "hard": "??"
+      "easy": "容易",
+      "medium": "中等",
+      "hard": "困难"
     }
   }
 }

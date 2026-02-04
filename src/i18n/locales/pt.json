@@ -62,7 +62,7 @@
     "completed": "Concluido",
     "inProgress": "Em andamento",
     "estimatedProgress": "Progresso estimado",
-    "completionLabel": "Conclus?o"
+    "completionLabel": "Conclusão"
   },
   "certificates": {
     "title": "Certificacoes",
@@ -83,7 +83,7 @@
     "previous": "Anterior",
     "next": "Proximo",
     "close": "Fechar",
-    "descriptionLabel": "Descri??o"
+    "descriptionLabel": "Descrição"
   },
   "projects": {
     "title": "Projetos",
@@ -165,37 +165,37 @@
     "error": "Erro ao obter resposta. Tente novamente.",
     "suggestions": {
       "skills": [
-        "Por que voc? escolheu se especializar em IA?",
-        "Qual ? sua habilidade mais forte?",
-        "Como voc? aprendeu essas tecnologias?"
+        "Por que você escolheu se especializar em IA?",
+        "Qual é sua habilidade mais forte?",
+        "Como você aprendeu essas tecnologias?"
       ],
       "projects": [
-        "Qual foi o maior desafio do Conecta Panam??",
-        "Quais tecnologias voc? mais usou?",
-        "Voc? tem mais projetos de IA?"
+        "Qual foi o maior desafio do Conecta Panamá?",
+        "Quais tecnologias você mais usou?",
+        "Você tem mais projetos de IA?"
       ],
       "experience": [
-        "O que voc? aprendeu nas suas experi?ncias?",
+        "O que você aprendeu nas suas experiências?",
         "Qual foi sua maior conquista profissional?",
-        "Que tipo de trabalho voc? procura?"
+        "Que tipo de trabalho você procura?"
       ],
       "education": [
-        "Por que voc? estuda duas gradua??es?",
-        "Como voc? combina IA com Engenharia Industrial?",
-        "Quais s?o suas metas acad?micas?"
+        "Por que você estuda duas graduações?",
+        "Como você combina IA com Engenharia Industrial?",
+        "Quais são suas metas acadêmicas?"
       ]
     }
   },
   "insights": {
-    "title": "An?lise de Carreira com IA",
+    "title": "Análise de Carreira com IA",
     "subtitle": "Obtenha insights personalizados sobre seu perfil profissional",
-    "generate": "Gerar an?lise",
+    "generate": "Gerar análise",
     "regenerate": "Regerar",
-    "careerScore": "Pontua??o de Carreira",
-    "strengths": "Principais For?as",
+    "careerScore": "Pontuação de Carreira",
+    "strengths": "Principais Forças",
     "uniqueValue": "Proposta de Valor",
-    "marketFit": "Adequa??o ao Mercado",
-    "recommendations": "Recomenda??es",
+    "marketFit": "Adequação ao Mercado",
+    "recommendations": "Recomendações",
     "skillsRadar": "Radar de Habilidades",
     "salaryRange": "Faixa Salarial Estimada",
     "careerPaths": "Caminhos de Carreira",
@@ -209,7 +209,7 @@
     "salaryPeriod": "ano",
     "radar": {
       "ai": "IA/ML",
-      "programming": "Programa??o",
+      "programming": "Programação",
       "industrial": "Industrial",
       "softSkills": "Soft Skills",
       "languages": "Idiomas"
@@ -217,23 +217,23 @@
   },
   "resumeAnalyzer": {
     "title": "Analisador de CV",
-    "subtitle": "Obtenha uma an?lise detalhada do seu CV com sugest?es de melhoria",
+    "subtitle": "Obtenha uma análise detalhada do seu CV com sugestões de melhoria",
     "analyze": "Analisar CV",
     "reanalyze": "Reanalisar",
     "loading": "Analisando CV...",
     "completeness": "Completude do CV",
     "atsScore": "Compatibilidade ATS",
-    "sections": "An?lise por Se??o",
-    "gaps": "?reas de Melhoria",
-    "strengths": "For?as",
-    "improvements": "Recomenda??es",
+    "sections": "Análise por Seção",
+    "gaps": "Áreas de Melhoria",
+    "strengths": "Forças",
+    "improvements": "Recomendações",
     "overall": "Resumo Geral",
     "error": "Erro ao analisar o CV. Tente novamente.",
     "sectionNames": {
-      "personal": "Informa??es pessoais",
+      "personal": "Informações pessoais",
       "profile": "Perfil",
-      "education": "Educa??o",
-      "experience": "Experi?ncia",
+      "education": "Educação",
+      "experience": "Experiência",
       "skills": "Habilidades",
       "certificates": "Certificados",
       "projects": "Projetos"
@@ -242,20 +242,20 @@
   "skillRecommender": {
     "title": "Recomendador de Habilidades",
     "subtitle": "Descubra habilidades complementares para potencializar seu perfil",
-    "generate": "Obter recomenda??es",
+    "generate": "Obter recomendações",
     "regenerate": "Regerar",
     "loading": "Analisando seu perfil...",
     "recommended": "Habilidades recomendadas",
-    "trends": "Tend?ncias do Mercado",
+    "trends": "Tendências do Mercado",
     "advice": "Conselho de Carreira",
     "difficulty": "Dificuldade",
     "time": "Tempo estimado",
     "resources": "Recursos",
-    "error": "Erro ao gerar recomenda??es. Tente novamente.",
+    "error": "Erro ao gerar recomendações. Tente novamente.",
     "difficultyLabels": {
-      "easy": "F?cil",
-      "medium": "M?dio",
-      "hard": "Dif?cil"
+      "easy": "Fácil",
+      "medium": "Médio",
+      "hard": "Difícil"
     }
   }
 }

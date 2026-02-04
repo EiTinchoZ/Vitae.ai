@@ -62,7 +62,7 @@
     "completed": "Termine",
     "inProgress": "En cours",
     "estimatedProgress": "Progression estimee",
-    "completionLabel": "Ach?vement"
+    "completionLabel": "Achèvement"
   },
   "certificates": {
     "title": "Certifications",
@@ -143,7 +143,7 @@
     ],
     "typing": "En train d'ecrire...",
     "error": "Erreur lors de l'obtention de la reponse. Veuillez reessayer.",
-    "suggestedLabel": "Questions sugg?r?es :"
+    "suggestedLabel": "Questions suggérées :"
   },
   "common": {
     "loading": "Chargement...",
@@ -159,52 +159,52 @@
   },
   "qa": {
     "ask": "Demande-moi",
-    "placeholder": "?cris ta question...",
-    "suggested": "Questions sugg?r?es :",
-    "thinking": "R?flexion...",
-    "error": "Erreur lors de la r?ponse. R?essaie.",
+    "placeholder": "Écris ta question...",
+    "suggested": "Questions suggérées :",
+    "thinking": "Réflexion...",
+    "error": "Erreur lors de la réponse. Réessaie.",
     "suggestions": {
       "skills": [
-        "Pourquoi as-tu choisi de te sp?cialiser en IA ?",
-        "Quelle est ta comp?tence la plus forte ?",
+        "Pourquoi as-tu choisi de te spécialiser en IA ?",
+        "Quelle est ta compétence la plus forte ?",
         "Comment as-tu appris ces technologies ?"
       ],
       "projects": [
-        "Quel a ?t? le plus grand d?fi de Conecta Panam? ?",
-        "Quelles technologies as-tu le plus utilis?es ?",
+        "Quel a été le plus grand défi de Conecta Panamá ?",
+        "Quelles technologies as-tu le plus utilisées ?",
         "As-tu d'autres projets IA ?"
       ],
       "experience": [
-        "Qu'as-tu appris de tes exp?riences ?",
-        "Quelle a ?t? ta plus grande r?ussite professionnelle ?",
+        "Qu'as-tu appris de tes expériences ?",
+        "Quelle a été ta plus grande réussite professionnelle ?",
         "Quel type de travail recherches-tu ?"
       ],
       "education": [
-        "Pourquoi ?tudies-tu deux cursus ?",
-        "Comment combines-tu l'IA et le g?nie industriel ?",
-        "Quels sont tes objectifs acad?miques ?"
+        "Pourquoi étudies-tu deux cursus ?",
+        "Comment combines-tu l'IA et le génie industriel ?",
+        "Quels sont tes objectifs académiques ?"
       ]
     }
   },
   "insights": {
-    "title": "Analyse de carri?re IA",
-    "subtitle": "Obtiens des insights personnalis?s sur ton profil professionnel",
-    "generate": "G?n?rer l'analyse",
-    "regenerate": "R?g?n?rer",
-    "careerScore": "Score de carri?re",
-    "strengths": "Forces cl?s",
+    "title": "Analyse de carrière IA",
+    "subtitle": "Obtiens des insights personnalisés sur ton profil professionnel",
+    "generate": "Générer l'analyse",
+    "regenerate": "Régénérer",
+    "careerScore": "Score de carrière",
+    "strengths": "Forces clés",
     "uniqueValue": "Proposition de valeur",
-    "marketFit": "Ad?quation au march?",
+    "marketFit": "Adéquation au marché",
     "recommendations": "Recommandations",
-    "skillsRadar": "Radar de comp?tences",
-    "salaryRange": "Fourchette salariale estim?e",
-    "careerPaths": "Parcours de carri?re",
+    "skillsRadar": "Radar de compétences",
+    "salaryRange": "Fourchette salariale estimée",
+    "careerPaths": "Parcours de carrière",
     "loading": "Analyse de ton profil...",
-    "error": "Erreur lors de la g?n?ration des insights. R?essaie.",
+    "error": "Erreur lors de la génération des insights. Réessaie.",
     "scoreNote": {
       "excellent": "Excellent profil professionnel",
       "good": "Bon potentiel de croissance",
-      "improve": "Opportunit?s d'am?lioration"
+      "improve": "Opportunités d'amélioration"
     },
     "salaryPeriod": "an",
     "radar": {
@@ -217,41 +217,41 @@
   },
   "resumeAnalyzer": {
     "title": "Analyseur de CV",
-    "subtitle": "Obtiens une analyse d?taill?e de ton CV avec des suggestions d'am?lioration",
+    "subtitle": "Obtiens une analyse détaillée de ton CV avec des suggestions d'amélioration",
     "analyze": "Analyser le CV",
-    "reanalyze": "R?analyser",
+    "reanalyze": "Réanalyser",
     "loading": "Analyse du CV...",
-    "completeness": "Compl?tude du CV",
-    "atsScore": "Compatibilit? ATS",
+    "completeness": "Complétude du CV",
+    "atsScore": "Compatibilité ATS",
     "sections": "Analyse par section",
-    "gaps": "Axes d'am?lioration",
+    "gaps": "Axes d'amélioration",
     "strengths": "Forces",
     "improvements": "Recommandations",
-    "overall": "R?sum? global",
-    "error": "Erreur lors de l'analyse du CV. R?essaie.",
+    "overall": "Résumé global",
+    "error": "Erreur lors de l'analyse du CV. Réessaie.",
     "sectionNames": {
       "personal": "Infos personnelles",
       "profile": "Profil",
       "education": "Formation",
-      "experience": "Exp?rience",
-      "skills": "Comp?tences",
+      "experience": "Expérience",
+      "skills": "Compétences",
       "certificates": "Certificats",
       "projects": "Projets"
     }
   },
   "skillRecommender": {
-    "title": "Recommandations de comp?tences",
-    "subtitle": "D?couvre des comp?tences compl?mentaires pour renforcer ton profil",
+    "title": "Recommandations de compétences",
+    "subtitle": "Découvre des compétences complémentaires pour renforcer ton profil",
     "generate": "Obtenir des recommandations",
-    "regenerate": "R?g?n?rer",
+    "regenerate": "Régénérer",
     "loading": "Analyse de ton profil...",
-    "recommended": "Comp?tences recommand?es",
-    "trends": "Tendances du march?",
-    "advice": "Conseil de carri?re",
-    "difficulty": "Difficult?",
-    "time": "Temps estim?",
+    "recommended": "Compétences recommandées",
+    "trends": "Tendances du marché",
+    "advice": "Conseil de carrière",
+    "difficulty": "Difficulté",
+    "time": "Temps estimé",
     "resources": "Ressources",
-    "error": "Erreur lors de la g?n?ration des recommandations. R?essaie.",
+    "error": "Erreur lors de la génération des recommandations. Réessaie.",
     "difficultyLabels": {
       "easy": "Facile",
       "medium": "Moyen",

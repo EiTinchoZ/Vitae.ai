@@ -166,21 +166,21 @@
     "suggestions": {
       "skills": [
         "Warum hast du dich auf KI spezialisiert?",
-        "Was ist deine st?rkste F?higkeit?",
+        "Was ist deine stärkste Fähigkeit?",
         "Wie hast du diese Technologien gelernt?"
       ],
       "projects": [
-        "Was war die gr??te Herausforderung bei Conecta Panam??",
+        "Was war die größte Herausforderung bei Conecta Panamá?",
         "Welche Technologien hast du am meisten genutzt?",
         "Hast du weitere KI-Projekte?"
       ],
       "experience": [
         "Was hast du aus deinen Erfahrungen gelernt?",
-        "Was war dein gr??ter beruflicher Erfolg?",
+        "Was war dein größter beruflicher Erfolg?",
         "Welche Art von Arbeit suchst du?"
       ],
       "education": [
-        "Warum studierst du zwei Studieng?nge?",
+        "Warum studierst du zwei Studiengänge?",
         "Wie kombinierst du KI mit Industrial Engineering?",
         "Was sind deine akademischen Ziele?"
       ]
@@ -192,12 +192,12 @@
     "generate": "Analyse erstellen",
     "regenerate": "Neu generieren",
     "careerScore": "Karriere-Score",
-    "strengths": "Kernst?rken",
+    "strengths": "Kernstärken",
     "uniqueValue": "Wertversprechen",
     "marketFit": "Marktfit",
     "recommendations": "Empfehlungen",
     "skillsRadar": "Kompetenzradar",
-    "salaryRange": "Gesch?tzte Gehaltsspanne",
+    "salaryRange": "Geschätzte Gehaltsspanne",
     "careerPaths": "Karrierewege",
     "loading": "Profil wird analysiert...",
     "error": "Fehler beim Erstellen der Insights. Bitte versuche es erneut.",
@@ -217,39 +217,39 @@
   },
   "resumeAnalyzer": {
     "title": "Lebenslauf-Analyzer",
-    "subtitle": "Erhalte eine detaillierte Analyse deines Lebenslaufs mit Verbesserungsvorschl?gen",
+    "subtitle": "Erhalte eine detaillierte Analyse deines Lebenslaufs mit Verbesserungsvorschlägen",
     "analyze": "Lebenslauf analysieren",
     "reanalyze": "Erneut analysieren",
     "loading": "Lebenslauf wird analysiert...",
-    "completeness": "Vollst?ndigkeit des Lebenslaufs",
-    "atsScore": "ATS-Kompatibilit?t",
+    "completeness": "Vollständigkeit des Lebenslaufs",
+    "atsScore": "ATS-Kompatibilität",
     "sections": "Abschnittsanalyse",
     "gaps": "Verbesserungsbereiche",
-    "strengths": "St?rken",
+    "strengths": "Stärken",
     "improvements": "Empfehlungen",
     "overall": "Gesamtfazit",
     "error": "Fehler beim Analysieren des Lebenslaufs. Bitte versuche es erneut.",
     "sectionNames": {
-      "personal": "Pers?nliche Infos",
+      "personal": "Persönliche Infos",
       "profile": "Profil",
       "education": "Ausbildung",
       "experience": "Erfahrung",
-      "skills": "F?higkeiten",
+      "skills": "Fähigkeiten",
       "certificates": "Zertifikate",
       "projects": "Projekte"
     }
   },
   "skillRecommender": {
     "title": "Kompetenz-Empfehlungen",
-    "subtitle": "Entdecke erg?nzende F?higkeiten, um dein Profil zu st?rken",
+    "subtitle": "Entdecke ergänzende Fähigkeiten, um dein Profil zu stärken",
     "generate": "Empfehlungen abrufen",
     "regenerate": "Neu generieren",
     "loading": "Profil wird analysiert...",
-    "recommended": "Empfohlene F?higkeiten",
+    "recommended": "Empfohlene Fähigkeiten",
     "trends": "Markttrends",
     "advice": "Karriere-Rat",
     "difficulty": "Schwierigkeit",
-    "time": "Gesch?tzte Zeit",
+    "time": "Geschätzte Zeit",
     "resources": "Ressourcen",
     "error": "Fehler beim Generieren der Empfehlungen. Bitte versuche es erneut.",
     "difficultyLabels": {

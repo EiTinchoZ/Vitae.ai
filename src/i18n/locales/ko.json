@@ -62,7 +62,7 @@
     "completed": "수료",
     "inProgress": "진행 중",
     "estimatedProgress": "예상 진행률",
-    "completionLabel": "?? ??"
+    "completionLabel": "완료"
   },
   "certificates": {
     "title": "자격증",
@@ -83,7 +83,7 @@
     "previous": "이전",
     "next": "다음",
     "close": "닫기",
-    "descriptionLabel": "??"
+    "descriptionLabel": "설명"
   },
   "projects": {
     "title": "프로젝트",
@@ -143,7 +143,7 @@
     ],
     "typing": "입력 중...",
     "error": "응답을 가져오는 중 오류가 발생했습니다. 다시 시도해주세요.",
-    "suggestedLabel": "?? ??:"
+    "suggestedLabel": "추천 질문:"
   },
   "common": {
     "loading": "로딩 중...",
@@ -158,104 +158,104 @@
     "description": "Vitae.ai - AI-powered interactive CV for Martin Bundy with insights, recommendations, and smart chat."
   },
   "qa": {
-    "ask": "????",
-    "placeholder": "??? ?????...",
-    "suggested": "?? ??:",
-    "thinking": "?? ?...",
-    "error": "??? ???? ? ??? ??????. ?? ?????.",
+    "ask": "질문하기",
+    "placeholder": "질문을 입력하세요...",
+    "suggested": "추천 질문:",
+    "thinking": "생각 중...",
+    "error": "응답을 가져오는 중 오류가 발생했습니다. 다시 시도하세요.",
     "suggestions": {
       "skills": [
-        "? AI? ????? ????",
-        "?? ?? ??? ??????",
-        "? ???? ??? ?????"
+        "왜 AI를 전공으로 선택했나요?",
+        "가장 강한 기술은 무엇인가요?",
+        "이 기술들을 어떻게 배웠나요?"
       ],
       "projects": [
-        "Conecta Panam?? ?? ? ??? ???????",
-        "?? ?? ??? ??? ??????",
-        "?? AI ????? ????"
+        "Conecta Panamá에서 가장 큰 도전은 무엇이었나요?",
+        "가장 많이 사용한 기술은 무엇이었나요?",
+        "추가 AI 프로젝트가 있나요?"
       ],
       "experience": [
-        "??? ?? ??? ?????",
-        "?? ? ??? ??? ??????",
-        "?? ?? ?? ????"
+        "경험에서 무엇을 배웠나요?",
+        "가장 큰 직무 성과는 무엇이었나요?",
+        "어떤 종류의 일을 찾고 있나요?"
       ],
       "education": [
-        "? ? ?? ??? ??????",
-        "AI? ????? ??? ??????",
-        "?? ??? ??????"
+        "왜 두 개의 학위를 공부하나요?",
+        "AI와 산업공학을 어떻게 결합하나요?",
+        "학업 목표는 무엇인가요?"
       ]
     }
   },
   "insights": {
-    "title": "AI ??? ??",
-    "subtitle": "?? ???? ?? ?? ????? ?????",
-    "generate": "?? ??",
-    "regenerate": "?? ??",
-    "careerScore": "??? ??",
-    "strengths": "?? ??",
-    "uniqueValue": "?? ??",
-    "marketFit": "?? ???",
-    "recommendations": "??",
-    "skillsRadar": "?? ???",
-    "salaryRange": "?? ?? ??",
-    "careerPaths": "??? ??",
-    "loading": "???? ?? ?...",
-    "error": "???? ?? ? ??? ??????. ?? ?????.",
+    "title": "AI 커리어 분석",
+    "subtitle": "전문 프로필에 대한 맞춤 인사이트를 받아보세요",
+    "generate": "분석 생성",
+    "regenerate": "다시 생성",
+    "careerScore": "커리어 점수",
+    "strengths": "핵심 강점",
+    "uniqueValue": "차별화된 가치",
+    "marketFit": "시장 적합도",
+    "recommendations": "추천",
+    "skillsRadar": "스킬 레이더",
+    "salaryRange": "예상 연봉 범위",
+    "careerPaths": "커리어 경로",
+    "loading": "프로필 분석 중...",
+    "error": "인사이트 생성 중 오류가 발생했습니다. 다시 시도하세요.",
     "scoreNote": {
-      "excellent": "??? ?? ???",
-      "good": "?? ??? ??",
-      "improve": "?? ?? ??"
+      "excellent": "훌륭한 전문 프로필",
+      "good": "좋은 성장 잠재력",
+      "improve": "개선 기회"
     },
-    "salaryPeriod": "?",
+    "salaryPeriod": "연",
     "radar": {
       "ai": "AI/ML",
-      "programming": "?????",
-      "industrial": "??",
-      "softSkills": "??? ??",
-      "languages": "??"
+      "programming": "프로그래밍",
+      "industrial": "산업",
+      "softSkills": "소프트 스킬",
+      "languages": "언어"
     }
   },
   "resumeAnalyzer": {
-    "title": "??? ??",
-    "subtitle": "?? ??? ??? ?? ??? ??",
-    "analyze": "??? ??",
-    "reanalyze": "???",
-    "loading": "???? ?? ?...",
-    "completeness": "??? ???",
-    "atsScore": "ATS ???",
-    "sections": "?? ??",
-    "gaps": "?? ??",
-    "strengths": "??",
-    "improvements": "?? ??",
-    "overall": "?? ??",
-    "error": "??? ?? ? ??? ??????. ?? ?????.",
+    "title": "이력서 분석기",
+    "subtitle": "개선 제안과 함께 이력서를 상세히 분석합니다",
+    "analyze": "이력서 분석",
+    "reanalyze": "다시 분석",
+    "loading": "이력서 분석 중...",
+    "completeness": "이력서 완성도",
+    "atsScore": "ATS 적합도",
+    "sections": "섹션 분석",
+    "gaps": "개선 영역",
+    "strengths": "강점",
+    "improvements": "개선 제안",
+    "overall": "종합 요약",
+    "error": "이력서 분석 중 오류가 발생했습니다. 다시 시도하세요.",
     "sectionNames": {
-      "personal": "?? ??",
-      "profile": "???",
-      "education": "??",
-      "experience": "??",
-      "skills": "??",
-      "certificates": "???",
-      "projects": "????"
+      "personal": "개인 정보",
+      "profile": "프로필",
+      "education": "교육",
+      "experience": "경력",
+      "skills": "기술",
+      "certificates": "자격증",
+      "projects": "프로젝트"
     }
   },
   "skillRecommender": {
-    "title": "?? ??",
-    "subtitle": "???? ??? ?? ??? ?????",
-    "generate": "?? ??",
-    "regenerate": "?? ??",
-    "loading": "???? ?? ?...",
-    "recommended": "?? ??",
-    "trends": "?? ???",
-    "advice": "??? ??",
-    "difficulty": "???",
-    "time": "?? ??",
-    "resources": "???",
-    "error": "?? ?? ? ??? ??????. ?? ?????.",
+    "title": "스킬 추천",
+    "subtitle": "프로필을 강화할 보완 기술을 찾아보세요",
+    "generate": "추천 받기",
+    "regenerate": "다시 생성",
+    "loading": "프로필 분석 중...",
+    "recommended": "추천 기술",
+    "trends": "시장 트렌드",
+    "advice": "커리어 조언",
+    "difficulty": "난이도",
+    "time": "예상 시간",
+    "resources": "리소스",
+    "error": "추천 생성 중 오류가 발생했습니다. 다시 시도하세요.",
     "difficultyLabels": {
-      "easy": "??",
-      "medium": "??",
-      "hard": "???"
+      "easy": "쉬움",
+      "medium": "보통",
+      "hard": "어려움"
     }
   }
 }
