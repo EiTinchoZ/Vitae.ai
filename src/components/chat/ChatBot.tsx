@@ -15,7 +15,7 @@ interface Message {
 const suggestedQuestions = [
   '¿Cual es la experiencia de Martin?',
   '¿Que proyectos ha realizado?',
-  '¿Por que deberia contratarlo?',
+  '¿Cuales son sus habilidades?',
   '¿Que certificaciones tiene?',
 ];
 
