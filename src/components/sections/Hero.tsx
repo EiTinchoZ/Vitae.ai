@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, Download, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cvData } from '@/data/cv-data';
+import { useTranslation } from '@/i18n';
 
 const socialLinks = [
   { name: 'GitHub', href: cvData.personal.github, icon: Github },
@@ -12,12 +13,21 @@ const socialLinks = [
 ];
 
 export function Hero() {
+  const { t } = useTranslation();
+
   const scrollToAbout = () => {
     const element = document.querySelector('#about');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  const specialties = [
+    t('hero.specialties.ml'),
+    t('hero.specialties.dl'),
+    t('hero.specialties.genai'),
+    t('hero.specialties.python'),
+  ];
 
   return (
     <section
@@ -88,8 +98,7 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-lg md:text-xl text-muted-foreground mb-6 max-w-2xl mx-auto"
           >
-            Estudiante de Ingeniería Industrial & Técnico Superior en{' '}
-            <span className="text-primary font-semibold">Inteligencia Artificial</span>
+            {t('hero.title')}
           </motion.p>
 
           {/* Specialties */}
@@ -99,16 +108,14 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="flex flex-wrap justify-center gap-2 mb-8"
           >
-            {['Machine Learning', 'Deep Learning', 'IA Generativa', 'Python'].map(
-              (skill) => (
-                <span
-                  key={skill}
-                  className="px-3 py-1 text-sm bg-primary/10 text-primary rounded-full"
-                >
-                  {skill}
-                </span>
-              )
-            )}
+            {specialties.map((skill) => (
+              <span
+                key={skill}
+                className="px-3 py-1 text-sm bg-primary/10 text-primary rounded-full"
+              >
+                {skill}
+              </span>
+            ))}
           </motion.div>
 
           {/* Social links */}
@@ -141,7 +148,7 @@ export function Hero() {
             <Button asChild size="lg" className="gap-2">
               <a href="/cv/CV_Martin_Bundy_2026.pdf" download>
                 <Download className="h-4 w-4" />
-                Descargar CV
+                {t('hero.downloadCV')}
               </a>
             </Button>
           </motion.div>

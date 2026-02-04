@@ -4,46 +4,49 @@ import { motion } from 'framer-motion';
 import { MapPin, GraduationCap, Briefcase, Languages } from 'lucide-react';
 import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
 import { cvData } from '@/data/cv-data';
-
-const highlights = [
-  {
-    icon: GraduationCap,
-    label: 'Formación',
-    value: 'Ingeniería Industrial & IA',
-  },
-  {
-    icon: Briefcase,
-    label: 'Especialización',
-    value: 'Machine Learning & Deep Learning',
-  },
-  {
-    icon: MapPin,
-    label: 'Ubicación',
-    value: 'Panamá',
-  },
-  {
-    icon: Languages,
-    label: 'Idiomas',
-    value: 'Español (Nativo) • Inglés (C2)',
-  },
-];
-
-const specialties = [
-  'Machine Learning',
-  'Deep Learning',
-  'IA Generativa',
-  'RAG',
-  'Prompt Engineering',
-  'Agentes Inteligentes',
-  'Python',
-  'Automatización',
-];
+import { useTranslation } from '@/i18n';
 
 export function About() {
+  const { t } = useTranslation();
+
+  const highlights = [
+    {
+      icon: GraduationCap,
+      label: t('about.highlights.education'),
+      value: t('about.highlights.educationValue'),
+    },
+    {
+      icon: Briefcase,
+      label: t('about.highlights.specialization'),
+      value: t('about.highlights.specializationValue'),
+    },
+    {
+      icon: MapPin,
+      label: t('about.highlights.location'),
+      value: t('about.highlights.locationValue'),
+    },
+    {
+      icon: Languages,
+      label: t('about.highlights.languages'),
+      value: t('about.highlights.languagesValue'),
+    },
+  ];
+
+  const specialties = [
+    'Machine Learning',
+    'Deep Learning',
+    'IA Generativa',
+    'RAG',
+    'Prompt Engineering',
+    'Agentes Inteligentes',
+    'Python',
+    'Automatizacion',
+  ];
+
   return (
     <SectionWrapper id="about">
-      <SectionTitle subtitle="Conoce más sobre mi trayectoria y especialidades">
-        Sobre Mí
+      <SectionTitle subtitle={t('about.subtitle')}>
+        {t('about.title')}
       </SectionTitle>
 
       <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -89,7 +92,7 @@ export function About() {
           transition={{ duration: 0.5 }}
           className="bg-muted/30 rounded-2xl p-6"
         >
-          <h3 className="text-lg font-semibold mb-4">Especialidades</h3>
+          <h3 className="text-lg font-semibold mb-4">{t('about.specialtiesTitle')}</h3>
           <div className="flex flex-wrap gap-2">
             {specialties.map((specialty, index) => (
               <motion.span
@@ -108,7 +111,7 @@ export function About() {
           {/* Quote */}
           <div className="mt-6 pt-6 border-t">
             <p className="text-sm text-muted-foreground italic">
-              &ldquo;Combinando la optimización de la ingeniería industrial con el poder de la inteligencia artificial para crear soluciones innovadoras.&rdquo;
+              &ldquo;{t('about.quote')}&rdquo;
             </p>
           </div>
         </motion.div>

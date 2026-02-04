@@ -1,0 +1,157 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "about": "Uber mich",
+    "skills": "Fahigkeiten",
+    "education": "Ausbildung",
+    "certificates": "Zertifikate",
+    "projects": "Projekte",
+    "experience": "Erfahrung",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "title": "Student der Wirtschaftsingenieurwissenschaften & KI-Techniker",
+    "downloadCV": "Lebenslauf herunterladen",
+    "specialties": {
+      "ml": "Machine Learning",
+      "dl": "Deep Learning",
+      "genai": "Generative KI",
+      "python": "Python"
+    }
+  },
+  "about": {
+    "title": "Uber mich",
+    "subtitle": "Erfahren Sie mehr uber meinen Werdegang und meine Spezialisierungen",
+    "specialtiesTitle": "Spezialisierungen",
+    "quote": "Verbindung von industrieller Optimierung mit der Kraft der kunstlichen Intelligenz zur Schaffung innovativer Losungen.",
+    "highlights": {
+      "education": "Ausbildung",
+      "educationValue": "Wirtschaftsing. + KI",
+      "specialization": "Spezialisierung",
+      "specializationValue": "Machine Learning & Generative KI",
+      "location": "Standort",
+      "locationValue": "Panama",
+      "languages": "Sprachen",
+      "languagesValue": "Spanisch, Englisch, Deutsch"
+    },
+    "specialties": [
+      "Machine Learning",
+      "Deep Learning",
+      "Generative KI",
+      "RAG",
+      "Prompt Engineering",
+      "Python",
+      "Automatisierung",
+      "Prozessoptimierung"
+    ]
+  },
+  "skills": {
+    "title": "Technische Fahigkeiten",
+    "subtitle": "Technologien und Kompetenzen, auf die ich spezialisiert bin",
+    "all": "Alle",
+    "categories": {
+      "ai": "Kunstliche Intelligenz",
+      "programming": "Programmierung",
+      "industrial": "Wirtschaftsingenieurwesen",
+      "technology": "Technologie"
+    }
+  },
+  "education": {
+    "title": "Akademische Ausbildung",
+    "subtitle": "Mein akademischer Werdegang und berufliche Weiterbildung",
+    "completed": "Abgeschlossen",
+    "inProgress": "In Bearbeitung",
+    "estimatedProgress": "Geschatzter Fortschritt"
+  },
+  "certificates": {
+    "title": "Zertifikate",
+    "subtitle": "Abgeschlossene und laufende Zertifizierungsprogramme",
+    "all": "Alle",
+    "categories": {
+      "master": "Master",
+      "specialization": "Spezialisierung",
+      "technical": "Technisch",
+      "languages": "Sprachen",
+      "programming": "Programmierung"
+    },
+    "completed": "Abgeschlossen",
+    "inProgress": "In Bearbeitung",
+    "preview": "Zertifikatvorschau",
+    "pdfComingSoon": "(PDF folgt)",
+    "downloadPDF": "PDF herunterladen",
+    "previous": "Zuruck",
+    "next": "Weiter",
+    "close": "Schliessen"
+  },
+  "projects": {
+    "title": "Projekte",
+    "subtitle": "Ausgewahlte Projekte und GitHub-Repositories",
+    "githubRepos": "GitHub-Repositories",
+    "viewProfile": "Profil ansehen",
+    "impact": "Wirkung",
+    "noDescription": "Keine Beschreibung",
+    "loadError": "Repositories konnten nicht geladen werden",
+    "updated": "Aktualisiert"
+  },
+  "experience": {
+    "title": "Berufserfahrung",
+    "subtitle": "Meine Berufserfahrung und Praktika"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Haben Sie ein Projekt im Kopf? Lassen Sie uns reden!",
+    "letsConnect": "Lassen Sie uns vernetzen!",
+    "description": "Ich bin offen fur Jobmoglichkeiten, KI-Projektkooperationen und die Entwicklung innovativer Losungen.",
+    "info": {
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "location": "Standort"
+    },
+    "social": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn"
+    },
+    "cta": {
+      "title": "Bereit zur Zusammenarbeit?",
+      "description": "Laden Sie meinen vollstandigen Lebenslauf herunter oder senden Sie mir eine Nachricht.",
+      "downloadCV": "Vollstandigen Lebenslauf herunterladen",
+      "sendEmail": "E-Mail senden"
+    },
+    "stats": {
+      "careers": "Laufende Studiengange",
+      "certifications": "Zertifikate",
+      "english": "Englischniveau"
+    }
+  },
+  "footer": {
+    "rights": "Alle Rechte vorbehalten.",
+    "madeWith": "Entwickelt mit Next.js und TailwindCSS",
+    "poweredBy": "Betrieben von"
+  },
+  "chat": {
+    "title": "Virtueller Assistent",
+    "welcome": "Hallo! Ich bin Martins virtueller Assistent. Ich kann Fragen zu seiner Erfahrung, Projekten, Fahigkeiten und mehr beantworten. Wie kann ich Ihnen helfen?",
+    "placeholder": "Geben Sie Ihre Frage ein...",
+    "send": "Senden",
+    "suggestedQuestions": [
+      "Was ist Martins Erfahrung?",
+      "Welche Projekte hat er durchgefuhrt?",
+      "Was sind seine Fahigkeiten?",
+      "Welche Zertifikate hat er?"
+    ],
+    "typing": "Schreibt...",
+    "error": "Fehler beim Abrufen der Antwort. Bitte versuchen Sie es erneut."
+  },
+  "common": {
+    "loading": "Laden...",
+    "error": "Fehler",
+    "retry": "Erneut versuchen",
+    "close": "Schliessen",
+    "viewMore": "Mehr anzeigen",
+    "viewLess": "Weniger anzeigen"
+  },
+  "metadata": {
+    "title": "Martin Bundy | Portfolio",
+    "description": "Portfolio von Martin Bundy - Student der Wirtschaftsingenieurwissenschaften und KI-Techniker."
+  }
+}

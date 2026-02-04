@@ -1,0 +1,157 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "about": "自己紹介",
+    "skills": "スキル",
+    "education": "学歴",
+    "certificates": "資格",
+    "projects": "プロジェクト",
+    "experience": "経験",
+    "contact": "連絡先"
+  },
+  "hero": {
+    "title": "産業工学学生 & AI上級技術者",
+    "downloadCV": "履歴書をダウンロード",
+    "specialties": {
+      "ml": "機械学習",
+      "dl": "ディープラーニング",
+      "genai": "生成AI",
+      "python": "Python"
+    }
+  },
+  "about": {
+    "title": "自己紹介",
+    "subtitle": "私の経歴と専門分野について",
+    "specialtiesTitle": "専門分野",
+    "quote": "産業工学の最適化とAIの力を組み合わせて革新的なソリューションを創造。",
+    "highlights": {
+      "education": "学歴",
+      "educationValue": "産業工学 + AI",
+      "specialization": "専門",
+      "specializationValue": "機械学習 & 生成AI",
+      "location": "所在地",
+      "locationValue": "パナマ",
+      "languages": "言語",
+      "languagesValue": "スペイン語、英語、ドイツ語"
+    },
+    "specialties": [
+      "機械学習",
+      "ディープラーニング",
+      "生成AI",
+      "RAG",
+      "プロンプトエンジニアリング",
+      "Python",
+      "自動化",
+      "プロセス最適化"
+    ]
+  },
+  "skills": {
+    "title": "技術スキル",
+    "subtitle": "専門とする技術と能力",
+    "all": "すべて",
+    "categories": {
+      "ai": "人工知能",
+      "programming": "プログラミング",
+      "industrial": "産業工学",
+      "technology": "テクノロジー"
+    }
+  },
+  "education": {
+    "title": "学歴",
+    "subtitle": "学術的経歴と専門訓練",
+    "completed": "修了",
+    "inProgress": "在学中",
+    "estimatedProgress": "推定進捗"
+  },
+  "certificates": {
+    "title": "資格・認定",
+    "subtitle": "取得済みおよび取得中の認定プログラム",
+    "all": "すべて",
+    "categories": {
+      "master": "修士",
+      "specialization": "専門",
+      "technical": "技術",
+      "languages": "言語",
+      "programming": "プログラミング"
+    },
+    "completed": "取得済み",
+    "inProgress": "取得中",
+    "preview": "証明書プレビュー",
+    "pdfComingSoon": "(PDF準備中)",
+    "downloadPDF": "PDFをダウンロード",
+    "previous": "前へ",
+    "next": "次へ",
+    "close": "閉じる"
+  },
+  "projects": {
+    "title": "プロジェクト",
+    "subtitle": "注目プロジェクトとGitHubリポジトリ",
+    "githubRepos": "GitHubリポジトリ",
+    "viewProfile": "プロフィールを見る",
+    "impact": "影響",
+    "noDescription": "説明なし",
+    "loadError": "リポジトリを読み込めませんでした",
+    "updated": "更新日"
+  },
+  "experience": {
+    "title": "職歴",
+    "subtitle": "職務経験とインターンシップ"
+  },
+  "contact": {
+    "title": "連絡先",
+    "subtitle": "プロジェクトのアイデアがありますか？お話しましょう！",
+    "letsConnect": "つながりましょう！",
+    "description": "就職機会、AIプロジェクトのコラボレーション、革新的なソリューションの開発に前向きです。",
+    "info": {
+      "email": "メール",
+      "phone": "電話",
+      "location": "所在地"
+    },
+    "social": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn"
+    },
+    "cta": {
+      "title": "コラボレーションの準備はできていますか？",
+      "description": "完全な履歴書をダウンロードするか、直接メッセージを送ってください。",
+      "downloadCV": "完全な履歴書をダウンロード",
+      "sendEmail": "メールを送信"
+    },
+    "stats": {
+      "careers": "在学中の学位",
+      "certifications": "資格",
+      "english": "英語レベル"
+    }
+  },
+  "footer": {
+    "rights": "全著作権所有。",
+    "madeWith": "Next.jsとTailwindCSSで構築",
+    "poweredBy": "提供"
+  },
+  "chat": {
+    "title": "バーチャルアシスタント",
+    "welcome": "こんにちは！Martinのバーチャルアシスタントです。経験、プロジェクト、スキルなどについてお答えします。何かお手伝いできますか？",
+    "placeholder": "質問を入力してください...",
+    "send": "送信",
+    "suggestedQuestions": [
+      "Martinの経験は？",
+      "どんなプロジェクトを行いましたか？",
+      "スキルは何ですか？",
+      "どんな資格を持っていますか？"
+    ],
+    "typing": "入力中...",
+    "error": "回答の取得中にエラーが発生しました。もう一度お試しください。"
+  },
+  "common": {
+    "loading": "読み込み中...",
+    "error": "エラー",
+    "retry": "再試行",
+    "close": "閉じる",
+    "viewMore": "もっと見る",
+    "viewLess": "閉じる"
+  },
+  "metadata": {
+    "title": "Martin Bundy | ポートフォリオ",
+    "description": "Martin Bundyのポートフォリオ - 産業工学学生およびAI上級技術者。"
+  }
+}

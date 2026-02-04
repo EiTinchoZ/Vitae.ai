@@ -1,0 +1,157 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "A propos",
+    "skills": "Competences",
+    "education": "Formation",
+    "certificates": "Certifications",
+    "projects": "Projets",
+    "experience": "Experience",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Etudiant en Genie Industriel & Technicien Superieur en Intelligence Artificielle",
+    "downloadCV": "Telecharger le CV",
+    "specialties": {
+      "ml": "Machine Learning",
+      "dl": "Deep Learning",
+      "genai": "IA Generative",
+      "python": "Python"
+    }
+  },
+  "about": {
+    "title": "A propos de moi",
+    "subtitle": "Decouvrez mon parcours et mes specialites",
+    "specialtiesTitle": "Specialites",
+    "quote": "Combiner l'optimisation du genie industriel avec la puissance de l'intelligence artificielle pour creer des solutions innovantes.",
+    "highlights": {
+      "education": "Formation",
+      "educationValue": "Genie Ind. + IA",
+      "specialization": "Specialisation",
+      "specializationValue": "Machine Learning & IA Generative",
+      "location": "Localisation",
+      "locationValue": "Panama",
+      "languages": "Langues",
+      "languagesValue": "Espagnol, Anglais, Allemand"
+    },
+    "specialties": [
+      "Machine Learning",
+      "Deep Learning",
+      "IA Generative",
+      "RAG",
+      "Prompt Engineering",
+      "Python",
+      "Automatisation",
+      "Optimisation des processus"
+    ]
+  },
+  "skills": {
+    "title": "Competences Techniques",
+    "subtitle": "Technologies et competences dans lesquelles je me specialise",
+    "all": "Toutes",
+    "categories": {
+      "ai": "Intelligence Artificielle",
+      "programming": "Programmation",
+      "industrial": "Genie Industriel",
+      "technology": "Technologie"
+    }
+  },
+  "education": {
+    "title": "Formation Academique",
+    "subtitle": "Mon parcours academique et formation professionnelle",
+    "completed": "Termine",
+    "inProgress": "En cours",
+    "estimatedProgress": "Progression estimee"
+  },
+  "certificates": {
+    "title": "Certifications",
+    "subtitle": "Programmes de certification termines et en cours",
+    "all": "Toutes",
+    "categories": {
+      "master": "Master",
+      "specialization": "Specialisation",
+      "technical": "Technique",
+      "languages": "Langues",
+      "programming": "Programmation"
+    },
+    "completed": "Termine",
+    "inProgress": "En cours",
+    "preview": "Apercu du certificat",
+    "pdfComingSoon": "(PDF a venir)",
+    "downloadPDF": "Telecharger le PDF",
+    "previous": "Precedent",
+    "next": "Suivant",
+    "close": "Fermer"
+  },
+  "projects": {
+    "title": "Projets",
+    "subtitle": "Projets phares et depots GitHub",
+    "githubRepos": "Depots GitHub",
+    "viewProfile": "Voir le profil",
+    "impact": "Impact",
+    "noDescription": "Pas de description",
+    "loadError": "Impossible de charger les depots",
+    "updated": "Mis a jour"
+  },
+  "experience": {
+    "title": "Experience Professionnelle",
+    "subtitle": "Mon experience professionnelle et mes stages"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Vous avez un projet en tete? Parlons-en!",
+    "letsConnect": "Connectons-nous!",
+    "description": "Je suis ouvert aux opportunites d'emploi, aux collaborations sur des projets d'IA et au developpement de solutions innovantes.",
+    "info": {
+      "email": "Email",
+      "phone": "Telephone",
+      "location": "Localisation"
+    },
+    "social": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn"
+    },
+    "cta": {
+      "title": "Pret a collaborer?",
+      "description": "Telechargez mon CV complet ou envoyez-moi un message direct.",
+      "downloadCV": "Telecharger le CV Complet",
+      "sendEmail": "Envoyer un Email"
+    },
+    "stats": {
+      "careers": "Formations en cours",
+      "certifications": "Certifications",
+      "english": "Niveau d'Anglais"
+    }
+  },
+  "footer": {
+    "rights": "Tous droits reserves.",
+    "madeWith": "Developpe avec Next.js et TailwindCSS",
+    "poweredBy": "Propulse par"
+  },
+  "chat": {
+    "title": "Assistant Virtuel",
+    "welcome": "Bonjour! Je suis l'assistant virtuel de Martin. Je peux repondre aux questions sur son experience, ses projets, ses competences et plus encore. Comment puis-je vous aider?",
+    "placeholder": "Tapez votre question...",
+    "send": "Envoyer",
+    "suggestedQuestions": [
+      "Quelle est l'experience de Martin?",
+      "Quels projets a-t-il realises?",
+      "Quelles sont ses competences?",
+      "Quelles certifications a-t-il?"
+    ],
+    "typing": "En train d'ecrire...",
+    "error": "Erreur lors de l'obtention de la reponse. Veuillez reessayer."
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "retry": "Reessayer",
+    "close": "Fermer",
+    "viewMore": "Voir plus",
+    "viewLess": "Voir moins"
+  },
+  "metadata": {
+    "title": "Martin Bundy | Portfolio",
+    "description": "Portfolio de Martin Bundy - Etudiant en Genie Industriel et Technicien Superieur en Intelligence Artificielle."
+  }
+}

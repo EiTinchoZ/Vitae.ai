@@ -6,48 +6,51 @@ import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { cvData } from '@/data/cv-data';
-
-const contactInfo = [
-  {
-    icon: Mail,
-    label: 'Email',
-    value: cvData.personal.email,
-    href: `mailto:${cvData.personal.email}`,
-  },
-  {
-    icon: Phone,
-    label: 'Teléfono',
-    value: cvData.personal.phone,
-    href: `tel:${cvData.personal.phone.replace(/\s/g, '')}`,
-  },
-  {
-    icon: MapPin,
-    label: 'Ubicación',
-    value: cvData.personal.location,
-    href: null,
-  },
-];
-
-const socialLinks = [
-  {
-    icon: Github,
-    label: 'GitHub',
-    value: '@EiTinchoZ',
-    href: cvData.personal.github,
-  },
-  {
-    icon: Linkedin,
-    label: 'LinkedIn',
-    value: 'martinbundy15',
-    href: cvData.personal.linkedin,
-  },
-];
+import { useTranslation } from '@/i18n';
 
 export function Contact() {
+  const { t } = useTranslation();
+
+  const contactInfo = [
+    {
+      icon: Mail,
+      label: t('contact.info.email'),
+      value: cvData.personal.email,
+      href: `mailto:${cvData.personal.email}`,
+    },
+    {
+      icon: Phone,
+      label: t('contact.info.phone'),
+      value: cvData.personal.phone,
+      href: `tel:${cvData.personal.phone.replace(/\s/g, '')}`,
+    },
+    {
+      icon: MapPin,
+      label: t('contact.info.location'),
+      value: cvData.personal.location,
+      href: null,
+    },
+  ];
+
+  const socialLinks = [
+    {
+      icon: Github,
+      label: t('contact.social.github'),
+      value: '@EiTinchoZ',
+      href: cvData.personal.github,
+    },
+    {
+      icon: Linkedin,
+      label: t('contact.social.linkedin'),
+      value: 'martinbundy15',
+      href: cvData.personal.linkedin,
+    },
+  ];
+
   return (
     <SectionWrapper id="contact">
-      <SectionTitle subtitle="¿Tienes un proyecto en mente? ¡Hablemos!">
-        Contacto
+      <SectionTitle subtitle={t('contact.subtitle')}>
+        {t('contact.title')}
       </SectionTitle>
 
       <div className="max-w-4xl mx-auto">
@@ -61,11 +64,10 @@ export function Contact() {
           >
             <div>
               <h3 className="text-xl font-semibold mb-4">
-                ¡Conectemos!
+                {t('contact.letsConnect')}
               </h3>
               <p className="text-muted-foreground mb-6">
-                Estoy abierto a oportunidades de trabajo, colaboraciones en proyectos
-                de IA y networking profesional. No dudes en contactarme.
+                {t('contact.description')}
               </p>
             </div>
 
@@ -140,17 +142,17 @@ export function Contact() {
                   </div>
 
                   <h3 className="text-xl font-semibold mb-3">
-                    ¿Listo para colaborar?
+                    {t('contact.cta.title')}
                   </h3>
                   <p className="text-muted-foreground mb-6">
-                    Descarga mi CV completo o envíame un mensaje directo.
+                    {t('contact.cta.description')}
                   </p>
 
                   <div className="space-y-3">
                     <Button asChild size="lg" className="w-full gap-2">
                       <a href="/cv/CV_Martin_Bundy_2026.pdf" download>
                         <Download className="h-4 w-4" />
-                        Descargar CV Completo
+                        {t('contact.cta.downloadCV')}
                       </a>
                     </Button>
                     <Button
@@ -161,7 +163,7 @@ export function Contact() {
                     >
                       <a href={`mailto:${cvData.personal.email}`}>
                         <Mail className="h-4 w-4" />
-                        Enviar Email
+                        {t('contact.cta.sendEmail')}
                       </a>
                     </Button>
                   </div>
@@ -170,15 +172,15 @@ export function Contact() {
                   <div className="grid grid-cols-3 gap-4 mt-8 pt-6 border-t">
                     <div className="text-center">
                       <p className="text-2xl font-bold text-primary">2+</p>
-                      <p className="text-xs text-muted-foreground">Carreras en curso</p>
+                      <p className="text-xs text-muted-foreground">{t('contact.stats.careers')}</p>
                     </div>
                     <div className="text-center">
                       <p className="text-2xl font-bold text-primary">6</p>
-                      <p className="text-xs text-muted-foreground">Certificaciones</p>
+                      <p className="text-xs text-muted-foreground">{t('contact.stats.certifications')}</p>
                     </div>
                     <div className="text-center">
                       <p className="text-2xl font-bold text-primary">C2</p>
-                      <p className="text-xs text-muted-foreground">Nivel Inglés</p>
+                      <p className="text-xs text-muted-foreground">{t('contact.stats.english')}</p>
                     </div>
                   </div>
                 </div>

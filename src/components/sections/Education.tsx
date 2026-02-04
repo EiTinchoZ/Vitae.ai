@@ -5,12 +5,15 @@ import { GraduationCap, Calendar, CheckCircle2, Clock } from 'lucide-react';
 import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
 import { Badge } from '@/components/ui/badge';
 import { cvData } from '@/data/cv-data';
+import { useTranslation } from '@/i18n';
 
 export function Education() {
+  const { t } = useTranslation();
+
   return (
     <SectionWrapper id="education">
-      <SectionTitle subtitle="Mi trayectoria académica y formación profesional">
-        Formación Académica
+      <SectionTitle subtitle={t('education.subtitle')}>
+        {t('education.title')}
       </SectionTitle>
 
       <div className="max-w-3xl mx-auto">
@@ -51,12 +54,12 @@ export function Education() {
                     {edu.status === 'completed' ? (
                       <>
                         <CheckCircle2 className="h-3 w-3" />
-                        Completado
+                        {t('education.completed')}
                       </>
                     ) : (
                       <>
                         <Clock className="h-3 w-3" />
-                        En curso
+                        {t('education.inProgress')}
                       </>
                     )}
                   </Badge>
@@ -69,7 +72,7 @@ export function Education() {
                   {edu.startYear ? `${edu.startYear} - ` : ''}
                   {typeof edu.endYear === 'number'
                     ? edu.endYear
-                    : `Finalización: ${edu.endYear}`}
+                    : `Finalizacion: ${edu.endYear}`}
                 </div>
 
                 {edu.description && (
@@ -82,7 +85,7 @@ export function Education() {
                 {edu.status === 'in_progress' && (
                   <div className="mt-4">
                     <div className="flex justify-between text-xs text-muted-foreground mb-1">
-                      <span>Progreso estimado</span>
+                      <span>{t('education.estimatedProgress')}</span>
                       <span>
                         {edu.id === 'edu-2' ? '15%' : '10%'}
                       </span>

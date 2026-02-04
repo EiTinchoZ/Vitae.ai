@@ -5,12 +5,15 @@ import { Briefcase, MapPin, Calendar } from 'lucide-react';
 import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
 import { Badge } from '@/components/ui/badge';
 import { cvData } from '@/data/cv-data';
+import { useTranslation } from '@/i18n';
 
 export function Experience() {
+  const { t } = useTranslation();
+
   return (
     <SectionWrapper id="experience" className="bg-muted/20">
-      <SectionTitle subtitle="Mi experiencia profesional y pasantías">
-        Experiencia Laboral
+      <SectionTitle subtitle={t('experience.subtitle')}>
+        {t('experience.title')}
       </SectionTitle>
 
       <div className="max-w-4xl mx-auto">

@@ -1,0 +1,157 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre",
+    "skills": "Habilidades",
+    "education": "Educacao",
+    "certificates": "Certificacoes",
+    "projects": "Projetos",
+    "experience": "Experiencia",
+    "contact": "Contato"
+  },
+  "hero": {
+    "title": "Estudante de Engenharia Industrial e Tecnico Superior em Inteligencia Artificial",
+    "downloadCV": "Baixar CV",
+    "specialties": {
+      "ml": "Machine Learning",
+      "dl": "Deep Learning",
+      "genai": "IA Generativa",
+      "python": "Python"
+    }
+  },
+  "about": {
+    "title": "Sobre Mim",
+    "subtitle": "Conheca mais sobre minha trajetoria e especialidades",
+    "specialtiesTitle": "Especialidades",
+    "quote": "Combinando a otimizacao da engenharia industrial com o poder da inteligencia artificial para criar solucoes inovadoras.",
+    "highlights": {
+      "education": "Formacao",
+      "educationValue": "Eng. Industrial + IA",
+      "specialization": "Especializacao",
+      "specializationValue": "Machine Learning e IA Generativa",
+      "location": "Localizacao",
+      "locationValue": "Panama",
+      "languages": "Idiomas",
+      "languagesValue": "Espanhol, Ingles, Alemao"
+    },
+    "specialties": [
+      "Machine Learning",
+      "Deep Learning",
+      "IA Generativa",
+      "RAG",
+      "Prompt Engineering",
+      "Python",
+      "Automacao",
+      "Otimizacao de Processos"
+    ]
+  },
+  "skills": {
+    "title": "Habilidades Tecnicas",
+    "subtitle": "Tecnologias e competencias em que me especializo",
+    "all": "Todas",
+    "categories": {
+      "ai": "Inteligencia Artificial",
+      "programming": "Programacao",
+      "industrial": "Engenharia Industrial",
+      "technology": "Tecnologia"
+    }
+  },
+  "education": {
+    "title": "Formacao Academica",
+    "subtitle": "Minha trajetoria academica e formacao profissional",
+    "completed": "Concluido",
+    "inProgress": "Em andamento",
+    "estimatedProgress": "Progresso estimado"
+  },
+  "certificates": {
+    "title": "Certificacoes",
+    "subtitle": "Certificacoes e programas de formacao concluidos e em andamento",
+    "all": "Todas",
+    "categories": {
+      "master": "Mestrado",
+      "specialization": "Especializacao",
+      "technical": "Tecnica",
+      "languages": "Idiomas",
+      "programming": "Programacao"
+    },
+    "completed": "Concluido",
+    "inProgress": "Em andamento",
+    "preview": "Visualizacao do certificado",
+    "pdfComingSoon": "(PDF em breve)",
+    "downloadPDF": "Baixar PDF",
+    "previous": "Anterior",
+    "next": "Proximo",
+    "close": "Fechar"
+  },
+  "projects": {
+    "title": "Projetos",
+    "subtitle": "Projetos destacados e repositorios do GitHub",
+    "githubRepos": "Repositorios do GitHub",
+    "viewProfile": "Ver perfil",
+    "impact": "Impacto",
+    "noDescription": "Sem descricao",
+    "loadError": "Nao foi possivel carregar os repositorios",
+    "updated": "Atualizado"
+  },
+  "experience": {
+    "title": "Experiencia Profissional",
+    "subtitle": "Minha experiencia profissional e estagios"
+  },
+  "contact": {
+    "title": "Contato",
+    "subtitle": "Tem um projeto em mente? Vamos conversar!",
+    "letsConnect": "Vamos nos conectar!",
+    "description": "Estou aberto a oportunidades de trabalho, colaboracoes em projetos de IA e desenvolvimento de solucoes inovadoras.",
+    "info": {
+      "email": "Email",
+      "phone": "Telefone",
+      "location": "Localizacao"
+    },
+    "social": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn"
+    },
+    "cta": {
+      "title": "Pronto para colaborar?",
+      "description": "Baixe meu CV completo ou envie uma mensagem direta.",
+      "downloadCV": "Baixar CV Completo",
+      "sendEmail": "Enviar Email"
+    },
+    "stats": {
+      "careers": "Cursos em andamento",
+      "certifications": "Certificacoes",
+      "english": "Nivel de Ingles"
+    }
+  },
+  "footer": {
+    "rights": "Todos os direitos reservados.",
+    "madeWith": "Desenvolvido com Next.js e TailwindCSS",
+    "poweredBy": "Desenvolvido por"
+  },
+  "chat": {
+    "title": "Assistente Virtual",
+    "welcome": "Ola! Sou o assistente virtual de Martin. Posso responder perguntas sobre sua experiencia, projetos, habilidades e muito mais. Como posso ajudar?",
+    "placeholder": "Digite sua pergunta...",
+    "send": "Enviar",
+    "suggestedQuestions": [
+      "Qual e a experiencia de Martin?",
+      "Quais projetos ele realizou?",
+      "Quais sao suas habilidades?",
+      "Quais certificacoes ele possui?"
+    ],
+    "typing": "Digitando...",
+    "error": "Erro ao obter resposta. Tente novamente."
+  },
+  "common": {
+    "loading": "Carregando...",
+    "error": "Erro",
+    "retry": "Tentar novamente",
+    "close": "Fechar",
+    "viewMore": "Ver mais",
+    "viewLess": "Ver menos"
+  },
+  "metadata": {
+    "title": "Martin Bundy | Portfolio",
+    "description": "Portfolio de Martin Bundy - Estudante de Engenharia Industrial e Tecnico Superior em Inteligencia Artificial."
+  }
+}

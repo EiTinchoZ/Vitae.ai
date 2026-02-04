@@ -1,5 +1,8 @@
+'use client';
+
 import { Github, Linkedin, Mail } from 'lucide-react';
 import { cvData } from '@/data/cv-data';
+import { useTranslation } from '@/i18n';
 
 const socialLinks = [
   {
@@ -20,6 +23,7 @@ const socialLinks = [
 ];
 
 export function Footer() {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -28,10 +32,13 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-center md:text-left">
             <p className="text-sm text-muted-foreground">
-              &copy; {currentYear} {cvData.personal.name}. Todos los derechos reservados.
+              &copy; {currentYear} {cvData.personal.name}. {t('footer.rights')}
             </p>
             <p className="text-xs text-muted-foreground/70 mt-1">
-              Desarrollado con Next.js y TailwindCSS
+              {t('footer.madeWith')} | {t('footer.poweredBy')}{' '}
+              <span className="font-semibold bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent">
+                Vitae.ai
+              </span>
             </p>
           </div>
 

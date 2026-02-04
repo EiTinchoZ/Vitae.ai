@@ -5,7 +5,8 @@ import { motion } from 'framer-motion';
 import { Brain, Code, Factory, Laptop } from 'lucide-react';
 import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
 import { Button } from '@/components/ui/button';
-import { cvData, skillCategories, type SkillCategory } from '@/data/cv-data';
+import { cvData, type SkillCategory } from '@/data/cv-data';
+import { useTranslation } from '@/i18n';
 import { cn } from '@/lib/utils';
 
 const categoryIcons = {
@@ -15,7 +16,10 @@ const categoryIcons = {
   technology: Laptop,
 };
 
+const categoryKeys: SkillCategory[] = ['ai', 'programming', 'industrial', 'technology'];
+
 export function Skills() {
+  const { t } = useTranslation();
   const [activeCategory, setActiveCategory] = useState<SkillCategory | 'all'>('all');
 
   const filteredSkills =
@@ -23,12 +27,10 @@ export function Skills() {
       ? cvData.skills
       : cvData.skills.filter((skill) => skill.category === activeCategory);
 
-  const categories = Object.entries(skillCategories) as [SkillCategory, typeof skillCategories[SkillCategory]][];
-
   return (
     <SectionWrapper id="skills" className="bg-muted/20">
-      <SectionTitle subtitle="Tecnologías y competencias en las que me especializo">
-        Habilidades Técnicas
+      <SectionTitle subtitle={t('skills.subtitle')}>
+        {t('skills.title')}
       </SectionTitle>
 
       {/* Category filters */}
@@ -38,9 +40,9 @@ export function Skills() {
           size="sm"
           onClick={() => setActiveCategory('all')}
         >
-          Todas
+          {t('skills.all')}
         </Button>
-        {categories.map(([key, value]) => {
+        {categoryKeys.map((key) => {
           const Icon = categoryIcons[key];
           return (
             <Button
@@ -51,7 +53,7 @@ export function Skills() {
               className="gap-2"
             >
               <Icon className="h-4 w-4" />
-              {value.label}
+              {t(`skills.categories.${key}`)}
             </Button>
           );
         })}
@@ -64,7 +66,6 @@ export function Skills() {
       >
         {filteredSkills.map((skill, index) => {
           const Icon = categoryIcons[skill.category];
-          const category = skillCategories[skill.category];
 
           return (
             <motion.div
@@ -93,7 +94,9 @@ export function Skills() {
                 </div>
                 <div>
                   <p className="font-medium text-sm">{skill.name}</p>
-                  <p className="text-xs text-muted-foreground">{category.label}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {t(`skills.categories.${skill.category}`)}
+                  </p>
                 </div>
               </div>
             </motion.div>
@@ -103,7 +106,7 @@ export function Skills() {
 
       {/* Stats */}
       <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
-        {categories.map(([key, value]) => {
+        {categoryKeys.map((key) => {
           const Icon = categoryIcons[key];
           const count = cvData.skills.filter((s) => s.category === key).length;
 
@@ -117,7 +120,9 @@ export function Skills() {
             >
               <Icon className="h-6 w-6 mx-auto mb-2 text-primary" />
               <p className="text-2xl font-bold">{count}</p>
-              <p className="text-xs text-muted-foreground">{value.label}</p>
+              <p className="text-xs text-muted-foreground">
+                {t(`skills.categories.${key}`)}
+              </p>
             </motion.div>
           );
         })}

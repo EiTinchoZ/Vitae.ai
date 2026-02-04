@@ -10,14 +10,13 @@ import {
   GitFork,
   Sparkles,
   Zap,
-  Users,
-  MapPin,
 } from 'lucide-react';
 import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { cvData } from '@/data/cv-data';
+import { useTranslation } from '@/i18n';
 import { getGitHubRepos, formatDate } from '@/lib/github-api';
 import type { GitHubRepo } from '@/types';
 import { cn } from '@/lib/utils';
@@ -32,6 +31,7 @@ const languageColors: Record<string, string> = {
 };
 
 export function Projects() {
+  const { t } = useTranslation();
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -44,15 +44,15 @@ export function Projects() {
     fetchRepos();
   }, []);
 
-  const featuredProject = cvData.projects[0]; // Conecta Panamá
+  const featuredProject = cvData.projects[0]; // Conecta Panama
 
   return (
     <SectionWrapper id="projects" className="bg-muted/20">
-      <SectionTitle subtitle="Proyectos destacados y repositorios de GitHub">
-        Proyectos
+      <SectionTitle subtitle={t('projects.subtitle')}>
+        {t('projects.title')}
       </SectionTitle>
 
-      {/* Featured Project - Conecta Panamá */}
+      {/* Featured Project - Conecta Panama */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -117,7 +117,7 @@ export function Projects() {
             <div className="flex items-start gap-3 p-4 rounded-xl bg-muted/50">
               <Zap className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
               <div>
-                <p className="font-medium text-sm">Impacto</p>
+                <p className="font-medium text-sm">{t('projects.impact')}</p>
                 <p className="text-sm text-muted-foreground">
                   {featuredProject.impact}
                 </p>
@@ -132,7 +132,7 @@ export function Projects() {
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-xl font-semibold flex items-center gap-2">
             <Github className="h-5 w-5" />
-            Repositorios de GitHub
+            {t('projects.githubRepos')}
           </h3>
           <Button variant="outline" size="sm" asChild>
             <a
@@ -140,7 +140,7 @@ export function Projects() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Ver perfil
+              {t('projects.viewProfile')}
               <ExternalLink className="h-4 w-4 ml-2" />
             </a>
           </Button>
@@ -181,7 +181,7 @@ export function Projects() {
                   {repo.name}
                 </h4>
                 <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-                  {repo.description || 'Sin descripción'}
+                  {repo.description || t('projects.noDescription')}
                 </p>
 
                 <div className="flex items-center gap-4 text-xs text-muted-foreground">
@@ -207,7 +207,7 @@ export function Projects() {
                 </div>
 
                 <p className="text-xs text-muted-foreground mt-3">
-                  Actualizado: {formatDate(repo.updatedAt)}
+                  {t('projects.updated')}: {formatDate(repo.updatedAt)}
                 </p>
               </motion.a>
             ))}
@@ -215,7 +215,7 @@ export function Projects() {
         ) : (
           <div className="text-center py-12 text-muted-foreground">
             <Github className="h-12 w-12 mx-auto mb-4 opacity-50" />
-            <p>No se pudieron cargar los repositorios</p>
+            <p>{t('projects.loadError')}</p>
           </div>
         )}
       </div>

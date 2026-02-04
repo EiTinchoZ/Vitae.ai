@@ -20,6 +20,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { cvData } from '@/data/cv-data';
+import { useTranslation } from '@/i18n';
 import type { Certificate } from '@/types';
 import { cn } from '@/lib/utils';
 
@@ -31,15 +32,10 @@ const categoryIcons = {
   programming: Code,
 };
 
-const categoryLabels = {
-  master: 'Master',
-  specialization: 'Especialización',
-  technical: 'Técnica',
-  languages: 'Idiomas',
-  programming: 'Programación',
-};
+const categoryKeys = ['master', 'specialization', 'technical', 'languages', 'programming'] as const;
 
 export function Certificates() {
+  const { t } = useTranslation();
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
   const [activeCategory, setActiveCategory] = useState<string | 'all'>('all');
 
@@ -47,8 +43,6 @@ export function Certificates() {
     activeCategory === 'all'
       ? cvData.certificates
       : cvData.certificates.filter((cert) => cert.category === activeCategory);
-
-  const categories = Object.keys(categoryLabels) as (keyof typeof categoryLabels)[];
 
   const currentIndex = selectedCert
     ? cvData.certificates.findIndex((c) => c.id === selectedCert.id)
@@ -66,8 +60,8 @@ export function Certificates() {
 
   return (
     <SectionWrapper id="certificates">
-      <SectionTitle subtitle="Certificaciones y programas de formación completados y en curso">
-        Certificaciones
+      <SectionTitle subtitle={t('certificates.subtitle')}>
+        {t('certificates.title')}
       </SectionTitle>
 
       {/* Category filters */}
@@ -77,9 +71,9 @@ export function Certificates() {
           size="sm"
           onClick={() => setActiveCategory('all')}
         >
-          Todas ({cvData.certificates.length})
+          {t('certificates.all')} ({cvData.certificates.length})
         </Button>
-        {categories.map((cat) => {
+        {categoryKeys.map((cat) => {
           const Icon = categoryIcons[cat];
           const count = cvData.certificates.filter((c) => c.category === cat).length;
           if (count === 0) return null;
@@ -93,7 +87,7 @@ export function Certificates() {
               className="gap-2"
             >
               <Icon className="h-4 w-4" />
-              {categoryLabels[cat]} ({count})
+              {t(`certificates.categories.${cat}`)} ({count})
             </Button>
           );
         })}
@@ -134,12 +128,12 @@ export function Certificates() {
                     {cert.status === 'completed' ? (
                       <>
                         <CheckCircle2 className="h-3 w-3" />
-                        Completado
+                        {t('certificates.completed')}
                       </>
                     ) : (
                       <>
                         <Clock className="h-3 w-3" />
-                        En curso
+                        {t('certificates.inProgress')}
                       </>
                     )}
                   </Badge>
@@ -192,17 +186,21 @@ export function Certificates() {
               {/* Details */}
               <div className="space-y-4">
                 <div className="flex flex-wrap gap-2">
-                  <Badge variant="outline">{categoryLabels[selectedCert.category]}</Badge>
+                  <Badge variant="outline">
+                    {t(`certificates.categories.${selectedCert.category}`)}
+                  </Badge>
                   <Badge variant="outline">{selectedCert.period}</Badge>
                   <Badge
                     variant={selectedCert.status === 'completed' ? 'default' : 'secondary'}
                   >
-                    {selectedCert.status === 'completed' ? 'Completado' : 'En curso'}
+                    {selectedCert.status === 'completed'
+                      ? t('certificates.completed')
+                      : t('certificates.inProgress')}
                   </Badge>
                 </div>
 
                 <div>
-                  <h3 className="font-medium mb-2">Descripción</h3>
+                  <h3 className="font-medium mb-2">Descripcion</h3>
                   <p className="text-muted-foreground">{selectedCert.description}</p>
                 </div>
 
@@ -210,10 +208,10 @@ export function Certificates() {
                 <div className="bg-muted/30 rounded-xl p-8 text-center">
                   <Award className="h-16 w-16 mx-auto mb-4 text-muted-foreground/50" />
                   <p className="text-muted-foreground">
-                    Vista previa del certificado
+                    {t('certificates.preview')}
                   </p>
                   <p className="text-xs text-muted-foreground mt-1">
-                    (El PDF se añadirá próximamente)
+                    {t('certificates.pdfComingSoon')}
                   </p>
                 </div>
 
@@ -221,7 +219,7 @@ export function Certificates() {
                 <div className="flex gap-2 pt-4">
                   <Button variant="outline" className="flex-1" disabled>
                     <Download className="h-4 w-4 mr-2" />
-                    Descargar PDF
+                    {t('certificates.downloadPDF')}
                   </Button>
                 </div>
               </div>
@@ -230,13 +228,13 @@ export function Certificates() {
               <div className="flex justify-between mt-6 pt-4 border-t">
                 <Button variant="ghost" size="sm" onClick={goToPrev}>
                   <ChevronLeft className="h-4 w-4 mr-1" />
-                  Anterior
+                  {t('certificates.previous')}
                 </Button>
                 <span className="text-sm text-muted-foreground">
                   {currentIndex + 1} / {cvData.certificates.length}
                 </span>
                 <Button variant="ghost" size="sm" onClick={goToNext}>
-                  Siguiente
+                  {t('certificates.next')}
                   <ChevronRight className="h-4 w-4 ml-1" />
                 </Button>
               </div>

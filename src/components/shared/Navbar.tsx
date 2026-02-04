@@ -1,26 +1,29 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { ThemeToggle } from './ThemeToggle';
+import { LanguageSwitcher } from './LanguageSwitcher';
+import { useTranslation } from '@/i18n';
 import { cn } from '@/lib/utils';
 
-const navItems = [
-  { label: 'Inicio', href: '#hero' },
-  { label: 'Sobre mí', href: '#about' },
-  { label: 'Habilidades', href: '#skills' },
-  { label: 'Educación', href: '#education' },
-  { label: 'Certificaciones', href: '#certificates' },
-  { label: 'Proyectos', href: '#projects' },
-  { label: 'Experiencia', href: '#experience' },
-  { label: 'Contacto', href: '#contact' },
+const navKeys = [
+  { key: 'nav.home', href: '#hero' },
+  { key: 'nav.about', href: '#about' },
+  { key: 'nav.skills', href: '#skills' },
+  { key: 'nav.education', href: '#education' },
+  { key: 'nav.certificates', href: '#certificates' },
+  { key: 'nav.projects', href: '#projects' },
+  { key: 'nav.experience', href: '#experience' },
+  { key: 'nav.contact', href: '#contact' },
 ];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,18 +53,18 @@ export function Navbar() {
       <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
         <a
           href="#hero"
-          className="text-xl font-bold text-primary hover:text-primary/80 transition-colors"
+          className="text-xl font-bold bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
           onClick={(e) => {
             e.preventDefault();
             handleNavClick('#hero');
           }}
         >
-          MB
+          Vitae.ai
         </a>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-1">
-          {navItems.map((item) => (
+          {navKeys.map((item) => (
             <a
               key={item.href}
               href={item.href}
@@ -71,14 +74,18 @@ export function Navbar() {
                 handleNavClick(item.href);
               }}
             >
-              {item.label}
+              {t(item.key)}
             </a>
           ))}
-          <ThemeToggle />
+          <div className="flex items-center gap-1 ml-2 pl-2 border-l border-border">
+            <LanguageSwitcher />
+            <ThemeToggle />
+          </div>
         </div>
 
         {/* Mobile Navigation */}
-        <div className="flex md:hidden items-center gap-2">
+        <div className="flex md:hidden items-center gap-1">
+          <LanguageSwitcher />
           <ThemeToggle />
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
@@ -89,7 +96,7 @@ export function Navbar() {
             </SheetTrigger>
             <SheetContent side="right" className="w-[280px]">
               <nav className="flex flex-col gap-2 mt-8">
-                {navItems.map((item) => (
+                {navKeys.map((item) => (
                   <a
                     key={item.href}
                     href={item.href}
@@ -99,7 +106,7 @@ export function Navbar() {
                       handleNavClick(item.href);
                     }}
                   >
-                    {item.label}
+                    {t(item.key)}
                   </a>
                 ))}
               </nav>
