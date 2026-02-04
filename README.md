@@ -1,158 +1,129 @@
-# Vitae.ai - CV Digital Interactivo
+# Vitae.ai — AI-Powered Digital CV
 
-<p align="center">
-  <strong>CV Digital Interactivo con Inteligencia Artificial</strong>
-</p>
+Vitae.ai is a professional, interactive CV and portfolio that showcases my education, experience, certifications, projects, and AI-focused skill set in a modern, recruiter-ready format. It includes multilingual support and AI-powered features (career insights, skill recommendations, section Q&A, and a smart chat assistant).
 
-Plataforma web Vitae.ai que centraliza toda mi informacion profesional en un solo lugar: trayectoria academica, experiencia laboral, certificaciones, proyectos destacados y habilidades tecnicas. Disenado para ofrecer una experiencia interactiva y moderna que va mas alla del CV tradicional en PDF.
-
-![Next.js](https://img.shields.io/badge/Next.js-16-000000?style=flat-square&logo=next.js)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.3-3178c6?style=flat-square&logo=typescript)
-![Tailwind](https://img.shields.io/badge/Tailwind-3.4-06b6d4?style=flat-square&logo=tailwindcss)
-![Framer](https://img.shields.io/badge/Framer_Motion-11-ff0055?style=flat-square&logo=framer)
-![License](https://img.shields.io/badge/License-MIT-22c55e?style=flat-square)
-
-**Demo en vivo:** [cv-digital-ia.vercel.app](https://cv-digital-ia.vercel.app)
+**Live Preview:** https://portfolio-eitinchos-projects.vercel.app
 
 ---
 
-## Tabla de contenidos
+## Highlights
 
-1. [Que ofrece](#que-ofrece)
-2. [Stack tecnologico](#stack-tecnologico)
-3. [Arquitectura](#arquitectura)
-4. [Secciones](#secciones)
-5. [Instalacion local](#instalacion-local)
-6. [Deployment](#deployment)
-7. [Autor](#autor)
-8. [Licencia](#licencia)
+- Fully responsive portfolio with a clean, professional aesthetic
+- Multilingual UI (10 languages)
+- AI features: chat assistant, CV analyzer, career insights, skill recommender, section Q&A
+- GitHub integration for live repository previews
+- Dark/Light mode with persistent preference
 
 ---
 
-## Que ofrece
+## Tech Stack
 
-- **Hero interactivo** — Presentacion profesional con acceso directo a redes sociales y descarga de CV en PDF.
-- **Perfil dinamico** — Resumen ejecutivo con especialidades y areas de enfoque destacadas.
-- **Skills con filtros** — Visualizacion interactiva de habilidades tecnicas organizadas por categoria: IA, Programacion, Ingenieria Industrial y Tecnologia.
-- **Timeline de educacion** — Trayectoria academica con indicadores de progreso para carreras en curso.
-- **Sistema de certificaciones** — Grid de certificados con modal de visualizacion detallada y opcion de descarga.
-- **Proyectos destacados** — Showcase del proyecto ganador de Hackathon MUPA 2024 con integracion dinamica a repositorios de GitHub.
-- **Experiencia laboral** — Timeline visual de pasantias con responsabilidades y tecnologias aplicadas.
-- **Contacto directo** — Multiples canales de comunicacion con CTAs para descarga de CV y contacto por email.
-- **Modo oscuro/claro** — Toggle de tema con persistencia entre sesiones.
-- **Responsive design** — Optimizado para desktop, tablet y mobile.
-- **Asistente IA** — Chatbot inteligente que responde preguntas sobre experiencia, proyectos y habilidades usando Groq LLM.
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript 5
+- **Styling:** Tailwind CSS 4
+- **UI:** shadcn/ui + Radix UI
+- **Animations:** Framer Motion
+- **Icons:** Lucide
+- **AI/LLM:** Groq + Vercel AI SDK
+- **Hosting:** Vercel
 
 ---
 
-## Stack tecnologico
-
-| Capa | Tecnologia |
-|------|------------|
-| Framework | Next.js 14 (App Router) |
-| Lenguaje | TypeScript 5.3 |
-| Estilos | Tailwind CSS 3.4 |
-| Componentes | shadcn/ui + Radix UI |
-| Animaciones | Framer Motion 11 |
-| Iconos | Lucide React |
-| Tema | next-themes |
-| API | GitHub REST API v3 |
-| IA/LLM | Groq + Vercel AI SDK |
-| Deploy | Vercel |
-
----
-
-## Arquitectura
+## Architecture
 
 ```
 src/
-├── app/                    # Next.js App Router
-│   ├── api/chat/           # API endpoint para chatbot IA
-│   ├── layout.tsx          # Layout principal con providers
-│   ├── page.tsx            # Pagina principal
-│   └── globals.css         # Estilos globales y variables CSS
+├── app/                   # Next.js App Router
+│   ├── api/               # AI endpoints (chat, insights, analysis, etc.)
+│   ├── layout.tsx         # Root layout + providers
+│   ├── page.tsx           # Main landing page
+│   └── globals.css        # Global styles
 ├── components/
-│   ├── chat/               # Componente ChatBot flotante
-│   ├── sections/           # 8 secciones del portfolio
-│   │   ├── Hero.tsx
-│   │   ├── About.tsx
-│   │   ├── Skills.tsx
-│   │   ├── Education.tsx
-│   │   ├── Certificates.tsx
-│   │   ├── Projects.tsx
-│   │   ├── Experience.tsx
-│   │   └── Contact.tsx
-│   ├── shared/             # Componentes reutilizables
-│   │   ├── Navbar.tsx
-│   │   ├── Footer.tsx
-│   │   └── ThemeToggle.tsx
-│   ├── ui/                 # Componentes base (shadcn/ui)
-│   └── providers/          # Context providers
-├── data/                   # Datos estructurados del CV
-├── lib/                    # Utilidades y servicios (GitHub API)
-├── types/                  # Definiciones TypeScript
-└── hooks/                  # Custom hooks
+│   ├── ai/                # AI widgets and dashboards
+│   ├── chat/              # Floating chat assistant
+│   ├── sections/          # Hero, About, Skills, etc.
+│   ├── shared/            # Navbar, Footer, wrappers
+│   └── ui/                # shadcn/ui components
+├── data/                  # CV data source
+├── i18n/                  # Localization (10 languages)
+└── lib/                   # Utilities and GitHub API
 ```
 
 ---
 
-## Secciones
+## Getting Started
 
-| Seccion | Descripcion |
-|---------|-------------|
-| **Hero** | Presentacion con foto, titulo profesional, links sociales y CTA de descarga de CV |
-| **About** | Perfil profesional completo con highlights y especialidades en formato de pills |
-| **Skills** | Grid interactivo con filtros por categoria y contadores por area |
-| **Education** | Timeline vertical con 3 niveles educativos y barras de progreso |
-| **Certificates** | Grid de 6 certificaciones con modal detallado y navegacion prev/next |
-| **Projects** | Card destacada de Conecta Panama + grid de repos de GitHub con stats |
-| **Experience** | Timeline de 2 pasantias con responsabilidades y tags de skills |
-| **Contact** | Informacion de contacto, links sociales y doble CTA |
+### Requirements
 
----
+- Node.js 20+
+- npm
 
-## Instalacion local
+### Install
 
 ```bash
-# Clonar repositorio
 git clone https://github.com/EiTinchoZ/Portafolio-CV-Interactivo.git
-
-# Entrar al directorio
 cd Portafolio-CV-Interactivo
-
-# Instalar dependencias
 npm install
+```
 
-# Iniciar servidor de desarrollo
+### Environment Variables
+
+Create `.env.local`:
+
+```bash
+NEXT_PUBLIC_GITHUB_USERNAME=EiTinchoZ
+GROQ_API_KEY=your_groq_key_here
+```
+
+### Development
+
+```bash
 npm run dev
 ```
 
-Abrir `http://localhost:3000` en el navegador.
+Open `http://localhost:3000`.
 
 ---
 
-## Deployment
+## Scripts
 
-El proyecto esta desplegado en Vercel con deployment automatico en cada push a `main`.
-
-**URL de produccion:** [cv-digital-ia.vercel.app](https://cv-digital-ia.vercel.app)
-
----
-
-## Autor
-
-**Martin Alejandro Bundy Munoz**
-
-Estudiante de Ingenieria Industrial y Tecnico Superior en Inteligencia Artificial. Especializado en Machine Learning, Deep Learning, IA Generativa y desarrollo de soluciones tecnologicas innovadoras. Ganador del Hackathon MUPA 2024 con el proyecto Conecta Panama.
-
-| Contacto | Link |
-|----------|------|
-| GitHub | [@EiTinchoZ](https://github.com/EiTinchoZ) |
-| LinkedIn | [martinbundy15](https://linkedin.com/in/martinbundy15) |
-| Email | mbundy15@gmail.com |
+```bash
+npm run dev
+npm run build
+npm run start
+npm run lint
+```
 
 ---
 
-## Licencia
+## AI Features
 
-MIT License - Este proyecto es de codigo abierto y puede ser utilizado como referencia o template.
+- **Chat Assistant:** Conversational CV overview
+- **Resume Analyzer:** Structured feedback and ATS compatibility
+- **Career Insights:** AI-generated career score and recommendations
+- **Skill Recommender:** Personalized growth suggestions
+- **Section Q&A:** Ask about skills, education, projects, and experience
+
+---
+
+## Collaboration
+
+This project is developed by:
+
+- **Martín Alejandro Bundy Muñoz** (Owner)
+- **Claude Code** (AI collaborator)
+- **Codex** (AI collaborator)
+
+See `CONTRIBUTORS.md` for details.
+
+---
+
+## Security
+
+Security reporting guidelines are available in `SECURITY.md`.
+
+---
+
+## License
+
+Licensed under the MIT License. See `LICENSE` for details.
