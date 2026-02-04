@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio Digital - Martin Bundy
 
-## Getting Started
+Portfolio profesional desarrollado con tecnologias modernas para mostrar mi trayectoria academica, experiencia laboral, certificaciones y proyectos destacados.
 
-First, run the development server:
+## Demo
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+**[Ver Portfolio en Vivo](https://portfolio-jet-sigma-66.vercel.app)**
+
+## Stack Tecnologico
+
+| Categoria | Tecnologia |
+|-----------|------------|
+| Framework | Next.js 14 (App Router) |
+| Lenguaje | TypeScript |
+| Estilos | TailwindCSS |
+| Componentes UI | shadcn/ui |
+| Animaciones | Framer Motion |
+| Iconos | Lucide React |
+| Tema | next-themes |
+
+## Caracteristicas
+
+- Diseno responsive optimizado para todos los dispositivos
+- Modo claro/oscuro con persistencia en localStorage
+- Navegacion fluida con scroll suave entre secciones
+- Sistema de certificaciones con visualizacion modal
+- Integracion dinamica con GitHub API
+- Filtros interactivos en seccion de habilidades
+- Timelines visuales para educacion y experiencia
+- Optimizacion SEO con metadata dinamica
+- Animaciones de entrada con Framer Motion
+
+## Estructura
+
+```
+src/
+├── app/                    # Next.js App Router
+├── components/
+│   ├── sections/           # Secciones del portfolio
+│   ├── shared/             # Componentes reutilizables
+│   ├── ui/                 # Componentes base (shadcn/ui)
+│   └── providers/          # Context providers
+├── data/                   # Datos estructurados
+├── lib/                    # Utilidades y servicios
+├── types/                  # Definiciones TypeScript
+└── hooks/                  # Custom hooks
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Instalacion
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+git clone https://github.com/EiTinchoZ/Portafolio-CV-Interactivo.git
+cd Portafolio-CV-Interactivo
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Configuracion
 
-## Learn More
+Crear archivo `.env.local` en la raiz del proyecto:
 
-To learn more about Next.js, take a look at the following resources:
+```env
+NEXT_PUBLIC_GITHUB_USERNAME=EiTinchoZ
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Desarrollo
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run dev      # Iniciar servidor de desarrollo
+npm run build    # Generar build de produccion
+npm run start    # Iniciar servidor de produccion
+npm run lint     # Ejecutar linter
+```
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Este proyecto esta configurado para deployment automatico en Vercel. Cada push a la rama `main` genera un nuevo deployment.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Para deployment manual:
+
+1. Importar repositorio en [Vercel](https://vercel.com)
+2. Configurar variable de entorno `NEXT_PUBLIC_GITHUB_USERNAME`
+3. Deploy
+
+## Autor
+
+**Martin Alejandro Bundy Munoz**
+
+Estudiante de Ingenieria Industrial y Tecnico Superior en Inteligencia Artificial.
+
+- [GitHub](https://github.com/EiTinchoZ)
+- [LinkedIn](https://linkedin.com/in/martinbundy15)
+- [Email](mailto:mbundy15@gmail.com)
+
+## Licencia
+
+MIT License

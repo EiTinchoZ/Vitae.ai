@@ -1,0 +1,224 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import {
+  Trophy,
+  ExternalLink,
+  Github,
+  Star,
+  GitFork,
+  Sparkles,
+  Zap,
+  Users,
+  MapPin,
+} from 'lucide-react';
+import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { cvData } from '@/data/cv-data';
+import { getGitHubRepos, formatDate } from '@/lib/github-api';
+import type { GitHubRepo } from '@/types';
+import { cn } from '@/lib/utils';
+
+const languageColors: Record<string, string> = {
+  TypeScript: 'bg-blue-500',
+  JavaScript: 'bg-yellow-500',
+  Python: 'bg-green-500',
+  HTML: 'bg-orange-500',
+  CSS: 'bg-purple-500',
+  default: 'bg-gray-500',
+};
+
+export function Projects() {
+  const [repos, setRepos] = useState<GitHubRepo[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchRepos() {
+      const data = await getGitHubRepos();
+      setRepos(data);
+      setLoading(false);
+    }
+    fetchRepos();
+  }, []);
+
+  const featuredProject = cvData.projects[0]; // Conecta Panamá
+
+  return (
+    <SectionWrapper id="projects" className="bg-muted/20">
+      <SectionTitle subtitle="Proyectos destacados y repositorios de GitHub">
+        Proyectos
+      </SectionTitle>
+
+      {/* Featured Project - Conecta Panamá */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mb-12"
+      >
+        <Card className="overflow-hidden border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-background">
+          <CardHeader className="pb-4">
+            <div className="flex flex-wrap items-start justify-between gap-4">
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <Badge className="gap-1 bg-amber-500 hover:bg-amber-600">
+                    <Trophy className="h-3 w-3" />
+                    {featuredProject.result}
+                  </Badge>
+                  <Badge variant="outline">{featuredProject.year}</Badge>
+                </div>
+                <CardTitle className="text-2xl md:text-3xl">
+                  {featuredProject.name}
+                </CardTitle>
+                <CardDescription className="text-base mt-1">
+                  {featuredProject.event}
+                </CardDescription>
+              </div>
+              <div className="p-3 rounded-xl bg-amber-500/10">
+                <Trophy className="h-10 w-10 text-amber-500" />
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <p className="text-muted-foreground mb-6">
+              {featuredProject.longDescription}
+            </p>
+
+            {/* Features */}
+            <div className="grid sm:grid-cols-2 gap-3 mb-6">
+              {featuredProject.features.map((feature, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="flex items-center gap-2 text-sm"
+                >
+                  <Sparkles className="h-4 w-4 text-primary flex-shrink-0" />
+                  {feature}
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Technologies */}
+            <div className="flex flex-wrap gap-2 mb-6">
+              {featuredProject.technologies.map((tech) => (
+                <Badge key={tech} variant="secondary">
+                  {tech}
+                </Badge>
+              ))}
+            </div>
+
+            {/* Impact */}
+            <div className="flex items-start gap-3 p-4 rounded-xl bg-muted/50">
+              <Zap className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="font-medium text-sm">Impacto</p>
+                <p className="text-sm text-muted-foreground">
+                  {featuredProject.impact}
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </motion.div>
+
+      {/* GitHub Repos */}
+      <div className="mb-6">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-xl font-semibold flex items-center gap-2">
+            <Github className="h-5 w-5" />
+            Repositorios de GitHub
+          </h3>
+          <Button variant="outline" size="sm" asChild>
+            <a
+              href={cvData.personal.github}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ver perfil
+              <ExternalLink className="h-4 w-4 ml-2" />
+            </a>
+          </Button>
+        </div>
+
+        {loading ? (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[1, 2, 3].map((i) => (
+              <div
+                key={i}
+                className="h-48 rounded-xl bg-muted/50 animate-pulse"
+              />
+            ))}
+          </div>
+        ) : repos.length > 0 ? (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {repos.map((repo, index) => (
+              <motion.a
+                key={repo.id}
+                href={repo.htmlUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+                className={cn(
+                  'group block p-5 rounded-xl border bg-background',
+                  'hover:border-primary/50 hover:shadow-lg transition-all'
+                )}
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <Github className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                  <ExternalLink className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+
+                <h4 className="font-semibold mb-1 group-hover:text-primary transition-colors">
+                  {repo.name}
+                </h4>
+                <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                  {repo.description || 'Sin descripción'}
+                </p>
+
+                <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                  {repo.language && (
+                    <div className="flex items-center gap-1">
+                      <span
+                        className={cn(
+                          'w-2 h-2 rounded-full',
+                          languageColors[repo.language] || languageColors.default
+                        )}
+                      />
+                      {repo.language}
+                    </div>
+                  )}
+                  <div className="flex items-center gap-1">
+                    <Star className="h-3 w-3" />
+                    {repo.stargazersCount}
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <GitFork className="h-3 w-3" />
+                    {repo.forksCount}
+                  </div>
+                </div>
+
+                <p className="text-xs text-muted-foreground mt-3">
+                  Actualizado: {formatDate(repo.updatedAt)}
+                </p>
+              </motion.a>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-12 text-muted-foreground">
+            <Github className="h-12 w-12 mx-auto mb-4 opacity-50" />
+            <p>No se pudieron cargar los repositorios</p>
+          </div>
+        )}
+      </div>
+    </SectionWrapper>
+  );
+}
