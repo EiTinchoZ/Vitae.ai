@@ -11,6 +11,7 @@
   },
   "hero": {
     "title": "Industrial Engineering Student & AI Technical Specialist",
+    "slogan": "Your career, powered by AI",
     "downloadCV": "Download CV",
     "specialties": {
       "ml": "Machine Learning",
@@ -107,6 +108,8 @@
     "info": {
       "email": "Email",
       "phone": "Phone",
+      "phoneViaEmail": "Contact me via email",
+      "phoneRequestSubject": "Phone number request",
       "location": "Location"
     },
     "social": {
@@ -187,26 +190,25 @@
     }
   },
   "insights": {
-    "title": "AI Career Analysis",
-    "subtitle": "Get personalized insights about your professional profile",
+    "title": "AI Insights for Recruiters",
+    "subtitle": "Smart analysis of professional profile",
     "generate": "Generate analysis",
     "regenerate": "Regenerate",
-    "careerScore": "Career Score",
-    "strengths": "Key Strengths",
+    "profileScore": "Profile Strength",
+    "keyStrengths": "Key Strengths",
     "uniqueValue": "Value Proposition",
-    "marketFit": "Market Fit",
-    "recommendations": "Recommendations",
+    "idealRoles": "Ideal Roles",
+    "standoutFactors": "Standout Factors",
     "skillsRadar": "Skills Radar",
-    "salaryRange": "Estimated Salary Range",
-    "careerPaths": "Career Paths",
-    "loading": "Analyzing your profile...",
+    "techStack": "Tech Stack",
+    "recruiterSummary": "Executive Summary",
+    "loading": "Analyzing profile...",
     "error": "Error generating insights. Try again.",
     "scoreNote": {
-      "excellent": "Excellent professional profile",
-      "good": "Strong growth potential",
-      "improve": "Opportunities for improvement"
+      "excellent": "Highly competitive profile",
+      "good": "Solid profile with potential",
+      "improve": "Growing profile"
     },
-    "salaryPeriod": "year",
     "radar": {
       "ai": "AI/ML",
       "programming": "Programming",
@@ -256,6 +258,157 @@
       "easy": "Easy",
       "medium": "Medium",
       "hard": "Hard"
+    }
+  },
+  "demo": {
+    "badge": "Interactive demo",
+    "titlePrefix": "Try",
+    "titleBrand": "Vitae.ai",
+    "description": "Upload your CV and see a preview of how your AI-powered digital portfolio would look. This is a 60% preview — for the full result, install Vitae.ai.",
+    "cardTitle": "Enter your information",
+    "cardSubtitle": "Choose how you want to provide your CV data",
+    "tabs": {
+      "upload": "Upload file",
+      "form": "Form",
+      "paste": "Paste text"
+    },
+    "infoCards": {
+      "uploadTitle": "Upload PDF/DOCX",
+      "uploadDescription": "Upload your existing CV and AI will extract the information automatically.",
+      "formTitle": "Guided form",
+      "formDescription": "Complete a step-by-step form with all your information.",
+      "pasteTitle": "Paste text",
+      "pasteDescription": "Copy and paste your CV content and AI will structure it."
+    },
+    "upload": {
+      "dragTitle": "Drag your CV here",
+      "dragSubtitle": "or click to select",
+      "selectButton": "Select file",
+      "fileHint": "PDF or DOCX · Max {max}MB",
+      "errorUnsupported": "Unsupported format. PDF or DOCX only.",
+      "errorTooLarge": "File exceeds {max}MB.",
+      "errorNoFile": "Select a file first.",
+      "processing": "Processing CV...",
+      "cta": "Generate preview"
+    },
+    "paste": {
+      "label": "CV text",
+      "placeholder": "Paste the full content of your CV...",
+      "errorEmpty": "Paste your CV text to continue.",
+      "processing": "Analyzing text...",
+      "cta": "Generate preview"
+    },
+    "form": {
+      "stepLabel": "Step {current} of {total}",
+      "steps": {
+        "personalTitle": "Personal details",
+        "personalDescription": "Basic information for the CV header.",
+        "profileTitle": "Profile and skills",
+        "profileDescription": "Summarize your experience and key skills.",
+        "experienceTitle": "Experience and education",
+        "experienceDescription": "Add your main role and academic background."
+      },
+      "fields": {
+        "fullName": "Full name *",
+        "title": "Professional title",
+        "location": "Location",
+        "email": "Email *",
+        "linkedin": "LinkedIn",
+        "github": "GitHub",
+        "profile": "Professional profile *",
+        "skills": "Key skills *",
+        "experienceRole": "Primary role",
+        "experienceCompany": "Company",
+        "experiencePeriod": "Period",
+        "educationTitle": "Education",
+        "educationInstitution": "Institution",
+        "educationPeriod": "Year / Period",
+        "experienceHighlights": "Key achievements (optional)"
+      },
+      "placeholders": {
+        "fullName": "e.g. Maria Gonzalez",
+        "title": "e.g. Data Scientist",
+        "location": "City, Country",
+        "email": "you@email.com",
+        "linkedin": "https://linkedin.com/in/your-profile",
+        "github": "https://github.com/your-username",
+        "profile": "Short summary about your experience and professional focus",
+        "skills": "e.g. Python, Machine Learning, SQL",
+        "experienceRole": "e.g. AI Engineer",
+        "experienceCompany": "Company name",
+        "experiencePeriod": "2023 - Present",
+        "educationTitle": "e.g. Systems Engineering",
+        "educationInstitution": "University / Institute",
+        "educationPeriod": "2022 - 2026",
+        "experienceHighlights": "One line per achievement or responsibility"
+      },
+      "helperSkills": "Separate with commas.",
+      "buttons": {
+        "prev": "Back",
+        "next": "Next",
+        "generate": "Generate preview"
+      },
+      "defaults": {
+        "city": "Your city",
+        "linkedin": "https://linkedin.com/in/your-profile",
+        "github": "https://github.com/your-username",
+        "languages": "Spanish, English",
+        "company": "Your company",
+        "remote": "Remote",
+        "current": "Present",
+        "educationTitle": "Your education",
+        "specialization": "Your specialty",
+        "institution": "Your institution",
+        "trainingDescription": "Key education"
+      }
+    },
+    "preview": {
+      "back": "Back",
+      "badge": "60% preview",
+      "sections": {
+        "summary": "Professional summary",
+        "skills": "Highlighted skills",
+        "experience": "Main experience",
+        "education": "Education"
+      },
+      "empty": {
+        "experience": "Add experience to see it here.",
+        "education": "Add education to see it here."
+      },
+      "fallbacks": {
+        "fullName": "Your Full Name",
+        "location": "Your city, country",
+        "email": "you@email.com",
+        "profile": "Short summary of your professional profile and goals.",
+        "achievements": "Key achievements summary",
+        "skills": ["AI", "Machine Learning", "Python", "Data", "Automation", "Analytics"]
+      },
+      "locked": {
+        "projects": "Featured projects",
+        "certificates": "Certifications",
+        "insights": "AI insights",
+        "label": "Locked in demo"
+      },
+      "cta": {
+        "title": "Want to see the full CV?",
+        "description": "Install Vitae.ai and unlock all sections, insights, and features.",
+        "install": "Install Vitae.ai",
+        "guide": "View guide"
+      },
+      "links": {
+        "linkedin": "LinkedIn",
+        "github": "GitHub"
+      }
+    },
+    "errors": {
+      "apiKeyMissing": "API key is not configured.",
+      "invalidFile": "Invalid file.",
+      "unsupportedFormat": "Unsupported format.",
+      "fileTooLarge": "File exceeds {max}MB.",
+      "emptyText": "No text found in the CV.",
+      "invalidResponse": "Invalid model response.",
+      "processingFailed": "Could not process the CV.",
+      "unknown": "Unknown error."
     }
   }
 }

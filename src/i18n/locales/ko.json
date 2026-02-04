@@ -11,6 +11,7 @@
   },
   "hero": {
     "title": "산업공학 학생 & AI 고급 기술자",
+    "slogan": "AI가 이끄는 당신의 커리어",
     "downloadCV": "이력서 다운로드",
     "specialties": {
       "ml": "머신러닝",
@@ -107,6 +108,8 @@
     "info": {
       "email": "이메일",
       "phone": "전화",
+      "phoneViaEmail": "이메일로 연락해 주세요",
+      "phoneRequestSubject": "전화번호 요청",
       "location": "위치"
     },
     "social": {
@@ -187,26 +190,25 @@
     }
   },
   "insights": {
-    "title": "AI 커리어 분석",
-    "subtitle": "전문 프로필에 대한 맞춤 인사이트를 받아보세요",
+    "title": "채용담당자를 위한 AI 인사이트",
+    "subtitle": "전문 프로필의 스마트 분석",
     "generate": "분석 생성",
     "regenerate": "다시 생성",
-    "careerScore": "커리어 점수",
-    "strengths": "핵심 강점",
-    "uniqueValue": "차별화된 가치",
-    "marketFit": "시장 적합도",
-    "recommendations": "추천",
+    "profileScore": "프로필 강점",
+    "keyStrengths": "핵심 강점",
+    "uniqueValue": "가치 제안",
+    "idealRoles": "이상적인 역할",
+    "standoutFactors": "차별화 요소",
     "skillsRadar": "스킬 레이더",
-    "salaryRange": "예상 연봉 범위",
-    "careerPaths": "커리어 경로",
+    "techStack": "기술 스택",
+    "recruiterSummary": "이그제큐티브 서머리",
     "loading": "프로필 분석 중...",
     "error": "인사이트 생성 중 오류가 발생했습니다. 다시 시도하세요.",
     "scoreNote": {
-      "excellent": "훌륭한 전문 프로필",
-      "good": "좋은 성장 잠재력",
-      "improve": "개선 기회"
+      "excellent": "매우 경쟁력 있는 프로필",
+      "good": "잠재력 있는 견고한 프로필",
+      "improve": "성장하는 프로필"
     },
-    "salaryPeriod": "연",
     "radar": {
       "ai": "AI/ML",
       "programming": "프로그래밍",
@@ -256,6 +258,157 @@
       "easy": "쉬움",
       "medium": "보통",
       "hard": "어려움"
+    }
+  },
+  "demo": {
+    "badge": "인터랙티브 데모",
+    "titlePrefix": "체험하기",
+    "titleBrand": "Vitae.ai",
+    "description": "CV를 업로드하고 AI 기반 디지털 포트폴리오의 미리보기를 확인하세요. 이는 60% 미리보기입니다. 전체 결과를 보려면 Vitae.ai를 설치하세요.",
+    "cardTitle": "정보를 입력하세요",
+    "cardSubtitle": "CV 데이터를 제공하는 방법을 선택하세요",
+    "tabs": {
+      "upload": "파일 업로드",
+      "form": "폼",
+      "paste": "텍스트 붙여넣기"
+    },
+    "infoCards": {
+      "uploadTitle": "PDF/DOCX 업로드",
+      "uploadDescription": "기존 CV를 업로드하면 AI가 정보를 자동으로 추출합니다.",
+      "formTitle": "가이드 폼",
+      "formDescription": "단계별 폼으로 정보를 입력하세요.",
+      "pasteTitle": "텍스트 붙여넣기",
+      "pasteDescription": "CV 내용을 복사해 붙여넣으면 AI가 구조화합니다."
+    },
+    "upload": {
+      "dragTitle": "여기에 CV를 드래그하세요",
+      "dragSubtitle": "또는 클릭하여 선택",
+      "selectButton": "파일 선택",
+      "fileHint": "PDF 또는 DOCX · 최대 {max}MB",
+      "errorUnsupported": "지원하지 않는 형식입니다. PDF 또는 DOCX만 가능합니다.",
+      "errorTooLarge": "파일이 {max}MB를 초과합니다.",
+      "errorNoFile": "먼저 파일을 선택하세요.",
+      "processing": "CV 처리 중...",
+      "cta": "미리보기 생성"
+    },
+    "paste": {
+      "label": "CV 텍스트",
+      "placeholder": "CV 전체 내용을 여기에 붙여넣으세요...",
+      "errorEmpty": "계속하려면 CV 텍스트를 붙여넣으세요.",
+      "processing": "텍스트 분석 중...",
+      "cta": "미리보기 생성"
+    },
+    "form": {
+      "stepLabel": "단계 {current} / {total}",
+      "steps": {
+        "personalTitle": "개인 정보",
+        "personalDescription": "CV 헤더를 위한 기본 정보.",
+        "profileTitle": "프로필 및 스킬",
+        "profileDescription": "경험과 주요 스킬을 요약하세요.",
+        "experienceTitle": "경험 및 교육",
+        "experienceDescription": "주요 역할과 학력을 추가하세요."
+      },
+      "fields": {
+        "fullName": "이름 *",
+        "title": "직무 타이틀",
+        "location": "위치",
+        "email": "이메일 *",
+        "linkedin": "LinkedIn",
+        "github": "GitHub",
+        "profile": "프로필 *",
+        "skills": "주요 스킬 *",
+        "experienceRole": "주요 역할",
+        "experienceCompany": "회사",
+        "experiencePeriod": "기간",
+        "educationTitle": "학력",
+        "educationInstitution": "기관",
+        "educationPeriod": "연도 / 기간",
+        "experienceHighlights": "주요 성과 (선택)"
+      },
+      "placeholders": {
+        "fullName": "예: 김민수",
+        "title": "예: 데이터 사이언티스트",
+        "location": "도시, 국가",
+        "email": "you@email.com",
+        "linkedin": "https://linkedin.com/in/your-profile",
+        "github": "https://github.com/your-username",
+        "profile": "경험과 전문 분야에 대한 간단한 요약",
+        "skills": "예: Python, Machine Learning, SQL",
+        "experienceRole": "예: AI 엔지니어",
+        "experienceCompany": "회사명",
+        "experiencePeriod": "2023 - 현재",
+        "educationTitle": "예: 시스템공학",
+        "educationInstitution": "대학교 / 기관",
+        "educationPeriod": "2022 - 2026",
+        "experienceHighlights": "성과 또는 책임을 한 줄씩"
+      },
+      "helperSkills": "쉼표로 구분하세요.",
+      "buttons": {
+        "prev": "이전",
+        "next": "다음",
+        "generate": "미리보기 생성"
+      },
+      "defaults": {
+        "city": "당신의 도시",
+        "linkedin": "https://linkedin.com/in/your-profile",
+        "github": "https://github.com/your-username",
+        "languages": "한국어, 영어",
+        "company": "당신의 회사",
+        "remote": "원격",
+        "current": "현재",
+        "educationTitle": "당신의 학력",
+        "specialization": "당신의 전문 분야",
+        "institution": "당신의 기관",
+        "trainingDescription": "주요 학력"
+      }
+    },
+    "preview": {
+      "back": "뒤로",
+      "badge": "60% 미리보기",
+      "sections": {
+        "summary": "프로필 요약",
+        "skills": "하이라이트 스킬",
+        "experience": "주요 경험",
+        "education": "학력"
+      },
+      "empty": {
+        "experience": "경험을 추가하면 여기에 표시됩니다.",
+        "education": "학력을 추가하면 여기에 표시됩니다."
+      },
+      "fallbacks": {
+        "fullName": "당신의 이름",
+        "location": "당신의 도시, 국가",
+        "email": "you@email.com",
+        "profile": "전문 프로필과 목표에 대한 간단한 요약.",
+        "achievements": "주요 성과 요약",
+        "skills": ["AI", "Machine Learning", "Python", "데이터", "자동화", "분석"]
+      },
+      "locked": {
+        "projects": "추천 프로젝트",
+        "certificates": "자격증",
+        "insights": "AI 인사이트",
+        "label": "데모에서 잠김"
+      },
+      "cta": {
+        "title": "전체 CV를 보고 싶나요?",
+        "description": "Vitae.ai를 설치하고 모든 섹션, 인사이트, 기능을 잠금 해제하세요.",
+        "install": "Vitae.ai 설치",
+        "guide": "가이드 보기"
+      },
+      "links": {
+        "linkedin": "LinkedIn",
+        "github": "GitHub"
+      }
+    },
+    "errors": {
+      "apiKeyMissing": "API 키가 설정되어 있지 않습니다.",
+      "invalidFile": "유효하지 않은 파일입니다.",
+      "unsupportedFormat": "지원하지 않는 형식입니다.",
+      "fileTooLarge": "파일이 {max}MB를 초과합니다.",
+      "emptyText": "CV에서 텍스트를 찾을 수 없습니다.",
+      "invalidResponse": "모델 응답이 올바르지 않습니다.",
+      "processingFailed": "CV를 처리할 수 없습니다.",
+      "unknown": "알 수 없는 오류입니다."
     }
   }
 }

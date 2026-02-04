@@ -5,7 +5,7 @@ const personal = {
   name: 'Martín Bundy',
   fullName: 'Martín Alejandro Bundy Muñoz',
   location: 'Panamá',
-  phone: '+507 6271 4346',
+  phone: '',
   email: 'mbundy15@gmail.com',
   linkedin: 'https://linkedin.com/in/martinbundy15',
   github: 'https://github.com/EiTinchoZ',

@@ -2,6 +2,7 @@ import { createGroq } from '@ai-sdk/groq';
 import { streamText } from 'ai';
 import { getCvData } from '@/data/cv-data';
 import { getLanguageInstruction } from '@/lib/ai-language';
+import { validateLanguage } from '@/lib/api-validation';
 
 export async function POST(request: Request) {
   try {
@@ -16,7 +17,8 @@ export async function POST(request: Request) {
       apiKey: process.env.GROQ_API_KEY,
     });
 
-    const { language = 'es' } = await request.json();
+    const body = await request.json();
+    const language = validateLanguage(body.language);
     const cvData = getCvData(language);
 
     const cvSummary = `
@@ -24,7 +26,6 @@ Personal:
 - Name: ${cvData.personal.name}
 - Location: ${cvData.personal.location}
 - Email: ${cvData.personal.email}
-- Phone: ${cvData.personal.phone}
 - LinkedIn: ${cvData.personal.linkedin}
 - GitHub: ${cvData.personal.github}
 

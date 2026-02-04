@@ -11,6 +11,7 @@
   },
   "hero": {
     "title": "طالب هندسة صناعية وفني متقدم في الذكاء الاصطناعي",
+    "slogan": "مسيرتك المهنية، مدعومة بالذكاء الاصطناعي",
     "downloadCV": "تحميل السيرة الذاتية",
     "specialties": {
       "ml": "تعلم الآلة",
@@ -107,6 +108,8 @@
     "info": {
       "email": "البريد الإلكتروني",
       "phone": "الهاتف",
+      "phoneViaEmail": "تواصل معي عبر البريد الإلكتروني",
+      "phoneRequestSubject": "طلب رقم الهاتف",
       "location": "الموقع"
     },
     "social": {
@@ -187,26 +190,25 @@
     }
   },
   "insights": {
-    "title": "تحليل المسار المهني بالذكاء الاصطناعي",
-    "subtitle": "احصل على رؤى مخصصة حول ملفك المهني",
+    "title": "رؤى الذكاء الاصطناعي للمجندين",
+    "subtitle": "تحليل ذكي للملف المهني",
     "generate": "إنشاء التحليل",
     "regenerate": "إعادة التوليد",
-    "careerScore": "تقييم المسار المهني",
-    "strengths": "نقاط القوة",
-    "uniqueValue": "القيمة الفريدة",
-    "marketFit": "ملاءمة السوق",
-    "recommendations": "توصيات",
+    "profileScore": "قوة الملف الشخصي",
+    "keyStrengths": "نقاط القوة الرئيسية",
+    "uniqueValue": "عرض القيمة",
+    "idealRoles": "الأدوار المثالية",
+    "standoutFactors": "عوامل التميز",
     "skillsRadar": "رادار المهارات",
-    "salaryRange": "نطاق الراتب التقديري",
-    "careerPaths": "مسارات مهنية",
-    "loading": "جارٍ تحليل ملفك...",
+    "techStack": "المكدس التقني",
+    "recruiterSummary": "الملخص التنفيذي",
+    "loading": "جارٍ تحليل الملف...",
     "error": "حدث خطأ أثناء إنشاء الرؤى. حاول مرة أخرى.",
     "scoreNote": {
-      "excellent": "ملف مهني ممتاز",
-      "good": "إمكانات نمو جيدة",
-      "improve": "فرص للتحسين"
+      "excellent": "ملف تنافسي للغاية",
+      "good": "ملف قوي مع إمكانات",
+      "improve": "ملف متنامٍ"
     },
-    "salaryPeriod": "سنة",
     "radar": {
       "ai": "الذكاء الاصطناعي/التعلم الآلي",
       "programming": "البرمجة",
@@ -256,6 +258,157 @@
       "easy": "سهل",
       "medium": "متوسط",
       "hard": "صعب"
+    }
+  },
+  "demo": {
+    "badge": "عرض تفاعلي",
+    "titlePrefix": "جرّب",
+    "titleBrand": "Vitae.ai",
+    "description": "ارفع سيرتك الذاتية وشاهد معاينة لكيف سيبدو ملفك الرقمي المدعوم بالذكاء الاصطناعي. هذه معاينة بنسبة 60% — للحصول على النتيجة الكاملة، ثبّت Vitae.ai.",
+    "cardTitle": "أدخل معلوماتك",
+    "cardSubtitle": "اختر طريقة تزويد بيانات سيرتك الذاتية",
+    "tabs": {
+      "upload": "رفع ملف",
+      "form": "نموذج",
+      "paste": "لصق نص"
+    },
+    "infoCards": {
+      "uploadTitle": "رفع PDF/DOCX",
+      "uploadDescription": "ارفع سيرتك الذاتية الحالية وسيستخرج الذكاء الاصطناعي المعلومات تلقائياً.",
+      "formTitle": "نموذج إرشادي",
+      "formDescription": "املأ نموذجاً خطوة بخطوة بكل معلوماتك.",
+      "pasteTitle": "لصق نص",
+      "pasteDescription": "انسخ والصق محتوى سيرتك الذاتية وسيقوم الذكاء الاصطناعي بترتيبه."
+    },
+    "upload": {
+      "dragTitle": "اسحب سيرتك الذاتية هنا",
+      "dragSubtitle": "أو انقر للاختيار",
+      "selectButton": "اختر ملفاً",
+      "fileHint": "PDF أو DOCX · الحد الأقصى {max}MB",
+      "errorUnsupported": "تنسيق غير مدعوم. فقط PDF أو DOCX.",
+      "errorTooLarge": "حجم الملف يتجاوز {max}MB.",
+      "errorNoFile": "اختر ملفاً أولاً.",
+      "processing": "جارٍ معالجة السيرة الذاتية...",
+      "cta": "إنشاء معاينة"
+    },
+    "paste": {
+      "label": "نص السيرة الذاتية",
+      "placeholder": "الصق المحتوى الكامل لسيرتك الذاتية هنا...",
+      "errorEmpty": "الصق نص سيرتك الذاتية للمتابعة.",
+      "processing": "جارٍ تحليل النص...",
+      "cta": "إنشاء معاينة"
+    },
+    "form": {
+      "stepLabel": "الخطوة {current} من {total}",
+      "steps": {
+        "personalTitle": "البيانات الشخصية",
+        "personalDescription": "معلومات أساسية لعنوان السيرة الذاتية.",
+        "profileTitle": "الملف الشخصي والمهارات",
+        "profileDescription": "لخّص خبرتك وأهم المهارات.",
+        "experienceTitle": "الخبرة والتعليم",
+        "experienceDescription": "أضف دورك الرئيسي وخلفيتك التعليمية."
+      },
+      "fields": {
+        "fullName": "الاسم الكامل *",
+        "title": "المسمى المهني",
+        "location": "الموقع",
+        "email": "البريد الإلكتروني *",
+        "linkedin": "LinkedIn",
+        "github": "GitHub",
+        "profile": "الملف المهني *",
+        "skills": "المهارات الأساسية *",
+        "experienceRole": "الدور الرئيسي",
+        "experienceCompany": "الشركة",
+        "experiencePeriod": "الفترة",
+        "educationTitle": "التعليم",
+        "educationInstitution": "المؤسسة",
+        "educationPeriod": "السنة / الفترة",
+        "experienceHighlights": "أبرز الإنجازات (اختياري)"
+      },
+      "placeholders": {
+        "fullName": "مثال: محمد علي",
+        "title": "مثال: عالم بيانات",
+        "location": "المدينة، الدولة",
+        "email": "you@email.com",
+        "linkedin": "https://linkedin.com/in/your-profile",
+        "github": "https://github.com/your-username",
+        "profile": "ملخص قصير عن خبرتك وتركيزك المهني",
+        "skills": "مثال: Python، Machine Learning، SQL",
+        "experienceRole": "مثال: مهندس ذكاء اصطناعي",
+        "experienceCompany": "اسم الشركة",
+        "experiencePeriod": "2023 - حتى الآن",
+        "educationTitle": "مثال: هندسة نظم",
+        "educationInstitution": "جامعة / معهد",
+        "educationPeriod": "2022 - 2026",
+        "experienceHighlights": "سطر لكل إنجاز أو مسؤولية"
+      },
+      "helperSkills": "افصلها بفواصل.",
+      "buttons": {
+        "prev": "السابق",
+        "next": "التالي",
+        "generate": "إنشاء معاينة"
+      },
+      "defaults": {
+        "city": "مدينتك",
+        "linkedin": "https://linkedin.com/in/your-profile",
+        "github": "https://github.com/your-username",
+        "languages": "العربية، الإنجليزية",
+        "company": "شركتك",
+        "remote": "عن بُعد",
+        "current": "حتى الآن",
+        "educationTitle": "تعليمك",
+        "specialization": "تخصصك",
+        "institution": "مؤسستك",
+        "trainingDescription": "تعليم مميز"
+      }
+    },
+    "preview": {
+      "back": "رجوع",
+      "badge": "معاينة 60%",
+      "sections": {
+        "summary": "ملخص مهني",
+        "skills": "مهارات بارزة",
+        "experience": "الخبرة الرئيسية",
+        "education": "التعليم"
+      },
+      "empty": {
+        "experience": "أضف خبرة لعرضها هنا.",
+        "education": "أضف تعليماً لعرضه هنا."
+      },
+      "fallbacks": {
+        "fullName": "اسمك الكامل",
+        "location": "مدينتك، الدولة",
+        "email": "you@email.com",
+        "profile": "ملخص قصير لملفك المهني وأهدافك.",
+        "achievements": "ملخص الإنجازات الرئيسية",
+        "skills": ["الذكاء الاصطناعي", "تعلم الآلة", "Python", "البيانات", "الأتمتة", "التحليلات"]
+      },
+      "locked": {
+        "projects": "مشاريع مميزة",
+        "certificates": "شهادات",
+        "insights": "رؤى الذكاء الاصطناعي",
+        "label": "مقفل في العرض"
+      },
+      "cta": {
+        "title": "هل تريد رؤية السيرة الذاتية كاملة؟",
+        "description": "ثبّت Vitae.ai لفتح جميع الأقسام والرؤى والميزات.",
+        "install": "تثبيت Vitae.ai",
+        "guide": "عرض الدليل"
+      },
+      "links": {
+        "linkedin": "LinkedIn",
+        "github": "GitHub"
+      }
+    },
+    "errors": {
+      "apiKeyMissing": "مفتاح API غير مُعد.",
+      "invalidFile": "ملف غير صالح.",
+      "unsupportedFormat": "تنسيق غير مدعوم.",
+      "fileTooLarge": "حجم الملف يتجاوز {max}MB.",
+      "emptyText": "لم يتم العثور على نص في السيرة الذاتية.",
+      "invalidResponse": "استجابة النموذج غير صالحة.",
+      "processingFailed": "تعذر معالجة السيرة الذاتية.",
+      "unknown": "خطأ غير معروف."
     }
   }
 }

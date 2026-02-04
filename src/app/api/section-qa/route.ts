@@ -2,6 +2,7 @@ import { createGroq } from '@ai-sdk/groq';
 import { streamText } from 'ai';
 import { getCvData } from '@/data/cv-data';
 import { getLanguageInstruction } from '@/lib/ai-language';
+import { validateLanguage, validateSection, validateQuestion, createErrorResponse } from '@/lib/api-validation';
 import type { CVData } from '@/types';
 
 function buildSectionContext(section: string, cvData: CVData): string {
@@ -64,7 +65,18 @@ export async function POST(req: Request) {
       apiKey: process.env.GROQ_API_KEY,
     });
 
-    const { section, question, language = 'es' } = await req.json();
+    const body = await req.json();
+    const language = validateLanguage(body.language);
+    const section = validateSection(body.section);
+    const question = validateQuestion(body.question);
+
+    if (!section) {
+      return createErrorResponse('Invalid section');
+    }
+    if (!question) {
+      return createErrorResponse('Invalid question');
+    }
+
     const cvData = getCvData(language);
     const context = buildSectionContext(section, cvData);
 

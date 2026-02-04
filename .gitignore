@@ -40,4 +40,11 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# vercel (duplicate removed)
 .vercel
+
+# ===========================================
+# TEMPLATE USERS: Uncomment the line below
+# to keep your personal CV data private
+# ===========================================
+# src/data/cv-data.ts

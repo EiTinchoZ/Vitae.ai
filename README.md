@@ -1,129 +1,216 @@
-# Vitae.ai — AI-Powered Digital CV
+# Vitae.ai
 
-Vitae.ai is a professional, interactive CV and portfolio that showcases my education, experience, certifications, projects, and AI-focused skill set in a modern, recruiter-ready format. It includes multilingual support and AI-powered features (career insights, skill recommendations, section Q&A, and a smart chat assistant).
+### Tu carrera, potenciada por inteligencia artificial
 
-**Live Preview:** https://portfolio-eitinchos-projects.vercel.app
-
----
-
-## Highlights
-
-- Fully responsive portfolio with a clean, professional aesthetic
-- Multilingual UI (10 languages)
-- AI features: chat assistant, CV analyzer, career insights, skill recommender, section Q&A
-- GitHub integration for live repository previews
-- Dark/Light mode with persistent preference
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38B2AC?logo=tailwind-css)](https://tailwindcss.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
 
-## Tech Stack
+**Vitae.ai** es una herramienta open-source para crear tu CV digital interactivo con IA integrada. Diseñado para profesionales que quieren destacar ante reclutadores.
 
-- **Framework:** Next.js 16 (App Router)
-- **Language:** TypeScript 5
-- **Styling:** Tailwind CSS 4
-- **UI:** shadcn/ui + Radix UI
-- **Animations:** Framer Motion
-- **Icons:** Lucide
-- **AI/LLM:** Groq + Vercel AI SDK
-- **Hosting:** Vercel
+## Demo en Vivo
+
+| Demo | Descripcion |
+|------|-------------|
+| [**CV de Martin Bundy**](https://portfolio-eitinchos-projects.vercel.app) | Ejemplo completo y funcional |
+| [**Template Customizable**](#instalacion) | Crea el tuyo siguiendo la guia |
 
 ---
 
-## Architecture
+## Caracteristicas
 
-```
-src/
-├── app/                   # Next.js App Router
-│   ├── api/               # AI endpoints (chat, insights, analysis, etc.)
-│   ├── layout.tsx         # Root layout + providers
-│   ├── page.tsx           # Main landing page
-│   └── globals.css        # Global styles
-├── components/
-│   ├── ai/                # AI widgets and dashboards
-│   ├── chat/              # Floating chat assistant
-│   ├── sections/          # Hero, About, Skills, etc.
-│   ├── shared/            # Navbar, Footer, wrappers
-│   └── ui/                # shadcn/ui components
-├── data/                  # CV data source
-├── i18n/                  # Localization (10 languages)
-└── lib/                   # Utilities and GitHub API
-```
+### Para Candidatos
+- CV digital responsive y moderno
+- 10 idiomas soportados (ES, EN, PT, DE, FR, ZH, JA, AR, HI, KO)
+- Modo oscuro/claro con persistencia
+- Integracion con GitHub para mostrar repositorios
+
+### Para Reclutadores
+- **Chat con IA** - Pregunta sobre el candidato
+- **Insights Inteligentes** - Analisis ejecutivo del perfil
+- **Q&A por Seccion** - Detalles especificos de cada area
+- **Recomendador de Skills** - Sugerencias de crecimiento
 
 ---
 
-## Getting Started
+## Capturas de Pantalla
 
-### Requirements
+<details>
+<summary>Ver capturas</summary>
+
+### Hero
+![Hero Section](https://via.placeholder.com/800x400?text=Hero+Screenshot)
+
+### Insights con IA
+![AI Insights](https://via.placeholder.com/800x400?text=AI+Insights)
+
+### Chat Asistente
+![Chat Bot](https://via.placeholder.com/800x400?text=Chat+Assistant)
+
+</details>
+
+---
+
+## Stack Tecnologico
+
+| Categoria | Tecnologia |
+|-----------|------------|
+| Framework | Next.js 16 (App Router) |
+| Lenguaje | TypeScript 5 |
+| Estilos | Tailwind CSS 4 |
+| UI | shadcn/ui + Radix UI |
+| Animaciones | Framer Motion |
+| IA | Groq + Vercel AI SDK |
+| Hosting | Vercel |
+
+---
+
+## Instalacion
+
+### Requisitos
 
 - Node.js 20+
-- npm
+- Cuenta en [Groq](https://console.groq.com/) (gratis)
+- Cuenta en [Vercel](https://vercel.com/) (gratis)
 
-### Install
+### Guia Rapida
 
 ```bash
-git clone https://github.com/EiTinchoZ/Portafolio-CV-Interactivo.git
-cd Portafolio-CV-Interactivo
+# 1. Clona el repositorio
+git clone https://github.com/EiTinchoZ/vitae-ai.git
+cd vitae-ai
+
+# 2. Instala dependencias
 npm install
-```
 
-### Environment Variables
+# 3. Configura variables de entorno
+cp .env.example .env.local
+# Edita .env.local con tu GROQ_API_KEY
 
-Create `.env.local`:
+# 4. Agrega tus datos
+cp src/data/cv-data.example.ts src/data/cv-data.ts
+# Edita cv-data.ts con tu informacion
 
-```bash
-NEXT_PUBLIC_GITHUB_USERNAME=EiTinchoZ
-GROQ_API_KEY=your_groq_key_here
-```
-
-### Development
-
-```bash
+# 5. Ejecuta en desarrollo
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+### Guia Completa
+
+Para instrucciones detalladas paso a paso, consulta [INSTALL.md](INSTALL.md).
+
+### Estructura de Datos del CV
+
+Para entender como estructurar tu CV, consulta [src/data/cv-schema.md](src/data/cv-schema.md).
+
+---
+
+## Arquitectura
+
+```
+src/
+├── app/
+│   ├── api/                # Endpoints de IA
+│   │   ├── chat/           # Chat conversacional
+│   │   ├── insights/       # Analisis para reclutadores
+│   │   ├── analyze-resume/ # Analizador de CV
+│   │   ├── recommend-skills/ # Recomendador
+│   │   └── section-qa/     # Q&A por seccion
+│   ├── layout.tsx          # Layout raiz
+│   └── page.tsx            # Pagina principal
+├── components/
+│   ├── ai/                 # Dashboards de IA
+│   ├── chat/               # Chat flotante
+│   ├── sections/           # Secciones del CV
+│   ├── shared/             # Navbar, Footer
+│   └── ui/                 # Componentes shadcn
+├── data/
+│   ├── cv-data.ts          # TUS datos (no incluido)
+│   ├── cv-data.example.ts  # Ejemplo con datos ficticios
+│   └── cv-schema.md        # Documentacion
+├── i18n/                   # 10 idiomas
+└── lib/                    # Utilidades
+```
 
 ---
 
 ## Scripts
 
 ```bash
-npm run dev
-npm run build
-npm run start
-npm run lint
+npm run dev      # Desarrollo local
+npm run build    # Build de produccion
+npm run start    # Servidor de produccion
+npm run lint     # Verificar codigo
 ```
 
 ---
 
-## AI Features
+## Funcionalidades de IA
 
-- **Chat Assistant:** Conversational CV overview
-- **Resume Analyzer:** Structured feedback and ATS compatibility
-- **Career Insights:** AI-generated career score and recommendations
-- **Skill Recommender:** Personalized growth suggestions
-- **Section Q&A:** Ask about skills, education, projects, and experience
-
----
-
-## Collaboration
-
-This project is developed by:
-
-- **Martín Alejandro Bundy Muñoz** (Owner)
-- **Claude Code** (AI collaborator)
-- **Codex** (AI collaborator)
-
-See `CONTRIBUTORS.md` for details.
+| Feature | Descripcion |
+|---------|-------------|
+| **Chat Asistente** | Conversacion natural sobre el CV |
+| **Insights para Reclutadores** | Score del perfil, fortalezas, roles ideales |
+| **Analizador de CV** | Feedback estructurado y compatibilidad ATS |
+| **Recomendador de Skills** | Sugerencias de habilidades complementarias |
+| **Q&A por Seccion** | Preguntas especificas sobre cada area |
 
 ---
 
-## Security
+## Idiomas Soportados
 
-Security reporting guidelines are available in `SECURITY.md`.
+| Codigo | Idioma | Estado |
+|--------|--------|--------|
+| `es` | Espanol | Completo |
+| `en` | Ingles | Completo |
+| `pt` | Portugues | Completo |
+| `de` | Aleman | Completo |
+| `fr` | Frances | Completo |
+| `zh` | Chino | Completo |
+| `ja` | Japones | Completo |
+| `ar` | Arabe (RTL) | Completo |
+| `hi` | Hindi | Completo |
+| `ko` | Coreano | Completo |
 
 ---
 
-## License
+## Contribuir
 
-Licensed under the MIT License. See `LICENSE` for details.
+Las contribuciones son bienvenidas. Por favor:
+
+1. Fork el repositorio
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
+
+---
+
+## Seguridad
+
+Para reportar vulnerabilidades de seguridad, consulta [SECURITY.md](SECURITY.md).
+
+---
+
+## Colaboradores
+
+Este proyecto es desarrollado por:
+
+- **Martin Alejandro Bundy Munoz** - Creador y mantenedor
+- **Claude Code** - Colaborador IA
+- **Codex** - Colaborador IA
+
+---
+
+## Licencia
+
+Distribuido bajo la Licencia MIT. Ver [LICENSE](LICENSE) para mas informacion.
+
+---
+
+<p align="center">
+  <strong>Vitae.ai</strong> - Tu carrera, potenciada por inteligencia artificial
+</p>

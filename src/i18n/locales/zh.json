@@ -11,6 +11,7 @@
   },
   "hero": {
     "title": "工业工程学生 & 人工智能高级技术员",
+    "slogan": "您的职业生涯，由AI驱动",
     "downloadCV": "下载简历",
     "specialties": {
       "ml": "机器学习",
@@ -107,6 +108,8 @@
     "info": {
       "email": "邮箱",
       "phone": "电话",
+      "phoneViaEmail": "请通过邮箱联系我",
+      "phoneRequestSubject": "电话号码请求",
       "location": "位置"
     },
     "social": {
@@ -187,26 +190,25 @@
     }
   },
   "insights": {
-    "title": "AI职业分析",
-    "subtitle": "获取关于你职业档案的个性化洞察",
+    "title": "招聘者AI洞察",
+    "subtitle": "专业档案智能分析",
     "generate": "生成分析",
     "regenerate": "重新生成",
-    "careerScore": "职业评分",
-    "strengths": "核心优势",
-    "uniqueValue": "独特价值",
-    "marketFit": "市场契合度",
-    "recommendations": "建议",
+    "profileScore": "档案强度",
+    "keyStrengths": "核心优势",
+    "uniqueValue": "价值主张",
+    "idealRoles": "理想职位",
+    "standoutFactors": "突出因素",
     "skillsRadar": "技能雷达",
-    "salaryRange": "预计薪资范围",
-    "careerPaths": "职业路径",
-    "loading": "正在分析你的档案...",
+    "techStack": "技术栈",
+    "recruiterSummary": "执行摘要",
+    "loading": "正在分析档案...",
     "error": "生成洞察时出错。请重试。",
     "scoreNote": {
-      "excellent": "优秀的职业档案",
-      "good": "良好的成长潜力",
-      "improve": "提升空间"
+      "excellent": "高度竞争力档案",
+      "good": "具有潜力的稳健档案",
+      "improve": "成长中的档案"
     },
-    "salaryPeriod": "年",
     "radar": {
       "ai": "AI/ML",
       "programming": "编程",
@@ -256,6 +258,157 @@
       "easy": "容易",
       "medium": "中等",
       "hard": "困难"
+    }
+  },
+  "demo": {
+    "badge": "互动演示",
+    "titlePrefix": "体验",
+    "titleBrand": "Vitae.ai",
+    "description": "上传你的简历，看看 AI 数字作品集的预览效果。这是 60% 预览，完整结果请安装 Vitae.ai。",
+    "cardTitle": "填写你的信息",
+    "cardSubtitle": "选择你提供简历数据的方式",
+    "tabs": {
+      "upload": "上传文件",
+      "form": "表单",
+      "paste": "粘贴文本"
+    },
+    "infoCards": {
+      "uploadTitle": "上传 PDF/DOCX",
+      "uploadDescription": "上传现有简历，AI 将自动提取信息。",
+      "formTitle": "引导式表单",
+      "formDescription": "通过分步表单填写你的信息。",
+      "pasteTitle": "粘贴文本",
+      "pasteDescription": "复制并粘贴简历内容，AI 将自动结构化。"
+    },
+    "upload": {
+      "dragTitle": "将简历拖到这里",
+      "dragSubtitle": "或点击选择文件",
+      "selectButton": "选择文件",
+      "fileHint": "PDF 或 DOCX · 最大 {max}MB",
+      "errorUnsupported": "不支持的格式，仅支持 PDF 或 DOCX。",
+      "errorTooLarge": "文件超过 {max}MB。",
+      "errorNoFile": "请先选择文件。",
+      "processing": "正在处理简历...",
+      "cta": "生成预览"
+    },
+    "paste": {
+      "label": "简历文本",
+      "placeholder": "在此粘贴完整的简历内容...",
+      "errorEmpty": "请粘贴简历文本以继续。",
+      "processing": "正在分析文本...",
+      "cta": "生成预览"
+    },
+    "form": {
+      "stepLabel": "步骤 {current} / {total}",
+      "steps": {
+        "personalTitle": "个人信息",
+        "personalDescription": "用于简历抬头的基础信息。",
+        "profileTitle": "个人简介与技能",
+        "profileDescription": "概述你的经验和关键技能。",
+        "experienceTitle": "经验与教育",
+        "experienceDescription": "添加主要岗位和教育背景。"
+      },
+      "fields": {
+        "fullName": "姓名 *",
+        "title": "职业头衔",
+        "location": "地点",
+        "email": "邮箱 *",
+        "linkedin": "LinkedIn",
+        "github": "GitHub",
+        "profile": "职业简介 *",
+        "skills": "关键技能 *",
+        "experienceRole": "主要岗位",
+        "experienceCompany": "公司",
+        "experiencePeriod": "时间段",
+        "educationTitle": "教育/学历",
+        "educationInstitution": "机构",
+        "educationPeriod": "年份/时间段",
+        "experienceHighlights": "关键成就（可选）"
+      },
+      "placeholders": {
+        "fullName": "例如：王小明",
+        "title": "例如：数据科学家",
+        "location": "城市，国家",
+        "email": "you@email.com",
+        "linkedin": "https://linkedin.com/in/your-profile",
+        "github": "https://github.com/your-username",
+        "profile": "简要描述你的经验与职业方向",
+        "skills": "例如：Python，机器学习，SQL",
+        "experienceRole": "例如：AI 工程师",
+        "experienceCompany": "公司名称",
+        "experiencePeriod": "2023 - 现在",
+        "educationTitle": "例如：系统工程",
+        "educationInstitution": "大学 / 学院",
+        "educationPeriod": "2022 - 2026",
+        "experienceHighlights": "每行一项成就或职责"
+      },
+      "helperSkills": "用逗号分隔。",
+      "buttons": {
+        "prev": "上一步",
+        "next": "下一步",
+        "generate": "生成预览"
+      },
+      "defaults": {
+        "city": "你的城市",
+        "linkedin": "https://linkedin.com/in/your-profile",
+        "github": "https://github.com/your-username",
+        "languages": "中文，英文",
+        "company": "你的公司",
+        "remote": "远程",
+        "current": "至今",
+        "educationTitle": "你的教育背景",
+        "specialization": "你的专长",
+        "institution": "你的机构",
+        "trainingDescription": "重点教育"
+      }
+    },
+    "preview": {
+      "back": "返回",
+      "badge": "60% 预览",
+      "sections": {
+        "summary": "职业概览",
+        "skills": "突出技能",
+        "experience": "主要经历",
+        "education": "教育"
+      },
+      "empty": {
+        "experience": "添加经历后可在此查看。",
+        "education": "添加教育后可在此查看。"
+      },
+      "fallbacks": {
+        "fullName": "你的姓名",
+        "location": "你的城市，国家",
+        "email": "you@email.com",
+        "profile": "你的职业简介与目标的简要概述。",
+        "achievements": "关键成就摘要",
+        "skills": ["AI", "机器学习", "Python", "数据", "自动化", "分析"]
+      },
+      "locked": {
+        "projects": "重点项目",
+        "certificates": "证书",
+        "insights": "AI 洞察",
+        "label": "演示版已锁定"
+      },
+      "cta": {
+        "title": "想查看完整简历？",
+        "description": "安装 Vitae.ai 解锁所有部分、洞察和功能。",
+        "install": "安装 Vitae.ai",
+        "guide": "查看指南"
+      },
+      "links": {
+        "linkedin": "LinkedIn",
+        "github": "GitHub"
+      }
+    },
+    "errors": {
+      "apiKeyMissing": "未配置 API 密钥。",
+      "invalidFile": "文件无效。",
+      "unsupportedFormat": "不支持的格式。",
+      "fileTooLarge": "文件超过 {max}MB。",
+      "emptyText": "未在简历中找到文本。",
+      "invalidResponse": "模型响应无效。",
+      "processingFailed": "无法处理简历。",
+      "unknown": "未知错误。"
     }
   }
 }

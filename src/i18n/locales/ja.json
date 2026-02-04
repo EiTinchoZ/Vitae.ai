@@ -11,6 +11,7 @@
   },
   "hero": {
     "title": "産業工学学生 & AI上級技術者",
+    "slogan": "AIが加速させる、あなたのキャリア",
     "downloadCV": "履歴書をダウンロード",
     "specialties": {
       "ml": "機械学習",
@@ -107,6 +108,8 @@
     "info": {
       "email": "メール",
       "phone": "電話",
+      "phoneViaEmail": "メールでご連絡ください",
+      "phoneRequestSubject": "電話番号のリクエスト",
       "location": "所在地"
     },
     "social": {
@@ -187,26 +190,25 @@
     }
   },
   "insights": {
-    "title": "AIキャリア分析",
-    "subtitle": "あなたの職業プロフィールに合わせたインサイトを取得",
+    "title": "採用担当者向けAIインサイト",
+    "subtitle": "職業プロフィールのスマート分析",
     "generate": "分析を生成",
     "regenerate": "再生成",
-    "careerScore": "キャリアスコア",
-    "strengths": "主な強み",
-    "uniqueValue": "独自の価値",
-    "marketFit": "市場適合度",
-    "recommendations": "提案",
+    "profileScore": "プロフィール強度",
+    "keyStrengths": "主要な強み",
+    "uniqueValue": "価値提案",
+    "idealRoles": "理想の役職",
+    "standoutFactors": "際立つ要素",
     "skillsRadar": "スキルレーダー",
-    "salaryRange": "推定年収レンジ",
-    "careerPaths": "キャリアパス",
+    "techStack": "技術スタック",
+    "recruiterSummary": "エグゼクティブサマリー",
     "loading": "プロフィールを分析中...",
     "error": "インサイトの生成に失敗しました。もう一度お試しください。",
     "scoreNote": {
-      "excellent": "優れた職業プロフィール",
-      "good": "良好な成長ポテンシャル",
-      "improve": "改善の余地"
+      "excellent": "非常に競争力のあるプロフィール",
+      "good": "潜在力のある確かなプロフィール",
+      "improve": "成長中のプロフィール"
     },
-    "salaryPeriod": "年",
     "radar": {
       "ai": "AI/ML",
       "programming": "プログラミング",
@@ -256,6 +258,157 @@
       "easy": "易しい",
       "medium": "普通",
       "hard": "難しい"
+    }
+  },
+  "demo": {
+    "badge": "インタラクティブデモ",
+    "titlePrefix": "試してみる",
+    "titleBrand": "Vitae.ai",
+    "description": "履歴書をアップロードして、AI搭載のデジタルポートフォリオのプレビューを確認できます。これは60%プレビューです。完全版を見るにはVitae.aiをインストールしてください。",
+    "cardTitle": "情報を入力",
+    "cardSubtitle": "履歴書データの提供方法を選択してください",
+    "tabs": {
+      "upload": "ファイルをアップロード",
+      "form": "フォーム",
+      "paste": "テキストを貼り付け"
+    },
+    "infoCards": {
+      "uploadTitle": "PDF/DOCXをアップロード",
+      "uploadDescription": "既存の履歴書をアップロードすると、AIが情報を自動抽出します。",
+      "formTitle": "ガイド付きフォーム",
+      "formDescription": "ステップ形式で情報を入力します。",
+      "pasteTitle": "テキストを貼り付け",
+      "pasteDescription": "履歴書内容をコピーして貼り付けると、AIが構造化します。"
+    },
+    "upload": {
+      "dragTitle": "ここに履歴書をドラッグ",
+      "dragSubtitle": "またはクリックして選択",
+      "selectButton": "ファイルを選択",
+      "fileHint": "PDFまたはDOCX · 最大{max}MB",
+      "errorUnsupported": "未対応の形式です。PDFまたはDOCXのみ。",
+      "errorTooLarge": "ファイルが{max}MBを超えています。",
+      "errorNoFile": "先にファイルを選択してください。",
+      "processing": "履歴書を処理中...",
+      "cta": "プレビューを生成"
+    },
+    "paste": {
+      "label": "履歴書のテキスト",
+      "placeholder": "履歴書の全文を貼り付けてください...",
+      "errorEmpty": "続行するには履歴書テキストを貼り付けてください。",
+      "processing": "テキストを解析中...",
+      "cta": "プレビューを生成"
+    },
+    "form": {
+      "stepLabel": "ステップ {current}/{total}",
+      "steps": {
+        "personalTitle": "個人情報",
+        "personalDescription": "履歴書ヘッダー用の基本情報。",
+        "profileTitle": "プロフィールとスキル",
+        "profileDescription": "経験と主要スキルを要約。",
+        "experienceTitle": "経験と学歴",
+        "experienceDescription": "主な役割と学歴を追加。"
+      },
+      "fields": {
+        "fullName": "氏名 *",
+        "title": "職種タイトル",
+        "location": "所在地",
+        "email": "メール *",
+        "linkedin": "LinkedIn",
+        "github": "GitHub",
+        "profile": "プロフィール *",
+        "skills": "主要スキル *",
+        "experienceRole": "主な役割",
+        "experienceCompany": "会社",
+        "experiencePeriod": "期間",
+        "educationTitle": "学歴",
+        "educationInstitution": "学校/機関",
+        "educationPeriod": "年 / 期間",
+        "experienceHighlights": "主な実績（任意）"
+      },
+      "placeholders": {
+        "fullName": "例：山田 太郎",
+        "title": "例：データサイエンティスト",
+        "location": "都市、国",
+        "email": "you@email.com",
+        "linkedin": "https://linkedin.com/in/your-profile",
+        "github": "https://github.com/your-username",
+        "profile": "経験や専門分野の簡潔な要約",
+        "skills": "例：Python、機械学習、SQL",
+        "experienceRole": "例：AI エンジニア",
+        "experienceCompany": "会社名",
+        "experiencePeriod": "2023 - 現在",
+        "educationTitle": "例：システム工学",
+        "educationInstitution": "大学 / 研究機関",
+        "educationPeriod": "2022 - 2026",
+        "experienceHighlights": "成果や責任を1行ずつ"
+      },
+      "helperSkills": "カンマで区切ってください。",
+      "buttons": {
+        "prev": "戻る",
+        "next": "次へ",
+        "generate": "プレビューを生成"
+      },
+      "defaults": {
+        "city": "あなたの都市",
+        "linkedin": "https://linkedin.com/in/your-profile",
+        "github": "https://github.com/your-username",
+        "languages": "日本語、英語",
+        "company": "あなたの会社",
+        "remote": "リモート",
+        "current": "現在",
+        "educationTitle": "あなたの学歴",
+        "specialization": "あなたの専門",
+        "institution": "あなたの学校",
+        "trainingDescription": "注目の学歴"
+      }
+    },
+    "preview": {
+      "back": "戻る",
+      "badge": "60%プレビュー",
+      "sections": {
+        "summary": "職務概要",
+        "skills": "注目スキル",
+        "experience": "主な経験",
+        "education": "学歴"
+      },
+      "empty": {
+        "experience": "経験を追加するとここに表示されます。",
+        "education": "学歴を追加するとここに表示されます。"
+      },
+      "fallbacks": {
+        "fullName": "あなたの氏名",
+        "location": "あなたの都市、国",
+        "email": "you@email.com",
+        "profile": "あなたの職務プロフィールと目標の簡単な要約。",
+        "achievements": "主な実績の要約",
+        "skills": ["AI", "機械学習", "Python", "データ", "自動化", "分析"]
+      },
+      "locked": {
+        "projects": "注目プロジェクト",
+        "certificates": "認定資格",
+        "insights": "AIインサイト",
+        "label": "デモではロック"
+      },
+      "cta": {
+        "title": "完全版のCVを見たいですか？",
+        "description": "Vitae.aiをインストールして、すべてのセクション、インサイト、機能を解除してください。",
+        "install": "Vitae.aiをインストール",
+        "guide": "ガイドを見る"
+      },
+      "links": {
+        "linkedin": "LinkedIn",
+        "github": "GitHub"
+      }
+    },
+    "errors": {
+      "apiKeyMissing": "APIキーが設定されていません。",
+      "invalidFile": "無効なファイルです。",
+      "unsupportedFormat": "未対応の形式です。",
+      "fileTooLarge": "ファイルが{max}MBを超えています。",
+      "emptyText": "履歴書にテキストが見つかりません。",
+      "invalidResponse": "モデルの応答が無効です。",
+      "processingFailed": "履歴書を処理できませんでした。",
+      "unknown": "不明なエラー。"
     }
   }
 }

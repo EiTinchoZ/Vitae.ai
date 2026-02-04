@@ -10,9 +10,11 @@ import {
   ChevronRight,
   Loader2,
   BarChart3,
-  DollarSign,
-  Compass,
+  Briefcase,
+  Code,
+  Star,
   RefreshCw,
+  FileText,
 } from 'lucide-react';
 import {
   RadarChart,
@@ -28,11 +30,11 @@ import { Badge } from '@/components/ui/badge';
 import { useTranslation } from '@/i18n';
 
 interface Insights {
-  careerScore: number;
-  strengths: string[];
+  profileScore: number;
+  keyStrengths: string[];
   uniqueValue: string;
-  marketFit: string;
-  recommendations: string[];
+  idealRoles: string[];
+  standoutFactors: string[];
   skillsRadar: {
     ai: number;
     programming: number;
@@ -40,12 +42,12 @@ interface Insights {
     softSkills: number;
     languages: number;
   };
-  salaryRange: {
-    min: number;
-    max: number;
-    currency: string;
-  };
-  careerPaths: string[];
+  experienceTimeline: Array<{
+    period: string;
+    highlight: string;
+  }>;
+  techStack: string[];
+  recruiterSummary: string;
 }
 
 export function InsightsDashboard() {
@@ -54,7 +56,6 @@ export function InsightsDashboard() {
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const numberFormat = new Intl.NumberFormat(language);
 
   const generateInsights = async () => {
     setIsLoading(true);
@@ -105,7 +106,6 @@ export function InsightsDashboard() {
         { skill: t('insights.radar.languages'), value: insights.skillsRadar.languages, fullMark: 100 },
       ]
     : [];
-
 
   return (
     <div className="py-8">
@@ -174,12 +174,27 @@ export function InsightsDashboard() {
 
             {insights && (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {/* Career Score */}
+                {/* Recruiter Summary - Full Width */}
+                <Card className="col-span-full bg-gradient-to-br from-primary/5 to-secondary/5">
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-sm flex items-center gap-2">
+                      <FileText className="h-4 w-4 text-primary" />
+                      {t('insights.recruiterSummary')}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-base leading-relaxed">
+                      {insights.recruiterSummary}
+                    </p>
+                  </CardContent>
+                </Card>
+
+                {/* Profile Score */}
                 <Card className="col-span-1">
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm flex items-center gap-2">
                       <TrendingUp className="h-4 w-4 text-green-500" />
-                      {t('insights.careerScore')}
+                      {t('insights.profileScore')}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -202,43 +217,23 @@ export function InsightsDashboard() {
                             stroke="currentColor"
                             strokeWidth="6"
                             fill="none"
-                            strokeDasharray={`${(insights.careerScore / 100) * 220} 220`}
+                            strokeDasharray={`${(insights.profileScore / 100) * 220} 220`}
                             className="text-primary"
                           />
                         </svg>
                         <span className="absolute inset-0 flex items-center justify-center text-2xl font-bold">
-                          {insights.careerScore}
+                          {insights.profileScore}
                         </span>
                       </div>
                       <div className="flex-1">
                         <p className="text-sm text-muted-foreground">
-                          {insights.careerScore >= 80
+                          {insights.profileScore >= 80
                             ? t('insights.scoreNote.excellent')
-                            : insights.careerScore >= 60
+                            : insights.profileScore >= 60
                             ? t('insights.scoreNote.good')
                             : t('insights.scoreNote.improve')}
                         </p>
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Salary Range */}
-                <Card className="col-span-1">
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-sm flex items-center gap-2">
-                      <DollarSign className="h-4 w-4 text-green-500" />
-                      {t('insights.salaryRange')}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-center">
-                      <p className="text-3xl font-bold text-primary">
-                        ${numberFormat.format(insights.salaryRange.min)} - ${numberFormat.format(insights.salaryRange.max)}
-                      </p>
-                      <p className="text-sm text-muted-foreground mt-1">
-                        {insights.salaryRange.currency} / {t('insights.salaryPeriod')}
-                      </p>
                     </div>
                   </CardContent>
                 </Card>
@@ -255,6 +250,25 @@ export function InsightsDashboard() {
                     <p className="text-sm text-muted-foreground">
                       {insights.uniqueValue}
                     </p>
+                  </CardContent>
+                </Card>
+
+                {/* Ideal Roles */}
+                <Card className="col-span-1">
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-sm flex items-center gap-2">
+                      <Briefcase className="h-4 w-4 text-indigo-500" />
+                      {t('insights.idealRoles')}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex flex-wrap gap-2">
+                      {insights.idealRoles.map((role, i) => (
+                        <Badge key={i} variant="secondary" className="text-xs">
+                          {role}
+                        </Badge>
+                      ))}
+                    </div>
                   </CardContent>
                 </Card>
 
@@ -289,17 +303,17 @@ export function InsightsDashboard() {
                   </CardContent>
                 </Card>
 
-                {/* Strengths */}
+                {/* Key Strengths */}
                 <Card className="col-span-1">
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm flex items-center gap-2">
                       <Sparkles className="h-4 w-4 text-amber-500" />
-                      {t('insights.strengths')}
+                      {t('insights.keyStrengths')}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-2">
-                      {insights.strengths.map((strength, i) => (
+                      {insights.keyStrengths.map((strength, i) => (
                         <div key={i} className="flex items-center gap-2">
                           <ChevronRight className="h-3 w-3 text-primary" />
                           <span className="text-sm">{strength}</span>
@@ -309,36 +323,36 @@ export function InsightsDashboard() {
                   </CardContent>
                 </Card>
 
-                {/* Career Paths */}
+                {/* Tech Stack */}
                 <Card className="col-span-1">
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm flex items-center gap-2">
-                      <Compass className="h-4 w-4 text-indigo-500" />
-                      {t('insights.careerPaths')}
+                      <Code className="h-4 w-4 text-cyan-500" />
+                      {t('insights.techStack')}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="flex flex-wrap gap-2">
-                      {insights.careerPaths.map((path, i) => (
-                        <Badge key={i} variant="secondary" className="text-xs">
-                          {path}
+                      {insights.techStack.map((tech, i) => (
+                        <Badge key={i} variant="outline" className="text-xs">
+                          {tech}
                         </Badge>
                       ))}
                     </div>
                   </CardContent>
                 </Card>
 
-                {/* Recommendations */}
+                {/* Standout Factors */}
                 <Card className="col-span-full">
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm flex items-center gap-2">
-                      <Target className="h-4 w-4 text-green-500" />
-                      {t('insights.recommendations')}
+                      <Star className="h-4 w-4 text-yellow-500" />
+                      {t('insights.standoutFactors')}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="grid sm:grid-cols-3 gap-3">
-                      {insights.recommendations.map((rec, i) => (
+                      {insights.standoutFactors.map((factor, i) => (
                         <div
                           key={i}
                           className="p-3 rounded-lg bg-muted/30 text-sm flex items-start gap-2"
@@ -346,7 +360,7 @@ export function InsightsDashboard() {
                           <span className="w-5 h-5 rounded-full bg-primary/20 text-primary flex items-center justify-center text-xs flex-shrink-0">
                             {i + 1}
                           </span>
-                          {rec}
+                          {factor}
                         </div>
                       ))}
                     </div>

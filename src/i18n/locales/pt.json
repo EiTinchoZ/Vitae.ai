@@ -11,6 +11,7 @@
   },
   "hero": {
     "title": "Estudante de Engenharia Industrial e Tecnico Superior em Inteligencia Artificial",
+    "slogan": "Sua carreira, impulsionada por IA",
     "downloadCV": "Baixar CV",
     "specialties": {
       "ml": "Machine Learning",
@@ -107,6 +108,8 @@
     "info": {
       "email": "Email",
       "phone": "Telefone",
+      "phoneViaEmail": "Entre em contato por email",
+      "phoneRequestSubject": "Solicitacao de numero de telefone",
       "location": "Localizacao"
     },
     "social": {
@@ -187,26 +190,25 @@
     }
   },
   "insights": {
-    "title": "Análise de Carreira com IA",
-    "subtitle": "Obtenha insights personalizados sobre seu perfil profissional",
+    "title": "Insights de IA para Recrutadores",
+    "subtitle": "Análise inteligente do perfil profissional",
     "generate": "Gerar análise",
     "regenerate": "Regerar",
-    "careerScore": "Pontuação de Carreira",
-    "strengths": "Principais Forças",
+    "profileScore": "Força do Perfil",
+    "keyStrengths": "Pontos Fortes",
     "uniqueValue": "Proposta de Valor",
-    "marketFit": "Adequação ao Mercado",
-    "recommendations": "Recomendações",
+    "idealRoles": "Funções Ideais",
+    "standoutFactors": "Fatores de Destaque",
     "skillsRadar": "Radar de Habilidades",
-    "salaryRange": "Faixa Salarial Estimada",
-    "careerPaths": "Caminhos de Carreira",
-    "loading": "Analisando seu perfil...",
+    "techStack": "Stack Tecnológico",
+    "recruiterSummary": "Resumo Executivo",
+    "loading": "Analisando perfil...",
     "error": "Erro ao gerar insights. Tente novamente.",
     "scoreNote": {
-      "excellent": "Excelente perfil profissional",
-      "good": "Bom potencial de crescimento",
-      "improve": "Oportunidades de melhoria"
+      "excellent": "Perfil altamente competitivo",
+      "good": "Perfil sólido com potencial",
+      "improve": "Perfil em crescimento"
     },
-    "salaryPeriod": "ano",
     "radar": {
       "ai": "IA/ML",
       "programming": "Programação",
@@ -256,6 +258,157 @@
       "easy": "Fácil",
       "medium": "Médio",
       "hard": "Difícil"
+    }
+  },
+  "demo": {
+    "badge": "Demo interativa",
+    "titlePrefix": "Experimente",
+    "titleBrand": "Vitae.ai",
+    "description": "Envie seu CV e veja um preview de como ficaria seu portfólio digital com IA. Este é um preview de 60%: para o resultado completo, instale o Vitae.ai.",
+    "cardTitle": "Insira suas informações",
+    "cardSubtitle": "Escolha como deseja fornecer os dados do seu CV",
+    "tabs": {
+      "upload": "Enviar arquivo",
+      "form": "Formulário",
+      "paste": "Colar texto"
+    },
+    "infoCards": {
+      "uploadTitle": "Enviar PDF/DOCX",
+      "uploadDescription": "Envie seu CV existente e a IA extrairá as informações automaticamente.",
+      "formTitle": "Formulário guiado",
+      "formDescription": "Preencha um formulário passo a passo com todas as suas informações.",
+      "pasteTitle": "Colar texto",
+      "pasteDescription": "Copie e cole o conteúdo do seu CV e a IA irá estruturá-lo."
+    },
+    "upload": {
+      "dragTitle": "Arraste seu CV aqui",
+      "dragSubtitle": "ou clique para selecionar",
+      "selectButton": "Selecionar arquivo",
+      "fileHint": "PDF ou DOCX · Máx {max}MB",
+      "errorUnsupported": "Formato não suportado. Apenas PDF ou DOCX.",
+      "errorTooLarge": "O arquivo excede {max}MB.",
+      "errorNoFile": "Selecione um arquivo primeiro.",
+      "processing": "Processando CV...",
+      "cta": "Gerar preview"
+    },
+    "paste": {
+      "label": "Texto do CV",
+      "placeholder": "Cole aqui o conteúdo completo do seu CV...",
+      "errorEmpty": "Cole o texto do seu CV para continuar.",
+      "processing": "Analisando texto...",
+      "cta": "Gerar preview"
+    },
+    "form": {
+      "stepLabel": "Etapa {current} de {total}",
+      "steps": {
+        "personalTitle": "Dados pessoais",
+        "personalDescription": "Informações básicas para o cabeçalho do CV.",
+        "profileTitle": "Perfil e habilidades",
+        "profileDescription": "Resuma sua experiência e principais skills.",
+        "experienceTitle": "Experiência e educação",
+        "experienceDescription": "Adicione seu cargo principal e formação acadêmica."
+      },
+      "fields": {
+        "fullName": "Nome completo *",
+        "title": "Título profissional",
+        "location": "Localização",
+        "email": "Email *",
+        "linkedin": "LinkedIn",
+        "github": "GitHub",
+        "profile": "Perfil profissional *",
+        "skills": "Habilidades principais *",
+        "experienceRole": "Cargo principal",
+        "experienceCompany": "Empresa",
+        "experiencePeriod": "Período",
+        "educationTitle": "Formação",
+        "educationInstitution": "Instituição",
+        "educationPeriod": "Ano / Período",
+        "experienceHighlights": "Principais conquistas (opcional)"
+      },
+      "placeholders": {
+        "fullName": "Ex: Maria Gonçalves",
+        "title": "Ex: Cientista de Dados",
+        "location": "Cidade, País",
+        "email": "seu@email.com",
+        "linkedin": "https://linkedin.com/in/seu-perfil",
+        "github": "https://github.com/seu-usuario",
+        "profile": "Resumo breve sobre sua experiência e foco profissional",
+        "skills": "Ex: Python, Machine Learning, SQL",
+        "experienceRole": "Ex: Engenheiro de IA",
+        "experienceCompany": "Nome da empresa",
+        "experiencePeriod": "2023 - Atual",
+        "educationTitle": "Ex: Engenharia de Sistemas",
+        "educationInstitution": "Universidade / Instituto",
+        "educationPeriod": "2022 - 2026",
+        "experienceHighlights": "Uma linha por conquista ou responsabilidade"
+      },
+      "helperSkills": "Separe por vírgulas.",
+      "buttons": {
+        "prev": "Anterior",
+        "next": "Próximo",
+        "generate": "Gerar preview"
+      },
+      "defaults": {
+        "city": "Sua cidade",
+        "linkedin": "https://linkedin.com/in/seu-perfil",
+        "github": "https://github.com/seu-usuario",
+        "languages": "Português, Inglês",
+        "company": "Sua empresa",
+        "remote": "Remoto",
+        "current": "Atual",
+        "educationTitle": "Sua formação",
+        "specialization": "Sua especialidade",
+        "institution": "Sua instituição",
+        "trainingDescription": "Formação em destaque"
+      }
+    },
+    "preview": {
+      "back": "Voltar",
+      "badge": "Preview 60%",
+      "sections": {
+        "summary": "Resumo profissional",
+        "skills": "Habilidades destacadas",
+        "experience": "Experiência principal",
+        "education": "Formação"
+      },
+      "empty": {
+        "experience": "Adicione experiência para vê-la aqui.",
+        "education": "Adicione formação para vê-la aqui."
+      },
+      "fallbacks": {
+        "fullName": "Seu Nome Completo",
+        "location": "Sua cidade, país",
+        "email": "seu@email.com",
+        "profile": "Resumo breve do seu perfil profissional e objetivos.",
+        "achievements": "Resumo de conquistas principais",
+        "skills": ["IA", "Machine Learning", "Python", "Dados", "Automação", "Analítica"]
+      },
+      "locked": {
+        "projects": "Projetos em destaque",
+        "certificates": "Certificações",
+        "insights": "Insights com IA",
+        "label": "Bloqueado na demo"
+      },
+      "cta": {
+        "title": "Quer ver o CV completo?",
+        "description": "Instale o Vitae.ai e desbloqueie todas as seções, insights e funcionalidades.",
+        "install": "Instalar Vitae.ai",
+        "guide": "Ver guia"
+      },
+      "links": {
+        "linkedin": "LinkedIn",
+        "github": "GitHub"
+      }
+    },
+    "errors": {
+      "apiKeyMissing": "A API key não está configurada.",
+      "invalidFile": "Arquivo inválido.",
+      "unsupportedFormat": "Formato não suportado.",
+      "fileTooLarge": "O arquivo excede {max}MB.",
+      "emptyText": "Nenhum texto encontrado no CV.",
+      "invalidResponse": "Resposta inválida do modelo.",
+      "processingFailed": "Não foi possível processar o CV.",
+      "unknown": "Erro desconhecido."
     }
   }
 }

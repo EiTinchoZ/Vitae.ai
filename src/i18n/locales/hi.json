@@ -11,6 +11,7 @@
   },
   "hero": {
     "title": "औद्योगिक इंजीनियरिंग छात्र और AI वरिष्ठ तकनीशियन",
+    "slogan": "AI द्वारा संचालित आपका करियर",
     "downloadCV": "CV डाउनलोड करें",
     "specialties": {
       "ml": "मशीन लर्निंग",
@@ -107,6 +108,8 @@
     "info": {
       "email": "ईमेल",
       "phone": "फोन",
+      "phoneViaEmail": "ईमेल के माध्यम से संपर्क करें",
+      "phoneRequestSubject": "फोन नंबर अनुरोध",
       "location": "स्थान"
     },
     "social": {
@@ -187,26 +190,25 @@
     }
   },
   "insights": {
-    "title": "AI करियर विश्लेषण",
-    "subtitle": "अपने पेशेवर प्रोफ़ाइल पर वैयक्तिकृत इनसाइट्स प्राप्त करें",
+    "title": "रिक्रूटर्स के लिए AI इनसाइट्स",
+    "subtitle": "पेशेवर प्रोफ़ाइल का स्मार्ट विश्लेषण",
     "generate": "विश्लेषण बनाएं",
     "regenerate": "फिर से बनाएं",
-    "careerScore": "करियर स्कोर",
-    "strengths": "मुख्य ताकतें",
-    "uniqueValue": "विशिष्ट मूल्य",
-    "marketFit": "मार्केट फिट",
-    "recommendations": "सिफारिशें",
+    "profileScore": "प्रोफ़ाइल शक्ति",
+    "keyStrengths": "मुख्य ताकतें",
+    "uniqueValue": "मूल्य प्रस्ताव",
+    "idealRoles": "आदर्श भूमिकाएं",
+    "standoutFactors": "विशिष्ट कारक",
     "skillsRadar": "कौशल रडार",
-    "salaryRange": "अनुमानित वेतन सीमा",
-    "careerPaths": "करियर पथ",
-    "loading": "आपकी प्रोफ़ाइल का विश्लेषण हो रहा है...",
+    "techStack": "टेक स्टैक",
+    "recruiterSummary": "कार्यकारी सारांश",
+    "loading": "प्रोफ़ाइल का विश्लेषण हो रहा है...",
     "error": "इनसाइट्स बनाने में त्रुटि हुई। कृपया पुनः प्रयास करें।",
     "scoreNote": {
-      "excellent": "उत्कृष्ट पेशेवर प्रोफ़ाइल",
-      "good": "अच्छी वृद्धि क्षमता",
-      "improve": "सुधार के अवसर"
+      "excellent": "अत्यधिक प्रतिस्पर्धी प्रोफ़ाइल",
+      "good": "क्षमता के साथ मजबूत प्रोफ़ाइल",
+      "improve": "बढ़ती प्रोफ़ाइल"
     },
-    "salaryPeriod": "वर्ष",
     "radar": {
       "ai": "AI/ML",
       "programming": "प्रोग्रामिंग",
@@ -256,6 +258,157 @@
       "easy": "आसान",
       "medium": "मध्यम",
       "hard": "कठिन"
+    }
+  },
+  "demo": {
+    "badge": "इंटरैक्टिव डेमो",
+    "titlePrefix": "आज़माएँ",
+    "titleBrand": "Vitae.ai",
+    "description": "अपना CV अपलोड करें और देखें कि आपका AI-संचालित डिजिटल पोर्टफोलियो कैसा दिखेगा। यह 60% का प्रीव्यू है — पूरा परिणाम पाने के लिए Vitae.ai इंस्टॉल करें।",
+    "cardTitle": "अपनी जानकारी दर्ज करें",
+    "cardSubtitle": "अपना CV डेटा देने का तरीका चुनें",
+    "tabs": {
+      "upload": "फ़ाइल अपलोड",
+      "form": "फ़ॉर्म",
+      "paste": "टेक्स्ट पेस्ट"
+    },
+    "infoCards": {
+      "uploadTitle": "PDF/DOCX अपलोड करें",
+      "uploadDescription": "अपना मौजूदा CV अपलोड करें और AI जानकारी अपने आप निकालेगा।",
+      "formTitle": "गाइडेड फ़ॉर्म",
+      "formDescription": "स्टेप-बाय-स्टेप फ़ॉर्म से अपनी जानकारी भरें।",
+      "pasteTitle": "टेक्स्ट पेस्ट करें",
+      "pasteDescription": "CV का कंटेंट कॉपी-पेस्ट करें, AI उसे संरचित करेगा।"
+    },
+    "upload": {
+      "dragTitle": "अपना CV यहाँ ड्रैग करें",
+      "dragSubtitle": "या क्लिक करके चुनें",
+      "selectButton": "फ़ाइल चुनें",
+      "fileHint": "PDF या DOCX · अधिकतम {max}MB",
+      "errorUnsupported": "समर्थित नहीं। केवल PDF या DOCX।",
+      "errorTooLarge": "फ़ाइल {max}MB से बड़ी है।",
+      "errorNoFile": "पहले फ़ाइल चुनें।",
+      "processing": "CV प्रोसेस हो रहा है...",
+      "cta": "प्रीव्यू बनाएं"
+    },
+    "paste": {
+      "label": "CV टेक्स्ट",
+      "placeholder": "यहाँ अपना पूरा CV टेक्स्ट पेस्ट करें...",
+      "errorEmpty": "जारी रखने के लिए CV टेक्स्ट पेस्ट करें।",
+      "processing": "टेक्स्ट का विश्लेषण हो रहा है...",
+      "cta": "प्रीव्यू बनाएं"
+    },
+    "form": {
+      "stepLabel": "चरण {current} / {total}",
+      "steps": {
+        "personalTitle": "व्यक्तिगत जानकारी",
+        "personalDescription": "CV हेडर के लिए बुनियादी जानकारी।",
+        "profileTitle": "प्रोफ़ाइल और स्किल्स",
+        "profileDescription": "अपना अनुभव और मुख्य स्किल्स संक्षेप में लिखें।",
+        "experienceTitle": "अनुभव और शिक्षा",
+        "experienceDescription": "अपना मुख्य रोल और शिक्षा जोड़ें।"
+      },
+      "fields": {
+        "fullName": "पूरा नाम *",
+        "title": "प्रोफ़ेशनल टाइटल",
+        "location": "लोकेशन",
+        "email": "ईमेल *",
+        "linkedin": "LinkedIn",
+        "github": "GitHub",
+        "profile": "प्रोफ़ेशनल प्रोफ़ाइल *",
+        "skills": "मुख्य स्किल्स *",
+        "experienceRole": "मुख्य रोल",
+        "experienceCompany": "कंपनी",
+        "experiencePeriod": "अवधि",
+        "educationTitle": "शिक्षा",
+        "educationInstitution": "संस्थान",
+        "educationPeriod": "वर्ष / अवधि",
+        "experienceHighlights": "मुख्य उपलब्धियाँ (वैकल्पिक)"
+      },
+      "placeholders": {
+        "fullName": "उदा: मारिया गोंजालेज़",
+        "title": "उदा: डेटा साइंटिस्ट",
+        "location": "शहर, देश",
+        "email": "you@email.com",
+        "linkedin": "https://linkedin.com/in/your-profile",
+        "github": "https://github.com/your-username",
+        "profile": "अपने अनुभव और फोकस का संक्षिप्त सार",
+        "skills": "उदा: Python, Machine Learning, SQL",
+        "experienceRole": "उदा: AI Engineer",
+        "experienceCompany": "कंपनी का नाम",
+        "experiencePeriod": "2023 - वर्तमान",
+        "educationTitle": "उदा: सिस्टम इंजीनियरिंग",
+        "educationInstitution": "विश्वविद्यालय / संस्थान",
+        "educationPeriod": "2022 - 2026",
+        "experienceHighlights": "हर उपलब्धि/जिम्मेदारी के लिए एक पंक्ति"
+      },
+      "helperSkills": "कॉमा से अलग करें।",
+      "buttons": {
+        "prev": "पिछला",
+        "next": "अगला",
+        "generate": "प्रीव्यू बनाएं"
+      },
+      "defaults": {
+        "city": "आपका शहर",
+        "linkedin": "https://linkedin.com/in/your-profile",
+        "github": "https://github.com/your-username",
+        "languages": "हिंदी, अंग्रेज़ी",
+        "company": "आपकी कंपनी",
+        "remote": "रिमोट",
+        "current": "वर्तमान",
+        "educationTitle": "आपकी शिक्षा",
+        "specialization": "आपकी विशेषज्ञता",
+        "institution": "आपका संस्थान",
+        "trainingDescription": "मुख्य शिक्षा"
+      }
+    },
+    "preview": {
+      "back": "वापस",
+      "badge": "60% प्रीव्यू",
+      "sections": {
+        "summary": "प्रोफ़ेशनल सार",
+        "skills": "हाइलाइटेड स्किल्स",
+        "experience": "मुख्य अनुभव",
+        "education": "शिक्षा"
+      },
+      "empty": {
+        "experience": "यहाँ दिखाने के लिए अनुभव जोड़ें।",
+        "education": "यहाँ दिखाने के लिए शिक्षा जोड़ें।"
+      },
+      "fallbacks": {
+        "fullName": "आपका पूरा नाम",
+        "location": "आपका शहर, देश",
+        "email": "you@email.com",
+        "profile": "आपकी प्रोफ़ेशनल प्रोफ़ाइल और लक्ष्यों का संक्षिप्त सार।",
+        "achievements": "मुख्य उपलब्धियों का सार",
+        "skills": ["AI", "Machine Learning", "Python", "डेटा", "ऑटोमेशन", "एनालिटिक्स"]
+      },
+      "locked": {
+        "projects": "फीचर्ड प्रोजेक्ट्स",
+        "certificates": "प्रमाणपत्र",
+        "insights": "AI इनसाइट्स",
+        "label": "डेमो में लॉक"
+      },
+      "cta": {
+        "title": "पूरा CV देखना चाहते हैं?",
+        "description": "Vitae.ai इंस्टॉल करें और सभी सेक्शन, इनसाइट्स और फीचर्स अनलॉक करें।",
+        "install": "Vitae.ai इंस्टॉल करें",
+        "guide": "गाइड देखें"
+      },
+      "links": {
+        "linkedin": "LinkedIn",
+        "github": "GitHub"
+      }
+    },
+    "errors": {
+      "apiKeyMissing": "API की कॉन्फ़िगर नहीं है।",
+      "invalidFile": "अमान्य फ़ाइल।",
+      "unsupportedFormat": "समर्थित नहीं।",
+      "fileTooLarge": "फ़ाइल {max}MB से बड़ी है।",
+      "emptyText": "CV में कोई टेक्स्ट नहीं मिला।",
+      "invalidResponse": "मॉडल का उत्तर अमान्य है।",
+      "processingFailed": "CV प्रोसेस नहीं हो पाया।",
+      "unknown": "अज्ञात त्रुटि।"
     }
   }
 }

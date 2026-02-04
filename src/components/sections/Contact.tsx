@@ -22,8 +22,8 @@ export function Contact() {
     {
       icon: Phone,
       label: t('contact.info.phone'),
-      value: cvData.personal.phone,
-      href: `tel:${cvData.personal.phone.replace(/\s/g, '')}`,
+      value: t('contact.info.phoneViaEmail'),
+      href: `mailto:${cvData.personal.email}?subject=${encodeURIComponent(t('contact.info.phoneRequestSubject'))}`,
     },
     {
       icon: MapPin,

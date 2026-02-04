@@ -2,6 +2,7 @@ import { createGroq } from '@ai-sdk/groq';
 import { streamText } from 'ai';
 import { buildSystemPrompt } from '@/lib/ai-system-prompt';
 import { getCvData } from '@/data/cv-data';
+import { validateLanguage, createErrorResponse } from '@/lib/api-validation';
 
 
 export async function POST(req: Request) {
@@ -19,14 +20,20 @@ export async function POST(req: Request) {
       apiKey: process.env.GROQ_API_KEY,
     });
 
-    const { messages, language = 'es' } = await req.json();
+    const body = await req.json();
+    const language = validateLanguage(body.language);
+
+    if (!body.messages || !Array.isArray(body.messages)) {
+      return createErrorResponse('Invalid messages format');
+    }
+
     const cvData = getCvData(language);
     const enhancedSystemPrompt = buildSystemPrompt(language, cvData);
 
     const result = streamText({
       model: groq('llama-3.3-70b-versatile'),
       system: enhancedSystemPrompt,
-      messages,
+      messages: body.messages,
     });
 
     return result.toTextStreamResponse();
