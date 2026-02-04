@@ -12,7 +12,7 @@ Plataforma web que centraliza toda mi informacion profesional en un solo lugar: 
 ![Framer](https://img.shields.io/badge/Framer_Motion-11-ff0055?style=flat-square&logo=framer)
 ![License](https://img.shields.io/badge/License-MIT-22c55e?style=flat-square)
 
-**Demo en vivo:** [portafolio-cv-interactivo-ia.vercel.app](https://portafolio-cv-interactivo-ia.vercel.app)
+**Demo en vivo:** [cv-digital-ia.vercel.app](https://cv-digital-ia.vercel.app)
 
 ---
 
