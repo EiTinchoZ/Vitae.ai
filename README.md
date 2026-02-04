@@ -12,7 +12,7 @@ Plataforma web que centraliza toda mi informacion profesional en un solo lugar: 
 ![Framer](https://img.shields.io/badge/Framer_Motion-11-ff0055?style=flat-square&logo=framer)
 ![License](https://img.shields.io/badge/License-MIT-22c55e?style=flat-square)
 
-**Demo en vivo:** [cv-martinbundy.vercel.app](https://cv-martinbundy.vercel.app)
+**Demo en vivo:** [portafolio-cv-interactivo-ia.vercel.app](https://portafolio-cv-interactivo-ia.vercel.app)
 
 ---
 
@@ -41,6 +41,7 @@ Plataforma web que centraliza toda mi informacion profesional en un solo lugar: 
 - **Contacto directo** — Multiples canales de comunicacion con CTAs para descarga de CV y contacto por email.
 - **Modo oscuro/claro** — Toggle de tema con persistencia entre sesiones.
 - **Responsive design** — Optimizado para desktop, tablet y mobile.
+- **Asistente IA** — Chatbot inteligente que responde preguntas sobre experiencia, proyectos y habilidades usando Groq LLM.
 
 ---
 
@@ -56,6 +57,7 @@ Plataforma web que centraliza toda mi informacion profesional en un solo lugar: 
 | Iconos | Lucide React |
 | Tema | next-themes |
 | API | GitHub REST API v3 |
+| IA/LLM | Groq + Vercel AI SDK |
 | Deploy | Vercel |
 
 ---
@@ -65,10 +67,12 @@ Plataforma web que centraliza toda mi informacion profesional en un solo lugar: 
 ```
 src/
 ├── app/                    # Next.js App Router
+│   ├── api/chat/           # API endpoint para chatbot IA
 │   ├── layout.tsx          # Layout principal con providers
 │   ├── page.tsx            # Pagina principal
 │   └── globals.css         # Estilos globales y variables CSS
 ├── components/
+│   ├── chat/               # Componente ChatBot flotante
 │   ├── sections/           # 8 secciones del portfolio
 │   │   ├── Hero.tsx
 │   │   ├── About.tsx
