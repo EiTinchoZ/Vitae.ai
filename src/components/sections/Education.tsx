@@ -3,16 +3,32 @@
 import { motion } from 'framer-motion';
 import { GraduationCap, Calendar, CheckCircle2, Clock } from 'lucide-react';
 import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
+import { SectionQA } from '@/components/ai/SectionQA';
 import { Badge } from '@/components/ui/badge';
 import { cvData } from '@/data/cv-data';
 import { useTranslation } from '@/i18n';
 
 export function Education() {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
+
+  const suggestedQuestions = language === 'es'
+    ? [
+        '¿Por qué estudias dos carreras?',
+        '¿Cómo combinas IA con Ingeniería Industrial?',
+        '¿Cuáles son tus metas académicas?',
+      ]
+    : [
+        'Why are you studying two degrees?',
+        'How do you combine AI with Industrial Engineering?',
+        'What are your academic goals?',
+      ];
 
   return (
     <SectionWrapper id="education">
-      <SectionTitle subtitle={t('education.subtitle')}>
+      <SectionTitle
+        subtitle={t('education.subtitle')}
+        action={<SectionQA section="education" suggestedQuestions={suggestedQuestions} />}
+      >
         {t('education.title')}
       </SectionTitle>
 

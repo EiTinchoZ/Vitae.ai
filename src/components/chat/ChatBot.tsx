@@ -2,8 +2,9 @@
 
 import { useState, useRef, useEffect, FormEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X, Send, Bot, User, Sparkles } from 'lucide-react';
+import { MessageCircle, X, Send, Bot, User, Sparkles, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useTranslation } from '@/i18n';
 import { cn } from '@/lib/utils';
 
 interface Message {
@@ -12,25 +13,24 @@ interface Message {
   content: string;
 }
 
-const suggestedQuestions = [
-  '¿Cual es la experiencia de Martin?',
-  '¿Que proyectos ha realizado?',
-  '¿Cuales son sus habilidades?',
-  '¿Que certificaciones tiene?',
-];
-
 export function ChatBot() {
+  const { t, language } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: 'welcome',
-      role: 'assistant',
-      content: '¡Hola! Soy el asistente virtual de Martin Bundy. Puedo responder preguntas sobre su experiencia, habilidades, proyectos y certificaciones. ¿En que puedo ayudarte?',
-    },
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Initialize messages with welcome message based on language
+  useEffect(() => {
+    setMessages([
+      {
+        id: 'welcome',
+        role: 'assistant',
+        content: t('chat.welcome'),
+      },
+    ]);
+  }, [language, t]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -63,6 +63,7 @@ export function ChatBot() {
             role: m.role,
             content: m.content,
           })),
+          language,
         }),
       });
 
@@ -104,7 +105,7 @@ export function ChatBot() {
         {
           id: (Date.now() + 1).toString(),
           role: 'assistant',
-          content: 'Lo siento, hubo un error al procesar tu pregunta. Por favor intenta de nuevo.',
+          content: t('chat.error'),
         },
       ]);
     } finally {
@@ -115,6 +116,8 @@ export function ChatBot() {
   const handleSuggestedQuestion = (question: string) => {
     setInput(question);
   };
+
+  const suggestedQuestions = t('chat.suggestedQuestions') as unknown as string[];
 
   return (
     <>
@@ -128,7 +131,7 @@ export function ChatBot() {
         )}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        aria-label={isOpen ? 'Cerrar chat' : 'Abrir chat con asistente IA'}
+        aria-label={isOpen ? 'Close chat' : 'Open AI assistant chat'}
       >
         <AnimatePresence mode="wait">
           {isOpen ? (
@@ -174,9 +177,9 @@ export function ChatBot() {
                   <Sparkles className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold">Asistente IA</h3>
+                  <h3 className="font-semibold">{t('chat.title')}</h3>
                   <p className="text-xs text-muted-foreground">
-                    Pregunta sobre Martin Bundy
+                    Vitae.ai - Martin Bundy
                   </p>
                 </div>
               </div>
@@ -244,11 +247,13 @@ export function ChatBot() {
             </div>
 
             {/* Suggested Questions */}
-            {messages.length <= 1 && (
+            {messages.length <= 1 && Array.isArray(suggestedQuestions) && (
               <div className="px-4 pb-2">
-                <p className="text-xs text-muted-foreground mb-2">Preguntas sugeridas:</p>
+                <p className="text-xs text-muted-foreground mb-2">
+                  {language === 'es' ? 'Preguntas sugeridas:' : 'Suggested questions:'}
+                </p>
                 <div className="flex flex-wrap gap-2">
-                  {suggestedQuestions.map((question) => (
+                  {suggestedQuestions.map((question: string) => (
                     <button
                       key={question}
                       onClick={() => handleSuggestedQuestion(question)}
@@ -268,7 +273,7 @@ export function ChatBot() {
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="Escribe tu pregunta..."
+                  placeholder={t('chat.placeholder')}
                   className="flex-1 px-4 py-2 text-sm bg-muted rounded-full border-0 focus:outline-none focus:ring-2 focus:ring-primary/50"
                   disabled={isLoading}
                 />
@@ -278,7 +283,11 @@ export function ChatBot() {
                   className="rounded-full"
                   disabled={isLoading || !input.trim()}
                 >
-                  <Send className="h-4 w-4" />
+                  {isLoading ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : (
+                    <Send className="h-4 w-4" />
+                  )}
                 </Button>
               </div>
             </form>

@@ -18,32 +18,35 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Martín Bundy | Portfolio',
+  title: 'Vitae.ai | Martín Bundy - CV Digital con IA',
   description:
-    'Portfolio de Martín Bundy - Estudiante de Ingeniería Industrial y Técnico Superior en Inteligencia Artificial. Especializado en Machine Learning, Deep Learning y soluciones de IA.',
+    'Vitae.ai - Tu carrera, potenciada por inteligencia artificial. CV digital interactivo de Martín Bundy con análisis de IA, recomendaciones personalizadas y chat inteligente.',
   keywords: [
+    'Vitae.ai',
+    'CV Digital',
     'Martín Bundy',
-    'Portfolio',
     'Inteligencia Artificial',
     'Machine Learning',
     'Deep Learning',
-    'Python',
+    'Portfolio IA',
+    'CV Interactivo',
     'Ingeniería Industrial',
     'Panamá',
   ],
   authors: [{ name: 'Martín Bundy' }],
   openGraph: {
-    title: 'Martín Bundy | Portfolio',
+    title: 'Vitae.ai | Martín Bundy - CV Digital con IA',
     description:
-      'Estudiante de Ingeniería Industrial y Técnico Superior en IA especializado en Machine Learning y Deep Learning.',
+      'Tu carrera, potenciada por inteligencia artificial. CV digital interactivo con análisis de IA y recomendaciones personalizadas.',
     type: 'website',
     locale: 'es_PA',
+    siteName: 'Vitae.ai',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Martín Bundy | Portfolio',
+    title: 'Vitae.ai | Martín Bundy - CV Digital con IA',
     description:
-      'Estudiante de Ingeniería Industrial y Técnico Superior en IA especializado en Machine Learning y Deep Learning.',
+      'Tu carrera, potenciada por inteligencia artificial. CV digital interactivo con análisis de IA.',
   },
 };
 

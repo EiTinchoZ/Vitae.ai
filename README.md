@@ -1,12 +1,12 @@
-# Portfolio CV Interactivo
+# Vitae.ai - CV Digital Interactivo
 
 <p align="center">
   <strong>CV Digital Interactivo con Inteligencia Artificial</strong>
 </p>
 
-Plataforma web que centraliza toda mi informacion profesional en un solo lugar: trayectoria academica, experiencia laboral, certificaciones, proyectos destacados y habilidades tecnicas. Disenado para ofrecer una experiencia interactiva y moderna que va mas alla del CV tradicional en PDF.
+Plataforma web Vitae.ai que centraliza toda mi informacion profesional en un solo lugar: trayectoria academica, experiencia laboral, certificaciones, proyectos destacados y habilidades tecnicas. Disenado para ofrecer una experiencia interactiva y moderna que va mas alla del CV tradicional en PDF.
 
-![Next.js](https://img.shields.io/badge/Next.js-14-000000?style=flat-square&logo=next.js)
+![Next.js](https://img.shields.io/badge/Next.js-16-000000?style=flat-square&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.3-3178c6?style=flat-square&logo=typescript)
 ![Tailwind](https://img.shields.io/badge/Tailwind-3.4-06b6d4?style=flat-square&logo=tailwindcss)
 ![Framer](https://img.shields.io/badge/Framer_Motion-11-ff0055?style=flat-square&logo=framer)
@@ -135,7 +135,7 @@ Abrir `http://localhost:3000` en el navegador.
 
 El proyecto esta desplegado en Vercel con deployment automatico en cada push a `main`.
 
-**URL de produccion:** [cv-martinbundy.vercel.app](https://cv-martinbundy.vercel.app)
+**URL de produccion:** [cv-digital-ia.vercel.app](https://cv-digital-ia.vercel.app)
 
 ---
 

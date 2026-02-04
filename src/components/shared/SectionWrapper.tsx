@@ -37,13 +37,20 @@ export function SectionWrapper({
 export function SectionTitle({
   children,
   subtitle,
+  className,
+  action,
 }: {
   children: React.ReactNode;
   subtitle?: string;
+  className?: string;
+  action?: React.ReactNode;
 }) {
   return (
-    <div className="text-center mb-12">
-      <h2 className="text-3xl md:text-4xl font-bold mb-4">{children}</h2>
+    <div className={cn('text-center mb-12', className)}>
+      <div className="flex items-center justify-center gap-4 mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold">{children}</h2>
+        {action}
+      </div>
       {subtitle && (
         <p className="text-muted-foreground max-w-2xl mx-auto">{subtitle}</p>
       )}

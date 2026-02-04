@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Brain, Code, Factory, Laptop } from 'lucide-react';
 import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
+import { SectionQA } from '@/components/ai/SectionQA';
+import { SkillRecommender } from '@/components/ai/SkillRecommender';
 import { Button } from '@/components/ui/button';
 import { cvData, type SkillCategory } from '@/data/cv-data';
 import { useTranslation } from '@/i18n';
@@ -19,7 +21,7 @@ const categoryIcons = {
 const categoryKeys: SkillCategory[] = ['ai', 'programming', 'industrial', 'technology'];
 
 export function Skills() {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   const [activeCategory, setActiveCategory] = useState<SkillCategory | 'all'>('all');
 
   const filteredSkills =
@@ -27,9 +29,24 @@ export function Skills() {
       ? cvData.skills
       : cvData.skills.filter((skill) => skill.category === activeCategory);
 
+  const suggestedQuestions = language === 'es'
+    ? [
+        '¿Por qué elegiste especializarte en IA?',
+        '¿Cuál es tu habilidad más fuerte?',
+        '¿Cómo aprendiste estas tecnologías?',
+      ]
+    : [
+        'Why did you choose to specialize in AI?',
+        'What is your strongest skill?',
+        'How did you learn these technologies?',
+      ];
+
   return (
     <SectionWrapper id="skills" className="bg-muted/20">
-      <SectionTitle subtitle={t('skills.subtitle')}>
+      <SectionTitle
+        subtitle={t('skills.subtitle')}
+        action={<SectionQA section="skills" suggestedQuestions={suggestedQuestions} />}
+      >
         {t('skills.title')}
       </SectionTitle>
 
@@ -127,6 +144,9 @@ export function Skills() {
           );
         })}
       </div>
+
+      {/* AI Skill Recommender */}
+      <SkillRecommender />
     </SectionWrapper>
   );
 }

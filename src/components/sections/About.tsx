@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 import { MapPin, GraduationCap, Briefcase, Languages } from 'lucide-react';
 import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
+import { InsightsDashboard } from '@/components/ai/InsightsDashboard';
+import { ResumeAnalyzer } from '@/components/ai/ResumeAnalyzer';
 import { cvData } from '@/data/cv-data';
 import { useTranslation } from '@/i18n';
 
@@ -116,6 +118,12 @@ export function About() {
           </div>
         </motion.div>
       </div>
+
+      {/* AI Insights Dashboard */}
+      <InsightsDashboard />
+
+      {/* Resume Analyzer */}
+      <ResumeAnalyzer />
     </SectionWrapper>
   );
 }

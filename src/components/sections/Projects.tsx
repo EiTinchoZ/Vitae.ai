@@ -12,6 +12,7 @@ import {
   Zap,
 } from 'lucide-react';
 import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
+import { SectionQA } from '@/components/ai/SectionQA';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -31,7 +32,7 @@ const languageColors: Record<string, string> = {
 };
 
 export function Projects() {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -46,9 +47,24 @@ export function Projects() {
 
   const featuredProject = cvData.projects[0]; // Conecta Panama
 
+  const suggestedQuestions = language === 'es'
+    ? [
+        '¿Cuál fue el mayor reto de Conecta Panamá?',
+        '¿Qué tecnologías usaste más?',
+        '¿Tienes más proyectos de IA?',
+      ]
+    : [
+        'What was the biggest challenge in Conecta Panama?',
+        'What technologies did you use most?',
+        'Do you have more AI projects?',
+      ];
+
   return (
     <SectionWrapper id="projects" className="bg-muted/20">
-      <SectionTitle subtitle={t('projects.subtitle')}>
+      <SectionTitle
+        subtitle={t('projects.subtitle')}
+        action={<SectionQA section="projects" suggestedQuestions={suggestedQuestions} />}
+      >
         {t('projects.title')}
       </SectionTitle>
 
