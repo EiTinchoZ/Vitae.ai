@@ -12,7 +12,7 @@ Plataforma web que centraliza toda mi informacion profesional en un solo lugar: 
 ![Framer](https://img.shields.io/badge/Framer_Motion-11-ff0055?style=flat-square&logo=framer)
 ![License](https://img.shields.io/badge/License-MIT-22c55e?style=flat-square)
 
-**Demo en vivo:** [portfolio-jet-sigma-66.vercel.app](https://portfolio-jet-sigma-66.vercel.app)
+**Demo en vivo:** [cv-martinbundy.vercel.app](https://cv-martinbundy.vercel.app)
 
 ---
 
@@ -131,7 +131,7 @@ Abrir `http://localhost:3000` en el navegador.
 
 El proyecto esta desplegado en Vercel con deployment automatico en cada push a `main`.
 
-**URL de produccion:** [portfolio-jet-sigma-66.vercel.app](https://portfolio-jet-sigma-66.vercel.app)
+**URL de produccion:** [cv-martinbundy.vercel.app](https://cv-martinbundy.vercel.app)
 
 ---
 
