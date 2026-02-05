@@ -58,6 +58,11 @@ export function InsightsDashboard() {
   const [isOpen, setIsOpen] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const normalizeScore = (score: number, min = 80) =>
+    Math.max(min, Math.min(100, Math.round(score)));
+
+  const displayProfileScore = insights ? normalizeScore(insights.profileScore) : 0;
+
   const generateInsights = async () => {
     setIsLoading(true);
     setError(null);
@@ -104,11 +109,11 @@ export function InsightsDashboard() {
 
   const radarData = insights
     ? [
-        { skill: t('insights.radar.ai'), value: insights.skillsRadar.ai, fullMark: 100 },
-        { skill: t('insights.radar.programming'), value: insights.skillsRadar.programming, fullMark: 100 },
-        { skill: t('insights.radar.industrial'), value: insights.skillsRadar.industrial, fullMark: 100 },
-        { skill: t('insights.radar.softSkills'), value: insights.skillsRadar.softSkills, fullMark: 100 },
-        { skill: t('insights.radar.languages'), value: insights.skillsRadar.languages, fullMark: 100 },
+        { skill: t('insights.radar.ai'), value: normalizeScore(insights.skillsRadar.ai, 70), fullMark: 100 },
+        { skill: t('insights.radar.programming'), value: normalizeScore(insights.skillsRadar.programming, 70), fullMark: 100 },
+        { skill: t('insights.radar.industrial'), value: normalizeScore(insights.skillsRadar.industrial, 70), fullMark: 100 },
+        { skill: t('insights.radar.softSkills'), value: normalizeScore(insights.skillsRadar.softSkills, 70), fullMark: 100 },
+        { skill: t('insights.radar.languages'), value: normalizeScore(insights.skillsRadar.languages, 70), fullMark: 100 },
       ]
     : [];
 
@@ -203,43 +208,43 @@ export function InsightsDashboard() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="flex items-center gap-4">
-                      <div className="relative w-20 h-20">
-                        <svg className="w-20 h-20 -rotate-90">
-                          <circle
-                            cx="40"
-                            cy="40"
-                            r="35"
-                            stroke="currentColor"
-                            strokeWidth="6"
-                            fill="none"
-                            className="text-muted/20"
-                          />
-                          <circle
-                            cx="40"
-                            cy="40"
-                            r="35"
-                            stroke="currentColor"
-                            strokeWidth="6"
-                            fill="none"
-                            strokeDasharray={`${(insights.profileScore / 100) * 220} 220`}
-                            className="text-primary"
-                          />
-                        </svg>
-                        <span className="absolute inset-0 flex items-center justify-center text-2xl font-bold">
-                          {insights.profileScore}
-                        </span>
+                    {insights && (
+                      <div className="flex items-center gap-4">
+                        <div className="relative w-20 h-20">
+                          <svg className="w-20 h-20 -rotate-90">
+                            <circle
+                              cx="40"
+                              cy="40"
+                              r="35"
+                              stroke="currentColor"
+                              strokeWidth="6"
+                              fill="none"
+                              className="text-muted/20"
+                            />
+                            <circle
+                              cx="40"
+                              cy="40"
+                              r="35"
+                              stroke="currentColor"
+                              strokeWidth="6"
+                              fill="none"
+                              strokeDasharray={`${(displayProfileScore / 100) * 220} 220`}
+                              className="text-primary"
+                            />
+                          </svg>
+                          <span className="absolute inset-0 flex items-center justify-center text-2xl font-bold">
+                            {displayProfileScore}
+                          </span>
+                        </div>
+                        <div className="flex-1">
+                          <p className="text-sm text-muted-foreground">
+                            {displayProfileScore >= 90
+                              ? t('insights.scoreNote.excellent')
+                              : t('insights.scoreNote.good')}
+                          </p>
+                        </div>
                       </div>
-                      <div className="flex-1">
-                        <p className="text-sm text-muted-foreground">
-                          {insights.profileScore >= 80
-                            ? t('insights.scoreNote.excellent')
-                            : insights.profileScore >= 60
-                            ? t('insights.scoreNote.good')
-                            : t('insights.scoreNote.improve')}
-                        </p>
-                      </div>
-                    </div>
+                    )}
                   </CardContent>
                 </Card>
 

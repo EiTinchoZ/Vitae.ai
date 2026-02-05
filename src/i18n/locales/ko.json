@@ -216,9 +216,9 @@
     "loading": "프로필 분석 중...",
     "error": "인사이트 생성 중 오류가 발생했습니다. 다시 시도하세요.",
     "scoreNote": {
-      "excellent": "매우 경쟁력 있는 프로필",
-      "good": "잠재력 있는 견고한 프로필",
-      "improve": "성장하는 프로필"
+      "excellent": "??? ?? ??",
+      "good": "?? ?? ??",
+      "improve": "???? ?? ??"
     },
     "radar": {
       "ai": "AI/ML",
@@ -230,17 +230,17 @@
   },
   "resumeAnalyzer": {
     "title": "이력서 분석기",
-    "subtitle": "개선 제안과 함께 이력서를 상세히 분석합니다",
-    "analyze": "이력서 분석",
-    "reanalyze": "다시 분석",
+    "subtitle": "?? ???? ?? ???? ??? ?????.",
+    "analyze": "?? ?? ??",
+    "reanalyze": "?? ???",
     "loading": "이력서 분석 중...",
-    "completeness": "이력서 완성도",
-    "atsScore": "ATS 적합도",
-    "sections": "섹션 분석",
-    "gaps": "개선 영역",
+    "completeness": "??? ??",
+    "atsScore": "?? ???",
+    "sections": "?? ??",
+    "gaps": "?? ?????",
     "strengths": "강점",
-    "improvements": "개선 제안",
-    "overall": "종합 요약",
+    "improvements": "?? ?? ???",
+    "overall": "?? ??",
     "error": "이력서 분석 중 오류가 발생했습니다. 다시 시도하세요.",
     "sectionNames": {
       "personal": "개인 정보",

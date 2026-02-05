@@ -216,9 +216,9 @@
     "loading": "正在分析档案...",
     "error": "生成洞察时出错。请重试。",
     "scoreNote": {
-      "excellent": "高度竞争力档案",
-      "good": "具有潜力的稳健档案",
-      "improve": "成长中的档案"
+      "excellent": "???????",
+      "good": "???????",
+      "improve": "???????"
     },
     "radar": {
       "ai": "AI/ML",
@@ -230,17 +230,17 @@
   },
   "resumeAnalyzer": {
     "title": "简历分析",
-    "subtitle": "获取包含改进建议的详细简历分析",
-    "analyze": "分析简历",
-    "reanalyze": "重新分析",
+    "subtitle": "????????????????",
+    "analyze": "??????",
+    "reanalyze": "??????",
     "loading": "正在分析简历...",
-    "completeness": "简历完整度",
-    "atsScore": "ATS兼容性",
-    "sections": "分段分析",
-    "gaps": "改进领域",
+    "completeness": "????",
+    "atsScore": "?????",
+    "sections": "????",
+    "gaps": "????",
     "strengths": "优势",
-    "improvements": "改进建议",
-    "overall": "总体总结",
+    "improvements": "?????",
+    "overall": "????",
     "error": "简历分析出错。请重试。",
     "sectionNames": {
       "personal": "个人信息",

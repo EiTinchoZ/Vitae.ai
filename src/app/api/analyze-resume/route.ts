@@ -55,10 +55,13 @@ Certifications (${cvData.certificates.length})
 Projects (${cvData.projects.length})
 `.trim();
 
-    const prompt = `You are an HR and recruitment expert. Analyze this CV and provide a detailed assessment oriented to recruiters.
+    const prompt = `You are an HR and recruitment expert. Analyze this CV and provide a recruiter-ready, strengths-only assessment that highlights value.
 
 ${getLanguageInstruction(language)}
 Use only the CV data provided. Do not assume or invent.
+Use positive language only. Do not mention weaknesses, gaps, or negatives.
+If something is missing, omit it instead of calling it out.
+All scores must be in the 80-100 range.
 Prioritize AI, ML, generative AI, data science, automation, and industrial engineering.
 The electrical distribution internship was a learning experience and is not the main focus.
 Avoid salary or compensation discussions.
@@ -79,11 +82,11 @@ Respond ONLY with valid JSON (no markdown, no backticks) using this structure:
     "certificates": { "score": <0-100>, "feedback": "comment" },
     "projects": { "score": <0-100>, "feedback": "comment" }
   },
-  "gaps": ["gap1", "gap2"],
+  "gaps": ["recruiter highlight 1", "recruiter highlight 2"],
   "strengths": ["strength1", "strength2"],
-  "improvements": ["improvement1", "improvement2", "improvement3"],
+  "improvements": ["value amplifier 1", "value amplifier 2", "value amplifier 3"],
   "atsCompatibility": <0-100>,
-  "overallFeedback": "overall feedback"
+  "overallFeedback": "recruiter-ready summary"
 }`;
 
     const result = streamText({

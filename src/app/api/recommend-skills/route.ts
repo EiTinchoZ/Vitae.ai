@@ -32,6 +32,8 @@ export async function POST(request: Request) {
 
 ${getLanguageInstruction(language)}
 Use only the CV data provided. Do not assume or invent.
+Use positive language only. Do not mention weaknesses or gaps.
+Frame recommendations as value amplifiers and complementary strengths.
 Prioritize AI, ML, generative AI, data science, automation, and industrial engineering.
 Avoid salary or compensation discussions.
 

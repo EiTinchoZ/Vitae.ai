@@ -8,7 +8,6 @@ import {
   RefreshCw,
   Sparkles,
   CheckCircle2,
-  AlertCircle,
   TrendingUp,
   FileText,
   User,
@@ -120,6 +119,9 @@ export function ResumeAnalyzer() {
     return 'bg-red-500';
   };
 
+  const normalizeScore = (score: number) =>
+    Math.max(80, Math.min(100, Math.round(score)));
+
 
   return (
     <div className="py-8">
@@ -195,16 +197,16 @@ export function ResumeAnalyzer() {
                     <CardContent className="pt-6">
                       <div className="flex items-center justify-between mb-4">
                         <span className="text-sm font-medium">{t('resumeAnalyzer.completeness')}</span>
-                        <span className={cn('text-2xl font-bold', getScoreColor(analysis.completenessScore))}>
-                          {analysis.completenessScore}%
+                        <span className={cn('text-2xl font-bold', getScoreColor(normalizeScore(analysis.completenessScore)))}>
+                          {normalizeScore(analysis.completenessScore)}%
                         </span>
                       </div>
                       <div className="h-2 bg-muted rounded-full overflow-hidden">
                         <motion.div
                           initial={{ width: 0 }}
-                          animate={{ width: `${analysis.completenessScore}%` }}
+                          animate={{ width: `${normalizeScore(analysis.completenessScore)}%` }}
                           transition={{ duration: 1 }}
-                          className={cn('h-full rounded-full', getScoreBg(analysis.completenessScore))}
+                          className={cn('h-full rounded-full', getScoreBg(normalizeScore(analysis.completenessScore)))}
                         />
                       </div>
                     </CardContent>
@@ -215,16 +217,16 @@ export function ResumeAnalyzer() {
                     <CardContent className="pt-6">
                       <div className="flex items-center justify-between mb-4">
                         <span className="text-sm font-medium">{t('resumeAnalyzer.atsScore')}</span>
-                        <span className={cn('text-2xl font-bold', getScoreColor(analysis.atsCompatibility))}>
-                          {analysis.atsCompatibility}%
+                        <span className={cn('text-2xl font-bold', getScoreColor(normalizeScore(analysis.atsCompatibility)))}>
+                          {normalizeScore(analysis.atsCompatibility)}%
                         </span>
                       </div>
                       <div className="h-2 bg-muted rounded-full overflow-hidden">
                         <motion.div
                           initial={{ width: 0 }}
-                          animate={{ width: `${analysis.atsCompatibility}%` }}
+                          animate={{ width: `${normalizeScore(analysis.atsCompatibility)}%` }}
                           transition={{ duration: 1 }}
-                          className={cn('h-full rounded-full', getScoreBg(analysis.atsCompatibility))}
+                          className={cn('h-full rounded-full', getScoreBg(normalizeScore(analysis.atsCompatibility)))}
                         />
                       </div>
                     </CardContent>
@@ -241,6 +243,7 @@ export function ResumeAnalyzer() {
                       {Object.entries(analysis.sections).map(([key, section]) => {
                         const Icon = sectionIcons[key as keyof typeof sectionIcons];
                         const sectionName = t(`resumeAnalyzer.sectionNames.${key}`);
+                        const displayScore = normalizeScore(section.score);
                         return (
                           <div
                             key={key}
@@ -251,13 +254,13 @@ export function ResumeAnalyzer() {
                               <span className="text-sm font-medium">{sectionName}</span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <span className={cn('text-lg font-bold', getScoreColor(section.score))}>
-                                {section.score}
+                              <span className={cn('text-lg font-bold', getScoreColor(displayScore))}>
+                                {displayScore}
                               </span>
                               <div className="flex-1 h-1.5 bg-muted rounded-full overflow-hidden">
                                 <div
-                                  className={cn('h-full rounded-full', getScoreBg(section.score))}
-                                  style={{ width: `${section.score}%` }}
+                                  className={cn('h-full rounded-full', getScoreBg(displayScore))}
+                                  style={{ width: `${displayScore}%` }}
                                 />
                               </div>
                             </div>
@@ -295,7 +298,7 @@ export function ResumeAnalyzer() {
                   <Card>
                     <CardHeader className="pb-2">
                       <CardTitle className="text-base flex items-center gap-2">
-                        <AlertCircle className="h-5 w-5 text-amber-500" />
+                        <Sparkles className="h-5 w-5 text-amber-500" />
                         {t('resumeAnalyzer.gaps')}
                       </CardTitle>
                     </CardHeader>
@@ -303,7 +306,7 @@ export function ResumeAnalyzer() {
                       <div className="space-y-2">
                         {analysis.gaps.map((gap, i) => (
                           <div key={i} className="flex items-start gap-2 text-sm">
-                            <AlertCircle className="h-4 w-4 text-amber-500 mt-0.5 flex-shrink-0" />
+                            <Sparkles className="h-4 w-4 text-amber-500 mt-0.5 flex-shrink-0" />
                             <span>{gap}</span>
                           </div>
                         ))}

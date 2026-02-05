@@ -216,9 +216,9 @@
     "loading": "Analyzing profile...",
     "error": "Error generating insights. Try again.",
     "scoreNote": {
-      "excellent": "Highly competitive profile",
-      "good": "Solid profile with potential",
-      "improve": "Growing profile"
+      "excellent": "Outstanding recruiter signal",
+      "good": "Strong recruiter signal",
+      "improve": "Positive recruiter signal"
     },
     "radar": {
       "ai": "AI/ML",
@@ -230,17 +230,17 @@
   },
   "resumeAnalyzer": {
     "title": "Resume Analyzer",
-    "subtitle": "Get a detailed analysis of your resume with improvement suggestions",
-    "analyze": "Analyze Resume",
-    "reanalyze": "Reanalyze",
+    "subtitle": "Recruiter-ready strengths summary of this CV.",
+    "analyze": "Generate recruiter summary",
+    "reanalyze": "Regenerate summary",
     "loading": "Analyzing resume...",
-    "completeness": "Resume Completeness",
-    "atsScore": "ATS Compatibility",
-    "sections": "Section Analysis",
-    "gaps": "Areas for Improvement",
+    "completeness": "Profile Strength",
+    "atsScore": "Recruiter Readiness",
+    "sections": "Strength Overview",
+    "gaps": "Recruiter Highlights",
     "strengths": "Strengths",
-    "improvements": "Recommendations",
-    "overall": "Overall Summary",
+    "improvements": "Value Amplifiers",
+    "overall": "Recruiter Summary",
     "error": "Error analyzing resume. Try again.",
     "sectionNames": {
       "personal": "Personal Info",

@@ -55,10 +55,13 @@ Projects:
 ${cvData.projects.map((p) => `- ${p.name} (${p.year})`).join('\n')}
 `.trim();
 
-    const insightsPrompt = `You are an expert recruiter and HR consultant. Analyze this CV and provide insights that help a recruiter evaluate this candidate quickly and effectively.
+    const insightsPrompt = `You are an expert recruiter and HR consultant. Analyze this CV and provide strengths-only insights that help a recruiter evaluate this candidate quickly and effectively.
 
 ${getLanguageInstruction(language)}
 Use only the CV data provided. Do not assume or invent.
+Use positive language only. Do not mention weaknesses, gaps, or negatives.
+If something is missing, omit it instead of calling it out.
+All scores must be in the 80-100 range.
 Focus on AI, ML, generative AI, data science, automation, and industrial engineering expertise.
 The electrical distribution internship was a learning experience, not a core specialization.
 Avoid salary or compensation discussions.

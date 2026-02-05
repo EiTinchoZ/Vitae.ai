@@ -216,9 +216,9 @@
     "loading": "Profil wird analysiert...",
     "error": "Fehler beim Erstellen der Insights. Bitte versuche es erneut.",
     "scoreNote": {
-      "excellent": "Hochgradig wettbewerbsfähiges Profil",
-      "good": "Solides Profil mit Potenzial",
-      "improve": "Wachsendes Profil"
+      "excellent": "Ausgezeichnetes Recruiter-Signal",
+      "good": "Starkes Recruiter-Signal",
+      "improve": "Positives Recruiter-Signal"
     },
     "radar": {
       "ai": "KI/ML",
@@ -230,17 +230,17 @@
   },
   "resumeAnalyzer": {
     "title": "Lebenslauf-Analyzer",
-    "subtitle": "Erhalte eine detaillierte Analyse deines Lebenslaufs mit Verbesserungsvorschlägen",
-    "analyze": "Lebenslauf analysieren",
-    "reanalyze": "Erneut analysieren",
+    "subtitle": "Positive, recruiter-fertige Zusammenfassung dieses CV.",
+    "analyze": "Recruiter-Zusammenfassung erstellen",
+    "reanalyze": "Zusammenfassung erneuern",
     "loading": "Lebenslauf wird analysiert...",
-    "completeness": "Vollständigkeit des Lebenslaufs",
-    "atsScore": "ATS-Kompatibilität",
-    "sections": "Abschnittsanalyse",
-    "gaps": "Verbesserungsbereiche",
+    "completeness": "Profilstärke",
+    "atsScore": "Recruiter-Bereitschaft",
+    "sections": "Stärkenübersicht",
+    "gaps": "Recruiter-Highlights",
     "strengths": "Stärken",
-    "improvements": "Empfehlungen",
-    "overall": "Gesamtfazit",
+    "improvements": "Wertverstärker",
+    "overall": "Recruiter-Zusammenfassung",
     "error": "Fehler beim Analysieren des Lebenslaufs. Bitte versuche es erneut.",
     "sectionNames": {
       "personal": "Persönliche Infos",

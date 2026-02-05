@@ -216,9 +216,9 @@
     "loading": "Analisando perfil...",
     "error": "Erro ao gerar insights. Tente novamente.",
     "scoreNote": {
-      "excellent": "Perfil altamente competitivo",
-      "good": "Perfil sólido com potencial",
-      "improve": "Perfil em crescimento"
+      "excellent": "Sinal excelente para recrutadores",
+      "good": "Sinal forte para recrutadores",
+      "improve": "Sinal positivo para recrutadores"
     },
     "radar": {
       "ai": "IA/ML",
@@ -230,17 +230,17 @@
   },
   "resumeAnalyzer": {
     "title": "Analisador de CV",
-    "subtitle": "Obtenha uma análise detalhada do seu CV com sugestões de melhoria",
-    "analyze": "Analisar CV",
-    "reanalyze": "Reanalisar",
+    "subtitle": "Resumo positivo e pronto para recrutadores deste CV.",
+    "analyze": "Gerar resumo para recrutadores",
+    "reanalyze": "Regenerar resumo",
     "loading": "Analisando CV...",
-    "completeness": "Completude do CV",
-    "atsScore": "Compatibilidade ATS",
-    "sections": "Análise por Seção",
-    "gaps": "Áreas de Melhoria",
+    "completeness": "Força do Perfil",
+    "atsScore": "Prontidão para Recrutadores",
+    "sections": "Panorama de Forças",
+    "gaps": "Destaques para Recrutadores",
     "strengths": "Forças",
-    "improvements": "Recomendações",
-    "overall": "Resumo Geral",
+    "improvements": "Amplificadores de Valor",
+    "overall": "Resumo para Recrutadores",
     "error": "Erro ao analisar o CV. Tente novamente.",
     "sectionNames": {
       "personal": "Informações pessoais",
