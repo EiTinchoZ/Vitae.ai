@@ -1,6 +1,6 @@
 ﻿# Vitae.ai
 
-![Vitae.ai Logo](public/brand/vitae-logo.png)
+<img src="public/brand/vitae-logo.png" alt="Vitae.ai Logo" width="220" />
 
 Vitae.ai is an AI-powered, interactive CV platform that turns a traditional resume into a clean, visual, and structured digital profile. It helps students and professionals present their experience, education, and skills in a format that is easier to read, easier to update, and more memorable than a standard PDF.
 
