@@ -22,7 +22,9 @@
       "dl": "ディープラーニング",
       "genai": "生成AI",
       "python": "Python"
-    }
+    },
+    "attributionTitle": "Vitae.aiで作成した履歴書",
+    "attributionDescription": "AI駆動の革新的なデジタルCVツール。作成: Martin Bundy"
   },
   "about": {
     "title": "自己紹介",
@@ -201,8 +203,8 @@
     }
   },
   "insights": {
-    "title": "採用担当者向けAIインサイト",
-    "subtitle": "職業プロフィールのスマート分析",
+    "title": "AIインサイト",
+    "subtitle": "プロフィールのスマート分析",
     "generate": "分析を生成",
     "regenerate": "再生成",
     "profileScore": "プロフィール強度",
@@ -216,9 +218,9 @@
     "loading": "プロフィールを分析中...",
     "error": "インサイトの生成に失敗しました。もう一度お試しください。",
     "scoreNote": {
-      "excellent": "???????????????",
-      "good": "????????????",
-      "improve": "????????????????"
+      "excellent": "非常に強いシグナル",
+      "good": "強いシグナル",
+      "improve": "ポジティブなシグナル"
     },
     "radar": {
       "ai": "AI/ML",
@@ -253,22 +255,22 @@
     }
   },
   "skillRecommender": {
-    "title": "スキル推薦",
-    "subtitle": "プロフィールを強化するための補完スキルを発見",
-    "generate": "推薦を取得",
+    "title": "強み強化",
+    "subtitle": "CVにある強みを強調",
+    "generate": "強みを生成",
     "regenerate": "再生成",
-    "loading": "プロフィールを分析中...",
-    "recommended": "おすすめスキル",
-    "trends": "市場トレンド",
-    "advice": "キャリアアドバイス",
-    "difficulty": "難易度",
-    "time": "推定時間",
-    "resources": "リソース",
-    "error": "推薦の生成に失敗しました。もう一度お試しください。",
+    "loading": "強みを分析中...",
+    "recommended": "主要な強み",
+    "trends": "市場シグナル",
+    "advice": "ポジショニング",
+    "difficulty": "深さ",
+    "time": "証拠",
+    "resources": "エビデンス",
+    "error": "強みの生成に失敗しました。もう一度お試しください。",
     "difficultyLabels": {
-      "easy": "易しい",
-      "medium": "普通",
-      "hard": "難しい"
+      "easy": "基本",
+      "medium": "応用",
+      "hard": "専門"
     }
   },
   "demo": {

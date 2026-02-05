@@ -55,7 +55,7 @@ Projects:
 ${cvData.projects.map((p) => `- ${p.name} (${p.year})`).join('\n')}
 `.trim();
 
-    const insightsPrompt = `You are an expert recruiter and HR consultant. Analyze this CV and provide strengths-only insights that help a recruiter evaluate this candidate quickly and effectively.
+    const insightsPrompt = `You are an expert hiring advisor. Analyze this CV and provide strengths-only AI insights that summarize the candidate quickly and effectively.
 
 ${getLanguageInstruction(language)}
 Use only the CV data provided. Do not assume or invent.
@@ -70,7 +70,7 @@ CV SUMMARY:
 ${cvSummary}
 
 INSTRUCTIONS:
-Provide insights FROM A RECRUITER'S PERSPECTIVE. Help recruiters understand why this candidate stands out.
+Provide concise, strengths-only insights that show why this candidate stands out.
 Respond ONLY with valid JSON (no markdown, no backticks) using this exact structure:
 {
   "profileScore": <number 0-100 representing overall profile strength>,

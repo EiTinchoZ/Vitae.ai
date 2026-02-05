@@ -22,7 +22,9 @@
       "dl": "Deep Learning",
       "genai": "Generative KI",
       "python": "Python"
-    }
+    },
+    "attributionTitle": "Lebenslauf erstellt mit Vitae.ai",
+    "attributionDescription": "KI-gestützte Plattform für innovative digitale CVs. Erstellt von Martin Bundy."
   },
   "about": {
     "title": "Uber mich",
@@ -201,7 +203,7 @@
     }
   },
   "insights": {
-    "title": "KI-Insights für Recruiter",
+    "title": "KI-Insights",
     "subtitle": "Intelligente Analyse des beruflichen Profils",
     "generate": "Analyse erstellen",
     "regenerate": "Neu generieren",
@@ -216,9 +218,9 @@
     "loading": "Profil wird analysiert...",
     "error": "Fehler beim Erstellen der Insights. Bitte versuche es erneut.",
     "scoreNote": {
-      "excellent": "Ausgezeichnetes Recruiter-Signal",
-      "good": "Starkes Recruiter-Signal",
-      "improve": "Positives Recruiter-Signal"
+      "excellent": "Hervorragendes Signal",
+      "good": "Starkes Signal",
+      "improve": "Positives Signal"
     },
     "radar": {
       "ai": "KI/ML",
@@ -253,22 +255,22 @@
     }
   },
   "skillRecommender": {
-    "title": "Kompetenz-Empfehlungen",
-    "subtitle": "Entdecke ergänzende Fähigkeiten, um dein Profil zu stärken",
-    "generate": "Empfehlungen abrufen",
+    "title": "Stärkenverstärker",
+    "subtitle": "Stellt die bereits vorhandenen Fähigkeiten im CV heraus",
+    "generate": "Highlights generieren",
     "regenerate": "Neu generieren",
-    "loading": "Profil wird analysiert...",
-    "recommended": "Empfohlene Fähigkeiten",
-    "trends": "Markttrends",
-    "advice": "Karriere-Rat",
-    "difficulty": "Schwierigkeit",
-    "time": "Geschätzte Zeit",
-    "resources": "Ressourcen",
-    "error": "Fehler beim Generieren der Empfehlungen. Bitte versuche es erneut.",
+    "loading": "Stärken werden analysiert...",
+    "recommended": "Schlüsselstärken",
+    "trends": "Marktsignale",
+    "advice": "Positionierung",
+    "difficulty": "Tiefe",
+    "time": "Nachweis",
+    "resources": "Belege",
+    "error": "Fehler beim Erstellen der Highlights. Bitte erneut versuchen.",
     "difficultyLabels": {
-      "easy": "Einfach",
-      "medium": "Mittel",
-      "hard": "Schwierig"
+      "easy": "Basis",
+      "medium": "Fortgeschritten",
+      "hard": "Experte"
     }
   },
   "demo": {

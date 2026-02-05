@@ -22,7 +22,9 @@
       "dl": "深度学习",
       "genai": "生成式AI",
       "python": "Python"
-    }
+    },
+    "attributionTitle": "由 Vitae.ai 制作的简历",
+    "attributionDescription": "基于 AI 的创新数字简历工具。创建者：Martin Bundy"
   },
   "about": {
     "title": "关于我",
@@ -201,8 +203,8 @@
     }
   },
   "insights": {
-    "title": "招聘者AI洞察",
-    "subtitle": "专业档案智能分析",
+    "title": "AI 洞察",
+    "subtitle": "职业简历的智能分析",
     "generate": "生成分析",
     "regenerate": "重新生成",
     "profileScore": "档案强度",
@@ -216,9 +218,9 @@
     "loading": "正在分析档案...",
     "error": "生成洞察时出错。请重试。",
     "scoreNote": {
-      "excellent": "???????",
-      "good": "???????",
-      "improve": "???????"
+      "excellent": "优秀信号",
+      "good": "强劲信号",
+      "improve": "积极信号"
     },
     "radar": {
       "ai": "AI/ML",
@@ -253,22 +255,22 @@
     }
   },
   "skillRecommender": {
-    "title": "技能推荐",
-    "subtitle": "发现能强化你档案的补充技能",
-    "generate": "获取推荐",
+    "title": "优势强化",
+    "subtitle": "强调 CV 中已有的技能",
+    "generate": "生成亮点",
     "regenerate": "重新生成",
-    "loading": "正在分析你的档案...",
-    "recommended": "推荐技能",
-    "trends": "市场趋势",
-    "advice": "职业建议",
-    "difficulty": "难度",
-    "time": "预计时间",
-    "resources": "资源",
-    "error": "生成推荐时出错。请重试。",
+    "loading": "正在分析优势...",
+    "recommended": "核心优势",
+    "trends": "市场信号",
+    "advice": "定位陈述",
+    "difficulty": "深度",
+    "time": "证据",
+    "resources": "证明要点",
+    "error": "生成亮点时出错，请重试。",
     "difficultyLabels": {
-      "easy": "容易",
-      "medium": "中等",
-      "hard": "困难"
+      "easy": "基础",
+      "medium": "进阶",
+      "hard": "专家"
     }
   },
   "demo": {

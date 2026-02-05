@@ -22,7 +22,9 @@
       "dl": "Deep Learning",
       "genai": "IA Generative",
       "python": "Python"
-    }
+    },
+    "attributionTitle": "CV créé avec Vitae.ai",
+    "attributionDescription": "Plateforme IA pour des CV numériques innovants. Créé par Martin Bundy."
   },
   "about": {
     "title": "A propos de moi",
@@ -201,7 +203,7 @@
     }
   },
   "insights": {
-    "title": "Insights IA pour Recruteurs",
+    "title": "Insights IA",
     "subtitle": "Analyse intelligente du profil professionnel",
     "generate": "Générer l'analyse",
     "regenerate": "Régénérer",
@@ -216,9 +218,9 @@
     "loading": "Analyse du profil...",
     "error": "Erreur lors de la génération des insights. Réessaie.",
     "scoreNote": {
-      "excellent": "Signal recruteur exceptionnel",
-      "good": "Signal recruteur solide",
-      "improve": "Signal recruteur positif"
+      "excellent": "Signal exceptionnel",
+      "good": "Signal fort",
+      "improve": "Signal positif"
     },
     "radar": {
       "ai": "IA/ML",
@@ -253,22 +255,22 @@
     }
   },
   "skillRecommender": {
-    "title": "Recommandations de compétences",
-    "subtitle": "Découvre des compétences complémentaires pour renforcer ton profil",
-    "generate": "Obtenir des recommandations",
+    "title": "Amplificateur de forces",
+    "subtitle": "Met en avant les compétences déjà présentes dans le CV",
+    "generate": "Générer les points forts",
     "regenerate": "Régénérer",
-    "loading": "Analyse de ton profil...",
-    "recommended": "Compétences recommandées",
-    "trends": "Tendances du marché",
-    "advice": "Conseil de carrière",
-    "difficulty": "Difficulté",
-    "time": "Temps estimé",
-    "resources": "Ressources",
-    "error": "Erreur lors de la génération des recommandations. Réessaie.",
+    "loading": "Analyse des forces...",
+    "recommended": "Forces clés",
+    "trends": "Signaux du marché",
+    "advice": "Positionnement",
+    "difficulty": "Profondeur",
+    "time": "Preuve",
+    "resources": "Justificatifs",
+    "error": "Erreur lors de la génération des points forts. Réessaie.",
     "difficultyLabels": {
-      "easy": "Facile",
-      "medium": "Moyen",
-      "hard": "Difficile"
+      "easy": "Base",
+      "medium": "Avancé",
+      "hard": "Expert"
     }
   },
   "demo": {

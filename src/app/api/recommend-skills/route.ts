@@ -28,12 +28,13 @@ export async function POST(request: Request) {
 
     const currentSkills = cvData.skills.map((s) => s.name).join(', ');
 
-    const prompt = `You are a recruiter-focused career strategist. Recommend complementary skills that would strengthen this candidate's profile for recruiters.
+    const prompt = `You are a recruiter-focused career strategist. Highlight and amplify the candidate's EXISTING strengths for recruiters.
 
 ${getLanguageInstruction(language)}
 Use only the CV data provided. Do not assume or invent.
 Use positive language only. Do not mention weaknesses or gaps.
-Frame recommendations as value amplifiers and complementary strengths.
+Do NOT recommend new skills. Only reference skills already present in the CV.
+Frame the output as strength highlights and recruiter-ready advantages.
 Prioritize AI, ML, generative AI, data science, automation, and industrial engineering.
 Avoid salary or compensation discussions.
 
@@ -46,18 +47,20 @@ ${cvData.profile}
 INSTRUCTIONS:
 Respond ONLY with valid JSON (no markdown, no backticks) using this structure.
 Use "easy|medium|hard" as difficulty values (do not translate those tokens).
+Use "difficulty" to represent depth (easy=core, medium=advanced, hard=expert).
+Use "timeToLearn" as proof of experience (e.g., "Demonstrated in Conecta Panamá").
 {
   "recommendedSkills": [
     {
       "name": "skill name",
-      "reason": "why it's complementary",
+      "reason": "why recruiters value this strength",
       "difficulty": "easy|medium|hard",
-      "timeToLearn": "estimated time",
-      "resources": ["resource1", "resource2"]
+      "timeToLearn": "evidence or proof",
+      "resources": ["proof point 1", "proof point 2"]
     }
   ],
-  "marketTrends": ["trend1", "trend2", "trend3"],
-  "careerAdvice": "general career advice"
+  "marketTrends": ["market signal 1", "market signal 2", "market signal 3"],
+  "careerAdvice": "concise positioning statement for recruiters"
 }`;
 
     const result = streamText({

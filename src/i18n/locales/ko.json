@@ -22,7 +22,9 @@
       "dl": "딥러닝",
       "genai": "생성형 AI",
       "python": "Python"
-    }
+    },
+    "attributionTitle": "Vitae.ai로 제작한 CV",
+    "attributionDescription": "AI 기반 혁신 디지털 CV 도구. 제작: Martin Bundy"
   },
   "about": {
     "title": "소개",
@@ -201,8 +203,8 @@
     }
   },
   "insights": {
-    "title": "채용담당자를 위한 AI 인사이트",
-    "subtitle": "전문 프로필의 스마트 분석",
+    "title": "AI 인사이트",
+    "subtitle": "프로필 스마트 분석",
     "generate": "분석 생성",
     "regenerate": "다시 생성",
     "profileScore": "프로필 강점",
@@ -216,9 +218,9 @@
     "loading": "프로필 분석 중...",
     "error": "인사이트 생성 중 오류가 발생했습니다. 다시 시도하세요.",
     "scoreNote": {
-      "excellent": "??? ?? ??",
-      "good": "?? ?? ??",
-      "improve": "???? ?? ??"
+      "excellent": "매우 강한 신호",
+      "good": "강한 신호",
+      "improve": "포지티브한 신호"
     },
     "radar": {
       "ai": "AI/ML",
@@ -253,22 +255,22 @@
     }
   },
   "skillRecommender": {
-    "title": "스킬 추천",
-    "subtitle": "프로필을 강화할 보완 기술을 찾아보세요",
-    "generate": "추천 받기",
+    "title": "강점 강화",
+    "subtitle": "CV에 존재하는 강점을 강조",
+    "generate": "하이라이트 생성",
     "regenerate": "다시 생성",
-    "loading": "프로필 분석 중...",
-    "recommended": "추천 기술",
-    "trends": "시장 트렌드",
-    "advice": "커리어 조언",
-    "difficulty": "난이도",
-    "time": "예상 시간",
-    "resources": "리소스",
-    "error": "추천 생성 중 오류가 발생했습니다. 다시 시도하세요.",
+    "loading": "강점 분석 중...",
+    "recommended": "핵심 강점",
+    "trends": "시장 신호",
+    "advice": "포지셔닝",
+    "difficulty": "심화 단계",
+    "time": "증거",
+    "resources": "증빙 포인트",
+    "error": "하이라이트 생성 중 오류가 발생했습니다. 다시 시도해 주세요.",
     "difficultyLabels": {
-      "easy": "쉬움",
-      "medium": "보통",
-      "hard": "어려움"
+      "easy": "기본",
+      "medium": "중급",
+      "hard": "전문"
     }
   },
   "demo": {

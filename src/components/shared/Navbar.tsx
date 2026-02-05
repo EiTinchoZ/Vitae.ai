@@ -25,8 +25,8 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
-  const primaryCtaHref = IS_DEMO ? PERSONAL_URL : DEMO_URL;
-  const primaryCtaLabel = IS_DEMO ? t('nav.personalPreview') : t('nav.demo');
+  const primaryCtaHref = IS_DEMO ? PERSONAL_URL : null;
+  const primaryCtaLabel = t('nav.personalPreview');
 
   useEffect(() => {
     const handleScroll = () => {

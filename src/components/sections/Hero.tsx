@@ -13,8 +13,8 @@ export function Hero() {
   const primaryCta = IS_DEMO
     ? { href: '/demo', label: t('hero.demoCta') }
     : { href: '/cv/CV_Martin_Bundy_2026.pdf', label: t('hero.downloadCV'), download: true };
-  const secondaryCtaHref = IS_DEMO ? PERSONAL_URL : DEMO_URL;
-  const secondaryCtaLabel = IS_DEMO ? t('hero.personalPreview') : t('hero.demoCta');
+  const secondaryCtaHref = IS_DEMO ? PERSONAL_URL : null;
+  const secondaryCtaLabel = t('hero.personalPreview');
 
   const socialLinks = [
     { name: 'GitHub', href: cvData.personal.github, icon: Github },
@@ -84,6 +84,20 @@ export function Hero() {
                 {t('hero.slogan')}
               </span>
             </span>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.05 }}
+            className="mb-6"
+          >
+            <p className="text-sm font-medium text-foreground/80">
+              {t('hero.attributionTitle')}
+            </p>
+            <p className="text-xs md:text-sm text-muted-foreground">
+              {t('hero.attributionDescription')}
+            </p>
           </motion.div>
 
           {/* Profile photo placeholder */}

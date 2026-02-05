@@ -22,7 +22,9 @@
       "dl": "Deep Learning",
       "genai": "Generative AI",
       "python": "Python"
-    }
+    },
+    "attributionTitle": "CV built with Vitae.ai",
+    "attributionDescription": "An AI-powered platform for innovative digital CVs. Created by Martin Bundy."
   },
   "about": {
     "title": "About Me",
@@ -201,8 +203,8 @@
     }
   },
   "insights": {
-    "title": "AI Insights for Recruiters",
-    "subtitle": "Smart analysis of professional profile",
+    "title": "AI Insights",
+    "subtitle": "Smart analysis of the professional profile",
     "generate": "Generate analysis",
     "regenerate": "Regenerate",
     "profileScore": "Profile Strength",
@@ -216,9 +218,9 @@
     "loading": "Analyzing profile...",
     "error": "Error generating insights. Try again.",
     "scoreNote": {
-      "excellent": "Outstanding recruiter signal",
-      "good": "Strong recruiter signal",
-      "improve": "Positive recruiter signal"
+      "excellent": "Outstanding signal",
+      "good": "Strong signal",
+      "improve": "Positive signal"
     },
     "radar": {
       "ai": "AI/ML",
@@ -253,22 +255,22 @@
     }
   },
   "skillRecommender": {
-    "title": "Skill Recommender",
-    "subtitle": "Discover complementary skills to boost your profile",
-    "generate": "Get recommendations",
-    "regenerate": "Regenerate",
-    "loading": "Analyzing your profile...",
-    "recommended": "Recommended Skills",
-    "trends": "Market Trends",
-    "advice": "Career Advice",
-    "difficulty": "Difficulty",
-    "time": "Estimated time",
-    "resources": "Resources",
-    "error": "Error generating recommendations. Try again.",
+    "title": "Strength Amplifier",
+    "subtitle": "Highlight the strongest skills already in the CV",
+    "generate": "Generate highlights",
+    "regenerate": "Regenerate highlights",
+    "loading": "Analyzing strengths...",
+    "recommended": "Signature Strengths",
+    "trends": "Market Signals",
+    "advice": "Positioning Statement",
+    "difficulty": "Depth",
+    "time": "Evidence",
+    "resources": "Proof points",
+    "error": "Error generating highlights. Try again.",
     "difficultyLabels": {
-      "easy": "Easy",
-      "medium": "Medium",
-      "hard": "Hard"
+      "easy": "Core",
+      "medium": "Advanced",
+      "hard": "Expert"
     }
   },
   "demo": {

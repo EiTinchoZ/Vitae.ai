@@ -22,7 +22,9 @@
       "dl": "Deep Learning",
       "genai": "IA Generativa",
       "python": "Python"
-    }
+    },
+    "attributionTitle": "CV creado con Vitae.ai",
+    "attributionDescription": "Herramienta impulsada por IA para CVs digitales innovadores. Creado por Martín Bundy."
   },
   "about": {
     "title": "Sobre Mi",
@@ -201,8 +203,8 @@
     }
   },
   "insights": {
-    "title": "Insights con IA para Reclutadores",
-    "subtitle": "Analisis inteligente del perfil profesional",
+    "title": "Insights con IA",
+    "subtitle": "Análisis inteligente del perfil profesional",
     "generate": "Generar analisis",
     "regenerate": "Regenerar",
     "profileScore": "Fortaleza del Perfil",
@@ -216,9 +218,9 @@
     "loading": "Analizando perfil...",
     "error": "Error al generar insights. Intenta de nuevo.",
     "scoreNote": {
-      "excellent": "Señal destacada para reclutadores",
-      "good": "Señal sólida para reclutadores",
-      "improve": "Señal positiva para reclutadores"
+      "excellent": "Señal destacada",
+      "good": "Señal sólida",
+      "improve": "Señal positiva"
     },
     "radar": {
       "ai": "IA/ML",
@@ -253,22 +255,22 @@
     }
   },
   "skillRecommender": {
-    "title": "Recomendador de Habilidades",
-    "subtitle": "Descubre qué habilidades complementarias potenciarían tu perfil",
-    "generate": "Obtener recomendaciones",
-    "regenerate": "Regenerar",
-    "loading": "Analizando tu perfil...",
-    "recommended": "Habilidades recomendadas",
-    "trends": "Tendencias del Mercado",
-    "advice": "Consejo de Carrera",
-    "difficulty": "Dificultad",
-    "time": "Tiempo estimado",
-    "resources": "Recursos",
-    "error": "Error al generar recomendaciones. Intenta de nuevo.",
+    "title": "Amplificador de Fortalezas",
+    "subtitle": "Potencia las habilidades ya presentes en el CV",
+    "generate": "Generar highlights",
+    "regenerate": "Regenerar highlights",
+    "loading": "Analizando fortalezas...",
+    "recommended": "Fortalezas clave",
+    "trends": "Señales de mercado",
+    "advice": "Posicionamiento",
+    "difficulty": "Profundidad",
+    "time": "Evidencia",
+    "resources": "Pruebas",
+    "error": "Error al generar highlights. Intenta de nuevo.",
     "difficultyLabels": {
-      "easy": "Fácil",
-      "medium": "Medio",
-      "hard": "Difícil"
+      "easy": "Base",
+      "medium": "Avanzado",
+      "hard": "Experto"
     }
   },
   "demo": {

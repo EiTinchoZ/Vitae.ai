@@ -22,7 +22,9 @@
       "dl": "Deep Learning",
       "genai": "IA Generativa",
       "python": "Python"
-    }
+    },
+    "attributionTitle": "CV criado com Vitae.ai",
+    "attributionDescription": "Ferramenta com IA para CVs digitais inovadores. Criado por Martin Bundy."
   },
   "about": {
     "title": "Sobre Mim",
@@ -201,7 +203,7 @@
     }
   },
   "insights": {
-    "title": "Insights de IA para Recrutadores",
+    "title": "Insights com IA",
     "subtitle": "Análise inteligente do perfil profissional",
     "generate": "Gerar análise",
     "regenerate": "Regerar",
@@ -216,9 +218,9 @@
     "loading": "Analisando perfil...",
     "error": "Erro ao gerar insights. Tente novamente.",
     "scoreNote": {
-      "excellent": "Sinal excelente para recrutadores",
-      "good": "Sinal forte para recrutadores",
-      "improve": "Sinal positivo para recrutadores"
+      "excellent": "Sinal excelente",
+      "good": "Sinal forte",
+      "improve": "Sinal positivo"
     },
     "radar": {
       "ai": "IA/ML",
@@ -253,22 +255,22 @@
     }
   },
   "skillRecommender": {
-    "title": "Recomendador de Habilidades",
-    "subtitle": "Descubra habilidades complementares para potencializar seu perfil",
-    "generate": "Obter recomendações",
-    "regenerate": "Regerar",
-    "loading": "Analisando seu perfil...",
-    "recommended": "Habilidades recomendadas",
-    "trends": "Tendências do Mercado",
-    "advice": "Conselho de Carreira",
-    "difficulty": "Dificuldade",
-    "time": "Tempo estimado",
-    "resources": "Recursos",
-    "error": "Erro ao gerar recomendações. Tente novamente.",
+    "title": "Amplificador de Forças",
+    "subtitle": "Destaque as habilidades já presentes no CV",
+    "generate": "Gerar destaques",
+    "regenerate": "Gerar novamente",
+    "loading": "Analisando forças...",
+    "recommended": "Forças-chave",
+    "trends": "Sinais de mercado",
+    "advice": "Posicionamento",
+    "difficulty": "Profundidade",
+    "time": "Evidência",
+    "resources": "Provas",
+    "error": "Erro ao gerar destaques. Tente novamente.",
     "difficultyLabels": {
-      "easy": "Fácil",
-      "medium": "Médio",
-      "hard": "Difícil"
+      "easy": "Base",
+      "medium": "Avançado",
+      "hard": "Especialista"
     }
   },
   "demo": {
