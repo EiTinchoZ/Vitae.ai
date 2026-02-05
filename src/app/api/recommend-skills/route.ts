@@ -2,15 +2,20 @@ import { createGroq } from '@ai-sdk/groq';
 import { streamText } from 'ai';
 import { getCvData } from '@/data/cv-data';
 import { getLanguageInstruction } from '@/lib/ai-language';
-import { validateLanguage } from '@/lib/api-validation';
+import { validateLanguage, createErrorResponse } from '@/lib/api-validation';
+import { enforceRateLimit } from '@/lib/api-rate-limit';
 
 export async function POST(request: Request) {
   try {
+    const rateLimitResponse = enforceRateLimit(request, {
+      windowMs: 60_000,
+      max: 12,
+      keyPrefix: 'recommend',
+    });
+    if (rateLimitResponse) return rateLimitResponse;
+
     if (!process.env.GROQ_API_KEY) {
-      return new Response(
-        JSON.stringify({ error: 'API key not configured' }),
-        { status: 500, headers: { 'Content-Type': 'application/json' } }
-      );
+      return createErrorResponse('API key not configured', 500, 'api_key_missing');
     }
 
     const groq = createGroq({
@@ -23,11 +28,12 @@ export async function POST(request: Request) {
 
     const currentSkills = cvData.skills.map((s) => s.name).join(', ');
 
-    const prompt = `You are a career development and technology expert. Recommend complementary skills for this profile.
+    const prompt = `You are a recruiter-focused career strategist. Recommend complementary skills that would strengthen this candidate's profile for recruiters.
 
 ${getLanguageInstruction(language)}
 Use only the CV data provided. Do not assume or invent.
 Prioritize AI, ML, generative AI, data science, automation, and industrial engineering.
+Avoid salary or compensation discussions.
 
 CURRENT SKILLS:
 ${currentSkills}
@@ -60,9 +66,6 @@ Use "easy|medium|hard" as difficulty values (do not translate those tokens).
     return result.toTextStreamResponse();
   } catch (error) {
     console.error('Recommend skills API error:', error);
-    return new Response(
-      JSON.stringify({ error: 'Failed to generate recommendations' }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
-    );
+    return createErrorResponse('Failed to generate recommendations', 500, 'processing_failed');
   }
 }

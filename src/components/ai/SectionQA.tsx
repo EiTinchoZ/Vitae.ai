@@ -6,6 +6,7 @@ import { MessageCircle, Send, Loader2, X, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/i18n';
 import { cn } from '@/lib/utils';
+import { resolveAiError } from '@/lib/ai-errors';
 
 interface SectionQAProps {
   section: 'skills' | 'projects' | 'experience' | 'education';
@@ -33,7 +34,10 @@ export function SectionQA({ section, suggestedQuestions }: SectionQAProps) {
         body: JSON.stringify({ section, question: q, language }),
       });
 
-      if (!response.ok) throw new Error('Failed to get answer');
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(resolveAiError(t, data?.errorCode, data?.error));
+      }
 
       const reader = response.body?.getReader();
       if (!reader) throw new Error('No reader');
@@ -48,7 +52,7 @@ export function SectionQA({ section, suggestedQuestions }: SectionQAProps) {
         setAnswer(fullText);
       }
     } catch (err) {
-      setAnswer(t('qa.error'));
+      setAnswer(err instanceof Error ? err.message : t('qa.error'));
     } finally {
       setIsLoading(false);
     }

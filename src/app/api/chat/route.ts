@@ -3,17 +3,22 @@ import { streamText } from 'ai';
 import { buildSystemPrompt } from '@/lib/ai-system-prompt';
 import { getCvData } from '@/data/cv-data';
 import { validateLanguage, createErrorResponse } from '@/lib/api-validation';
+import { enforceRateLimit } from '@/lib/api-rate-limit';
 
 
 export async function POST(req: Request) {
   try {
+    const rateLimitResponse = enforceRateLimit(req, {
+      windowMs: 60_000,
+      max: 20,
+      keyPrefix: 'chat',
+    });
+    if (rateLimitResponse) return rateLimitResponse;
+
     // Check if API key is configured
     if (!process.env.GROQ_API_KEY) {
       console.error('GROQ_API_KEY is not configured');
-      return new Response(
-        JSON.stringify({ error: 'API key not configured' }),
-        { status: 500, headers: { 'Content-Type': 'application/json' } }
-      );
+      return createErrorResponse('API key not configured', 500, 'api_key_missing');
     }
 
     const groq = createGroq({
@@ -24,7 +29,7 @@ export async function POST(req: Request) {
     const language = validateLanguage(body.language);
 
     if (!body.messages || !Array.isArray(body.messages)) {
-      return createErrorResponse('Invalid messages format');
+      return createErrorResponse('Invalid messages format', 400, 'invalid_messages');
     }
 
     const cvData = getCvData(language);
@@ -39,9 +44,6 @@ export async function POST(req: Request) {
     return result.toTextStreamResponse();
   } catch (error) {
     console.error('Chat API error:', error);
-    return new Response(
-      JSON.stringify({ error: 'Failed to process chat request' }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
-    );
+    return createErrorResponse('Failed to process chat request', 500, 'processing_failed');
   }
 }

@@ -2,15 +2,20 @@ import { createGroq } from '@ai-sdk/groq';
 import { streamText } from 'ai';
 import { getCvData } from '@/data/cv-data';
 import { getLanguageInstruction } from '@/lib/ai-language';
-import { validateLanguage } from '@/lib/api-validation';
+import { validateLanguage, createErrorResponse } from '@/lib/api-validation';
+import { enforceRateLimit } from '@/lib/api-rate-limit';
 
 export async function POST(request: Request) {
   try {
+    const rateLimitResponse = enforceRateLimit(request, {
+      windowMs: 60_000,
+      max: 12,
+      keyPrefix: 'analyze',
+    });
+    if (rateLimitResponse) return rateLimitResponse;
+
     if (!process.env.GROQ_API_KEY) {
-      return new Response(
-        JSON.stringify({ error: 'API key not configured' }),
-        { status: 500, headers: { 'Content-Type': 'application/json' } }
-      );
+      return createErrorResponse('API key not configured', 500, 'api_key_missing');
     }
 
     const groq = createGroq({
@@ -50,12 +55,13 @@ Certifications (${cvData.certificates.length})
 Projects (${cvData.projects.length})
 `.trim();
 
-    const prompt = `You are an HR and recruitment expert. Analyze this CV and provide a detailed assessment.
+    const prompt = `You are an HR and recruitment expert. Analyze this CV and provide a detailed assessment oriented to recruiters.
 
 ${getLanguageInstruction(language)}
 Use only the CV data provided. Do not assume or invent.
 Prioritize AI, ML, generative AI, data science, automation, and industrial engineering.
 The electrical distribution internship was a learning experience and is not the main focus.
+Avoid salary or compensation discussions.
 
 CV SUMMARY:
 ${cvSummary}
@@ -88,9 +94,6 @@ Respond ONLY with valid JSON (no markdown, no backticks) using this structure:
     return result.toTextStreamResponse();
   } catch (error) {
     console.error('Analyze resume API error:', error);
-    return new Response(
-      JSON.stringify({ error: 'Failed to analyze resume' }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
-    );
+    return createErrorResponse('Failed to analyze resume', 500, 'processing_failed');
   }
 }

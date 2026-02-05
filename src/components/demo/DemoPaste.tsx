@@ -21,9 +21,11 @@ export function DemoPaste({ onCvGenerated, isProcessing, setIsProcessing }: Demo
     const errorMap: Record<string, string> = {
       api_key_missing: t('demo.errors.apiKeyMissing'),
       invalid_file: t('demo.errors.invalidFile'),
+      file_too_large: t('demo.errors.fileTooLarge'),
       unsupported_format: t('demo.errors.unsupportedFormat'),
       empty_text: t('demo.errors.emptyText'),
       invalid_model_response: t('demo.errors.invalidResponse'),
+      rate_limited: t('demo.errors.rateLimited'),
       processing_failed: t('demo.errors.processingFailed'),
     };
 

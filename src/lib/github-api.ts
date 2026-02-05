@@ -1,11 +1,16 @@
 import type { GitHubRepo } from '@/types';
 import type { LanguageCode } from '@/i18n';
+import { APP_MODE } from '@/lib/app-config';
 
 const GITHUB_API_BASE = 'https://api.github.com';
 const GITHUB_USERNAME = process.env.NEXT_PUBLIC_GITHUB_USERNAME || 'EiTinchoZ';
 
 export async function getGitHubRepos(): Promise<GitHubRepo[]> {
   try {
+    if (APP_MODE === 'demo') {
+      return [];
+    }
+
     const response = await fetch(
       `${GITHUB_API_BASE}/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=10`,
       {
@@ -44,6 +49,10 @@ export async function getRepoLanguages(
   repoName: string
 ): Promise<Record<string, number>> {
   try {
+    if (APP_MODE === 'demo') {
+      return {};
+    }
+
     const response = await fetch(
       `${GITHUB_API_BASE}/repos/${GITHUB_USERNAME}/${repoName}/languages`,
       {

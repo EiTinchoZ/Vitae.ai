@@ -7,12 +7,16 @@
     "certificates": "Zertifikate",
     "projects": "Projekte",
     "experience": "Erfahrung",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "demo": "Offentliche Demo",
+    "personalPreview": "Persönlicher Lebenslauf"
   },
   "hero": {
     "title": "Student der Wirtschaftsingenieurwissenschaften & KI-Techniker",
     "slogan": "Ihre Karriere, angetrieben von KI",
     "downloadCV": "Lebenslauf herunterladen",
+    "demoCta": "Offentliche Demo ansehen",
+    "personalPreview": "Personlicher Lebenslauf",
     "specialties": {
       "ml": "Machine Learning",
       "dl": "Deep Learning",
@@ -155,6 +159,13 @@
     "close": "Schliessen",
     "viewMore": "Mehr anzeigen",
     "viewLess": "Weniger anzeigen"
+  },
+  "aiErrors": {
+    "apiKeyMissing": "Die KI ist nicht konfiguriert. Füge GROQ_API_KEY in der Umgebung hinzu.",
+    "rateLimited": "Zu viele Anfragen. Bitte warte kurz und versuche es erneut.",
+    "invalidRequest": "Ungültige Anfrage. Prüfe die übermittelten Informationen.",
+    "processingFailed": "Die KI-Anfrage konnte nicht verarbeitet werden.",
+    "unknown": "Ein unerwarteter KI-Fehler ist aufgetreten."
   },
   "metadata": {
     "title": "Vitae.ai | Martin Bundy - Digitaler KI-Lebenslauf",
@@ -407,6 +418,7 @@
       "fileTooLarge": "Die Datei überschreitet {max}MB.",
       "emptyText": "Kein Text im CV gefunden.",
       "invalidResponse": "Ungültige Modellantwort.",
+      "rateLimited": "Zu viele Anfragen. Bitte warte einen Moment.",
       "processingFailed": "CV konnte nicht verarbeitet werden.",
       "unknown": "Unbekannter Fehler."
     }

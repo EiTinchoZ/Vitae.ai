@@ -3,6 +3,7 @@ import { streamText } from 'ai';
 import { getCvData } from '@/data/cv-data';
 import { getLanguageInstruction } from '@/lib/ai-language';
 import { validateLanguage, validateSection, validateQuestion, createErrorResponse } from '@/lib/api-validation';
+import { enforceRateLimit } from '@/lib/api-rate-limit';
 import type { CVData } from '@/types';
 
 function buildSectionContext(section: string, cvData: CVData): string {
@@ -54,11 +55,15 @@ Use this to answer questions about academic focus and goals.`;
 
 export async function POST(req: Request) {
   try {
+    const rateLimitResponse = enforceRateLimit(req, {
+      windowMs: 60_000,
+      max: 20,
+      keyPrefix: 'section-qa',
+    });
+    if (rateLimitResponse) return rateLimitResponse;
+
     if (!process.env.GROQ_API_KEY) {
-      return new Response(
-        JSON.stringify({ error: 'API key not configured' }),
-        { status: 500, headers: { 'Content-Type': 'application/json' } }
-      );
+      return createErrorResponse('API key not configured', 500, 'api_key_missing');
     }
 
     const groq = createGroq({
@@ -71,16 +76,16 @@ export async function POST(req: Request) {
     const question = validateQuestion(body.question);
 
     if (!section) {
-      return createErrorResponse('Invalid section');
+      return createErrorResponse('Invalid section', 400, 'invalid_section');
     }
     if (!question) {
-      return createErrorResponse('Invalid question');
+      return createErrorResponse('Invalid question', 400, 'invalid_question');
     }
 
     const cvData = getCvData(language);
     const context = buildSectionContext(section, cvData);
 
-    const systemPrompt = `You answer questions about a specific CV section for Martin Bundy.
+    const systemPrompt = `You answer questions about a specific CV section for Martin Bundy, oriented to recruiter evaluation.
 
 ${context}
 
@@ -101,9 +106,6 @@ INSTRUCTIONS:
     return result.toTextStreamResponse();
   } catch (error) {
     console.error('Section QA API error:', error);
-    return new Response(
-      JSON.stringify({ error: 'Failed to process question' }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
-    );
+    return createErrorResponse('Failed to process question', 500, 'processing_failed');
   }
 }

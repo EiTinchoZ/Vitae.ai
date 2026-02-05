@@ -40,6 +40,9 @@ npm install
    ```bash
    GROQ_API_KEY=your_groq_api_key_here
    NEXT_PUBLIC_GITHUB_USERNAME=your_github_username
+   NEXT_PUBLIC_APP_MODE=personal
+   NEXT_PUBLIC_DEMO_URL=https://your-demo.vercel.app
+   NEXT_PUBLIC_PERSONAL_URL=https://your-personal-cv.vercel.app
    ```
 
 ### Getting a Groq API Key
@@ -83,6 +86,9 @@ Open [http://localhost:3000](http://localhost:3000) to see your CV.
 4. Configure environment variables:
    - Add `GROQ_API_KEY`
    - Add `NEXT_PUBLIC_GITHUB_USERNAME`
+   - Add `NEXT_PUBLIC_APP_MODE` (`personal` or `demo`)
+   - (Optional) Add `NEXT_PUBLIC_DEMO_URL` for the public demo link
+   - (Optional) Add `NEXT_PUBLIC_PERSONAL_URL` for the personal CV link
 5. Click **Deploy**
 
 ### Option B: Via CLI

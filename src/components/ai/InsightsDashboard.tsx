@@ -28,6 +28,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useTranslation } from '@/i18n';
+import { resolveAiError } from '@/lib/ai-errors';
 
 interface Insights {
   profileScore: number;
@@ -68,7 +69,10 @@ export function InsightsDashboard() {
         body: JSON.stringify({ language }),
       });
 
-      if (!response.ok) throw new Error('Failed to fetch insights');
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(resolveAiError(t, data?.errorCode, data?.error));
+      }
 
       const reader = response.body?.getReader();
       if (!reader) throw new Error('No reader available');
@@ -90,7 +94,8 @@ export function InsightsDashboard() {
         throw new Error('Invalid response format');
       }
     } catch (err) {
-      setError(t('insights.error'));
+      const message = err instanceof Error ? err.message : t('insights.error');
+      setError(message);
       console.error(err);
     } finally {
       setIsLoading(false);

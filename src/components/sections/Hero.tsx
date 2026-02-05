@@ -5,10 +5,16 @@ import { Github, Linkedin, Mail, Download, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { getCvData } from '@/data/cv-data';
 import { useTranslation } from '@/i18n';
+import { DEMO_URL, IS_DEMO, PERSONAL_URL } from '@/lib/app-config';
 
 export function Hero() {
   const { t, language } = useTranslation();
   const cvData = getCvData(language);
+  const primaryCta = IS_DEMO
+    ? { href: '/demo', label: t('hero.demoCta') }
+    : { href: '/cv/CV_Martin_Bundy_2026.pdf', label: t('hero.downloadCV'), download: true };
+  const secondaryCtaHref = IS_DEMO ? PERSONAL_URL : DEMO_URL;
+  const secondaryCtaLabel = IS_DEMO ? t('hero.personalPreview') : t('hero.demoCta');
 
   const socialLinks = [
     { name: 'GitHub', href: cvData.personal.github, icon: Github },
@@ -158,12 +164,25 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            <Button asChild size="lg" className="gap-2">
-              <a href="/cv/CV_Martin_Bundy_2026.pdf" download>
-                <Download className="h-4 w-4" />
-                {t('hero.downloadCV')}
-              </a>
-            </Button>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <Button asChild size="lg" className="gap-2">
+                <a
+                  href={primaryCta.href}
+                  {...(primaryCta.download ? { download: true } : {})}
+                  {...(IS_DEMO ? { target: '_self' } : {})}
+                >
+                  {!IS_DEMO && <Download className="h-4 w-4" />}
+                  {primaryCta.label}
+                </a>
+              </Button>
+              {secondaryCtaHref && (
+                <Button asChild size="lg" variant="outline" className="gap-2">
+                  <a href={secondaryCtaHref} target="_blank" rel="noreferrer">
+                    {secondaryCtaLabel}
+                  </a>
+                </Button>
+              )}
+            </div>
           </motion.div>
         </div>
       </div>

@@ -7,12 +7,16 @@
     "certificates": "الشهادات",
     "projects": "المشاريع",
     "experience": "الخبرة",
-    "contact": "اتصل"
+    "contact": "اتصل",
+    "demo": "عرض عام",
+    "personalPreview": "السيرة الشخصية"
   },
   "hero": {
     "title": "طالب هندسة صناعية وفني متقدم في الذكاء الاصطناعي",
     "slogan": "مسيرتك المهنية، مدعومة بالذكاء الاصطناعي",
     "downloadCV": "تحميل السيرة الذاتية",
+    "demoCta": "عرض الديمو العام",
+    "personalPreview": "عرض السيرة الشخصية",
     "specialties": {
       "ml": "تعلم الآلة",
       "dl": "التعلم العميق",
@@ -155,6 +159,13 @@
     "close": "إغلاق",
     "viewMore": "عرض المزيد",
     "viewLess": "عرض أقل"
+  },
+  "aiErrors": {
+    "apiKeyMissing": "الذكاء الاصطناعي غير مُعد. أضف GROQ_API_KEY في البيئة.",
+    "rateLimited": "طلبات كثيرة جدًا. يرجى الانتظار والمحاولة مجددًا.",
+    "invalidRequest": "طلب غير صالح. تحقق من المعلومات المرسلة.",
+    "processingFailed": "تعذر معالجة طلب الذكاء الاصطناعي.",
+    "unknown": "حدث خطأ غير متوقع في الذكاء الاصطناعي."
   },
   "metadata": {
     "title": "Vitae.ai | Martin Bundy - AI Digital CV",
@@ -407,6 +418,7 @@
       "fileTooLarge": "حجم الملف يتجاوز {max}MB.",
       "emptyText": "لم يتم العثور على نص في السيرة الذاتية.",
       "invalidResponse": "استجابة النموذج غير صالحة.",
+      "rateLimited": "طلبات كثيرة جدًا. يرجى الانتظار قليلًا.",
       "processingFailed": "تعذر معالجة السيرة الذاتية.",
       "unknown": "خطأ غير معروف."
     }

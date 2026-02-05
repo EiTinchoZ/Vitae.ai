@@ -7,12 +7,16 @@
     "certificates": "資格",
     "projects": "プロジェクト",
     "experience": "経験",
-    "contact": "連絡先"
+    "contact": "連絡先",
+    "demo": "公開デモ",
+    "personalPreview": "個人CV"
   },
   "hero": {
     "title": "産業工学学生 & AI上級技術者",
     "slogan": "AIが加速させる、あなたのキャリア",
     "downloadCV": "履歴書をダウンロード",
+    "demoCta": "公開デモを見る",
+    "personalPreview": "個人CVを見る",
     "specialties": {
       "ml": "機械学習",
       "dl": "ディープラーニング",
@@ -155,6 +159,13 @@
     "close": "閉じる",
     "viewMore": "もっと見る",
     "viewLess": "閉じる"
+  },
+  "aiErrors": {
+    "apiKeyMissing": "AI が設定されていません。環境に GROQ_API_KEY を追加してください。",
+    "rateLimited": "リクエストが多すぎます。少し待ってから再試行してください。",
+    "invalidRequest": "無効なリクエストです。送信内容を確認してください。",
+    "processingFailed": "AI リクエストを処理できませんでした。",
+    "unknown": "不明な AI エラーが発生しました。"
   },
   "metadata": {
     "title": "Vitae.ai | Martin Bundy - AI Digital CV",
@@ -407,6 +418,7 @@
       "fileTooLarge": "ファイルが{max}MBを超えています。",
       "emptyText": "履歴書にテキストが見つかりません。",
       "invalidResponse": "モデルの応答が無効です。",
+      "rateLimited": "リクエストが多すぎます。少し待ってから再試行してください。",
       "processingFailed": "履歴書を処理できませんでした。",
       "unknown": "不明なエラー。"
     }

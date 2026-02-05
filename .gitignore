@@ -48,3 +48,6 @@ next-env.d.ts
 # to keep your personal CV data private
 # ===========================================
 # src/data/cv-data.ts
+
+.vercel
+.env*.local

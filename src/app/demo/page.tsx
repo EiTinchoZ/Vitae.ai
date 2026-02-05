@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Upload, FileText, Clipboard, ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -11,15 +12,33 @@ import { DemoForm } from '@/components/demo/DemoForm';
 import { DemoPaste } from '@/components/demo/DemoPaste';
 import { DemoPreview } from '@/components/demo/DemoPreview';
 import { useTranslation } from '@/i18n';
+import { IS_DEMO } from '@/lib/app-config';
 import type { CVData } from '@/types';
 
 type InputMethod = 'upload' | 'form' | 'paste';
 
 export default function DemoPage() {
   const { t } = useTranslation();
+  const router = useRouter();
   const [inputMethod, setInputMethod] = useState<InputMethod>('upload');
   const [cvData, setCvData] = useState<Partial<CVData> | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
+
+  useEffect(() => {
+    if (!IS_DEMO) {
+      router.replace('/');
+    }
+  }, [router]);
+
+  if (!IS_DEMO) {
+    return (
+      <main className="min-h-screen pt-20 pb-12">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-sm text-muted-foreground">{t('common.loading')}</p>
+        </div>
+      </main>
+    );
+  }
 
   const handleCvGenerated = (data: Partial<CVData>) => {
     setCvData(data);

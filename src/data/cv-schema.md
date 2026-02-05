@@ -8,6 +8,11 @@ This document explains the structure required for `cv-data.ts` to work correctly
 2. Replace placeholder data with your information
 3. Run `npm run dev` to preview your CV
 
+### Demo Mode (Public Preview)
+
+If you are deploying a public demo, set `NEXT_PUBLIC_APP_MODE=demo`.
+This forces the build to use `cv-data.example.ts` so no personal data is bundled.
+
 ## Data Structure
 
 ### Personal Information

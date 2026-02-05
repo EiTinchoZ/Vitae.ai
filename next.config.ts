@@ -1,6 +1,27 @@
 import type { NextConfig } from "next";
+import path from "path";
+
+const appMode = process.env.NEXT_PUBLIC_APP_MODE ?? 'personal';
+const isDemoMode = appMode === 'demo';
+const demoAlias: Record<string, string> = isDemoMode
+  ? {
+    '@/data/cv-data': path.resolve(process.cwd(), 'src/data/cv-data.example.ts'),
+  }
+  : {};
 
 const nextConfig: NextConfig = {
+  turbopack: {
+    resolveAlias: demoAlias,
+  },
+  webpack: (config) => {
+    if (isDemoMode) {
+      config.resolve.alias = {
+        ...(config.resolve.alias || {}),
+        ...demoAlias,
+      };
+    }
+    return config;
+  },
   async headers() {
     return [
       {

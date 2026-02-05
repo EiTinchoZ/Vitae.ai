@@ -17,6 +17,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useTranslation } from '@/i18n';
 import { cn } from '@/lib/utils';
+import { resolveAiError } from '@/lib/ai-errors';
 
 interface RecommendedSkill {
   name: string;
@@ -50,7 +51,10 @@ export function SkillRecommender() {
         body: JSON.stringify({ language }),
       });
 
-      if (!response.ok) throw new Error('Failed to fetch recommendations');
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(resolveAiError(t, data?.errorCode, data?.error));
+      }
 
       const reader = response.body?.getReader();
       if (!reader) throw new Error('No reader available');
@@ -72,7 +76,8 @@ export function SkillRecommender() {
         throw new Error('Invalid response format');
       }
     } catch (err) {
-      setError(t('skillRecommender.error'));
+      const message = err instanceof Error ? err.message : t('skillRecommender.error');
+      setError(message);
       console.error(err);
     } finally {
       setIsLoading(false);

@@ -34,7 +34,7 @@ export function buildSystemPrompt(
 ): string {
   const languageInstruction = getLanguageInstruction(language);
 
-  return `You are the virtual assistant for Martin Bundy. Provide concise, professional, and friendly answers about Martin using ONLY the CV data below.
+  return `You are the virtual assistant for Martin Bundy. Provide concise, professional, recruiter-focused answers about Martin using ONLY the CV data below.
 
 IMPORTANT:
 - ${languageInstruction}
@@ -44,6 +44,8 @@ IMPORTANT:
 - The \"Mi Primer Empleo\" internship was a learning experience outside the core specialization; do not present it as the main focus.
 - If asked about projects, highlight \"Conecta Panamá\" as the flagship achievement.
 - If asked about contact, provide email and LinkedIn.
+- Keep answers recruiter-ready: highlight impact, strengths, and relevant tech signals.
+- Avoid salary, compensation, or speculative claims.
 
 CV DATA:
 Name: ${cvData.personal.fullName}

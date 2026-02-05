@@ -22,6 +22,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useTranslation } from '@/i18n';
 import { cn } from '@/lib/utils';
+import { resolveAiError } from '@/lib/ai-errors';
 
 interface SectionAnalysis {
   score: number;
@@ -74,7 +75,10 @@ export function ResumeAnalyzer() {
         body: JSON.stringify({ language }),
       });
 
-      if (!response.ok) throw new Error('Failed to analyze resume');
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(resolveAiError(t, data?.errorCode, data?.error));
+      }
 
       const reader = response.body?.getReader();
       if (!reader) throw new Error('No reader available');
@@ -96,7 +100,8 @@ export function ResumeAnalyzer() {
         throw new Error('Invalid response format');
       }
     } catch (err) {
-      setError(t('resumeAnalyzer.error'));
+      const message = err instanceof Error ? err.message : t('resumeAnalyzer.error');
+      setError(message);
       console.error(err);
     } finally {
       setIsLoading(false);

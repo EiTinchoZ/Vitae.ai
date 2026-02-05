@@ -7,12 +7,16 @@
     "certificates": "证书",
     "projects": "项目",
     "experience": "经验",
-    "contact": "联系"
+    "contact": "联系",
+    "demo": "公开演示",
+    "personalPreview": "个人简历"
   },
   "hero": {
     "title": "工业工程学生 & 人工智能高级技术员",
     "slogan": "您的职业生涯，由AI驱动",
     "downloadCV": "下载简历",
+    "demoCta": "查看公开演示",
+    "personalPreview": "查看个人简历",
     "specialties": {
       "ml": "机器学习",
       "dl": "深度学习",
@@ -155,6 +159,13 @@
     "close": "关闭",
     "viewMore": "查看更多",
     "viewLess": "收起"
+  },
+  "aiErrors": {
+    "apiKeyMissing": "未配置 AI。请在环境中添加 GROQ_API_KEY。",
+    "rateLimited": "请求过多，请稍后再试。",
+    "invalidRequest": "请求无效，请检查提交的信息。",
+    "processingFailed": "无法处理 AI 请求。",
+    "unknown": "发生未知的 AI 错误。"
   },
   "metadata": {
     "title": "Vitae.ai | Martin Bundy - AI Digital CV",
@@ -407,6 +418,7 @@
       "fileTooLarge": "文件超过 {max}MB。",
       "emptyText": "未在简历中找到文本。",
       "invalidResponse": "模型响应无效。",
+      "rateLimited": "请求过多，请稍后再试。",
       "processingFailed": "无法处理简历。",
       "unknown": "未知错误。"
     }

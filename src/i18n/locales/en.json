@@ -7,12 +7,16 @@
     "certificates": "Certificates",
     "projects": "Projects",
     "experience": "Experience",
-    "contact": "Contact"
+    "contact": "Contact",
+    "demo": "Public Demo",
+    "personalPreview": "Personal CV"
   },
   "hero": {
     "title": "Industrial Engineering Student & AI Technical Specialist",
     "slogan": "Your career, powered by AI",
     "downloadCV": "Download CV",
+    "demoCta": "View public demo",
+    "personalPreview": "View personal CV",
     "specialties": {
       "ml": "Machine Learning",
       "dl": "Deep Learning",
@@ -155,6 +159,13 @@
     "close": "Close",
     "viewMore": "View more",
     "viewLess": "View less"
+  },
+  "aiErrors": {
+    "apiKeyMissing": "AI is not configured. Add GROQ_API_KEY in the environment.",
+    "rateLimited": "Too many requests. Please wait and try again.",
+    "invalidRequest": "Invalid request. Check the submitted information.",
+    "processingFailed": "Unable to process the AI request.",
+    "unknown": "An unexpected AI error occurred."
   },
   "metadata": {
     "title": "Vitae.ai | Martin Bundy - AI-Powered Digital CV",
@@ -407,6 +418,7 @@
       "fileTooLarge": "File exceeds {max}MB.",
       "emptyText": "No text found in the CV.",
       "invalidResponse": "Invalid model response.",
+      "rateLimited": "Too many requests. Please wait a moment.",
       "processingFailed": "Could not process the CV.",
       "unknown": "Unknown error."
     }

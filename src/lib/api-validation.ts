@@ -40,9 +40,13 @@ export function validateMessage(message: unknown): string | null {
   return message.trim();
 }
 
-export function createErrorResponse(message: string, status: number = 400) {
+export function createErrorResponse(
+  message: string,
+  status: number = 400,
+  errorCode: string = 'invalid_request'
+) {
   return new Response(
-    JSON.stringify({ error: message }),
+    JSON.stringify({ error: message, errorCode }),
     { status, headers: { 'Content-Type': 'application/json' } }
   );
 }

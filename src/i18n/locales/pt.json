@@ -7,12 +7,16 @@
     "certificates": "Certificacoes",
     "projects": "Projetos",
     "experience": "Experiencia",
-    "contact": "Contato"
+    "contact": "Contato",
+    "demo": "Demo Publica",
+    "personalPreview": "CV Pessoal"
   },
   "hero": {
     "title": "Estudante de Engenharia Industrial e Tecnico Superior em Inteligencia Artificial",
     "slogan": "Sua carreira, impulsionada por IA",
     "downloadCV": "Baixar CV",
+    "demoCta": "Ver demo publica",
+    "personalPreview": "Ver CV pessoal",
     "specialties": {
       "ml": "Machine Learning",
       "dl": "Deep Learning",
@@ -155,6 +159,13 @@
     "close": "Fechar",
     "viewMore": "Ver mais",
     "viewLess": "Ver menos"
+  },
+  "aiErrors": {
+    "apiKeyMissing": "A IA não está configurada. Adicione GROQ_API_KEY no ambiente.",
+    "rateLimited": "Muitas solicitações. Aguarde um momento e tente novamente.",
+    "invalidRequest": "Solicitação inválida. Verifique as informações enviadas.",
+    "processingFailed": "Não foi possível processar a solicitação de IA.",
+    "unknown": "Ocorreu um erro inesperado na IA."
   },
   "metadata": {
     "title": "Vitae.ai | Martin Bundy - CV Digital com IA",
@@ -407,6 +418,7 @@
       "fileTooLarge": "O arquivo excede {max}MB.",
       "emptyText": "Nenhum texto encontrado no CV.",
       "invalidResponse": "Resposta inválida do modelo.",
+      "rateLimited": "Muitas solicitações. Aguarde um momento.",
       "processingFailed": "Não foi possível processar o CV.",
       "unknown": "Erro desconhecido."
     }

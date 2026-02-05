@@ -7,12 +7,16 @@
     "certificates": "प्रमाणपत्र",
     "projects": "प्रोजेक्ट्स",
     "experience": "अनुभव",
-    "contact": "संपर्क"
+    "contact": "संपर्क",
+    "demo": "पब्लिक डेमो",
+    "personalPreview": "पर्सनल CV"
   },
   "hero": {
     "title": "औद्योगिक इंजीनियरिंग छात्र और AI वरिष्ठ तकनीशियन",
     "slogan": "AI द्वारा संचालित आपका करियर",
     "downloadCV": "CV डाउनलोड करें",
+    "demoCta": "पब्लिक डेमो देखें",
+    "personalPreview": "पर्सनल CV देखें",
     "specialties": {
       "ml": "मशीन लर्निंग",
       "dl": "डीप लर्निंग",
@@ -155,6 +159,13 @@
     "close": "बंद करें",
     "viewMore": "और देखें",
     "viewLess": "कम देखें"
+  },
+  "aiErrors": {
+    "apiKeyMissing": "AI कॉन्फ़िगर नहीं है। कृपया वातावरण में GROQ_API_KEY जोड़ें।",
+    "rateLimited": "बहुत अधिक अनुरोध। कृपया थोड़ी देर बाद प्रयास करें।",
+    "invalidRequest": "अमान्य अनुरोध। भेजी गई जानकारी जांचें।",
+    "processingFailed": "AI अनुरोध को संसाधित नहीं किया जा सका।",
+    "unknown": "AI में एक अनपेक्षित त्रुटि हुई।"
   },
   "metadata": {
     "title": "Vitae.ai | Martin Bundy - AI Digital CV",
@@ -407,6 +418,7 @@
       "fileTooLarge": "फ़ाइल {max}MB से बड़ी है।",
       "emptyText": "CV में कोई टेक्स्ट नहीं मिला।",
       "invalidResponse": "मॉडल का उत्तर अमान्य है।",
+      "rateLimited": "बहुत अधिक अनुरोध। कृपया थोड़ा इंतजार करें।",
       "processingFailed": "CV प्रोसेस नहीं हो पाया।",
       "unknown": "अज्ञात त्रुटि।"
     }

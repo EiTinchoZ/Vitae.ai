@@ -6,6 +6,7 @@ import { MessageCircle, X, Send, Bot, User, Sparkles, Loader2 } from 'lucide-rea
 import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/i18n';
 import { cn } from '@/lib/utils';
+import { resolveAiError } from '@/lib/ai-errors';
 
 interface Message {
   id: string;
@@ -67,7 +68,11 @@ export function ChatBot() {
         }),
       });
 
-      if (!response.ok) throw new Error('Error en la respuesta');
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        const message = resolveAiError(t, data?.errorCode, data?.error);
+        throw new Error(message);
+      }
 
       const reader = response.body?.getReader();
       const decoder = new TextDecoder();
@@ -105,7 +110,7 @@ export function ChatBot() {
         {
           id: (Date.now() + 1).toString(),
           role: 'assistant',
-          content: t('chat.error'),
+          content: error instanceof Error ? error.message : t('chat.error'),
         },
       ]);
     } finally {

@@ -7,12 +7,16 @@
     "certificates": "Certifications",
     "projects": "Projets",
     "experience": "Experience",
-    "contact": "Contact"
+    "contact": "Contact",
+    "demo": "Demo Publique",
+    "personalPreview": "CV Personnel"
   },
   "hero": {
     "title": "Etudiant en Genie Industriel & Technicien Superieur en Intelligence Artificielle",
     "slogan": "Votre carriere, propulsee par l'IA",
     "downloadCV": "Telecharger le CV",
+    "demoCta": "Voir la demo publique",
+    "personalPreview": "Voir le CV personnel",
     "specialties": {
       "ml": "Machine Learning",
       "dl": "Deep Learning",
@@ -155,6 +159,13 @@
     "close": "Fermer",
     "viewMore": "Voir plus",
     "viewLess": "Voir moins"
+  },
+  "aiErrors": {
+    "apiKeyMissing": "L'IA n'est pas configuree. Ajoutez GROQ_API_KEY dans l'environnement.",
+    "rateLimited": "Trop de requetes. Veuillez patienter et reessayer.",
+    "invalidRequest": "Requete invalide. Verifiez les informations envoyees.",
+    "processingFailed": "Impossible de traiter la requete IA.",
+    "unknown": "Une erreur IA inattendue s'est produite."
   },
   "metadata": {
     "title": "Vitae.ai | Martin Bundy - CV Numerique IA",
@@ -407,6 +418,7 @@
       "fileTooLarge": "Le fichier dépasse {max}MB.",
       "emptyText": "Aucun texte trouvé dans le CV.",
       "invalidResponse": "Réponse du modèle invalide.",
+      "rateLimited": "Trop de requêtes. Veuillez patienter un moment.",
       "processingFailed": "Impossible de traiter le CV.",
       "unknown": "Erreur inconnue."
     }

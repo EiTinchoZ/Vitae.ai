@@ -8,6 +8,7 @@ import { ThemeToggle } from './ThemeToggle';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { useTranslation } from '@/i18n';
 import { cn } from '@/lib/utils';
+import { DEMO_URL, IS_DEMO, PERSONAL_URL } from '@/lib/app-config';
 
 const navKeys = [
   { key: 'nav.home', href: '#hero' },
@@ -24,6 +25,8 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
+  const primaryCtaHref = IS_DEMO ? PERSONAL_URL : DEMO_URL;
+  const primaryCtaLabel = IS_DEMO ? t('nav.personalPreview') : t('nav.demo');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -77,6 +80,18 @@ export function Navbar() {
               {t(item.key)}
             </a>
           ))}
+          {primaryCtaHref && (
+            <Button
+              asChild
+              variant="outline"
+              size="sm"
+              className="ml-2"
+            >
+              <a href={primaryCtaHref} target="_blank" rel="noreferrer">
+                {primaryCtaLabel}
+              </a>
+            </Button>
+          )}
           <div className="flex items-center gap-1 ml-2 pl-2 border-l border-border">
             <LanguageSwitcher />
             <ThemeToggle />
@@ -109,6 +124,16 @@ export function Navbar() {
                     {t(item.key)}
                   </a>
                 ))}
+                {primaryCtaHref && (
+                  <a
+                    href={primaryCtaHref}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="px-4 py-3 text-lg font-medium text-primary hover:bg-muted rounded-lg transition-colors"
+                  >
+                    {primaryCtaLabel}
+                  </a>
+                )}
               </nav>
             </SheetContent>
           </Sheet>

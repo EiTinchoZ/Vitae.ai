@@ -2,15 +2,20 @@ import { createGroq } from '@ai-sdk/groq';
 import { streamText } from 'ai';
 import { getCvData } from '@/data/cv-data';
 import { getLanguageInstruction } from '@/lib/ai-language';
-import { validateLanguage } from '@/lib/api-validation';
+import { validateLanguage, createErrorResponse } from '@/lib/api-validation';
+import { enforceRateLimit } from '@/lib/api-rate-limit';
 
 export async function POST(req: Request) {
   try {
+    const rateLimitResponse = enforceRateLimit(req, {
+      windowMs: 60_000,
+      max: 15,
+      keyPrefix: 'insights',
+    });
+    if (rateLimitResponse) return rateLimitResponse;
+
     if (!process.env.GROQ_API_KEY) {
-      return new Response(
-        JSON.stringify({ error: 'API key not configured' }),
-        { status: 500, headers: { 'Content-Type': 'application/json' } }
-      );
+      return createErrorResponse('API key not configured', 500, 'api_key_missing');
     }
 
     const groq = createGroq({
@@ -50,12 +55,13 @@ Projects:
 ${cvData.projects.map((p) => `- ${p.name} (${p.year})`).join('\n')}
 `.trim();
 
-    const insightsPrompt = `You are an expert recruiter and HR consultant. Analyze this CV and provide insights that would help a recruiter evaluate this candidate quickly and effectively.
+    const insightsPrompt = `You are an expert recruiter and HR consultant. Analyze this CV and provide insights that help a recruiter evaluate this candidate quickly and effectively.
 
 ${getLanguageInstruction(language)}
 Use only the CV data provided. Do not assume or invent.
 Focus on AI, ML, generative AI, data science, automation, and industrial engineering expertise.
 The electrical distribution internship was a learning experience, not a core specialization.
+Avoid salary or compensation discussions.
 
 CV SUMMARY:
 ${cvSummary}
@@ -91,9 +97,6 @@ Respond ONLY with valid JSON (no markdown, no backticks) using this exact struct
     return result.toTextStreamResponse();
   } catch (error) {
     console.error('Insights API error:', error);
-    return new Response(
-      JSON.stringify({ error: 'Failed to generate insights' }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
-    );
+    return createErrorResponse('Failed to generate insights', 500, 'processing_failed');
   }
 }

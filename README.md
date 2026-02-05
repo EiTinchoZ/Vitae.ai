@@ -11,12 +11,29 @@
 
 **Vitae.ai** es una herramienta open-source para crear tu CV digital interactivo con IA integrada. Diseñado para profesionales que quieren destacar ante reclutadores.
 
-## Demo en Vivo
+## Demos en Vivo
 
 | Demo | Descripcion |
 |------|-------------|
-| [**CV de Martin Bundy**](https://portfolio-eitinchos-projects.vercel.app) | Ejemplo completo y funcional |
-| [**Template Customizable**](#instalacion) | Crea el tuyo siguiendo la guia |
+| [**CV Personal (Martin Bundy)**](https://portfolio-eitinchos-projects.vercel.app) | CV completo para reclutadores (datos reales) |
+| **Demo Publica (Preview Customizable)** | Proyecto separado en Vercel con datos ficticios + upload de CV |
+
+> Nota: La demo publica se despliega en un proyecto Vercel distinto y usa `NEXT_PUBLIC_APP_MODE=demo` para evitar exponer datos personales.
+
+---
+
+## Modos de Uso
+
+### 1. Modo Personal (CV Real)
+- Usa tus datos reales en `src/data/cv-data.ts`
+- Deploy a Vercel con `NEXT_PUBLIC_APP_MODE=personal` (default)
+- Recomendado para aplicar a trabajos y compartir con reclutadores
+
+### 2. Modo Demo Publica (Template)
+- Usa datos ficticios via `src/data/cv-data.example.ts`
+- Deploy a Vercel con `NEXT_PUBLIC_APP_MODE=demo`
+- Incluye `/demo` para upload y preview al 60%
+- Ideal para que usuarios prueben la herramienta sin exponer datos reales
 
 ---
 
@@ -89,6 +106,8 @@ npm install
 # 3. Configura variables de entorno
 cp .env.example .env.local
 # Edita .env.local con tu GROQ_API_KEY
+# Define el modo de app:
+# NEXT_PUBLIC_APP_MODE=personal (CV real) o demo (template publico)
 
 # 4. Agrega tus datos
 cp src/data/cv-data.example.ts src/data/cv-data.ts
