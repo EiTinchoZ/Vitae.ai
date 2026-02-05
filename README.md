@@ -1,235 +1,130 @@
-# Vitae.ai
+﻿# Vitae.ai
 
-### Tu carrera, potenciada por inteligencia artificial
+AI-powered interactive CV and portfolio built with Next.js. Designed to help recruiters understand a candidate fast through smart insights, Q&A, and a polished visual narrative.
 
-[![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38B2AC?logo=tailwind-css)](https://tailwindcss.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+## Live Sites
 
----
+- **Personal CV (Martin Bundy)**: https://portfolio-eitinchos-projects.vercel.app
+- **Public Demo (Customizable Preview)**: https://vitae-demo.vercel.app
 
-**Vitae.ai** es una herramienta open-source para crear tu CV digital interactivo con IA integrada. Diseñado para profesionales que quieren destacar ante reclutadores.
+## Two Modes (Do Not Mix)
 
-## Demos en Vivo
+### 1. Personal Mode (Your real CV)
+- Uses real data from `src/data/cv-data.ts`
+- Intended for recruiters and job applications
+- Default build mode: `NEXT_PUBLIC_APP_MODE=personal`
 
-| Demo | Descripcion |
-|------|-------------|
-| [**CV Personal (Martin Bundy)**](https://portfolio-eitinchos-projects.vercel.app) | CV completo para reclutadores (datos reales) |
-| [**Demo Publica (Preview Customizable)**](https://vitae-demo.vercel.app) | Proyecto separado en Vercel con datos ficticios + upload de CV |
+### 2. Demo Mode (Public template)
+- Uses sample data from `src/data/cv-data.example.ts`
+- Includes `/demo` upload + 60% preview with watermark
+- Build mode: `NEXT_PUBLIC_APP_MODE=demo`
 
-> Nota: La demo publica se despliega en un proyecto Vercel distinto y usa `NEXT_PUBLIC_APP_MODE=demo` para evitar exponer datos personales.
-
----
-
-## Modos de Uso
-
-### 1. Modo Personal (CV Real)
-- Usa tus datos reales en `src/data/cv-data.ts`
-- Deploy a Vercel con `NEXT_PUBLIC_APP_MODE=personal` (default)
-- Recomendado para aplicar a trabajos y compartir con reclutadores
-
-### 2. Modo Demo Publica (Template)
-- Usa datos ficticios via `src/data/cv-data.example.ts`
-- Deploy a Vercel con `NEXT_PUBLIC_APP_MODE=demo`
-- Incluye `/demo` para upload y preview al 60%
-- Ideal para que usuarios prueben la herramienta sin exponer datos reales
+> The demo is deployed as a **separate Vercel project**. Keep personal data out of the demo deployment.
 
 ---
 
-## Caracteristicas
+## What This App Includes
 
-### Para Candidatos
-- CV digital responsive y moderno
-- 10 idiomas soportados (ES, EN, PT, DE, FR, ZH, JA, AR, HI, KO)
-- Modo oscuro/claro con persistencia
-- Integracion con GitHub para mostrar repositorios
+**For recruiters**
+- AI insights dashboard (profile strength, standout factors, ideal roles)
+- Recruiter-oriented CV analysis and summaries
+- Section Q&A (skills, projects, education, experience)
+- Skill recommender based on the CV
 
-### Para Reclutadores
-- **Chat con IA** - Pregunta sobre el candidato
-- **Insights Inteligentes** - Analisis ejecutivo del perfil
-- **Q&A por Seccion** - Detalles especificos de cada area
-- **Recomendador de Skills** - Sugerencias de crecimiento
-
----
-
-## Capturas de Pantalla
-
-<details>
-<summary>Ver capturas</summary>
-
-### Hero
-![Hero Section](https://via.placeholder.com/800x400?text=Hero+Screenshot)
-
-### Insights con IA
-![AI Insights](https://via.placeholder.com/800x400?text=AI+Insights)
-
-### Chat Asistente
-![Chat Bot](https://via.placeholder.com/800x400?text=Chat+Assistant)
-
-</details>
+**For candidates**
+- Interactive CV layout
+- 10-language localization
+- Responsive design with modern visual structure
+- Dark/light mode
 
 ---
 
-## Stack Tecnologico
+## Tech Stack
 
-| Categoria | Tecnologia |
-|-----------|------------|
-| Framework | Next.js 16 (App Router) |
-| Lenguaje | TypeScript 5 |
-| Estilos | Tailwind CSS 4 |
-| UI | shadcn/ui + Radix UI |
-| Animaciones | Framer Motion |
-| IA | Groq + Vercel AI SDK |
-| Hosting | Vercel |
+- **Framework:** Next.js (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS + shadcn/ui
+- **Animations:** Framer Motion
+- **AI:** Groq + Vercel AI SDK
+- **Hosting:** Vercel
 
 ---
 
-## Instalacion
-
-### Requisitos
-
-- Node.js 20+
-- Cuenta en [Groq](https://console.groq.com/) (gratis)
-- Cuenta en [Vercel](https://vercel.com/) (gratis)
-
-### Guia Rapida
+## Quick Start
 
 ```bash
-# 1. Clona el repositorio
-git clone https://github.com/EiTinchoZ/vitae-ai.git
-cd vitae-ai
-
-# 2. Instala dependencias
+git clone https://github.com/EiTinchoZ/Portafolio-CV-Interactivo.git
+cd Portafolio-CV-Interactivo
 npm install
-
-# 3. Configura variables de entorno
 cp .env.example .env.local
-# Edita .env.local con tu GROQ_API_KEY
-# Define el modo de app:
-# NEXT_PUBLIC_APP_MODE=personal (CV real) o demo (template publico)
+```
 
-# 4. Agrega tus datos
+Edit `.env.local` with your values:
+
+```bash
+GROQ_API_KEY=your_groq_api_key_here
+NEXT_PUBLIC_GITHUB_USERNAME=your_github_username
+NEXT_PUBLIC_APP_MODE=personal
+NEXT_PUBLIC_DEMO_URL=https://your-demo.vercel.app
+NEXT_PUBLIC_PERSONAL_URL=https://your-personal-cv.vercel.app
+```
+
+Create your CV file:
+
+```bash
 cp src/data/cv-data.example.ts src/data/cv-data.ts
-# Edita cv-data.ts con tu informacion
+```
 
-# 5. Ejecuta en desarrollo
+Run locally:
+
+```bash
 npm run dev
 ```
 
-### Guia Completa
+---
 
-Para instrucciones detalladas paso a paso, consulta [INSTALL.md](INSTALL.md).
+## Deployment (Two Separate Projects)
 
-### Estructura de Datos del CV
+### Personal CV (Production)
+- Deploy with `NEXT_PUBLIC_APP_MODE=personal`
+- Uses your real CV data
 
-Para entender como estructurar tu CV, consulta [src/data/cv-schema.md](src/data/cv-schema.md).
+### Public Demo (Template)
+- Deploy with `NEXT_PUBLIC_APP_MODE=demo`
+- Uses example data + `/demo` uploader
+
+> If you are using this repo as a public template, do **not** commit real CV data. Keep `src/data/cv-data.ts` private.
 
 ---
 
-## Arquitectura
+## CV Data Format
 
-```
-src/
-├── app/
-│   ├── api/                # Endpoints de IA
-│   │   ├── chat/           # Chat conversacional
-│   │   ├── insights/       # Analisis para reclutadores
-│   │   ├── analyze-resume/ # Analizador de CV
-│   │   ├── recommend-skills/ # Recomendador
-│   │   └── section-qa/     # Q&A por seccion
-│   ├── layout.tsx          # Layout raiz
-│   └── page.tsx            # Pagina principal
-├── components/
-│   ├── ai/                 # Dashboards de IA
-│   ├── chat/               # Chat flotante
-│   ├── sections/           # Secciones del CV
-│   ├── shared/             # Navbar, Footer
-│   └── ui/                 # Componentes shadcn
-├── data/
-│   ├── cv-data.ts          # TUS datos (no incluido)
-│   ├── cv-data.example.ts  # Ejemplo con datos ficticios
-│   └── cv-schema.md        # Documentacion
-├── i18n/                   # 10 idiomas
-└── lib/                    # Utilidades
-```
+See `src/data/cv-schema.md` for the required structure and examples.
 
 ---
 
-## Scripts
+## Security
 
-```bash
-npm run dev      # Desarrollo local
-npm run build    # Build de produccion
-npm run start    # Servidor de produccion
-npm run lint     # Verificar codigo
-```
+- Never commit API keys
+- Use `.env.local` and Vercel Environment Variables
+- Keep personal data out of public templates
 
 ---
 
-## Funcionalidades de IA
+## Contributing
 
-| Feature | Descripcion |
-|---------|-------------|
-| **Chat Asistente** | Conversacion natural sobre el CV |
-| **Insights para Reclutadores** | Score del perfil, fortalezas, roles ideales |
-| **Analizador de CV** | Feedback estructurado y compatibilidad ATS |
-| **Recomendador de Skills** | Sugerencias de habilidades complementarias |
-| **Q&A por Seccion** | Preguntas especificas sobre cada area |
+Please read `CONTRIBUTING.md`. Contributions are welcome.
 
 ---
 
-## Idiomas Soportados
+## License
 
-| Codigo | Idioma | Estado |
-|--------|--------|--------|
-| `es` | Espanol | Completo |
-| `en` | Ingles | Completo |
-| `pt` | Portugues | Completo |
-| `de` | Aleman | Completo |
-| `fr` | Frances | Completo |
-| `zh` | Chino | Completo |
-| `ja` | Japones | Completo |
-| `ar` | Arabe (RTL) | Completo |
-| `hi` | Hindi | Completo |
-| `ko` | Coreano | Completo |
+MIT License. See `LICENSE`.
 
 ---
 
-## Contribuir
+## Credits
 
-Las contribuciones son bienvenidas. Por favor:
-
-1. Fork el repositorio
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
-
----
-
-## Seguridad
-
-Para reportar vulnerabilidades de seguridad, consulta [SECURITY.md](SECURITY.md).
-
----
-
-## Colaboradores
-
-Este proyecto es desarrollado por:
-
-- **Martin Alejandro Bundy Munoz** - Creador y mantenedor
-- **Claude Code** - Colaborador IA
-- **Codex** - Colaborador IA
-
----
-
-## Licencia
-
-Distribuido bajo la Licencia MIT. Ver [LICENSE](LICENSE) para mas informacion.
-
----
-
-<p align="center">
-  <strong>Vitae.ai</strong> - Tu carrera, potenciada por inteligencia artificial
-</p>
+- Martin Alejandro Bundy Munoz (Owner)
+- Claude Code (AI collaborator)
+- Codex (AI collaborator)
