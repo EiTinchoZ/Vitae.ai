@@ -81,7 +81,7 @@ export function Contact() {
                     alt="Martin Bundy en un evento"
                     width={1400}
                     height={900}
-                    className="h-64 w-full object-cover object-center"
+                    className="h-56 sm:h-64 md:h-72 w-full object-cover object-center"
                     priority
                   />
                 </div>

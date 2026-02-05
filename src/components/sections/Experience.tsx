@@ -38,7 +38,7 @@ export function Experience() {
         const Timeline = (
           <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border" />
+          <div className="absolute left-5 sm:left-8 top-0 bottom-0 w-0.5 bg-border" />
 
           {/* Experience items */}
           {experienceItems.map((exp, index) => (
@@ -48,10 +48,10 @@ export function Experience() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative pl-20 pb-12 last:pb-0"
+              className="relative pl-14 sm:pl-20 pb-12 last:pb-0"
             >
               {/* Timeline dot */}
-              <div className="absolute left-6 w-5 h-5 rounded-full border-4 border-background bg-primary" />
+              <div className="absolute left-4 sm:left-6 w-5 h-5 rounded-full border-4 border-background bg-primary" />
 
               {/* Content card */}
               <div className="bg-background rounded-xl p-6 border hover:shadow-md transition-shadow">
@@ -133,17 +133,17 @@ export function Experience() {
                     alt="Martin Bundy recibiendo un diploma"
                     width={1400}
                     height={900}
-                    className="h-[520px] w-full object-cover object-[50%_25%]"
+                    className="h-64 sm:h-80 md:h-[420px] lg:h-[520px] w-full object-cover object-[50%_25%]"
                     priority
                   />
                 </div>
-                <div className="mt-16 relative overflow-hidden rounded-2xl border bg-muted/20">
+                <div className="mt-8 md:mt-12 lg:mt-16 relative overflow-hidden rounded-2xl border bg-muted/20">
                   <Image
                     src="/experience-secondary.png"
                     alt="Martin Bundy en una actividad profesional"
                     width={1400}
                     height={900}
-                    className="h-[520px] w-full object-cover object-[50%_20%]"
+                    className="h-56 sm:h-72 md:h-[360px] lg:h-[520px] w-full object-cover object-[50%_20%]"
                   />
                 </div>
               </div>

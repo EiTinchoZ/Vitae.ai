@@ -47,7 +47,7 @@ export function Education() {
         const Timeline = (
           <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border" />
+          <div className="absolute left-5 sm:left-8 top-0 bottom-0 w-0.5 bg-border" />
 
           {/* Education items */}
           {cvData.education.map((edu, index) => (
@@ -57,11 +57,11 @@ export function Education() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative pl-20 pb-12 last:pb-0"
+              className="relative pl-14 sm:pl-20 pb-12 last:pb-0"
             >
               {/* Timeline dot */}
               <div
-                className={`absolute left-6 w-5 h-5 rounded-full border-4 border-background ${
+                className={`absolute left-4 sm:left-6 w-5 h-5 rounded-full border-4 border-background ${
                   edu.status === 'completed'
                     ? 'bg-green-500'
                     : 'bg-primary animate-pulse'
@@ -171,7 +171,7 @@ export function Education() {
                   alt="Martin Bundy en un evento academico"
                   width={1400}
                   height={900}
-                  className="h-[460px] w-full object-cover object-top"
+                  className="h-56 sm:h-72 md:h-[360px] lg:h-[460px] w-full object-cover object-top"
                   priority
                 />
               </div>
