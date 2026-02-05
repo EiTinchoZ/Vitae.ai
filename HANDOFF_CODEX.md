@@ -52,14 +52,24 @@
 
 | Archivo | Cambios |
 |---------|---------|
-| `next.config.ts` | Security headers (HSTS, XSS, etc.) |
+| `next.config.ts` | Security headers + alias relativo para demo |
+| `middleware.ts` | NUEVO - redireccion / → /demo en vitae-demo host |
 | `src/lib/api-validation.ts` | NUEVO - validacion de inputs |
+| `src/lib/app-config.ts` | NUEVO - IS_DEMO, APP_MODE, REPO_URL |
 | `src/data/cv-data.ts` | phone = '' |
+| `src/data/cv-data.example.ts` | NUEVO - datos ficticios para template |
 | `src/components/sections/Contact.tsx` | Muestra "contactame por email" |
 | `src/components/sections/Hero.tsx` | Badge Vitae.ai con slogan |
+| `src/components/demo/DemoUpload.tsx` | NUEVO - upload PDF/DOCX |
+| `src/components/demo/DemoForm.tsx` | NUEVO - formulario 3 steps |
+| `src/components/demo/DemoPaste.tsx` | NUEVO - pegar texto |
+| `src/components/demo/DemoPreview.tsx` | NUEVO - preview con watermark |
+| `src/app/demo/page.tsx` | NUEVO - pagina demo publica |
+| `src/app/api/demo/parse-cv/route.ts` | NUEVO - parsing CV con Groq |
 | `src/app/api/insights/route.ts` | Metricas para reclutadores |
 | `src/app/api/analyze-resume/route.ts` | Sin phone en summary |
 | `src/components/ai/InsightsDashboard.tsx` | REESCRITO completo |
+| `src/components/ui/*.tsx` | NUEVOS - input, label, textarea, etc. |
 | `src/i18n/locales/*.json` | Nuevas traducciones (10 archivos) |
 | `VITAE_ROADMAP.md` | NUEVO - plan del producto |
 
@@ -228,16 +238,36 @@ portfolio/
 4. ✅ **INSTALL.md** - Guia paso a paso completa
 5. ✅ **.env.example** - Template de variables de entorno
 
-### PENDIENTES PARA PROXIMA SESION:
-1. **FASE 3: Demo Publica** - Sistema de upload de CV con preview al 60%
-   - Nueva pagina /demo o nuevo proyecto Vercel
-   - Sistema de input (PDF/DOCX/Form/Paste)
-   - Watermark y secciones bloqueadas
-   - CTA para instalar el proyecto
+### COMPLETADO POR CLAUDE OPUS 4.5 (2026-02-04):
+1. ✅ **Fix del alias en next.config.ts**
+   - Cambiado de `path.resolve(process.cwd(), ...)` a path relativo `'./src/data/cv-data.example.ts'`
+   - El path absoluto causaba error en Vercel/Turbopack: `Module not found: /vercel/path0/...`
 
-2. **Actualizar .gitignore** - Excluir cv-data.ts del template
-   - Agregar `src/data/cv-data.ts` al .gitignore
-   - Esto evita que los datos de Martin se compartan en el template
+2. ✅ **Componentes demo creados**
+   - `src/components/demo/DemoUpload.tsx` - Upload de PDF/DOCX con drag & drop
+   - `src/components/demo/DemoForm.tsx` - Formulario paso a paso (3 steps)
+   - `src/components/demo/DemoPaste.tsx` - Pegar texto del CV
+   - `src/components/demo/DemoPreview.tsx` - Preview con watermark y secciones bloqueadas
+
+3. ✅ **API para parsing de CV**
+   - `src/app/api/demo/parse-cv/route.ts` - Procesa PDF/DOCX/texto con Groq AI
+   - Soporta multipart/form-data (archivos) y JSON (texto)
+   - Rate limiting incluido
+
+4. ✅ **Componentes shadcn/ui agregados**
+   - input, label, textarea, progress, alert, separator
+   - Requeridos por los componentes demo
+
+5. ✅ **Middleware para redireccion demo**
+   - `middleware.ts` - Redirige `/` → `/demo` en host `vitae-demo.vercel.app`
+   - La pagina `/demo` detecta host para evitar loop de redireccion
+
+### PENDIENTES PARA PROXIMA SESION:
+1. **Verificar deploy de Vercel demo** - El push se hizo, esperar que Vercel redeploy
+   - URL: https://vitae-demo.vercel.app
+
+2. **Agregar traducciones faltantes** - Algunas keys del demo pueden necesitar traduccion
+   - `demo.form.prevStep`, `demo.form.nextStep`, `demo.form.processing`, etc.
 
 3. **Screenshots para README** - Reemplazar placeholders con capturas reales
 
