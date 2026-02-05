@@ -13,6 +13,15 @@ export function Experience() {
   const cvData = getCvData(language);
 
   const suggestedQuestions = tArray('qa.suggestions.experience');
+  const preferredOrder = ['exp-2', 'exp-1', 'exp-deta'];
+  const experienceItems = [...cvData.experience].sort((a, b) => {
+    const indexA = preferredOrder.indexOf(a.id);
+    const indexB = preferredOrder.indexOf(b.id);
+    if (indexA === -1 && indexB === -1) return 0;
+    if (indexA === -1) return 1;
+    if (indexB === -1) return -1;
+    return indexA - indexB;
+  });
 
   return (
     <SectionWrapper id="experience" className="bg-muted/20">
@@ -29,7 +38,7 @@ export function Experience() {
           <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border" />
 
           {/* Experience items */}
-          {cvData.experience.map((exp, index) => (
+          {experienceItems.map((exp, index) => (
             <motion.div
               key={exp.id}
               initial={{ opacity: 0, x: -20 }}

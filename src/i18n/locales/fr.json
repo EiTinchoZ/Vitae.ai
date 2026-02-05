@@ -132,7 +132,10 @@
       "careers": "Formations en cours",
       "certifications": "Certifications",
       "english": "Niveau d'Anglais"
-    }
+    },
+    "linkedinLabel": "LinkedIn",
+    "linkedinTitle": "Connectons-nous sur LinkedIn",
+    "linkedinDescription": "Suivez mes projets, publications et actualit?s pro."
   },
   "footer": {
     "rights": "Tous droits reserves.",
@@ -181,9 +184,9 @@
     "error": "Erreur lors de la réponse. Réessaie.",
     "suggestions": {
       "skills": [
-        "Pourquoi as-tu choisi de te spécialiser en IA ?",
-        "Quelle est ta compétence la plus forte ?",
-        "Comment as-tu appris ces technologies ?"
+        "Comment appliquerais-tu ces comp?tences en g?nie industriel ?",
+        "Comment tes comp?tences IA/innovation apportent-elles de la valeur ?",
+        "? quoi sert chaque comp?tence dans un projet r?el ?"
       ],
       "projects": [
         "Quel a été le plus grand défi de Conecta Panamá ?",
@@ -196,9 +199,9 @@
         "Quel type de travail recherches-tu ?"
       ],
       "education": [
-        "Pourquoi étudies-tu deux cursus ?",
-        "Comment combines-tu l'IA et le génie industriel ?",
-        "Quels sont tes objectifs académiques ?"
+        "Parle-moi de ton parcours au lyc?e.",
+        "Pourquoi as-tu choisi la formation en IA ?",
+        "Que t?apporte le g?nie industriel ?"
       ]
     }
   },
@@ -482,5 +485,12 @@
         "reset": "R?initialiser"
       }
     }
+  },
+  "intro": {
+    "title": "Activer le CV interactif",
+    "subtitle": "Touchez pour d?marrer l?exp?rience et charger tous les d?tails du CV.",
+    "cta": "D?marrer le chargement",
+    "loadingTitle": "Initialisation du profil",
+    "progressLabel": "Progression : {progress}%"
   }
 }

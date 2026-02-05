@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import {
   Trophy,
   ExternalLink,
@@ -29,6 +30,12 @@ const languageColors: Record<string, string> = {
   HTML: 'bg-orange-500',
   CSS: 'bg-purple-500',
   default: 'bg-gray-500',
+};
+
+const repoLogos: Record<string, { src: string; alt: string }> = {
+  'tin.io': { src: '/images/projects/tin-io-logo.jpg', alt: 'Tin.io' },
+  'tin-io': { src: '/images/projects/tin-io-logo.jpg', alt: 'Tin.io' },
+  'tyr': { src: '/images/projects/tyr-logo.png', alt: 'TYR' },
 };
 
 export function Projects() {
@@ -164,7 +171,9 @@ export function Projects() {
           </div>
         ) : repos.length > 0 ? (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {repos.map((repo, index) => (
+            {repos.map((repo, index) => {
+              const logo = repoLogos[repo.name.toLowerCase()];
+              return (
               <motion.a
                 key={repo.id}
                 href={repo.htmlUrl}
@@ -187,6 +196,17 @@ export function Projects() {
                 <h4 className="font-semibold mb-1 group-hover:text-primary transition-colors">
                   {repo.name}
                 </h4>
+                {logo && (
+                  <div className="relative w-full h-28 rounded-lg overflow-hidden border bg-muted/20 mb-3">
+                    <Image
+                      src={logo.src}
+                      alt={logo.alt}
+                      fill
+                      className="object-contain p-3"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  </div>
+                )}
                 <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
                   {repo.description || t('projects.noDescription')}
                 </p>
@@ -217,7 +237,8 @@ export function Projects() {
                   {t('projects.updated')}: {formatDate(repo.updatedAt, language)}
                 </p>
               </motion.a>
-            ))}
+              );
+            })}
           </div>
         ) : (
           <div className="text-center py-12 text-muted-foreground">

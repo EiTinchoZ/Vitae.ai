@@ -13,6 +13,20 @@ export function Education() {
   const cvData = getCvData(language);
 
   const suggestedQuestions = tArray('qa.suggestions.education');
+  const timelineById: Record<string, { startDate: string; endDate: string }> = {
+    'edu-2': { startDate: '2025-01-01', endDate: '2026-12-31' },
+    'edu-3': { startDate: '2025-01-01', endDate: '2027-04-30' },
+  };
+
+  const computeProgress = (startDate?: string, endDate?: string) => {
+    if (!startDate || !endDate) return null;
+    const start = new Date(startDate).getTime();
+    const end = new Date(endDate).getTime();
+    if (Number.isNaN(start) || Number.isNaN(end) || end <= start) return null;
+    const now = Date.now();
+    const elapsed = Math.min(Math.max(now - start, 0), end - start);
+    return Math.round((elapsed / (end - start)) * 100);
+  };
 
   return (
     <SectionWrapper id="education">
@@ -91,21 +105,31 @@ export function Education() {
                 {/* Progress bar for in-progress education */}
                 {edu.status === 'in_progress' && (
                   <div className="mt-4">
-                    <div className="flex justify-between text-xs text-muted-foreground mb-1">
-                      <span>{t('education.estimatedProgress')}</span>
-                      <span>
-                        {edu.id === 'edu-2' ? '38%' : '57%'}
-                      </span>
-                    </div>
-                    <div className="h-2 bg-muted rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: edu.id === 'edu-2' ? '38%' : '57%' }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.5 }}
-                        className="h-full bg-primary rounded-full"
-                      />
-                    </div>
+                    {(() => {
+                      const timeline = timelineById[edu.id];
+                      const computed = computeProgress(
+                        edu.startDate ?? timeline?.startDate,
+                        edu.endDate ?? timeline?.endDate
+                      );
+                      const progress = computed ?? 0;
+                      return (
+                        <>
+                          <div className="flex justify-between text-xs text-muted-foreground mb-1">
+                            <span>{t('education.estimatedProgress')}</span>
+                            <span>{progress}%</span>
+                          </div>
+                          <div className="h-2 bg-muted rounded-full overflow-hidden">
+                            <motion.div
+                              initial={{ width: 0 }}
+                              whileInView={{ width: `${progress}%` }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 1, delay: 0.5 }}
+                              className="h-full bg-primary rounded-full"
+                            />
+                          </div>
+                        </>
+                      );
+                    })()}
                   </div>
                 )}
               </div>

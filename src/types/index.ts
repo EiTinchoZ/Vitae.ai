@@ -21,8 +21,11 @@ export interface Education {
   institution: string;
   startYear: number | null;
   endYear: number | string;
+  startDate?: string;
+  endDate?: string;
   status: 'completed' | 'in_progress';
   description?: string;
+  qaNotes?: string;
 }
 
 export interface Certificate {
@@ -33,6 +36,8 @@ export interface Certificate {
   status: 'completed' | 'in_progress';
   description: string;
   category: 'master' | 'specialization' | 'technical' | 'languages' | 'programming';
+  group?: string;
+  module?: string;
   file?: string;
   thumbnail?: string;
 }
@@ -78,6 +83,8 @@ export interface Language {
 export interface AboutContent {
   quote: string;
   specialties: string[];
+  image?: string;
+  imageAlt?: string;
   highlights: {
     educationValue: string;
     specializationValue: string;

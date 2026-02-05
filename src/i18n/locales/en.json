@@ -132,7 +132,10 @@
       "careers": "Ongoing degrees",
       "certifications": "Certifications",
       "english": "English Level"
-    }
+    },
+    "linkedinLabel": "LinkedIn",
+    "linkedinTitle": "Let?s connect on LinkedIn",
+    "linkedinDescription": "Follow my projects, posts, and professional updates."
   },
   "footer": {
     "rights": "All rights reserved.",
@@ -181,9 +184,9 @@
     "error": "Error getting response. Try again.",
     "suggestions": {
       "skills": [
-        "Why did you choose to specialize in AI?",
-        "What is your strongest skill?",
-        "How did you learn these technologies?"
+        "How would you apply these skills in industrial engineering?",
+        "How do your AI and digital innovation skills add value?",
+        "What does each skill enable in real projects?"
       ],
       "projects": [
         "What was the biggest challenge in Conecta Panamá?",
@@ -196,9 +199,9 @@
         "What type of work are you looking for?"
       ],
       "education": [
-        "Why are you studying two degrees?",
-        "How do you combine AI with Industrial Engineering?",
-        "What are your academic goals?"
+        "Tell me about your high school experience.",
+        "Why did you choose the AI technical degree?",
+        "What does Industrial Engineering add to your profile?"
       ]
     }
   },
@@ -482,5 +485,12 @@
         "reset": "Reset customization"
       }
     }
+  },
+  "intro": {
+    "title": "Activate interactive CV",
+    "subtitle": "Tap to start the experience and load the full CV details.",
+    "cta": "Start loading",
+    "loadingTitle": "Initializing profile",
+    "progressLabel": "Progress: {progress}%"
   }
 }

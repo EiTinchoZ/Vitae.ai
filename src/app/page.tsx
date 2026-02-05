@@ -7,6 +7,7 @@ import { Certificates } from '@/components/sections/Certificates';
 import { Projects } from '@/components/sections/Projects';
 import { Experience } from '@/components/sections/Experience';
 import { Contact } from '@/components/sections/Contact';
+import { PersonalIntroGate } from '@/components/shared/PersonalIntroGate';
 import { IS_DEMO } from '@/lib/app-config';
 
 export default function Home() {
@@ -15,7 +16,7 @@ export default function Home() {
   }
 
   return (
-    <>
+    <PersonalIntroGate>
       <Hero />
       <About />
       <Skills />
@@ -24,6 +25,6 @@ export default function Home() {
       <Projects />
       <Experience />
       <Contact />
-    </>
+    </PersonalIntroGate>
   );
 }

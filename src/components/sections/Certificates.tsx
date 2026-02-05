@@ -59,6 +59,37 @@ export function Certificates() {
     setSelectedCert(cvData.certificates[nextIndex]);
   };
 
+  const renderPreview = (cert: Certificate) => {
+    if (cert.thumbnail) {
+      return (
+        <img
+          src={cert.thumbnail}
+          alt={cert.name}
+          className="w-full h-28 object-cover rounded-lg border"
+        />
+      );
+    }
+
+    if (cert.file) {
+      return (
+        <div className="h-28 rounded-lg border overflow-hidden bg-muted/30">
+          <object
+            data={`${cert.file}#page=1&view=FitH`}
+            type="application/pdf"
+            className="w-full h-full"
+            aria-label={cert.name}
+          />
+        </div>
+      );
+    }
+
+    return (
+      <div className="h-28 rounded-lg border bg-muted/30 flex items-center justify-center text-muted-foreground text-xs">
+        {t('certificates.preview')}
+      </div>
+    );
+  };
+
   return (
     <SectionWrapper id="certificates">
       <SectionTitle subtitle={t('certificates.subtitle')}>
@@ -149,6 +180,8 @@ export function Certificates() {
                 </p>
                 <p className="text-xs text-muted-foreground">{cert.period}</p>
 
+                <div className="mt-4">{renderPreview(cert)}</div>
+
                 {/* Hover overlay */}
                 <div className="absolute inset-0 rounded-xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
               </motion.div>
@@ -205,22 +238,40 @@ export function Certificates() {
                   <p className="text-muted-foreground">{selectedCert.description}</p>
                 </div>
 
-                {/* Placeholder for certificate preview */}
-                <div className="bg-muted/30 rounded-xl p-8 text-center">
-                  <Award className="h-16 w-16 mx-auto mb-4 text-muted-foreground/50" />
-                  <p className="text-muted-foreground">
-                    {t('certificates.preview')}
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    {t('certificates.pdfComingSoon')}
-                  </p>
-                </div>
+                {/* Certificate preview */}
+                {selectedCert.file ? (
+                  <div className="bg-muted/30 rounded-xl overflow-hidden border">
+                    <object
+                      data={`${selectedCert.file}#page=1&view=FitH`}
+                      type="application/pdf"
+                      className="w-full h-[420px]"
+                      aria-label={selectedCert.name}
+                    />
+                  </div>
+                ) : (
+                  <div className="bg-muted/30 rounded-xl p-8 text-center">
+                    <Award className="h-16 w-16 mx-auto mb-4 text-muted-foreground/50" />
+                    <p className="text-muted-foreground">
+                      {t('certificates.preview')}
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      {t('certificates.pdfComingSoon')}
+                    </p>
+                  </div>
+                )}
 
                 {/* Actions */}
                 <div className="flex gap-2 pt-4">
-                  <Button variant="outline" className="flex-1" disabled>
-                    <Download className="h-4 w-4 mr-2" />
-                    {t('certificates.downloadPDF')}
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="flex-1"
+                    disabled={!selectedCert.file}
+                  >
+                    <a href={selectedCert.file || '#'} download>
+                      <Download className="h-4 w-4 mr-2" />
+                      {t('certificates.downloadPDF')}
+                    </a>
                   </Button>
                 </div>
               </div>

@@ -16,7 +16,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useTranslation } from '@/i18n';
-import { cn } from '@/lib/utils';
 import { resolveAiError } from '@/lib/ai-errors';
 
 interface RecommendedSkill {
@@ -96,19 +95,12 @@ export function SkillRecommender() {
     return normalized;
   };
 
-  const getDifficultyColor = (difficulty: string) => {
+  const getStrengthLevel = (difficulty: string) => {
     const normalized = normalizeDifficulty(difficulty);
-    if (normalized === 'easy') return 'bg-green-500/10 text-green-500';
-    if (normalized === 'medium') return 'bg-amber-500/10 text-amber-500';
-    return 'bg-red-500/10 text-red-500';
-  };
-
-  const getDifficultyLabel = (difficulty: string) => {
-    const normalized = normalizeDifficulty(difficulty);
-    if (normalized === 'easy') return t('skillRecommender.difficultyLabels.easy');
-    if (normalized === 'medium') return t('skillRecommender.difficultyLabels.medium');
-    if (normalized === 'hard') return t('skillRecommender.difficultyLabels.hard');
-    return difficulty;
+    if (normalized === 'easy') return 1;
+    if (normalized === 'medium') return 2;
+    if (normalized === 'hard') return 3;
+    return 2;
   };
 
 
@@ -189,12 +181,21 @@ export function SkillRecommender() {
                     {recommendations.recommendedSkills.map((skill, i) => (
                       <Card key={i} className="overflow-hidden">
                         <CardHeader className="pb-2">
-                          <CardTitle className="text-base flex items-center justify-between">
-                            {skill.name}
-                            <Badge className={cn('text-xs', getDifficultyColor(skill.difficulty))}>
-                              {getDifficultyLabel(skill.difficulty)}
-                            </Badge>
-                          </CardTitle>
+                        <CardTitle className="text-base flex items-center justify-between">
+                          {skill.name}
+                          <div className="flex items-center gap-1">
+                            {[1, 2, 3].map((level) => (
+                              <span
+                                key={level}
+                                className={`h-2 w-2 rounded-full ${
+                                  level <= getStrengthLevel(skill.difficulty)
+                                    ? 'bg-primary'
+                                    : 'bg-muted'
+                                }`}
+                              />
+                            ))}
+                          </div>
+                        </CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-3">
                           <p className="text-sm text-muted-foreground">{skill.reason}</p>

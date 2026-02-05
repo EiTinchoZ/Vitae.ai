@@ -1,12 +1,14 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { MapPin, GraduationCap, Briefcase, Languages } from 'lucide-react';
 import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
 import { InsightsDashboard } from '@/components/ai/InsightsDashboard';
 import { ResumeAnalyzer } from '@/components/ai/ResumeAnalyzer';
 import { getCvData } from '@/data/cv-data';
 import { useTranslation } from '@/i18n';
+import { cn } from '@/lib/utils';
 
 export function About() {
   const { t, language } = useTranslation();
@@ -84,6 +86,25 @@ export function About() {
           transition={{ duration: 0.5 }}
           className="bg-muted/30 rounded-2xl p-6"
         >
+          {cvData.about.image && (
+            <div className="mb-6">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border bg-background">
+                <Image
+                  src={cvData.about.image}
+                  alt={cvData.about.imageAlt ?? 'Martin Bundy'}
+                  fill
+                  className={cn('object-cover')}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority
+                />
+              </div>
+              {cvData.about.imageAlt && (
+                <p className="mt-2 text-xs text-muted-foreground">
+                  {cvData.about.imageAlt}
+                </p>
+              )}
+            </div>
+          )}
           <h3 className="text-lg font-semibold mb-4">{t('about.specialtiesTitle')}</h3>
           <div className="flex flex-wrap gap-2">
             {cvData.about.specialties.map((specialty, index) => (

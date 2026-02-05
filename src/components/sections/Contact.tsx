@@ -72,6 +72,25 @@ export function Contact() {
               </p>
             </div>
 
+            {/* LinkedIn highlight */}
+            <a
+              href={cvData.personal.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-4 rounded-2xl border bg-gradient-to-br from-primary/10 to-background p-5 transition hover:border-primary/50 hover:shadow-lg"
+            >
+              <div className="p-3 rounded-xl bg-primary text-primary-foreground">
+                <Linkedin className="h-6 w-6" />
+              </div>
+              <div>
+                <p className="text-xs text-muted-foreground">{t('contact.linkedinLabel')}</p>
+                <p className="font-semibold">{t('contact.linkedinTitle')}</p>
+                <p className="text-sm text-muted-foreground">
+                  {t('contact.linkedinDescription')}
+                </p>
+              </div>
+            </a>
+
             {/* Contact cards */}
             <div className="space-y-3">
               {contactInfo.map((item, index) => (
@@ -176,7 +195,7 @@ export function Contact() {
                       <p className="text-xs text-muted-foreground">{t('contact.stats.careers')}</p>
                     </div>
                     <div className="text-center">
-                      <p className="text-2xl font-bold text-primary">6</p>
+                      <p className="text-2xl font-bold text-primary">{cvData.certificates.length}</p>
                       <p className="text-xs text-muted-foreground">{t('contact.stats.certifications')}</p>
                     </div>
                     <div className="text-center">

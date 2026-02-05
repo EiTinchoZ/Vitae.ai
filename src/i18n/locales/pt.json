@@ -132,7 +132,10 @@
       "careers": "Cursos em andamento",
       "certifications": "Certificacoes",
       "english": "Nivel de Ingles"
-    }
+    },
+    "linkedinLabel": "LinkedIn",
+    "linkedinTitle": "Vamos nos conectar no LinkedIn",
+    "linkedinDescription": "Acompanhe meus projetos, posts e novidades profissionais."
   },
   "footer": {
     "rights": "Todos os direitos reservados.",
@@ -181,9 +184,9 @@
     "error": "Erro ao obter resposta. Tente novamente.",
     "suggestions": {
       "skills": [
-        "Por que você escolheu se especializar em IA?",
-        "Qual é sua habilidade mais forte?",
-        "Como você aprendeu essas tecnologias?"
+        "Como voc? aplicaria essas habilidades na engenharia industrial?",
+        "Como suas skills em IA e inova??o digital agregam valor?",
+        "Para que serve cada habilidade em projetos reais?"
       ],
       "projects": [
         "Qual foi o maior desafio do Conecta Panamá?",
@@ -196,9 +199,9 @@
         "Que tipo de trabalho você procura?"
       ],
       "education": [
-        "Por que você estuda duas graduações?",
-        "Como você combina IA com Engenharia Industrial?",
-        "Quais são suas metas acadêmicas?"
+        "Conte sobre seu ensino m?dio em Ci?ncias e Letras.",
+        "Por que voc? escolheu o t?cnico em IA?",
+        "O que a Engenharia Industrial agrega ao seu perfil?"
       ]
     }
   },
@@ -482,5 +485,12 @@
         "reset": "Redefinir ajustes"
       }
     }
+  },
+  "intro": {
+    "title": "Ativar CV interativo",
+    "subtitle": "Toque para iniciar a experi?ncia e carregar todos os detalhes do CV.",
+    "cta": "Iniciar carregamento",
+    "loadingTitle": "Inicializando perfil",
+    "progressLabel": "Progresso: {progress}%"
   }
 }

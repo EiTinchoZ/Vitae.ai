@@ -132,7 +132,10 @@
       "careers": "Laufende Studiengange",
       "certifications": "Zertifikate",
       "english": "Englischniveau"
-    }
+    },
+    "linkedinLabel": "LinkedIn",
+    "linkedinTitle": "Lass uns auf LinkedIn verbinden",
+    "linkedinDescription": "Folge meinen Projekten, Posts und beruflichen Updates."
   },
   "footer": {
     "rights": "Alle Rechte vorbehalten.",
@@ -181,9 +184,9 @@
     "error": "Fehler beim Abrufen der Antwort. Bitte versuche es erneut.",
     "suggestions": {
       "skills": [
-        "Warum hast du dich auf KI spezialisiert?",
-        "Was ist deine stärkste Fähigkeit?",
-        "Wie hast du diese Technologien gelernt?"
+        "Wie w?rdest du diese F?higkeiten in der Industrie einsetzen?",
+        "Wie schaffen deine KI- und Digitalskills Mehrwert?",
+        "Wof?r steht jede F?higkeit in realen Projekten?"
       ],
       "projects": [
         "Was war die größte Herausforderung bei Conecta Panamá?",
@@ -196,9 +199,9 @@
         "Welche Art von Arbeit suchst du?"
       ],
       "education": [
-        "Warum studierst du zwei Studiengänge?",
-        "Wie kombinierst du KI mit Industrial Engineering?",
-        "Was sind deine akademischen Ziele?"
+        "Erz?hl mir von deiner Schulzeit.",
+        "Warum hast du den KI-Studiengang gew?hlt?",
+        "Was bringt dir Industrial Engineering?"
       ]
     }
   },
@@ -482,5 +485,12 @@
         "reset": "Zur?cksetzen"
       }
     }
+  },
+  "intro": {
+    "title": "Interaktiven CV starten",
+    "subtitle": "Tippe, um die Erfahrung zu starten und alle CV-Details zu laden.",
+    "cta": "Laden starten",
+    "loadingTitle": "Profil wird initialisiert",
+    "progressLabel": "Fortschritt: {progress}%"
   }
 }
