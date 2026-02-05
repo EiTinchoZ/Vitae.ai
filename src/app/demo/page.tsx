@@ -23,14 +23,24 @@ export default function DemoPage() {
   const [inputMethod, setInputMethod] = useState<InputMethod>('upload');
   const [cvData, setCvData] = useState<Partial<CVData> | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [isDemoHost, setIsDemoHost] = useState(false);
+  const [checkedHost, setCheckedHost] = useState(false);
 
   useEffect(() => {
-    if (!IS_DEMO) {
+    if (typeof window !== 'undefined') {
+      const host = window.location.hostname;
+      setIsDemoHost(host.includes('vitae-demo'));
+      setCheckedHost(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!IS_DEMO && checkedHost && !isDemoHost) {
       router.replace('/');
     }
-  }, [router]);
+  }, [router, checkedHost, isDemoHost]);
 
-  if (!IS_DEMO) {
+  if (!IS_DEMO && !isDemoHost) {
     return (
       <main className="min-h-screen pt-20 pb-12">
         <div className="container mx-auto px-4 text-center">

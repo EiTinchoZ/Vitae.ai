@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 import path from "path";
 
-const appMode = process.env.NEXT_PUBLIC_APP_MODE ?? 'personal';
+const appMode = (process.env.NEXT_PUBLIC_APP_MODE ?? 'personal').trim();
 const isDemoMode = appMode === 'demo';
 const demoAlias: Record<string, string> = isDemoMode
   ? {
