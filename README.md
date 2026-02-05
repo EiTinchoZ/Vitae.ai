@@ -16,7 +16,7 @@
 | Demo | Descripcion |
 |------|-------------|
 | [**CV Personal (Martin Bundy)**](https://portfolio-eitinchos-projects.vercel.app) | CV completo para reclutadores (datos reales) |
-| **Demo Publica (Preview Customizable)** | Proyecto separado en Vercel con datos ficticios + upload de CV |
+| [**Demo Publica (Preview Customizable)**](https://vitae-demo.vercel.app) | Proyecto separado en Vercel con datos ficticios + upload de CV |
 
 > Nota: La demo publica se despliega en un proyecto Vercel distinto y usa `NEXT_PUBLIC_APP_MODE=demo` para evitar exponer datos personales.
 
