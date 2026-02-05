@@ -272,10 +272,10 @@
     }
   },
   "demo": {
-    "badge": "互动演示",
+    "badge": "????",
     "titlePrefix": "体验",
     "titleBrand": "Vitae.ai",
-    "description": "上传你的简历，看看 AI 数字作品集的预览效果。这是 60% 预览，完整结果请安装 Vitae.ai。",
+    "description": "?????????? 60% ????????????AI ??????????? Vitae.ai ?????",
     "cardTitle": "填写你的信息",
     "cardSubtitle": "选择你提供简历数据的方式",
     "tabs": {
@@ -375,7 +375,7 @@
     },
     "preview": {
       "back": "返回",
-      "badge": "60% 预览",
+      "badge": "60% ??",
       "sections": {
         "summary": "职业概览",
         "skills": "突出技能",
@@ -392,19 +392,26 @@
         "email": "you@email.com",
         "profile": "你的职业简介与目标的简要概述。",
         "achievements": "关键成就摘要",
-        "skills": ["AI", "机器学习", "Python", "数据", "自动化", "分析"]
+        "skills": [
+          "AI",
+          "机器学习",
+          "Python",
+          "数据",
+          "自动化",
+          "分析"
+        ]
       },
       "locked": {
         "projects": "重点项目",
         "certificates": "证书",
         "insights": "AI 洞察",
-        "label": "演示版已锁定"
+        "label": "??????"
       },
       "cta": {
-        "title": "想查看完整简历？",
-        "description": "安装 Vitae.ai 解锁所有部分、洞察和功能。",
-        "install": "安装 Vitae.ai",
-        "guide": "查看指南"
+        "title": "??????",
+        "description": "?? Vitae.ai ?????????AI ???????????",
+        "install": "?? Vitae.ai",
+        "guide": "????"
       },
       "links": {
         "linkedin": "LinkedIn",

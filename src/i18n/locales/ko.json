@@ -272,10 +272,10 @@
     }
   },
   "demo": {
-    "badge": "인터랙티브 데모",
+    "badge": "?? ??",
     "titlePrefix": "체험하기",
     "titleBrand": "Vitae.ai",
-    "description": "CV를 업로드하고 AI 기반 디지털 포트폴리오의 미리보기를 확인하세요. 이는 60% 미리보기입니다. 전체 결과를 보려면 Vitae.ai를 설치하세요.",
+    "description": "CV? ???? ? 60%? ??? ????? ?????. ?? ?????, AI ????, ?? ??? ??? Vitae.ai ?? ? ??? ? ????.",
     "cardTitle": "정보를 입력하세요",
     "cardSubtitle": "CV 데이터를 제공하는 방법을 선택하세요",
     "tabs": {
@@ -375,7 +375,7 @@
     },
     "preview": {
       "back": "뒤로",
-      "badge": "60% 미리보기",
+      "badge": "60% ????",
       "sections": {
         "summary": "프로필 요약",
         "skills": "하이라이트 스킬",
@@ -392,19 +392,26 @@
         "email": "you@email.com",
         "profile": "전문 프로필과 목표에 대한 간단한 요약.",
         "achievements": "주요 성과 요약",
-        "skills": ["AI", "Machine Learning", "Python", "데이터", "자동화", "분석"]
+        "skills": [
+          "AI",
+          "Machine Learning",
+          "Python",
+          "데이터",
+          "자동화",
+          "분석"
+        ]
       },
       "locked": {
         "projects": "추천 프로젝트",
         "certificates": "자격증",
         "insights": "AI 인사이트",
-        "label": "데모에서 잠김"
+        "label": "???? ??"
       },
       "cta": {
-        "title": "전체 CV를 보고 싶나요?",
-        "description": "Vitae.ai를 설치하고 모든 섹션, 인사이트, 기능을 잠금 해제하세요.",
-        "install": "Vitae.ai 설치",
-        "guide": "가이드 보기"
+        "title": "?? ?? ?? ??",
+        "description": "Vitae.ai? ???? ?? CV, AI ????, ?? ???? ??? ??? ? ????.",
+        "install": "Vitae.ai ??",
+        "guide": "?? ???"
       },
       "links": {
         "linkedin": "LinkedIn",

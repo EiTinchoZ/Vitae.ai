@@ -272,10 +272,10 @@
     }
   },
   "demo": {
-    "badge": "Démo interactive",
+    "badge": "D?mo publique",
     "titlePrefix": "Essayez",
     "titleBrand": "Vitae.ai",
-    "description": "Téléchargez votre CV et voyez un aperçu de votre portfolio digital avec IA. Ceci est un aperçu à 60 % : pour le résultat complet, installez Vitae.ai.",
+    "description": "T?l?versez votre CV pour g?n?rer un aper?u limit? (env. 60 %). Le portfolio complet, les insights IA et les outils recruteur se d?bloquent en installant Vitae.ai.",
     "cardTitle": "Saisissez vos informations",
     "cardSubtitle": "Choisissez comment fournir les données de votre CV",
     "tabs": {
@@ -375,7 +375,7 @@
     },
     "preview": {
       "back": "Retour",
-      "badge": "Aperçu 60 %",
+      "badge": "Aper?u 60 %",
       "sections": {
         "summary": "Résumé professionnel",
         "skills": "Compétences mises en avant",
@@ -392,19 +392,26 @@
         "email": "votre@email.com",
         "profile": "Bref résumé de votre profil professionnel et objectifs.",
         "achievements": "Résumé des réalisations clés",
-        "skills": ["IA", "Machine Learning", "Python", "Données", "Automatisation", "Analytique"]
+        "skills": [
+          "IA",
+          "Machine Learning",
+          "Python",
+          "Données",
+          "Automatisation",
+          "Analytique"
+        ]
       },
       "locked": {
         "projects": "Projets mis en avant",
         "certificates": "Certifications",
         "insights": "Insights IA",
-        "label": "Verrouillé dans la démo"
+        "label": "Verrouill? dans la d?mo"
       },
       "cta": {
-        "title": "Vous voulez voir le CV complet ?",
-        "description": "Installez Vitae.ai et débloquez toutes les sections, insights et fonctionnalités.",
+        "title": "D?bloquez l?exp?rience compl?te",
+        "description": "Installez Vitae.ai pour obtenir le CV complet, les insights IA et une analyse orient?e recruteur.",
         "install": "Installer Vitae.ai",
-        "guide": "Voir le guide"
+        "guide": "Guide d?installation"
       },
       "links": {
         "linkedin": "LinkedIn",

@@ -272,10 +272,10 @@
     }
   },
   "demo": {
-    "badge": "Interaktive Demo",
+    "badge": "?ffentliche Demo",
     "titlePrefix": "Teste",
     "titleBrand": "Vitae.ai",
-    "description": "Lade deinen Lebenslauf hoch und sieh dir eine Vorschau an, wie dein KI-gestütztes digitales Portfolio aussehen würde. Dies ist eine 60%-Vorschau – für das vollständige Ergebnis installiere Vitae.ai.",
+    "description": "Lade deinen Lebenslauf hoch und erhalte eine begrenzte Vorschau (ca. 60 %). Das vollst?ndige Portfolio, KI-Insights und Recruiter-Tools werden nach der Installation von Vitae.ai freigeschaltet.",
     "cardTitle": "Gib deine Informationen ein",
     "cardSubtitle": "Wähle, wie du deine CV-Daten bereitstellen möchtest",
     "tabs": {
@@ -392,7 +392,14 @@
         "email": "deine@email.com",
         "profile": "Kurze Zusammenfassung deines beruflichen Profils und deiner Ziele.",
         "achievements": "Zusammenfassung wichtiger Erfolge",
-        "skills": ["KI", "Machine Learning", "Python", "Daten", "Automatisierung", "Analytics"]
+        "skills": [
+          "KI",
+          "Machine Learning",
+          "Python",
+          "Daten",
+          "Automatisierung",
+          "Analytics"
+        ]
       },
       "locked": {
         "projects": "Hervorgehobene Projekte",
@@ -401,10 +408,10 @@
         "label": "In der Demo gesperrt"
       },
       "cta": {
-        "title": "Möchtest du den vollständigen CV sehen?",
-        "description": "Installiere Vitae.ai und entsperre alle Bereiche, Insights und Funktionen.",
+        "title": "Vollst?ndiges Erlebnis freischalten",
+        "description": "Installiere Vitae.ai, um den vollst?ndigen CV, KI-Insights und eine recruiter-orientierte Analyse zu erhalten.",
         "install": "Vitae.ai installieren",
-        "guide": "Anleitung ansehen"
+        "guide": "Setup-Anleitung"
       },
       "links": {
         "linkedin": "LinkedIn",

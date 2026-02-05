@@ -272,10 +272,10 @@
     }
   },
   "demo": {
-    "badge": "インタラクティブデモ",
+    "badge": "????",
     "titlePrefix": "試してみる",
     "titleBrand": "Vitae.ai",
-    "description": "履歴書をアップロードして、AI搭載のデジタルポートフォリオのプレビューを確認できます。これは60%プレビューです。完全版を見るにはVitae.aiをインストールしてください。",
+    "description": "??????????????60%???????????????????????????AI?????????????????Vitae.ai?????????????????",
     "cardTitle": "情報を入力",
     "cardSubtitle": "履歴書データの提供方法を選択してください",
     "tabs": {
@@ -375,7 +375,7 @@
     },
     "preview": {
       "back": "戻る",
-      "badge": "60%プレビュー",
+      "badge": "60%?????",
       "sections": {
         "summary": "職務概要",
         "skills": "注目スキル",
@@ -392,19 +392,26 @@
         "email": "you@email.com",
         "profile": "あなたの職務プロフィールと目標の簡単な要約。",
         "achievements": "主な実績の要約",
-        "skills": ["AI", "機械学習", "Python", "データ", "自動化", "分析"]
+        "skills": [
+          "AI",
+          "機械学習",
+          "Python",
+          "データ",
+          "自動化",
+          "分析"
+        ]
       },
       "locked": {
         "projects": "注目プロジェクト",
         "certificates": "認定資格",
         "insights": "AIインサイト",
-        "label": "デモではロック"
+        "label": "???????"
       },
       "cta": {
-        "title": "完全版のCVを見たいですか？",
-        "description": "Vitae.aiをインストールして、すべてのセクション、インサイト、機能を解除してください。",
-        "install": "Vitae.aiをインストール",
-        "guide": "ガイドを見る"
+        "title": "??????",
+        "description": "Vitae.ai??????????????CV?AI???????????????????????",
+        "install": "Vitae.ai???????",
+        "guide": "?????????"
       },
       "links": {
         "linkedin": "LinkedIn",

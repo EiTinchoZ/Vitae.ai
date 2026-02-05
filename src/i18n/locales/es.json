@@ -272,10 +272,10 @@
     }
   },
   "demo": {
-    "badge": "Demo interactiva",
+    "badge": "Demo p?blica",
     "titlePrefix": "Prueba",
     "titleBrand": "Vitae.ai",
-    "description": "Sube tu CV y ve un preview de cómo se vería tu portfolio digital con IA. Este es un preview al 60%: para el resultado completo, instala Vitae.ai.",
+    "description": "Sube tu CV para generar un preview limitado (aprox. 60%). El portafolio completo, los insights de IA y las herramientas para reclutadores se desbloquean al instalar Vitae.ai.",
     "cardTitle": "Ingresa tu información",
     "cardSubtitle": "Elige cómo quieres proporcionar los datos de tu CV",
     "tabs": {
@@ -392,7 +392,14 @@
         "email": "tu@email.com",
         "profile": "Resumen breve de tu perfil profesional y objetivos.",
         "achievements": "Resumen de logros clave",
-        "skills": ["IA", "Machine Learning", "Python", "Data", "Automatización", "Analítica"]
+        "skills": [
+          "IA",
+          "Machine Learning",
+          "Python",
+          "Data",
+          "Automatización",
+          "Analítica"
+        ]
       },
       "locked": {
         "projects": "Proyectos destacados",
@@ -401,10 +408,10 @@
         "label": "Bloqueado en demo"
       },
       "cta": {
-        "title": "¿Quieres ver el CV completo?",
-        "description": "Instala Vitae.ai y desbloquea todas las secciones, insights y funcionalidades.",
+        "title": "Desbloquea la experiencia completa",
+        "description": "Instala Vitae.ai para ver el CV completo, los insights de IA y el an?lisis para reclutadores.",
         "install": "Instalar Vitae.ai",
-        "guide": "Ver guía"
+        "guide": "Gu?a de configuraci?n"
       },
       "links": {
         "linkedin": "LinkedIn",

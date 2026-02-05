@@ -7,6 +7,12 @@ AI-powered interactive CV and portfolio built with Next.js. Designed to help rec
 - **Personal CV (Martin Bundy)**: https://portfolio-eitinchos-projects.vercel.app
 - **Public Demo (Customizable Preview)**: https://vitae-demo.vercel.app
 
+## Screenshots
+
+![Personal CV (live)](./public/preview/personal-cv.png)
+
+![Public Demo (60% preview)](./public/preview/demo-preview.png)
+
 ## Two Modes (Do Not Mix)
 
 ### 1. Personal Mode (Your real CV)

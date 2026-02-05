@@ -272,10 +272,10 @@
     }
   },
   "demo": {
-    "badge": "Interactive demo",
+    "badge": "Public demo",
     "titlePrefix": "Try",
     "titleBrand": "Vitae.ai",
-    "description": "Upload your CV and see a preview of how your AI-powered digital portfolio would look. This is a 60% preview — for the full result, install Vitae.ai.",
+    "description": "Upload your CV to generate a limited preview (about 60%). The full portfolio, AI insights, and recruiter tools unlock when you install Vitae.ai.",
     "cardTitle": "Enter your information",
     "cardSubtitle": "Choose how you want to provide your CV data",
     "tabs": {
@@ -392,7 +392,14 @@
         "email": "you@email.com",
         "profile": "Short summary of your professional profile and goals.",
         "achievements": "Key achievements summary",
-        "skills": ["AI", "Machine Learning", "Python", "Data", "Automation", "Analytics"]
+        "skills": [
+          "AI",
+          "Machine Learning",
+          "Python",
+          "Data",
+          "Automation",
+          "Analytics"
+        ]
       },
       "locked": {
         "projects": "Featured projects",
@@ -401,10 +408,10 @@
         "label": "Locked in demo"
       },
       "cta": {
-        "title": "Want to see the full CV?",
-        "description": "Install Vitae.ai and unlock all sections, insights, and features.",
+        "title": "Unlock the full experience",
+        "description": "Install Vitae.ai to get the complete CV, AI insights, and recruiter-focused analysis.",
         "install": "Install Vitae.ai",
-        "guide": "View guide"
+        "guide": "Setup guide"
       },
       "links": {
         "linkedin": "LinkedIn",
