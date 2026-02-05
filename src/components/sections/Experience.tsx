@@ -143,7 +143,7 @@ export function Experience() {
                     alt="Martin Bundy en una actividad profesional"
                     width={1400}
                     height={900}
-                    className="h-[420px] w-full object-cover object-center"
+                    className="h-[420px] w-full object-contain bg-background"
                   />
                 </div>
               </div>
