@@ -134,8 +134,8 @@
       "english": "英语水平"
     },
     "linkedinLabel": "LinkedIn",
-    "linkedinTitle": "Connect on LinkedIn",
-    "linkedinDescription": "Follow my projects, posts, and professional updates."
+    "linkedinTitle": "在 LinkedIn 上联系我",
+    "linkedinDescription": "关注我的项目、发布和职业动态。"
   },
   "footer": {
     "rights": "版权所有。",
@@ -242,10 +242,8 @@
     "completeness": "档案强度",
     "atsScore": "ATS 准备度",
     "sections": "优势概览",
-    "gaps": "亮点",
     "noHighlights": "杰出成就将通过完整分析生成。",
     "strengths": "优势",
-    "improvements": "价值放大器",
     "overall": "执行摘要",
     "error": "简历分析出错。请重试。",
     "sectionNames": {
@@ -256,7 +254,9 @@
       "skills": "技能",
       "certificates": "证书",
       "projects": "项目"
-    }
+    },
+    "highlights": "亮点",
+    "valueAmplifiers": "价值强化项"
   },
   "skillRecommender": {
     "title": "个人价值观与优势",
@@ -410,12 +410,6 @@
           "分析"
         ]
       },
-      "locked": {
-        "projects": "重点项目",
-        "certificates": "证书",
-        "insights": "AI 洞察",
-        "label": "演示水印"
-      },
       "cta": {
         "title": "准备好你的完整 CV？",
         "description": "安装 Vitae.ai 解锁无水印与完整自定义。",
@@ -425,7 +419,8 @@
       "links": {
         "linkedin": "LinkedIn",
         "github": "GitHub"
-      }
+      },
+      "notice": "带水印的完整简历"
     },
     "errors": {
       "apiKeyMissing": "未配置 API 密钥。",
@@ -439,58 +434,58 @@
       "unknown": "未知错误。"
     },
     "customize": {
-      "title": "Customize the demo",
-      "subtitle": "Adjust layout, spacing, cards, and colors to preview your ideal CV style.",
+      "title": "自定义演示",
+      "subtitle": "调整布局、间距、卡片和颜色，预览你偏好的简历风格。",
       "layout": {
-        "label": "Layout width",
-        "4xl": "Compact",
-        "5xl": "Balanced",
-        "6xl": "Wide"
+        "label": "布局宽度",
+        "4xl": "紧凑",
+        "5xl": "均衡",
+        "6xl": "宽松"
       },
       "density": {
-        "label": "Content density",
-        "compact": "Compact",
-        "comfortable": "Comfortable"
+        "label": "内容密度",
+        "compact": "紧凑",
+        "comfortable": "舒适"
       },
       "cardStyle": {
-        "label": "Card style",
-        "solid": "Solid",
-        "glass": "Glass"
+        "label": "卡片样式",
+        "solid": "实心",
+        "glass": "玻璃"
       },
       "accent": {
-        "label": "Accent color",
-        "blue": "Blue",
-        "emerald": "Emerald",
-        "amber": "Amber",
-        "violet": "Violet"
+        "label": "强调色",
+        "blue": "蓝色",
+        "emerald": "翠绿",
+        "amber": "琥珀",
+        "violet": "紫色"
       },
       "sections": {
-        "label": "Sections",
-        "hero": "Hero",
-        "about": "About",
-        "skills": "Skills",
-        "experience": "Experience",
-        "education": "Education",
-        "projects": "Projects",
-        "certificates": "Certificates",
-        "languages": "Languages"
+        "label": "版块",
+        "hero": "头部",
+        "about": "关于我",
+        "skills": "技能",
+        "experience": "经验",
+        "education": "教育",
+        "projects": "项目",
+        "certificates": "证书",
+        "languages": "语言"
       },
       "actions": {
-        "visible": "Visible",
-        "hidden": "Hidden",
-        "show": "Show",
-        "hide": "Hide",
-        "moveUp": "Move up",
-        "moveDown": "Move down",
-        "reset": "Reset"
+        "visible": "显示",
+        "hidden": "隐藏",
+        "show": "显示",
+        "hide": "隐藏",
+        "moveUp": "上移",
+        "moveDown": "下移",
+        "reset": "重置"
       }
     }
   },
   "intro": {
-    "title": "Activate interactive CV",
-    "subtitle": "Tap to start the experience and load all CV details.",
-    "cta": "Start loading",
-    "loadingTitle": "Initializing profile",
-    "progressLabel": "Progress: {progress}%"
+    "title": "启动互动简历",
+    "subtitle": "点击开始体验并加载完整的简历详情。",
+    "cta": "开始加载",
+    "loadingTitle": "正在初始化档案",
+    "progressLabel": "进度：{progress}%"
   }
 }

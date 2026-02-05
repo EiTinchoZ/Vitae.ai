@@ -134,8 +134,8 @@
       "english": "英語レベル"
     },
     "linkedinLabel": "LinkedIn",
-    "linkedinTitle": "Connect on LinkedIn",
-    "linkedinDescription": "Follow my projects, posts, and professional updates."
+    "linkedinTitle": "LinkedInでつながりましょう",
+    "linkedinDescription": "プロジェクトや投稿、最新の活動をチェックしてください。"
   },
   "footer": {
     "rights": "全著作権所有。",
@@ -242,10 +242,8 @@
     "completeness": "プロフィール強度",
     "atsScore": "ATS準備度",
     "sections": "強みの概要",
-    "gaps": "ハイライト",
     "noHighlights": "完全な分析で優れた実績が生成されます。",
     "strengths": "強み",
-    "improvements": "価値の増幅ポイント",
     "overall": "エグゼクティブサマリー",
     "error": "履歴書の分析に失敗しました。もう一度お試しください。",
     "sectionNames": {
@@ -256,7 +254,9 @@
       "skills": "スキル",
       "certificates": "資格",
       "projects": "プロジェクト"
-    }
+    },
+    "highlights": "ハイライト",
+    "valueAmplifiers": "価値強化ポイント"
   },
   "skillRecommender": {
     "title": "個人の価値観と強み",
@@ -410,12 +410,6 @@
           "分析"
         ]
       },
-      "locked": {
-        "projects": "注目プロジェクト",
-        "certificates": "認定資格",
-        "insights": "AIインサイト",
-        "label": "デモ透かし"
-      },
       "cta": {
         "title": "完全なCVを作成しますか？",
         "description": "Vitae.ai をインストールして透かしなしの完全カスタマイズを解放。",
@@ -425,7 +419,8 @@
       "links": {
         "linkedin": "LinkedIn",
         "github": "GitHub"
-      }
+      },
+      "notice": "ウォーターマーク付きの完全なCV"
     },
     "errors": {
       "apiKeyMissing": "APIキーが設定されていません。",
@@ -439,58 +434,58 @@
       "unknown": "不明なエラー。"
     },
     "customize": {
-      "title": "Customize the demo",
-      "subtitle": "Adjust layout, spacing, cards, and colors to preview your ideal CV style.",
+      "title": "デモをカスタマイズ",
+      "subtitle": "レイアウト、余白、カード、色を調整して理想のCVスタイルを確認できます。",
       "layout": {
-        "label": "Layout width",
-        "4xl": "Compact",
-        "5xl": "Balanced",
-        "6xl": "Wide"
+        "label": "レイアウト幅",
+        "4xl": "コンパクト",
+        "5xl": "バランス",
+        "6xl": "ワイド"
       },
       "density": {
-        "label": "Content density",
-        "compact": "Compact",
-        "comfortable": "Comfortable"
+        "label": "コンテンツ密度",
+        "compact": "コンパクト",
+        "comfortable": "快適"
       },
       "cardStyle": {
-        "label": "Card style",
-        "solid": "Solid",
-        "glass": "Glass"
+        "label": "カードスタイル",
+        "solid": "ソリッド",
+        "glass": "ガラス"
       },
       "accent": {
-        "label": "Accent color",
-        "blue": "Blue",
-        "emerald": "Emerald",
-        "amber": "Amber",
-        "violet": "Violet"
+        "label": "アクセントカラー",
+        "blue": "ブルー",
+        "emerald": "エメラルド",
+        "amber": "アンバー",
+        "violet": "バイオレット"
       },
       "sections": {
-        "label": "Sections",
-        "hero": "Hero",
-        "about": "About",
-        "skills": "Skills",
-        "experience": "Experience",
-        "education": "Education",
-        "projects": "Projects",
-        "certificates": "Certificates",
-        "languages": "Languages"
+        "label": "セクション",
+        "hero": "ヘッダー",
+        "about": "概要",
+        "skills": "スキル",
+        "experience": "経験",
+        "education": "学歴",
+        "projects": "プロジェクト",
+        "certificates": "資格",
+        "languages": "言語"
       },
       "actions": {
-        "visible": "Visible",
-        "hidden": "Hidden",
-        "show": "Show",
-        "hide": "Hide",
-        "moveUp": "Move up",
-        "moveDown": "Move down",
-        "reset": "Reset"
+        "visible": "表示",
+        "hidden": "非表示",
+        "show": "表示",
+        "hide": "非表示",
+        "moveUp": "上へ",
+        "moveDown": "下へ",
+        "reset": "リセット"
       }
     }
   },
   "intro": {
-    "title": "Activate interactive CV",
-    "subtitle": "Tap to start the experience and load all CV details.",
-    "cta": "Start loading",
-    "loadingTitle": "Initializing profile",
-    "progressLabel": "Progress: {progress}%"
+    "title": "インタラクティブCVを起動",
+    "subtitle": "画面をタップして体験を開始し、CVの詳細を読み込みます。",
+    "cta": "読み込み開始",
+    "loadingTitle": "プロフィールを初期化中",
+    "progressLabel": "進行状況：{progress}%"
   }
 }

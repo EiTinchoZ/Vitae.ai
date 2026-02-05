@@ -242,10 +242,8 @@
     "completeness": "Force du Profil",
     "atsScore": "Score de Preparation",
     "sections": "Panorama des Forces",
-    "gaps": "Points forts",
     "noHighlights": "Les réalisations exceptionnelles seront générées avec l'analyse complète.",
     "strengths": "Forces",
-    "improvements": "Amplificateurs de valeur",
     "overall": "Resume Executif",
     "error": "Erreur lors de l'analyse du CV. Réessaie.",
     "sectionNames": {
@@ -256,7 +254,9 @@
       "skills": "Compétences",
       "certificates": "Certificats",
       "projects": "Projets"
-    }
+    },
+    "highlights": "Points clés",
+    "valueAmplifiers": "Amplificateurs de valeur"
   },
   "skillRecommender": {
     "title": "Valeurs Personnelles & Forces",
@@ -410,12 +410,6 @@
           "Analytique"
         ]
       },
-      "locked": {
-        "projects": "Projets mis en avant",
-        "certificates": "Certifications",
-        "insights": "Insights IA",
-        "label": "Filigrane actif"
-      },
       "cta": {
         "title": "Retirer le filigrane",
         "description": "Installez Vitae.ai pour débloquer un CV complet et personnalisable sans filigrane.",
@@ -425,7 +419,8 @@
       "links": {
         "linkedin": "LinkedIn",
         "github": "GitHub"
-      }
+      },
+      "notice": "CV complet avec filigrane"
     },
     "errors": {
       "apiKeyMissing": "La clé API n’est pas configurée.",

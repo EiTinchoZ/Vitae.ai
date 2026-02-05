@@ -55,7 +55,7 @@ Projects:
 ${cvData.projects.map((p) => `- ${p.name} (${p.year})`).join('\n')}
 `.trim();
 
-    const insightsPrompt = `You are an expert hiring advisor. Analyze this CV and provide strengths-only AI insights that summarize the candidate quickly and effectively.
+    const insightsPrompt = `You are an expert career branding analyst. Analyze this CV and provide strengths-only AI insights that summarize the profile quickly and effectively.
 
 ${getLanguageInstruction(language)}
 Use only the CV data provided. Do not assume or invent.

@@ -29,7 +29,7 @@ export default function DemoPage() {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const host = window.location.hostname;
-      setIsDemoHost(host.includes('vitae-demo'));
+      setIsDemoHost(host.includes('vitae-demo') || host.includes('demo'));
       setCheckedHost(true);
     }
   }, []);
@@ -39,6 +39,16 @@ export default function DemoPage() {
       router.replace('/');
     }
   }, [router, checkedHost, isDemoHost]);
+
+  if (!checkedHost) {
+    return (
+      <main className="min-h-screen pt-20 pb-12">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-sm text-muted-foreground">{t('common.loading')}</p>
+        </div>
+      </main>
+    );
+  }
 
   if (!IS_DEMO && !isDemoHost) {
     return (

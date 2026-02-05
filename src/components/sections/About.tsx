@@ -43,7 +43,7 @@ export function About() {
         {t('about.title')}
       </SectionTitle>
 
-      <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div className="grid md:grid-cols-2 gap-12 items-start">
         {/* Profile text */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -88,21 +88,49 @@ export function About() {
         >
           {cvData.about.image && (
             <div className="mb-6">
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border bg-background">
-                <Image
-                  src={cvData.about.image}
-                  alt={cvData.about.imageAlt ?? 'Martin Bundy'}
-                  fill
-                  className={cn('object-cover')}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  priority
-                />
+              <div
+                className={cn(
+                  'grid gap-4',
+                  cvData.about.imageSecondary ? 'sm:grid-cols-2' : 'grid-cols-1'
+                )}
+              >
+                <div>
+                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border bg-background">
+                    <Image
+                      src={cvData.about.image}
+                      alt={cvData.about.imageAlt ?? 'Martin Bundy'}
+                      fill
+                      className={cn('object-cover')}
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      priority
+                    />
+                  </div>
+                  {cvData.about.imageAlt && (
+                    <p className="mt-2 text-xs text-muted-foreground">
+                      {cvData.about.imageAlt}
+                    </p>
+                  )}
+                </div>
+
+                {cvData.about.imageSecondary && (
+                  <div>
+                    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border bg-background">
+                      <Image
+                        src={cvData.about.imageSecondary}
+                        alt={cvData.about.imageSecondaryAlt ?? 'Martin Bundy'}
+                        fill
+                        className={cn('object-cover')}
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                    </div>
+                    {cvData.about.imageSecondaryAlt && (
+                      <p className="mt-2 text-xs text-muted-foreground">
+                        {cvData.about.imageSecondaryAlt}
+                      </p>
+                    )}
+                  </div>
+                )}
               </div>
-              {cvData.about.imageAlt && (
-                <p className="mt-2 text-xs text-muted-foreground">
-                  {cvData.about.imageAlt}
-                </p>
-              )}
             </div>
           )}
           <h3 className="text-lg font-semibold mb-4">{t('about.specialtiesTitle')}</h3>

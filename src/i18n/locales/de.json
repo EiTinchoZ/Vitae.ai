@@ -242,10 +242,8 @@
     "completeness": "Profilstärke",
     "atsScore": "Bereitschafts-Score",
     "sections": "Stärkenübersicht",
-    "gaps": "Highlights",
     "noHighlights": "Herausragende Leistungen werden mit der vollständigen Analyse generiert.",
     "strengths": "Stärken",
-    "improvements": "Wertverstärker",
     "overall": "Executive Summary",
     "error": "Fehler beim Analysieren des Lebenslaufs. Bitte versuche es erneut.",
     "sectionNames": {
@@ -256,7 +254,9 @@
       "skills": "Fähigkeiten",
       "certificates": "Zertifikate",
       "projects": "Projekte"
-    }
+    },
+    "highlights": "Highlights",
+    "valueAmplifiers": "Wertverstärker"
   },
   "skillRecommender": {
     "title": "Persönliche Werte & Stärken",
@@ -410,12 +410,6 @@
           "Analytics"
         ]
       },
-      "locked": {
-        "projects": "Hervorgehobene Projekte",
-        "certificates": "Zertifikate",
-        "insights": "KI-Insights",
-        "label": "Wasserzeichen aktiv"
-      },
       "cta": {
         "title": "Wasserzeichen entfernen",
         "description": "Installiere Vitae.ai, um einen vollständigen, anpassbaren CV ohne Wasserzeichen zu erhalten.",
@@ -425,7 +419,8 @@
       "links": {
         "linkedin": "LinkedIn",
         "github": "GitHub"
-      }
+      },
+      "notice": "Vollständiger Lebenslauf mit Wasserzeichen"
     },
     "errors": {
       "apiKeyMissing": "API-Schlüssel ist nicht konfiguriert.",

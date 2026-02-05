@@ -134,8 +134,8 @@
       "english": "영어 수준"
     },
     "linkedinLabel": "LinkedIn",
-    "linkedinTitle": "Connect on LinkedIn",
-    "linkedinDescription": "Follow my projects, posts, and professional updates."
+    "linkedinTitle": "LinkedIn에서 연결하기",
+    "linkedinDescription": "프로젝트, 게시물, 최신 소식을 확인하세요."
   },
   "footer": {
     "rights": "모든 권리 보유.",
@@ -242,10 +242,8 @@
     "completeness": "프로필 강도",
     "atsScore": "ATS 준비도",
     "sections": "강점 개요",
-    "gaps": "하이라이트",
     "noHighlights": "전체 분석과 함께 뛰어난 성과가 생성됩니다.",
     "strengths": "강점",
-    "improvements": "가치 증폭 요소",
     "overall": "경영진 요약",
     "error": "이력서 분석 중 오류가 발생했습니다. 다시 시도하세요.",
     "sectionNames": {
@@ -256,7 +254,9 @@
       "skills": "기술",
       "certificates": "자격증",
       "projects": "프로젝트"
-    }
+    },
+    "highlights": "하이라이트",
+    "valueAmplifiers": "가치 강화 요소"
   },
   "skillRecommender": {
     "title": "개인 가치관 & 강점",
@@ -410,12 +410,6 @@
           "분석"
         ]
       },
-      "locked": {
-        "projects": "추천 프로젝트",
-        "certificates": "자격증",
-        "insights": "AI 인사이트",
-        "label": "데모 워터마크"
-      },
       "cta": {
         "title": "완전한 CV를 만들 준비가 되었나요?",
         "description": "Vitae.ai를 설치하면 워터마크 없이 완전한 커스터마이즈를 사용할 수 있습니다.",
@@ -425,7 +419,8 @@
       "links": {
         "linkedin": "LinkedIn",
         "github": "GitHub"
-      }
+      },
+      "notice": "워터마크가 포함된 전체 CV"
     },
     "errors": {
       "apiKeyMissing": "API 키가 설정되어 있지 않습니다.",
@@ -439,58 +434,58 @@
       "unknown": "알 수 없는 오류입니다."
     },
     "customize": {
-      "title": "Customize the demo",
-      "subtitle": "Adjust layout, spacing, cards, and colors to preview your ideal CV style.",
+      "title": "데모 커스터마이즈",
+      "subtitle": "레이아웃, 간격, 카드, 색상을 조정해 원하는 CV 스타일을 확인하세요.",
       "layout": {
-        "label": "Layout width",
-        "4xl": "Compact",
-        "5xl": "Balanced",
-        "6xl": "Wide"
+        "label": "레이아웃 너비",
+        "4xl": "컴팩트",
+        "5xl": "균형",
+        "6xl": "넓게"
       },
       "density": {
-        "label": "Content density",
-        "compact": "Compact",
-        "comfortable": "Comfortable"
+        "label": "콘텐츠 밀도",
+        "compact": "촘촘하게",
+        "comfortable": "편안하게"
       },
       "cardStyle": {
-        "label": "Card style",
-        "solid": "Solid",
-        "glass": "Glass"
+        "label": "카드 스타일",
+        "solid": "솔리드",
+        "glass": "글래스"
       },
       "accent": {
-        "label": "Accent color",
-        "blue": "Blue",
-        "emerald": "Emerald",
-        "amber": "Amber",
-        "violet": "Violet"
+        "label": "강조 색상",
+        "blue": "블루",
+        "emerald": "에메랄드",
+        "amber": "앰버",
+        "violet": "바이올렛"
       },
       "sections": {
-        "label": "Sections",
-        "hero": "Hero",
-        "about": "About",
-        "skills": "Skills",
-        "experience": "Experience",
-        "education": "Education",
-        "projects": "Projects",
-        "certificates": "Certificates",
-        "languages": "Languages"
+        "label": "섹션",
+        "hero": "헤더",
+        "about": "소개",
+        "skills": "기술",
+        "experience": "경험",
+        "education": "학력",
+        "projects": "프로젝트",
+        "certificates": "자격증",
+        "languages": "언어"
       },
       "actions": {
-        "visible": "Visible",
-        "hidden": "Hidden",
-        "show": "Show",
-        "hide": "Hide",
-        "moveUp": "Move up",
-        "moveDown": "Move down",
-        "reset": "Reset"
+        "visible": "표시",
+        "hidden": "숨김",
+        "show": "표시",
+        "hide": "숨김",
+        "moveUp": "위로",
+        "moveDown": "아래로",
+        "reset": "초기화"
       }
     }
   },
   "intro": {
-    "title": "Activate interactive CV",
-    "subtitle": "Tap to start the experience and load all CV details.",
-    "cta": "Start loading",
-    "loadingTitle": "Initializing profile",
-    "progressLabel": "Progress: {progress}%"
+    "title": "인터랙티브 CV 시작",
+    "subtitle": "화면을 탭해 경험을 시작하고 CV 세부 정보를 불러오세요.",
+    "cta": "로딩 시작",
+    "loadingTitle": "프로필 초기화 중",
+    "progressLabel": "진행률: {progress}%"
   }
 }

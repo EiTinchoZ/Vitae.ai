@@ -71,13 +71,14 @@ export function Certificates() {
     }
 
     if (cert.file) {
+      const pdfUrl = `${cert.file}#page=1&view=FitH&zoom=page-width&toolbar=0&navpanes=0&scrollbar=0`;
       return (
-        <div className="h-28 rounded-lg border overflow-hidden bg-muted/30">
-          <object
-            data={`${cert.file}#page=1&view=FitH`}
-            type="application/pdf"
-            className="w-full h-full"
-            aria-label={cert.name}
+        <div className="h-32 rounded-lg border overflow-hidden bg-muted/30">
+          <iframe
+            src={pdfUrl}
+            title={cert.name}
+            className="w-full h-[calc(100%+56px)] -mt-14 pointer-events-none"
+            loading="lazy"
           />
         </div>
       );
@@ -241,11 +242,11 @@ export function Certificates() {
                 {/* Certificate preview */}
                 {selectedCert.file ? (
                   <div className="bg-muted/30 rounded-xl overflow-hidden border">
-                    <object
-                      data={`${selectedCert.file}#page=1&view=FitH`}
-                      type="application/pdf"
-                      className="w-full h-[420px]"
-                      aria-label={selectedCert.name}
+                    <iframe
+                      src={`${selectedCert.file}#page=1&view=FitH&zoom=page-width&toolbar=0&navpanes=0&scrollbar=0`}
+                      title={selectedCert.name}
+                      className="w-full h-[600px] -mt-12 pointer-events-none"
+                      loading="lazy"
                     />
                   </div>
                 ) : (

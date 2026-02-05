@@ -278,7 +278,7 @@ export function ResumeAnalyzer() {
                   </CardContent>
                 </Card>
 
-                {/* Strengths & Gaps */}
+                {/* Strengths & Highlights */}
                 <div className="grid md:grid-cols-2 gap-4">
                   <Card>
                     <CardHeader className="pb-2">
@@ -303,7 +303,7 @@ export function ResumeAnalyzer() {
                     <CardHeader className="pb-2">
                       <CardTitle className="text-base flex items-center gap-2">
                         <Sparkles className="h-5 w-5 text-amber-500" />
-                        {t('resumeAnalyzer.gaps')}
+                        {t('resumeAnalyzer.highlights')}
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -325,10 +325,10 @@ export function ResumeAnalyzer() {
                   </Card>
                 </div>
 
-                {/* Improvements */}
+                {/* Value Amplifiers */}
                 <Card>
                   <CardHeader className="pb-2">
-                    <CardTitle className="text-base">{t('resumeAnalyzer.improvements')}</CardTitle>
+                    <CardTitle className="text-base">{t('resumeAnalyzer.valueAmplifiers')}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="grid sm:grid-cols-3 gap-3">

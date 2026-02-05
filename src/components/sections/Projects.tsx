@@ -197,7 +197,7 @@ export function Projects() {
                   {repo.name}
                 </h4>
                 {logo && (
-                  <div className="relative w-full h-28 rounded-lg overflow-hidden border bg-muted/20 mb-3">
+                  <div className="relative w-full h-52 rounded-xl overflow-hidden border bg-muted/20 mb-3">
                     <Image
                       src={logo.src}
                       alt={logo.alt}

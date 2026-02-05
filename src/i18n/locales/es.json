@@ -242,10 +242,8 @@
     "completeness": "Fortaleza del Perfil",
     "atsScore": "Puntaje de Preparacion",
     "sections": "Panorama de Fortalezas",
-    "gaps": "Highlights",
     "noHighlights": "Los logros destacados se generarán con el análisis completo.",
     "strengths": "Fortalezas",
-    "improvements": "Amplificadores de Valor",
     "overall": "Resumen Ejecutivo",
     "error": "Error al analizar el CV. Intenta de nuevo.",
     "sectionNames": {
@@ -256,7 +254,9 @@
       "skills": "Habilidades",
       "certificates": "Certificados",
       "projects": "Proyectos"
-    }
+    },
+    "highlights": "Destacados",
+    "valueAmplifiers": "Amplificadores de Valor"
   },
   "skillRecommender": {
     "title": "Valores y Fortalezas Personales",
@@ -410,12 +410,6 @@
           "Analítica"
         ]
       },
-      "locked": {
-        "projects": "Proyectos destacados",
-        "certificates": "Certificaciones",
-        "insights": "Insights con IA",
-        "label": "Marca de agua activa"
-      },
       "cta": {
         "title": "Quitar la marca de agua",
         "description": "Instala Vitae.ai para desbloquear un CV completo y personalizable sin marca de agua.",
@@ -425,7 +419,8 @@
       "links": {
         "linkedin": "LinkedIn",
         "github": "GitHub"
-      }
+      },
+      "notice": "CV completo con marca de agua"
     },
     "errors": {
       "apiKeyMissing": "La API key no está configurada.",

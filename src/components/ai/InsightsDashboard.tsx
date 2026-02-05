@@ -188,7 +188,7 @@ export function InsightsDashboard() {
 
             {insights && (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {/* Recruiter Summary - Full Width */}
+                {/* Executive Summary - Full Width */}
                 <Card className="col-span-full bg-gradient-to-br from-primary/5 to-secondary/5">
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm flex items-center gap-2">

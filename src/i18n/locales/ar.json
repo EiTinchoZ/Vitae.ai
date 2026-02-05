@@ -134,8 +134,8 @@
       "english": "مستوى الإنجليزية"
     },
     "linkedinLabel": "LinkedIn",
-    "linkedinTitle": "Connect on LinkedIn",
-    "linkedinDescription": "Follow my projects, posts, and professional updates."
+    "linkedinTitle": "تواصل معي على LinkedIn",
+    "linkedinDescription": "تابع مشاريعي ومنشوراتي وآخر أخباري المهنية."
   },
   "footer": {
     "rights": "جميع الحقوق محفوظة.",
@@ -242,10 +242,8 @@
     "completeness": "قوة الملف الشخصي",
     "atsScore": "جاهزية ATS",
     "sections": "نظرة عامة على نقاط القوة",
-    "gaps": "أبرز الإنجازات",
     "noHighlights": "سيتم توليد الإنجازات المتميزة مع التحليل الكامل.",
     "strengths": "نقاط القوة",
-    "improvements": "معززات القيمة",
     "overall": "ملخص تنفيذي",
     "error": "حدث خطأ أثناء تحليل السيرة الذاتية. حاول مرة أخرى.",
     "sectionNames": {
@@ -256,7 +254,9 @@
       "skills": "المهارات",
       "certificates": "الشهادات",
       "projects": "المشاريع"
-    }
+    },
+    "highlights": "أبرز النقاط",
+    "valueAmplifiers": "معززات القيمة"
   },
   "skillRecommender": {
     "title": "القيم الشخصية ونقاط القوة",
@@ -410,12 +410,6 @@
           "التحليلات"
         ]
       },
-      "locked": {
-        "projects": "مشاريع مميزة",
-        "certificates": "شهادات",
-        "insights": "رؤى الذكاء الاصطناعي",
-        "label": "علامة مائية تجريبية"
-      },
       "cta": {
         "title": "هل أنت جاهز لسيرتك الذاتية الكاملة؟",
         "description": "ثبّت Vitae.ai لفتح التخصيص الكامل بدون علامة مائية.",
@@ -425,7 +419,8 @@
       "links": {
         "linkedin": "LinkedIn",
         "github": "GitHub"
-      }
+      },
+      "notice": "السيرة الذاتية الكاملة مع علامة مائية"
     },
     "errors": {
       "apiKeyMissing": "مفتاح API غير مُعد.",
@@ -439,58 +434,58 @@
       "unknown": "خطأ غير معروف."
     },
     "customize": {
-      "title": "Customize the demo",
-      "subtitle": "Adjust layout, spacing, cards, and colors to preview your ideal CV style.",
+      "title": "تخصيص العرض التجريبي",
+      "subtitle": "اضبط التخطيط والمسافات والبطاقات والألوان لرؤية نمط السيرة الذاتية المفضل لديك.",
       "layout": {
-        "label": "Layout width",
-        "4xl": "Compact",
-        "5xl": "Balanced",
-        "6xl": "Wide"
+        "label": "عرض التخطيط",
+        "4xl": "مضغوط",
+        "5xl": "متوازن",
+        "6xl": "واسع"
       },
       "density": {
-        "label": "Content density",
-        "compact": "Compact",
-        "comfortable": "Comfortable"
+        "label": "كثافة المحتوى",
+        "compact": "مضغوط",
+        "comfortable": "مريح"
       },
       "cardStyle": {
-        "label": "Card style",
-        "solid": "Solid",
-        "glass": "Glass"
+        "label": "نمط البطاقات",
+        "solid": "مصمت",
+        "glass": "زجاجي"
       },
       "accent": {
-        "label": "Accent color",
-        "blue": "Blue",
-        "emerald": "Emerald",
-        "amber": "Amber",
-        "violet": "Violet"
+        "label": "لون التمييز",
+        "blue": "أزرق",
+        "emerald": "زمردي",
+        "amber": "كهرماني",
+        "violet": "بنفسجي"
       },
       "sections": {
-        "label": "Sections",
-        "hero": "Hero",
-        "about": "About",
-        "skills": "Skills",
-        "experience": "Experience",
-        "education": "Education",
-        "projects": "Projects",
-        "certificates": "Certificates",
-        "languages": "Languages"
+        "label": "الأقسام",
+        "hero": "الرأس",
+        "about": "نبذة",
+        "skills": "المهارات",
+        "experience": "الخبرة",
+        "education": "التعليم",
+        "projects": "المشاريع",
+        "certificates": "الشهادات",
+        "languages": "اللغات"
       },
       "actions": {
-        "visible": "Visible",
-        "hidden": "Hidden",
-        "show": "Show",
-        "hide": "Hide",
-        "moveUp": "Move up",
-        "moveDown": "Move down",
-        "reset": "Reset"
+        "visible": "مرئي",
+        "hidden": "مخفي",
+        "show": "إظهار",
+        "hide": "إخفاء",
+        "moveUp": "أعلى",
+        "moveDown": "أسفل",
+        "reset": "إعادة ضبط"
       }
     }
   },
   "intro": {
-    "title": "Activate interactive CV",
-    "subtitle": "Tap to start the experience and load all CV details.",
-    "cta": "Start loading",
-    "loadingTitle": "Initializing profile",
-    "progressLabel": "Progress: {progress}%"
+    "title": "تفعيل السيرة التفاعلية",
+    "subtitle": "انقر لبدء التجربة وتحميل كل تفاصيل السيرة الذاتية.",
+    "cta": "بدء التحميل",
+    "loadingTitle": "جارٍ تهيئة الملف",
+    "progressLabel": "التقدم: {progress}%"
   }
 }

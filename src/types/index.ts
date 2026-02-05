@@ -85,6 +85,8 @@ export interface AboutContent {
   specialties: string[];
   image?: string;
   imageAlt?: string;
+  imageSecondary?: string;
+  imageSecondaryAlt?: string;
   highlights: {
     educationValue: string;
     specializationValue: string;

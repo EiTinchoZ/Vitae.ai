@@ -134,8 +134,8 @@
       "english": "अंग्रेजी स्तर"
     },
     "linkedinLabel": "LinkedIn",
-    "linkedinTitle": "Connect on LinkedIn",
-    "linkedinDescription": "Follow my projects, posts, and professional updates."
+    "linkedinTitle": "LinkedIn पर जुड़ें",
+    "linkedinDescription": "मेरे प्रोजेक्ट्स, पोस्ट्स और प्रोफेशनल अपडेट्स देखें।"
   },
   "footer": {
     "rights": "सर्वाधिकार सुरक्षित।",
@@ -242,10 +242,8 @@
     "completeness": "प्रोफ़ाइल की मजबूती",
     "atsScore": "ATS तैयारी स्कोर",
     "sections": "ताकतों का अवलोकन",
-    "gaps": "हाइलाइट्स",
     "noHighlights": "पूर्ण विश्लेषण के साथ उत्कृष्ट उपलब्धियाँ उत्पन्न होंगी।",
     "strengths": "ताकतें",
-    "improvements": "मूल्य-वर्धक",
     "overall": "कार्यकारी सारांश",
     "error": "CV विश्लेषण में त्रुटि हुई। कृपया पुनः प्रयास करें।",
     "sectionNames": {
@@ -256,7 +254,9 @@
       "skills": "कौशल",
       "certificates": "प्रमाणपत्र",
       "projects": "प्रोजेक्ट्स"
-    }
+    },
+    "highlights": "मुख्य बिंदु",
+    "valueAmplifiers": "मूल्य बढ़ाने वाले बिंदु"
   },
   "skillRecommender": {
     "title": "व्यक्तिगत मूल्य और शक्तियां",
@@ -384,7 +384,7 @@
     },
     "preview": {
       "back": "वापस",
-      "badge": "पूर्ण पूर्वावलोकन",
+      "badge": "पूर्ण प्रीव्यू",
       "sections": {
         "summary": "प्रोफ़ेशनल सार",
         "skills": "हाइलाइटेड स्किल्स",
@@ -410,12 +410,6 @@
           "एनालिटिक्स"
         ]
       },
-      "locked": {
-        "projects": "फीचर्ड प्रोजेक्ट्स",
-        "certificates": "प्रमाणपत्र",
-        "insights": "AI इनसाइट्स",
-        "label": "डेमो वॉटरमार्क"
-      },
       "cta": {
         "title": "क्या आप अपना पूरा CV चाहते हैं?",
         "description": "Vitae.ai इंस्टॉल करके बिना वॉटरमार्क के पूरी कस्टमाइज़ेशन पाएं।",
@@ -425,7 +419,8 @@
       "links": {
         "linkedin": "LinkedIn",
         "github": "GitHub"
-      }
+      },
+      "notice": "वॉटरमार्क के साथ पूरा CV"
     },
     "errors": {
       "apiKeyMissing": "API की कॉन्फ़िगर नहीं है।",
@@ -439,58 +434,58 @@
       "unknown": "अज्ञात त्रुटि।"
     },
     "customize": {
-      "title": "Customize the demo",
-      "subtitle": "Adjust layout, spacing, cards, and colors to preview your ideal CV style.",
+      "title": "डेमो को पर्सनलाइज़ करें",
+      "subtitle": "लेआउट, स्पेसिंग, कार्ड और रंग समायोजित करें ताकि आपका आदर्श CV स्टाइल दिखे।",
       "layout": {
-        "label": "Layout width",
-        "4xl": "Compact",
-        "5xl": "Balanced",
-        "6xl": "Wide"
+        "label": "लेआउट चौड़ाई",
+        "4xl": "कॉम्पैक्ट",
+        "5xl": "संतुलित",
+        "6xl": "विस्तृत"
       },
       "density": {
-        "label": "Content density",
-        "compact": "Compact",
-        "comfortable": "Comfortable"
+        "label": "कंटेंट घनत्व",
+        "compact": "कॉम्पैक्ट",
+        "comfortable": "आरामदायक"
       },
       "cardStyle": {
-        "label": "Card style",
-        "solid": "Solid",
-        "glass": "Glass"
+        "label": "कार्ड स्टाइल",
+        "solid": "सॉलिड",
+        "glass": "ग्लास"
       },
       "accent": {
-        "label": "Accent color",
-        "blue": "Blue",
-        "emerald": "Emerald",
-        "amber": "Amber",
-        "violet": "Violet"
+        "label": "एक्सेंट रंग",
+        "blue": "नीला",
+        "emerald": "एमरल्ड",
+        "amber": "ऐंबर",
+        "violet": "वायलेट"
       },
       "sections": {
-        "label": "Sections",
-        "hero": "Hero",
-        "about": "About",
-        "skills": "Skills",
-        "experience": "Experience",
-        "education": "Education",
-        "projects": "Projects",
-        "certificates": "Certificates",
-        "languages": "Languages"
+        "label": "सेक्शन",
+        "hero": "हीरो",
+        "about": "परिचय",
+        "skills": "कौशल",
+        "experience": "अनुभव",
+        "education": "शिक्षा",
+        "projects": "प्रोजेक्ट्स",
+        "certificates": "प्रमाणपत्र",
+        "languages": "भाषाएँ"
       },
       "actions": {
-        "visible": "Visible",
-        "hidden": "Hidden",
-        "show": "Show",
-        "hide": "Hide",
-        "moveUp": "Move up",
-        "moveDown": "Move down",
-        "reset": "Reset"
+        "visible": "दृश्य",
+        "hidden": "छिपा",
+        "show": "दिखाएँ",
+        "hide": "छिपाएँ",
+        "moveUp": "ऊपर",
+        "moveDown": "नीचे",
+        "reset": "रीसेट"
       }
     }
   },
   "intro": {
-    "title": "Activate interactive CV",
-    "subtitle": "Tap to start the experience and load all CV details.",
-    "cta": "Start loading",
-    "loadingTitle": "Initializing profile",
-    "progressLabel": "Progress: {progress}%"
+    "title": "इंटरैक्टिव CV सक्रिय करें",
+    "subtitle": "अनुभव शुरू करने और CV के सभी विवरण लोड करने के लिए टैप करें।",
+    "cta": "लोड शुरू करें",
+    "loadingTitle": "प्रोफ़ाइल प्रारंभ हो रही है",
+    "progressLabel": "प्रगति: {progress}%"
   }
 }

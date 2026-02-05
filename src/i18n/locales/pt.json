@@ -242,10 +242,8 @@
     "completeness": "Força do Perfil",
     "atsScore": "Pontuacao de Prontidao",
     "sections": "Panorama de Forças",
-    "gaps": "Destaques",
     "noHighlights": "Conquistas destacadas serão geradas com a análise completa.",
     "strengths": "Forças",
-    "improvements": "Amplificadores de Valor",
     "overall": "Resumo Executivo",
     "error": "Erro ao analisar o CV. Tente novamente.",
     "sectionNames": {
@@ -256,7 +254,9 @@
       "skills": "Habilidades",
       "certificates": "Certificados",
       "projects": "Projetos"
-    }
+    },
+    "highlights": "Destaques",
+    "valueAmplifiers": "Amplificadores de Valor"
   },
   "skillRecommender": {
     "title": "Valores Pessoais e Forças",
@@ -384,7 +384,7 @@
     },
     "preview": {
       "back": "Voltar",
-      "badge": "Preview completo",
+      "badge": "Pré-visualização completa",
       "sections": {
         "summary": "Resumo profissional",
         "skills": "Habilidades destacadas",
@@ -410,12 +410,6 @@
           "Analítica"
         ]
       },
-      "locked": {
-        "projects": "Projetos em destaque",
-        "certificates": "Certificações",
-        "insights": "Insights com IA",
-        "label": "Marca d'água ativa"
-      },
       "cta": {
         "title": "Remover a marca d'água",
         "description": "Instale o Vitae.ai para liberar um CV completo e personalizável sem marca d'água.",
@@ -425,7 +419,8 @@
       "links": {
         "linkedin": "LinkedIn",
         "github": "GitHub"
-      }
+      },
+      "notice": "CV completo com marca d'água"
     },
     "errors": {
       "apiKeyMissing": "A API key não está configurada.",

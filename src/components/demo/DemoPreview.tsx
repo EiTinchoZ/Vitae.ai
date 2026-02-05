@@ -115,7 +115,7 @@ export function DemoPreview({ cvData, onReset }: DemoPreviewProps) {
   const sectionGap = density === 'compact' ? 'space-y-4' : 'space-y-8';
   const cardPadding = density === 'compact' ? 'p-4' : 'p-6';
   const cardClass = cn(
-    'border rounded-xl transition-colors',
+    'border rounded-xl transition-colors shadow-sm',
     cardStyle === 'glass'
       ? 'bg-background/60 backdrop-blur border-primary/10'
       : 'bg-muted/30'
@@ -177,53 +177,71 @@ export function DemoPreview({ cvData, onReset }: DemoPreviewProps) {
 
   const sections: Record<SectionKey, React.ReactNode> = {
     hero: (
-      <Card className={cardClass}>
-        <CardContent className={cardPadding}>
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div>
-              <h1 className="text-3xl font-bold">
-                {personal?.fullName || personal?.name || t('demo.preview.fallbacks.fullName')}
-              </h1>
-              {cvData.profile && (
-                <p className="text-muted-foreground mt-2">{cvData.profile}</p>
-              )}
-            </div>
-            <div className="flex flex-col gap-2 text-sm text-muted-foreground">
-              {personal?.email && (
-                <div className="flex items-center gap-2">
-                  <Mail className="h-4 w-4" />
-                  <span>{personal.email}</span>
+      <Card className={cn(cardClass, 'relative overflow-hidden')}>
+        <div className={cn('absolute inset-0 opacity-40', accentStyles[accent].bg)} />
+        <CardContent className={cn(cardPadding, 'relative')}>
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+              <div>
+                <div className={cn('inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold border', accentStyles[accent].badge)}>
+                  <Sparkles className="h-3 w-3" />
+                  {t('demo.preview.badge')}
                 </div>
-              )}
-              {personal?.location && (
-                <div className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4" />
-                  <span>{personal.location}</span>
-                </div>
-              )}
-            </div>
-          </div>
+                <h1 className="text-3xl md:text-4xl font-bold mt-3">
+                  {personal?.fullName || personal?.name || t('demo.preview.fallbacks.fullName')}
+                </h1>
+                {cvData.profile && (
+                  <p className="text-muted-foreground mt-2">{cvData.profile}</p>
+                )}
+              </div>
 
-          {(personal?.linkedin || personal?.github) && (
-            <div className="flex gap-3 mt-4 flex-wrap">
-              {personal.linkedin && (
-                <Badge variant="outline" className={cn('gap-1', accentStyles[accent].badge)}>
-                  <Linkedin className="h-3 w-3" />
-                  {t('demo.preview.links.linkedin')}
-                </Badge>
-              )}
-              {personal.github && (
-                <Badge variant="outline" className={cn('gap-1', accentStyles[accent].badge)}>
-                  <Github className="h-3 w-3" />
-                  {t('demo.preview.links.github')}
-                </Badge>
-              )}
+              <div className="flex items-center gap-4">
+                <div className={cn('h-16 w-16 rounded-full flex items-center justify-center text-lg font-semibold', accentStyles[accent].bg, accentStyles[accent].text)}>
+                  {(personal?.name || personal?.fullName || 'CV')
+                    .split(' ')
+                    .slice(0, 2)
+                    .map((part) => part[0])
+                    .join('')
+                    .toUpperCase()}
+                </div>
+                <div className="flex flex-col gap-2 text-sm text-muted-foreground">
+                  {personal?.email && (
+                    <div className="flex items-center gap-2">
+                      <Mail className="h-4 w-4" />
+                      <span>{personal.email}</span>
+                    </div>
+                  )}
+                  {personal?.location && (
+                    <div className="flex items-center gap-2">
+                      <MapPin className="h-4 w-4" />
+                      <span>{personal.location}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
-          )}
+
+            {(personal?.linkedin || personal?.github) && (
+              <div className="flex gap-3 flex-wrap">
+                {personal.linkedin && (
+                  <Badge variant="outline" className={cn('gap-1', accentStyles[accent].badge)}>
+                    <Linkedin className="h-3 w-3" />
+                    {t('demo.preview.links.linkedin')}
+                  </Badge>
+                )}
+                {personal.github && (
+                  <Badge variant="outline" className={cn('gap-1', accentStyles[accent].badge)}>
+                    <Github className="h-3 w-3" />
+                    {t('demo.preview.links.github')}
+                  </Badge>
+                )}
+              </div>
+            )}
+          </div>
         </CardContent>
       </Card>
     ),
-    about: (about?.quote || about?.specialties?.length) && (
+    about: (about?.quote || about?.specialties?.length || about?.highlights) && (
       <Card className={cardClass}>
         <CardHeader>
           <CardTitle className="text-lg">{t('about.title')}</CardTitle>
@@ -241,6 +259,15 @@ export function DemoPreview({ cvData, onReset }: DemoPreviewProps) {
               ))}
             </div>
           ) : null}
+          {about?.highlights && (
+            <div className="grid sm:grid-cols-2 gap-3">
+              {Object.values(about.highlights).map((value, i) => (
+                <div key={`${value}-${i}`} className="rounded-lg border bg-background/70 p-3 text-sm">
+                  {value}
+                </div>
+              ))}
+            </div>
+          )}
         </CardContent>
       </Card>
     ),
@@ -392,7 +419,7 @@ export function DemoPreview({ cvData, onReset }: DemoPreviewProps) {
           <span>{t('demo.preview.badge')}</span>
         </div>
         <p className="text-sm text-muted-foreground mt-1">
-          {t('demo.preview.locked.label')}
+          {t('demo.preview.notice')}
         </p>
       </motion.div>
 

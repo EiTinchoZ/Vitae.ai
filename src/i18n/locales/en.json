@@ -242,10 +242,8 @@
     "completeness": "Profile Strength",
     "atsScore": "Readiness Score",
     "sections": "Strength Overview",
-    "gaps": "Highlights",
     "noHighlights": "Outstanding achievements will be generated with the full analysis.",
     "strengths": "Strengths",
-    "improvements": "Value Amplifiers",
     "overall": "Executive Summary",
     "error": "Error analyzing resume. Try again.",
     "sectionNames": {
@@ -256,7 +254,9 @@
       "skills": "Skills",
       "certificates": "Certificates",
       "projects": "Projects"
-    }
+    },
+    "highlights": "Highlights",
+    "valueAmplifiers": "Value Amplifiers"
   },
   "skillRecommender": {
     "title": "Personal Values & Strengths",
@@ -410,12 +410,6 @@
           "Analytics"
         ]
       },
-      "locked": {
-        "projects": "Featured projects",
-        "certificates": "Certifications",
-        "insights": "AI insights",
-        "label": "Watermark active"
-      },
       "cta": {
         "title": "Remove the watermark",
         "description": "Install Vitae.ai to unlock a full, customizable CV without the watermark.",
@@ -425,7 +419,8 @@
       "links": {
         "linkedin": "LinkedIn",
         "github": "GitHub"
-      }
+      },
+      "notice": "Full CV with watermark"
     },
     "errors": {
       "apiKeyMissing": "API key is not configured.",

@@ -17,6 +17,10 @@ export function Education() {
     'edu-2': { startDate: '2025-01-01', endDate: '2026-12-31' },
     'edu-3': { startDate: '2025-01-01', endDate: '2027-04-30' },
   };
+  const minProgressById: Record<string, number> = {
+    'edu-2': 65,
+    'edu-3': 55,
+  };
 
   const computeProgress = (startDate?: string, endDate?: string) => {
     if (!startDate || !endDate) return null;
@@ -111,7 +115,10 @@ export function Education() {
                         edu.startDate ?? timeline?.startDate,
                         edu.endDate ?? timeline?.endDate
                       );
-                      const progress = computed ?? 0;
+                      const progress = Math.min(
+                        100,
+                        Math.max(computed ?? 0, minProgressById[edu.id] ?? 0)
+                      );
                       return (
                         <>
                           <div className="flex justify-between text-xs text-muted-foreground mb-1">
