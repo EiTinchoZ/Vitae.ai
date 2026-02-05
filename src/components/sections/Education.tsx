@@ -1,12 +1,14 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { GraduationCap, Calendar, CheckCircle2, Clock } from 'lucide-react';
 import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
 import { SectionQA } from '@/components/ai/SectionQA';
 import { Badge } from '@/components/ui/badge';
 import { getCvData } from '@/data/cv-data';
 import { useTranslation } from '@/i18n';
+import { IS_DEMO } from '@/lib/app-config';
 
 export function Education() {
   const { t, tArray, language } = useTranslation();
@@ -40,6 +42,27 @@ export function Education() {
       >
         {t('education.title')}
       </SectionTitle>
+
+      {!IS_DEMO && (
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="max-w-3xl mx-auto mb-10"
+        >
+          <div className="relative overflow-hidden rounded-2xl border bg-muted/20">
+            <Image
+              src="/education-highlight.jpg"
+              alt="Martin Bundy en un evento academico"
+              width={1400}
+              height={900}
+              className="h-60 w-full object-cover"
+              priority
+            />
+          </div>
+        </motion.div>
+      )}
 
       <div className="max-w-3xl mx-auto">
         <div className="relative">

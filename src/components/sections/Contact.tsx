@@ -1,12 +1,14 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Mail, Phone, MapPin, Github, Linkedin, Download, Send } from 'lucide-react';
 import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { getCvData } from '@/data/cv-data';
 import { useTranslation } from '@/i18n';
+import { IS_DEMO } from '@/lib/app-config';
 
 export function Contact() {
   const { t, language } = useTranslation();
@@ -144,6 +146,26 @@ export function Contact() {
                 </a>
               ))}
             </div>
+
+            {!IS_DEMO && (
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="pt-6"
+              >
+                <div className="relative overflow-hidden rounded-2xl border bg-muted/20">
+                  <Image
+                    src="/contact-photo.jpg"
+                    alt="Martin Bundy en un evento"
+                    width={1400}
+                    height={900}
+                    className="h-56 w-full object-cover"
+                  />
+                </div>
+              </motion.div>
+            )}
           </motion.div>
 
           {/* CTA Card */}

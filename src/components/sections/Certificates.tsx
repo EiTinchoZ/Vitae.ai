@@ -19,10 +19,12 @@ import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
+import Image from 'next/image';
 import { getCvData } from '@/data/cv-data';
 import { useTranslation } from '@/i18n';
 import type { Certificate } from '@/types';
 import { cn } from '@/lib/utils';
+import { IS_DEMO } from '@/lib/app-config';
 
 const categoryIcons = {
   master: GraduationCap,
@@ -96,6 +98,27 @@ export function Certificates() {
       <SectionTitle subtitle={t('certificates.subtitle')}>
         {t('certificates.title')}
       </SectionTitle>
+
+      {!IS_DEMO && (
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mb-8"
+        >
+          <div className="relative w-full overflow-hidden rounded-2xl border bg-muted/20">
+            <Image
+              src="/certificates-highlight.jpg"
+              alt="Martin Bundy recibiendo un diploma"
+              width={1400}
+              height={800}
+              className="h-56 w-full object-cover"
+              priority
+            />
+          </div>
+        </motion.div>
+      )}
 
       {/* Category filters */}
       <div className="flex flex-wrap justify-center gap-2 mb-8">
