@@ -1,14 +1,17 @@
 ﻿# Vitae.ai
 
-![Vitae.ai Logo](/public/brand/vitae-logo.png)
+![Vitae.ai Logo](public/brand/vitae-logo.png)
 
-Vitae.ai is an AI-powered, interactive CV platform that turns a traditional resume into a clean, visual, and structured digital profile. It is built to help students and professionals present their experience, education, and skills in a format that is easier to read, easier to update, and more memorable than a standard PDF.
+Vitae.ai is an AI-powered, interactive CV platform that turns a traditional resume into a clean, visual, and structured digital profile. It helps students and professionals present their experience, education, and skills in a format that is easier to read, easier to update, and more memorable than a standard PDF.
 
-[![Next.js](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38bdf8)](https://tailwindcss.com/)
-[![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-black)](https://vercel.com/)
-[![License](https://img.shields.io/badge/License-Non--Commercial-lightgrey)](./LICENSE)
+[![Vitae.ai](https://img.shields.io/badge/Vitae.ai-Digital_CV-2563eb?style=for-the-badge)](https://github.com/EiTinchoZ/Vitae.ai)
+[![Next.js](https://img.shields.io/badge/Next.js-16-111827?style=for-the-badge)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-0ea5e9?style=for-the-badge)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-14b8a6?style=for-the-badge)](https://tailwindcss.com/)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-Animation-f97316?style=for-the-badge)](https://www.framer.com/motion/)
+[![i18n](https://img.shields.io/badge/i18n-10_Languages-22c55e?style=for-the-badge)](https://github.com/EiTinchoZ/Vitae.ai)
+[![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-111827?style=for-the-badge)](https://vercel.com/)
+[![License](https://img.shields.io/badge/License-Non--Commercial-94a3b8?style=for-the-badge)](./LICENSE)
 
 ## Vision
 
@@ -43,13 +46,24 @@ The demo lets anyone test the experience with their own data. The watermark stay
 3. A watermark remains visible in demo mode
 4. Remove the watermark by installing the project locally
 
+## About Groq
+
+Vitae.ai uses Groq to power the AI features (insights, Q&A, and CV analysis). Groq provides fast, production-grade inference for large language models. To use these features, you need a Groq API key.
+
+How to get a Groq API key:
+
+1. Create a Groq account
+2. Open the Groq console
+3. Generate a new API key
+4. Copy the key into your environment variables
+
 ## Tech Stack
 
 - Next.js 16 (App Router)
 - TypeScript
 - Tailwind CSS
 - Framer Motion
-- Groq AI (LLM)
+- Groq AI
 - Vercel (deployment)
 
 ## Getting Started
@@ -86,17 +100,17 @@ npm run dev
 
 Then edit `src/data/cv-data.ts` and refresh your local site.
 
-## Configuration
+## Environment Variables
 
-Environment variables:
+These variables control the AI features and deployment mode. Set them in Vercel or in `.env.local`.
 
-```
-GROQ_API_KEY=your_groq_api_key
-NEXT_PUBLIC_GITHUB_USERNAME=your_github_username
-NEXT_PUBLIC_APP_MODE=personal
-NEXT_PUBLIC_DEMO_URL=https://your-demo.vercel.app
-NEXT_PUBLIC_PERSONAL_URL=https://your-personal.vercel.app
-```
+| Variable | Required | Purpose |
+| --- | --- | --- |
+| GROQ_API_KEY | Yes | Enables AI features (insights, Q&A, CV analysis). |
+| NEXT_PUBLIC_GITHUB_USERNAME | Yes | Shows your GitHub profile and repositories. |
+| NEXT_PUBLIC_APP_MODE | Yes | `personal` shows your real CV; `demo` enables the public demo flow. |
+| NEXT_PUBLIC_DEMO_URL | Recommended | Public demo URL used in navigation and CTA links. |
+| NEXT_PUBLIC_PERSONAL_URL | Recommended | Personal CV URL used in navigation and CTA links. |
 
 ## Project Structure
 
