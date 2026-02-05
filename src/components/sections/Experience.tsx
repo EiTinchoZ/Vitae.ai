@@ -126,15 +126,26 @@ export function Experience() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <div className="relative overflow-hidden rounded-2xl border bg-muted/20">
-                <Image
-                  src="/certificates-highlight.jpg"
-                  alt="Martin Bundy recibiendo un diploma"
-                  width={1400}
-                  height={900}
-                  className="h-[520px] w-full object-cover object-[50%_25%]"
-                  priority
-                />
+              <div className="space-y-4">
+                <div className="relative overflow-hidden rounded-2xl border bg-muted/20">
+                  <Image
+                    src="/certificates-highlight.jpg"
+                    alt="Martin Bundy recibiendo un diploma"
+                    width={1400}
+                    height={900}
+                    className="h-[520px] w-full object-cover object-[50%_25%]"
+                    priority
+                  />
+                </div>
+                <div className="relative overflow-hidden rounded-2xl border bg-muted/20">
+                  <Image
+                    src="/experience-secondary.png"
+                    alt="Martin Bundy en una actividad profesional"
+                    width={1400}
+                    height={900}
+                    className="h-[420px] w-full object-cover object-center"
+                  />
+                </div>
               </div>
             </motion.div>
             <div className="max-w-4xl">
