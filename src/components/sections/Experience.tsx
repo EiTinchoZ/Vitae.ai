@@ -126,7 +126,7 @@ export function Experience() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <div className="space-y-8">
+              <div>
                 <div className="relative overflow-hidden rounded-2xl border bg-muted/20">
                   <Image
                     src="/certificates-highlight.jpg"
@@ -137,7 +137,7 @@ export function Experience() {
                     priority
                   />
                 </div>
-                <div className="relative overflow-hidden rounded-2xl border bg-muted/20">
+                <div className="mt-12 relative overflow-hidden rounded-2xl border bg-muted/20">
                   <Image
                     src="/experience-secondary.png"
                     alt="Martin Bundy en una actividad profesional"
