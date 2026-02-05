@@ -304,12 +304,18 @@ export function ResumeAnalyzer() {
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-2">
-                        {analysis.highlights?.map((highlight, i) => (
-                          <div key={i} className="flex items-start gap-2 text-sm">
-                            <Sparkles className="h-4 w-4 text-amber-500 mt-0.5 flex-shrink-0" />
-                            <span>{highlight}</span>
-                          </div>
-                        ))}
+                        {analysis.highlights && analysis.highlights.length > 0 ? (
+                          analysis.highlights.map((highlight, i) => (
+                            <div key={i} className="flex items-start gap-2 text-sm">
+                              <Sparkles className="h-4 w-4 text-amber-500 mt-0.5 flex-shrink-0" />
+                              <span>{highlight}</span>
+                            </div>
+                          ))
+                        ) : (
+                          <p className="text-sm text-muted-foreground italic">
+                            {t('resumeAnalyzer.noHighlights')}
+                          </p>
+                        )}
                       </div>
                     </CardContent>
                   </Card>
