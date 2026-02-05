@@ -82,8 +82,8 @@ Respond ONLY with valid JSON (no markdown, no backticks) using this structure:
     "certificates": { "score": <0-100>, "feedback": "comment" },
     "projects": { "score": <0-100>, "feedback": "comment" }
   },
-  "gaps": ["highlight 1", "highlight 2"],
-  "strengths": ["strength1", "strength2"],
+  "highlights": ["standout achievement 1", "standout achievement 2", "standout achievement 3"],
+  "strengths": ["strength1", "strength2", "strength3"],
   "improvements": ["value amplifier 1", "value amplifier 2", "value amplifier 3"],
   "atsCompatibility": <0-100>,
   "overallFeedback": "executive summary"
