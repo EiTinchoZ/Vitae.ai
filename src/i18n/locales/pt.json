@@ -434,6 +434,53 @@
       "rateLimited": "Muitas solicitações. Aguarde um momento.",
       "processingFailed": "Não foi possível processar o CV.",
       "unknown": "Erro desconhecido."
+    },
+    "customize": {
+      "title": "Personalize o demo",
+      "subtitle": "Ajuste layout, espa?amento, cards e cores para chegar ao estilo ideal do seu CV.",
+      "layout": {
+        "label": "Largura do layout",
+        "4xl": "Compacto",
+        "5xl": "Equilibrado",
+        "6xl": "Amplo"
+      },
+      "density": {
+        "label": "Densidade de conte?do",
+        "compact": "Compacta",
+        "comfortable": "Confort?vel"
+      },
+      "cardStyle": {
+        "label": "Estilo dos cards",
+        "solid": "S?lido",
+        "glass": "Glass"
+      },
+      "accent": {
+        "label": "Cor de destaque",
+        "blue": "Azul",
+        "emerald": "Esmeralda",
+        "amber": "?mbar",
+        "violet": "Violeta"
+      },
+      "sections": {
+        "label": "Se??es",
+        "hero": "Cabe?alho",
+        "about": "Sobre",
+        "skills": "Habilidades",
+        "experience": "Experi?ncia",
+        "education": "Educa??o",
+        "projects": "Projetos",
+        "certificates": "Certifica??es",
+        "languages": "Idiomas"
+      },
+      "actions": {
+        "visible": "Vis?vel",
+        "hidden": "Oculto",
+        "show": "Mostrar",
+        "hide": "Ocultar",
+        "moveUp": "Subir",
+        "moveDown": "Descer",
+        "reset": "Redefinir ajustes"
+      }
     }
   }
 }

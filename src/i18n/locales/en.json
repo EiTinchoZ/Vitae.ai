@@ -434,6 +434,53 @@
       "rateLimited": "Too many requests. Please wait a moment.",
       "processingFailed": "Could not process the CV.",
       "unknown": "Unknown error."
+    },
+    "customize": {
+      "title": "Customize the demo",
+      "subtitle": "Adjust layout, spacing, cards, and colors to match your ideal CV style.",
+      "layout": {
+        "label": "Layout width",
+        "4xl": "Compact",
+        "5xl": "Balanced",
+        "6xl": "Wide"
+      },
+      "density": {
+        "label": "Content density",
+        "compact": "Compact",
+        "comfortable": "Comfortable"
+      },
+      "cardStyle": {
+        "label": "Card style",
+        "solid": "Solid",
+        "glass": "Glass"
+      },
+      "accent": {
+        "label": "Accent color",
+        "blue": "Blue",
+        "emerald": "Emerald",
+        "amber": "Amber",
+        "violet": "Violet"
+      },
+      "sections": {
+        "label": "Sections",
+        "hero": "Header",
+        "about": "About",
+        "skills": "Skills",
+        "experience": "Experience",
+        "education": "Education",
+        "projects": "Projects",
+        "certificates": "Certificates",
+        "languages": "Languages"
+      },
+      "actions": {
+        "visible": "Visible",
+        "hidden": "Hidden",
+        "show": "Show",
+        "hide": "Hide",
+        "moveUp": "Move up",
+        "moveDown": "Move down",
+        "reset": "Reset customization"
+      }
     }
   }
 }

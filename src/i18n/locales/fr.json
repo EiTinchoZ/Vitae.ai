@@ -434,7 +434,53 @@
       "rateLimited": "Trop de requêtes. Veuillez patienter un moment.",
       "processingFailed": "Impossible de traiter le CV.",
       "unknown": "Erreur inconnue."
+    },
+    "customize": {
+      "title": "Personnaliser la d?mo",
+      "subtitle": "Ajustez la mise en page, l'espacement, les cartes et les couleurs pour voir votre style id?al.",
+      "layout": {
+        "label": "Largeur de mise en page",
+        "4xl": "Compact",
+        "5xl": "?quilibr?",
+        "6xl": "Large"
+      },
+      "density": {
+        "label": "Densit? de contenu",
+        "compact": "Compacte",
+        "comfortable": "Confortable"
+      },
+      "cardStyle": {
+        "label": "Style des cartes",
+        "solid": "Plein",
+        "glass": "Glass"
+      },
+      "accent": {
+        "label": "Couleur d'accent",
+        "blue": "Bleu",
+        "emerald": "?meraude",
+        "amber": "Ambre",
+        "violet": "Violet"
+      },
+      "sections": {
+        "label": "Sections",
+        "hero": "En-t?te",
+        "about": "? propos",
+        "skills": "Comp?tences",
+        "experience": "Exp?rience",
+        "education": "Formation",
+        "projects": "Projets",
+        "certificates": "Certificats",
+        "languages": "Langues"
+      },
+      "actions": {
+        "visible": "Visible",
+        "hidden": "Masqu?e",
+        "show": "Afficher",
+        "hide": "Masquer",
+        "moveUp": "Monter",
+        "moveDown": "Descendre",
+        "reset": "R?initialiser"
+      }
     }
   }
 }
-

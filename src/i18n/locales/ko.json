@@ -434,6 +434,53 @@
       "rateLimited": "요청이 너무 많습니다. 잠시 후 다시 시도하세요.",
       "processingFailed": "CV를 처리할 수 없습니다.",
       "unknown": "알 수 없는 오류입니다."
+    },
+    "customize": {
+      "title": "?? ?? ??",
+      "subtitle": "????, ??, ??, ??? ??? ???? CV ???? ?? ?????.",
+      "layout": {
+        "label": "???? ??",
+        "4xl": "???",
+        "5xl": "??",
+        "6xl": "???"
+      },
+      "density": {
+        "label": "??? ??",
+        "compact": "???",
+        "comfortable": "???"
+      },
+      "cardStyle": {
+        "label": "?? ???",
+        "solid": "???",
+        "glass": "???"
+      },
+      "accent": {
+        "label": "??? ??",
+        "blue": "??",
+        "emerald": "????",
+        "amber": "??",
+        "violet": "????"
+      },
+      "sections": {
+        "label": "??",
+        "hero": "??",
+        "about": "??",
+        "skills": "??",
+        "experience": "??",
+        "education": "??",
+        "projects": "????",
+        "certificates": "???",
+        "languages": "??"
+      },
+      "actions": {
+        "visible": "???",
+        "hidden": "??",
+        "show": "??",
+        "hide": "??",
+        "moveUp": "??",
+        "moveDown": "???",
+        "reset": "???"
+      }
     }
   }
 }

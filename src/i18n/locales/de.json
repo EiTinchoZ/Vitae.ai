@@ -434,6 +434,53 @@
       "rateLimited": "Zu viele Anfragen. Bitte warte einen Moment.",
       "processingFailed": "CV konnte nicht verarbeitet werden.",
       "unknown": "Unbekannter Fehler."
+    },
+    "customize": {
+      "title": "Demo anpassen",
+      "subtitle": "Passe Layout, Abst?nde, Karten und Farben an, um deinen idealen CV-Stil zu sehen.",
+      "layout": {
+        "label": "Layout-Breite",
+        "4xl": "Kompakt",
+        "5xl": "Ausgewogen",
+        "6xl": "Breit"
+      },
+      "density": {
+        "label": "Inhaltsdichte",
+        "compact": "Kompakt",
+        "comfortable": "Bequem"
+      },
+      "cardStyle": {
+        "label": "Kartenstil",
+        "solid": "Solide",
+        "glass": "Glass"
+      },
+      "accent": {
+        "label": "Akzentfarbe",
+        "blue": "Blau",
+        "emerald": "Smaragd",
+        "amber": "Amber",
+        "violet": "Violett"
+      },
+      "sections": {
+        "label": "Abschnitte",
+        "hero": "Header",
+        "about": "?ber mich",
+        "skills": "F?higkeiten",
+        "experience": "Erfahrung",
+        "education": "Ausbildung",
+        "projects": "Projekte",
+        "certificates": "Zertifikate",
+        "languages": "Sprachen"
+      },
+      "actions": {
+        "visible": "Sichtbar",
+        "hidden": "Ausgeblendet",
+        "show": "Anzeigen",
+        "hide": "Ausblenden",
+        "moveUp": "Nach oben",
+        "moveDown": "Nach unten",
+        "reset": "Zur?cksetzen"
+      }
     }
   }
 }
