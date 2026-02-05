@@ -43,29 +43,9 @@ export function Education() {
         {t('education.title')}
       </SectionTitle>
 
-      {!IS_DEMO && (
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="max-w-3xl mx-auto mb-10"
-        >
-          <div className="relative overflow-hidden rounded-2xl border bg-muted/20">
-            <Image
-              src="/education-highlight.jpg"
-              alt="Martin Bundy en un evento academico"
-              width={1400}
-              height={900}
-              className="h-60 w-full object-cover"
-              priority
-            />
-          </div>
-        </motion.div>
-      )}
-
-      <div className="max-w-3xl mx-auto">
-        <div className="relative">
+      {(() => {
+        const Timeline = (
+          <div className="relative">
           {/* Timeline line */}
           <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border" />
 
@@ -165,8 +145,43 @@ export function Education() {
               </div>
             </motion.div>
           ))}
-        </div>
-      </div>
+          </div>
+        );
+
+        if (IS_DEMO) {
+          return (
+            <div className="max-w-3xl mx-auto">
+              {Timeline}
+            </div>
+          );
+        }
+
+        return (
+          <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 items-start">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="order-first"
+            >
+              <div className="relative overflow-hidden rounded-2xl border bg-muted/20">
+                <Image
+                  src="/education-highlight.jpg"
+                  alt="Martin Bundy en un evento academico"
+                  width={1400}
+                  height={900}
+                  className="h-[460px] w-full object-cover object-top"
+                  priority
+                />
+              </div>
+            </motion.div>
+            <div className="max-w-3xl">
+              {Timeline}
+            </div>
+          </div>
+        );
+      })()}
     </SectionWrapper>
   );
 }

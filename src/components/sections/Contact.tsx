@@ -93,6 +93,26 @@ export function Contact() {
               </div>
             </a>
 
+            {!IS_DEMO && (
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <div className="relative overflow-hidden rounded-2xl border bg-muted/20">
+                  <Image
+                    src="/contact-photo.jpg"
+                    alt="Martin Bundy en un evento"
+                    width={1400}
+                    height={900}
+                    className="h-64 w-full object-cover object-center"
+                    priority
+                  />
+                </div>
+              </motion.div>
+            )}
+
             {/* Contact cards */}
             <div className="space-y-3">
               {contactInfo.map((item, index) => (
@@ -146,26 +166,6 @@ export function Contact() {
                 </a>
               ))}
             </div>
-
-            {!IS_DEMO && (
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className="pt-6"
-              >
-                <div className="relative overflow-hidden rounded-2xl border bg-muted/20">
-                  <Image
-                    src="/contact-photo.jpg"
-                    alt="Martin Bundy en un evento"
-                    width={1400}
-                    height={900}
-                    className="h-56 w-full object-cover"
-                  />
-                </div>
-              </motion.div>
-            )}
           </motion.div>
 
           {/* CTA Card */}

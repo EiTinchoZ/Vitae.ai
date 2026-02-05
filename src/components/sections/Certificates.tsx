@@ -99,120 +99,136 @@ export function Certificates() {
         {t('certificates.title')}
       </SectionTitle>
 
-      {!IS_DEMO && (
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mb-8"
-        >
-          <div className="relative w-full overflow-hidden rounded-2xl border bg-muted/20">
-            <Image
-              src="/certificates-highlight.jpg"
-              alt="Martin Bundy recibiendo un diploma"
-              width={1400}
-              height={800}
-              className="h-56 w-full object-cover"
-              priority
-            />
-          </div>
-        </motion.div>
-      )}
-
-      {/* Category filters */}
-      <div className="flex flex-wrap justify-center gap-2 mb-8">
-        <Button
-          variant={activeCategory === 'all' ? 'default' : 'outline'}
-          size="sm"
-          onClick={() => setActiveCategory('all')}
-        >
-          {t('certificates.all')} ({cvData.certificates.length})
-        </Button>
-        {categoryKeys.map((cat) => {
-          const Icon = categoryIcons[cat];
-          const count = cvData.certificates.filter((c) => c.category === cat).length;
-          if (count === 0) return null;
-
-          return (
+      {(() => {
+        const Filters = (
+          <div className="flex flex-wrap justify-center gap-2 mb-8">
             <Button
-              key={cat}
-              variant={activeCategory === cat ? 'default' : 'outline'}
+              variant={activeCategory === 'all' ? 'default' : 'outline'}
               size="sm"
-              onClick={() => setActiveCategory(cat)}
-              className="gap-2"
+              onClick={() => setActiveCategory('all')}
             >
-              <Icon className="h-4 w-4" />
-              {t(`certificates.categories.${cat}`)} ({count})
+              {t('certificates.all')} ({cvData.certificates.length})
             </Button>
-          );
-        })}
-      </div>
+            {categoryKeys.map((cat) => {
+              const Icon = categoryIcons[cat];
+              const count = cvData.certificates.filter((c) => c.category === cat).length;
+              if (count === 0) return null;
 
-      {/* Certificates grid */}
-      <motion.div
-        layout
-        className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
-      >
-        <AnimatePresence mode="popLayout">
-          {filteredCerts.map((cert, index) => {
-            const Icon = categoryIcons[cert.category];
+              return (
+                <Button
+                  key={cat}
+                  variant={activeCategory === cat ? 'default' : 'outline'}
+                  size="sm"
+                  onClick={() => setActiveCategory(cat)}
+                  className="gap-2"
+                >
+                  <Icon className="h-4 w-4" />
+                  {t(`certificates.categories.${cat}`)} ({count})
+                </Button>
+              );
+            })}
+          </div>
+        );
 
-            return (
-              <motion.div
-                key={cert.id}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.2, delay: index * 0.05 }}
-                onClick={() => setSelectedCert(cert)}
-                className={cn(
-                  'group relative p-6 rounded-xl border bg-background cursor-pointer',
-                  'hover:border-primary/50 hover:shadow-lg transition-all'
-                )}
-              >
-                {/* Category badge */}
-                <div className="flex items-center justify-between mb-4">
-                  <div className="p-2 rounded-lg bg-primary/10 text-primary">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <Badge
-                    variant={cert.status === 'completed' ? 'default' : 'secondary'}
-                    className="gap-1"
-                  >
-                    {cert.status === 'completed' ? (
-                      <>
-                        <CheckCircle2 className="h-3 w-3" />
-                        {t('certificates.completed')}
-                      </>
-                    ) : (
-                      <>
-                        <Clock className="h-3 w-3" />
-                        {t('certificates.inProgress')}
-                      </>
+        const Grid = (
+          <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <AnimatePresence mode="popLayout">
+              {filteredCerts.map((cert, index) => {
+                const Icon = categoryIcons[cert.category];
+
+                return (
+                  <motion.div
+                    key={cert.id}
+                    layout
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.2, delay: index * 0.05 }}
+                    onClick={() => setSelectedCert(cert)}
+                    className={cn(
+                      'group relative p-6 rounded-xl border bg-background cursor-pointer',
+                      'hover:border-primary/50 hover:shadow-lg transition-all'
                     )}
-                  </Badge>
-                </div>
+                  >
+                    {/* Category badge */}
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="p-2 rounded-lg bg-primary/10 text-primary">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <Badge
+                        variant={cert.status === 'completed' ? 'default' : 'secondary'}
+                        className="gap-1"
+                      >
+                        {cert.status === 'completed' ? (
+                          <>
+                            <CheckCircle2 className="h-3 w-3" />
+                            {t('certificates.completed')}
+                          </>
+                        ) : (
+                          <>
+                            <Clock className="h-3 w-3" />
+                            {t('certificates.inProgress')}
+                          </>
+                        )}
+                      </Badge>
+                    </div>
 
-                {/* Content */}
-                <h3 className="font-semibold mb-1 group-hover:text-primary transition-colors">
-                  {cert.name}
-                </h3>
-                <p className="text-sm text-muted-foreground mb-2">
-                  {cert.institution}
-                </p>
-                <p className="text-xs text-muted-foreground">{cert.period}</p>
+                    {/* Content */}
+                    <h3 className="font-semibold mb-1 group-hover:text-primary transition-colors">
+                      {cert.name}
+                    </h3>
+                    <p className="text-sm text-muted-foreground mb-2">
+                      {cert.institution}
+                    </p>
+                    <p className="text-xs text-muted-foreground">{cert.period}</p>
 
-                <div className="mt-4">{renderPreview(cert)}</div>
+                    <div className="mt-4">{renderPreview(cert)}</div>
 
-                {/* Hover overlay */}
-                <div className="absolute inset-0 rounded-xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-              </motion.div>
-            );
-          })}
-        </AnimatePresence>
-      </motion.div>
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 rounded-xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
+          </motion.div>
+        );
+
+        if (IS_DEMO) {
+          return (
+            <>
+              {Filters}
+              {Grid}
+            </>
+          );
+        }
+
+        return (
+          <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-10 items-start">
+            <div>
+              {Filters}
+              {Grid}
+            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="order-first lg:order-last"
+            >
+              <div className="relative w-full overflow-hidden rounded-2xl border bg-muted/20">
+                <Image
+                  src="/certificates-highlight.jpg"
+                  alt="Martin Bundy recibiendo un diploma"
+                  width={1400}
+                  height={900}
+                  className="h-[420px] w-full object-cover object-top"
+                  priority
+                />
+              </div>
+            </motion.div>
+          </div>
+        );
+      })()}
 
       {/* Certificate Modal */}
       <Dialog open={!!selectedCert} onOpenChange={() => setSelectedCert(null)}>
