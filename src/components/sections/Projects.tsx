@@ -38,6 +38,10 @@ const repoLogos: Record<string, { src: string; alt: string }> = {
   'tyr': { src: '/images/projects/tyr-logo.png', alt: 'TYR' },
 };
 
+const featuredLogos: Record<string, { src: string; alt: string }> = {
+  'project-1': { src: '/images/projects/conecta-panama-logo.jpg', alt: 'Conecta Panamá' },
+};
+
 export function Projects() {
   const { t, tArray, language } = useTranslation();
   const cvData = getCvData(language);
@@ -54,6 +58,7 @@ export function Projects() {
   }, []);
 
   const featuredProject = cvData.projects[0]; // Conecta Panama
+  const featuredLogo = featuredLogos[featuredProject.id];
 
   const suggestedQuestions = tArray('qa.suggestions.projects');
 
@@ -90,6 +95,19 @@ export function Projects() {
                 <CardDescription className="text-base mt-1">
                   {featuredProject.event}
                 </CardDescription>
+                {featuredLogo && (
+                  <div className="mt-4">
+                    <div className="relative h-16 w-40 sm:h-20 sm:w-52 rounded-lg border bg-muted/20 p-2">
+                      <Image
+                        src={featuredLogo.src}
+                        alt={featuredLogo.alt}
+                        fill
+                        className="object-contain"
+                        sizes="(max-width: 768px) 160px, 208px"
+                      />
+                    </div>
+                  </div>
+                )}
               </div>
               <div className="p-3 rounded-xl bg-amber-500/10">
                 <Trophy className="h-10 w-10 text-amber-500" />
