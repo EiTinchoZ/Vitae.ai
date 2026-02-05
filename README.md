@@ -1,8 +1,8 @@
-﻿# Vita.ai
+﻿# Vitae.ai
 
-<!-- Logo will be added here once the final brand mark is ready -->
+![Vitae.ai Logo](/public/brand/vitae-logo.png)
 
-Vita.ai is an AI-powered, interactive CV platform that turns a traditional resume into a clean, visual, and structured digital profile. It is built to help students and professionals present their experience, education, and skills in a format that is easier to read, easier to update, and more memorable than a standard PDF.
+Vitae.ai is an AI-powered, interactive CV platform that turns a traditional resume into a clean, visual, and structured digital profile. It is built to help students and professionals present their experience, education, and skills in a format that is easier to read, easier to update, and more memorable than a standard PDF.
 
 [![Next.js](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/)
@@ -12,13 +12,13 @@ Vita.ai is an AI-powered, interactive CV platform that turns a traditional resum
 
 ## Vision
 
-Most people still manage their CVs in scattered formats and update them manually. Vita.ai provides a single structured source of truth with an elegant, modern presentation so your professional story is always current and easy to share.
+Most people still manage their CVs in scattered formats and update them manually. Vitae.ai provides a single structured source of truth with an elegant, modern presentation so your professional story is always current and easy to share.
 
 This project was created by a university student with the goal of helping young professionals and students stand out with a more modern and compelling CV experience.
 
 ## Origin
 
-Vita.ai started as a personal CV project. The goal was to build a portfolio that felt modern and genuinely useful for real-world job applications. As the project grew, it became a template that other students and professionals could reuse to build their own digital CVs without losing the structure and design quality of the original.
+Vitae.ai started as a personal CV project. The goal was to build a portfolio that felt modern and genuinely useful for real-world job applications. As the project grew, it became a template that other students and professionals could reuse to build their own digital CVs without losing the structure and design quality of the original.
 
 ## What It Includes
 
@@ -76,8 +76,8 @@ This path is for people who are not comfortable with command line tools.
 ### Option B: Developer Setup (Fastest for technical users)
 
 ```bash
-git clone https://github.com/EiTinchoZ/Vita.ai.git
-cd Vita.ai
+git clone https://github.com/EiTinchoZ/Vitae.ai.git
+cd Vitae.ai
 npm install
 cp .env.example .env.local
 cp src/data/cv-data.example.ts src/data/cv-data.ts
