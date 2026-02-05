@@ -132,7 +132,7 @@ export function Experience() {
                   alt="Martin Bundy recibiendo un diploma"
                   width={1400}
                   height={900}
-                  className="h-[460px] w-full object-cover object-top"
+                  className="h-[520px] w-full object-cover object-[50%_25%]"
                   priority
                 />
               </div>
