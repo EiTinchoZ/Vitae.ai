@@ -1,11 +1,12 @@
 import type { NextConfig } from "next";
-import path from "path";
 
 const appMode = (process.env.NEXT_PUBLIC_APP_MODE ?? 'personal').trim();
 const isDemoMode = appMode === 'demo';
+
+// Use relative path for alias - absolute paths don't work in Vercel/Turbopack
 const demoAlias: Record<string, string> = isDemoMode
   ? {
-    '@/data/cv-data': path.resolve(process.cwd(), 'src/data/cv-data.example.ts'),
+    '@/data/cv-data': './src/data/cv-data.example.ts',
   }
   : {};
 

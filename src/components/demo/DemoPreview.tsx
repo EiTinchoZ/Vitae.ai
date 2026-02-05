@@ -1,15 +1,15 @@
-﻿'use client';
+'use client';
 
 import { motion } from 'framer-motion';
 import {
-  Sparkles,
-  MapPin,
   Mail,
-  Github,
+  MapPin,
   Linkedin,
+  Github,
   Lock,
-  ArrowLeft,
+  RefreshCw,
   ExternalLink,
+  Sparkles,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -23,219 +23,196 @@ interface DemoPreviewProps {
 }
 
 export function DemoPreview({ cvData, onReset }: DemoPreviewProps) {
-  const { t, tArray } = useTranslation();
-  const fallbackSkills = tArray('demo.preview.fallbacks.skills');
+  const { t } = useTranslation();
 
-  const fullName =
-    cvData.personal?.fullName ||
-    cvData.personal?.name ||
-    t('demo.preview.fallbacks.fullName');
-  const location =
-    cvData.personal?.location || t('demo.preview.fallbacks.location');
-  const email = cvData.personal?.email || t('demo.preview.fallbacks.email');
-  const linkedin = cvData.personal?.linkedin || t('demo.form.defaults.linkedin');
-  const github = cvData.personal?.github || t('demo.form.defaults.github');
-  const profile = cvData.profile || t('demo.preview.fallbacks.profile');
-
-  const skills =
-    cvData.skills && cvData.skills.length > 0
-      ? cvData.skills.slice(0, 8).map((skill) => skill.name)
-      : fallbackSkills.length > 0
-        ? fallbackSkills
-        : ['AI', 'Machine Learning', 'Python', 'Data', 'Automation', 'Analytics'];
-
+  const personal = cvData.personal;
+  const skills = cvData.skills?.slice(0, 6) || [];
   const experience = cvData.experience?.[0];
   const education = cvData.education?.[0];
 
   return (
-    <section className="relative">
-      {/* Watermark */}
-      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute -top-10 left-1/2 -translate-x-1/2 rotate-[-20deg] text-[12rem] font-black text-primary/5">
-          DEMO
+    <div className="max-w-4xl mx-auto space-y-8">
+      {/* Watermark Banner */}
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 border border-primary/20 rounded-xl p-4 text-center"
+      >
+        <div className="flex items-center justify-center gap-2 text-primary font-medium">
+          <Sparkles className="h-4 w-4" />
+          <span>{t('demo.preview.badge')}</span>
         </div>
-        <div className="absolute bottom-0 right-0 rotate-[-20deg] text-[10rem] font-black text-primary/5">
-          VITAE
-        </div>
-      </div>
+        <p className="text-sm text-muted-foreground mt-1">
+          {t('demo.preview.locked.label')}
+        </p>
+      </motion.div>
 
-      <div className="flex flex-col gap-6">
-        <div className="flex items-center justify-between flex-wrap gap-3">
-          <Button variant="ghost" className="gap-2" onClick={onReset}>
-            <ArrowLeft className="h-4 w-4" />
-            {t('demo.preview.back')}
-          </Button>
-          <Badge className="gap-2" variant="secondary">
-            <Sparkles className="h-4 w-4" />
-            {t('demo.preview.badge')}
-          </Badge>
+      {/* Preview Content */}
+      <div className="relative">
+        {/* Watermark Overlay */}
+        <div className="absolute inset-0 pointer-events-none z-10 flex items-center justify-center opacity-5">
+          <span className="text-8xl font-bold text-primary rotate-[-30deg] select-none">
+            VITAE.AI DEMO
+          </span>
         </div>
 
-        {/* Hero */}
-        <Card className="relative overflow-hidden border-border">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-secondary/10" />
-          <CardContent className="relative p-6 md:p-8">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        {/* Hero Section (Visible) */}
+        <Card className="mb-6">
+          <CardContent className="pt-6">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div>
-                <h2 className="text-3xl font-bold mb-2">{fullName}</h2>
-                <p className="text-muted-foreground max-w-xl">{profile}</p>
-                <div className="flex flex-wrap gap-4 mt-4 text-sm text-muted-foreground">
-                  <span className="flex items-center gap-2">
-                    <MapPin className="h-4 w-4 text-primary" />
-                    {location}
-                  </span>
-                  <span className="flex items-center gap-2">
-                    <Mail className="h-4 w-4 text-primary" />
-                    {email}
-                  </span>
-                </div>
+                <h1 className="text-3xl font-bold">{personal?.fullName || personal?.name || 'Your Name'}</h1>
+                {cvData.profile && (
+                  <p className="text-muted-foreground mt-2 line-clamp-2">{cvData.profile}</p>
+                )}
               </div>
-              <div className="flex flex-col gap-2 text-sm">
-                <a href={linkedin} className="flex items-center gap-2 text-primary" target="_blank" rel="noreferrer">
-                  <Linkedin className="h-4 w-4" />
-                  {t('demo.preview.links.linkedin')}
-                </a>
-                <a href={github} className="flex items-center gap-2 text-primary" target="_blank" rel="noreferrer">
-                  <Github className="h-4 w-4" />
-                  {t('demo.preview.links.github')}
-                </a>
+              <div className="flex flex-col gap-2 text-sm text-muted-foreground">
+                {personal?.email && (
+                  <div className="flex items-center gap-2">
+                    <Mail className="h-4 w-4" />
+                    <span>{personal.email}</span>
+                  </div>
+                )}
+                {personal?.location && (
+                  <div className="flex items-center gap-2">
+                    <MapPin className="h-4 w-4" />
+                    <span>{personal.location}</span>
+                  </div>
+                )}
               </div>
             </div>
+
+            {/* Links */}
+            {(personal?.linkedin || personal?.github) && (
+              <div className="flex gap-3 mt-4">
+                {personal.linkedin && (
+                  <Badge variant="outline" className="gap-1">
+                    <Linkedin className="h-3 w-3" />
+                    {t('demo.preview.links.linkedin')}
+                  </Badge>
+                )}
+                {personal.github && (
+                  <Badge variant="outline" className="gap-1">
+                    <Github className="h-3 w-3" />
+                    {t('demo.preview.links.github')}
+                  </Badge>
+                )}
+              </div>
+            )}
           </CardContent>
         </Card>
 
-        {/* Preview Sections */}
-        <div className="grid lg:grid-cols-3 gap-6">
-          <Card className="lg:col-span-2">
+        {/* Skills Section (Partial - 60%) */}
+        {skills.length > 0 && (
+          <Card className="mb-6">
             <CardHeader>
-              <CardTitle>{t('demo.preview.sections.summary')}</CardTitle>
+              <CardTitle className="text-lg">{t('skills.title')}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-muted-foreground leading-relaxed">{profile}</p>
+              <div className="flex flex-wrap gap-2">
+                {skills.map((skill, i) => (
+                  <Badge key={i} variant="secondary">
+                    {skill.name}
+                  </Badge>
+                ))}
+                {(cvData.skills?.length || 0) > skills.length && (
+                  <Badge variant="outline" className="opacity-50 gap-1">
+                    <Lock className="h-3 w-3" />
+                    +{(cvData.skills?.length || 0) - skills.length} more
+                  </Badge>
+                )}
+              </div>
             </CardContent>
           </Card>
+        )}
 
-          <Card>
+        {/* Experience (Partial) */}
+        {experience && (
+          <Card className="mb-6">
             <CardHeader>
-              <CardTitle>{t('demo.preview.sections.skills')}</CardTitle>
-            </CardHeader>
-            <CardContent className="flex flex-wrap gap-2">
-              {skills.map((skill) => (
-                <Badge key={skill} variant="outline">
-                  {skill}
-                </Badge>
-              ))}
-            </CardContent>
-          </Card>
-
-          <Card className="lg:col-span-2">
-            <CardHeader>
-              <CardTitle>{t('demo.preview.sections.experience')}</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-2">
-              {experience ? (
-                <>
-                  <p className="font-semibold">{experience.position}</p>
-                  <p className="text-sm text-muted-foreground">
-                    {experience.company} · {experience.startPeriod} - {experience.endPeriod}
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    {experience.responsibilities?.slice(0, 2).join(' · ') ||
-                      t('demo.preview.fallbacks.achievements')}
-                  </p>
-                </>
-              ) : (
-                <p className="text-sm text-muted-foreground">
-                  {t('demo.preview.empty.experience')}
-                </p>
-              )}
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>{t('demo.preview.sections.education')}</CardTitle>
+              <CardTitle className="text-lg">{t('experience.title')}</CardTitle>
             </CardHeader>
             <CardContent>
-              {education ? (
-                <>
-                  <p className="font-semibold">{education.title}</p>
+              <div className="border-l-2 border-primary/30 pl-4">
+                <h3 className="font-semibold">{experience.position}</h3>
+                <p className="text-sm text-muted-foreground">{experience.company}</p>
+                {experience.responsibilities?.slice(0, 2).map((resp, i) => (
+                  <p key={i} className="text-sm mt-2">• {resp}</p>
+                ))}
+                {(experience.responsibilities?.length || 0) > 2 && (
+                  <div className="flex items-center gap-1 text-sm text-muted-foreground mt-2 opacity-50">
+                    <Lock className="h-3 w-3" />
+                    <span>{t('demo.preview.locked.label')}</span>
+                  </div>
+                )}
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Education (Partial) */}
+        {education && (
+          <Card className="mb-6">
+            <CardHeader>
+              <CardTitle className="text-lg">{t('education.title')}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="border-l-2 border-primary/30 pl-4">
+                <h3 className="font-semibold">{education.title}</h3>
+                {education.institution && (
                   <p className="text-sm text-muted-foreground">{education.institution}</p>
-                  <p className="text-xs text-muted-foreground">{education.endYear}</p>
-                </>
-              ) : (
-                <p className="text-sm text-muted-foreground">
-                  {t('demo.preview.empty.education')}
-                </p>
-              )}
+                )}
+              </div>
             </CardContent>
           </Card>
+        )}
 
-          {/* Locked Sections */}
-          <LockedCard title={t('demo.preview.locked.projects')} label={t('demo.preview.locked.label')} />
-          <LockedCard title={t('demo.preview.locked.certificates')} label={t('demo.preview.locked.label')} />
-          <LockedCard title={t('demo.preview.locked.insights')} label={t('demo.preview.locked.label')} />
+        {/* Locked Sections */}
+        <div className="grid md:grid-cols-2 gap-4 mb-6">
+          <Card className="bg-muted/30 border-dashed">
+            <CardContent className="pt-6 text-center">
+              <Lock className="h-8 w-8 mx-auto text-muted-foreground mb-2" />
+              <p className="font-medium">{t('projects.title')}</p>
+              <p className="text-sm text-muted-foreground">{t('demo.preview.locked.label')}</p>
+            </CardContent>
+          </Card>
+          <Card className="bg-muted/30 border-dashed">
+            <CardContent className="pt-6 text-center">
+              <Lock className="h-8 w-8 mx-auto text-muted-foreground mb-2" />
+              <p className="font-medium">{t('insights.title')}</p>
+              <p className="text-sm text-muted-foreground">{t('demo.preview.locked.label')}</p>
+            </CardContent>
+          </Card>
         </div>
+      </div>
 
-        {/* CTA */}
-        <Card className="bg-gradient-to-br from-primary/10 to-secondary/10">
-          <CardContent className="p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div>
-              <h3 className="text-lg font-semibold mb-1">{t('demo.preview.cta.title')}</h3>
-              <p className="text-sm text-muted-foreground">
-                {t('demo.preview.cta.description')}
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-3">
-              <Button asChild className="gap-2">
+      {/* CTA */}
+      <Card className="bg-gradient-to-r from-primary/5 to-blue-500/5 border-primary/20">
+        <CardContent className="pt-6">
+          <div className="text-center space-y-4">
+            <h3 className="text-xl font-semibold">{t('demo.preview.cta.title')}</h3>
+            <p className="text-muted-foreground max-w-lg mx-auto">
+              {t('demo.preview.cta.description')}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Button asChild size="lg">
                 <a
-                  href="https://github.com/EiTinchoZ/vitae-ai"
+                  href="https://github.com/vitae-ai/portfolio"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                 >
+                  <ExternalLink className="mr-2 h-4 w-4" />
                   {t('demo.preview.cta.install')}
-                  <ExternalLink className="h-4 w-4" />
                 </a>
               </Button>
-              <Button asChild variant="outline" className="gap-2">
-                <a
-                  href="https://github.com/EiTinchoZ/vitae-ai/blob/main/INSTALL.md"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {t('demo.preview.cta.guide')}
-                  <ExternalLink className="h-4 w-4" />
-                </a>
+              <Button variant="outline" size="lg" onClick={onReset}>
+                <RefreshCw className="mr-2 h-4 w-4" />
+                {t('demo.preview.cta.guide')}
               </Button>
             </div>
-          </CardContent>
-        </Card>
-      </div>
-    </section>
-  );
-}
-
-function LockedCard({ title, label }: { title: string; label: string }) {
-  return (
-    <Card className="relative overflow-hidden border-dashed">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <Lock className="h-4 w-4 text-muted-foreground" />
-          {title}
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="space-y-2">
-          <div className="h-3 w-3/4 rounded-full bg-muted" />
-          <div className="h-3 w-2/3 rounded-full bg-muted" />
-          <div className="h-3 w-1/2 rounded-full bg-muted" />
-        </div>
-      </CardContent>
-      <div className="absolute inset-0 flex items-center justify-center bg-background/70 backdrop-blur-sm">
-        <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-          {label}
-        </span>
-      </div>
-    </Card>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
   );
 }

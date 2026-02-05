@@ -1,47 +1,27 @@
-﻿'use client';
+'use client';
 
 import { useState } from 'react';
-import { Clipboard, Loader2, AlertCircle } from 'lucide-react';
+import { Loader2, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
 import { useTranslation } from '@/i18n';
 import type { CVData } from '@/types';
 
 interface DemoPasteProps {
   onCvGenerated: (data: Partial<CVData>) => void;
   isProcessing: boolean;
-  setIsProcessing: (value: boolean) => void;
+  setIsProcessing: (processing: boolean) => void;
 }
 
 export function DemoPaste({ onCvGenerated, isProcessing, setIsProcessing }: DemoPasteProps) {
-  const { t, language } = useTranslation();
+  const { t } = useTranslation();
   const [text, setText] = useState('');
   const [error, setError] = useState<string | null>(null);
 
-  const resolveServerError = (code?: string, fallback?: string) => {
-    const errorMap: Record<string, string> = {
-      api_key_missing: t('demo.errors.apiKeyMissing'),
-      invalid_file: t('demo.errors.invalidFile'),
-      file_too_large: t('demo.errors.fileTooLarge'),
-      unsupported_format: t('demo.errors.unsupportedFormat'),
-      empty_text: t('demo.errors.emptyText'),
-      invalid_model_response: t('demo.errors.invalidResponse'),
-      rate_limited: t('demo.errors.rateLimited'),
-      processing_failed: t('demo.errors.processingFailed'),
-    };
-
-    if (code && errorMap[code]) {
-      return errorMap[code];
-    }
-
-    if (language === 'es' && fallback) {
-      return fallback;
-    }
-
-    return t('demo.errors.processingFailed');
-  };
-
-  const handleProcess = async () => {
-    if (!text.trim()) {
+  const handleSubmit = async () => {
+    const trimmed = text.trim();
+    if (!trimmed) {
       setError(t('demo.paste.errorEmpty'));
       return;
     }
@@ -50,66 +30,63 @@ export function DemoPaste({ onCvGenerated, isProcessing, setIsProcessing }: Demo
     setError(null);
 
     try {
-      const response = await fetch('/api/demo/parse-cv', {
+      const res = await fetch('/api/demo/parse-cv', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text, language }),
+        body: JSON.stringify({ text: trimmed }),
       });
 
-      const data = (await response.json().catch(() => ({}))) as {
-        error?: string;
-        errorCode?: string;
-      } & Partial<CVData>;
-
-      if (!response.ok) {
-        throw new Error(resolveServerError(data.errorCode, data.error));
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || t('demo.errors.processingFailed'));
       }
 
-      onCvGenerated(data);
+      const data = await res.json();
+      onCvGenerated(data.cvData);
     } catch (err) {
-      const message = err instanceof Error ? err.message : t('demo.errors.unknown');
-      setError(message);
+      setError(err instanceof Error ? err.message : t('demo.errors.unknown'));
     } finally {
       setIsProcessing(false);
     }
   };
 
   return (
-    <div className="space-y-4">
-      <div>
-        <label className="text-sm font-medium">{t('demo.paste.label')}</label>
-        <textarea
+    <div className="space-y-6">
+      <div className="space-y-2">
+        <Label htmlFor="cv-text">{t('demo.paste.label')}</Label>
+        <Textarea
+          id="cv-text"
           value={text}
-          onChange={(event) => setText(event.target.value)}
-          rows={10}
-          className="mt-2 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+          onChange={(e) => setText(e.target.value)}
           placeholder={t('demo.paste.placeholder')}
+          rows={12}
+          className="resize-none font-mono text-sm"
+          disabled={isProcessing}
         />
       </div>
 
+      {/* Error */}
       {error && (
-        <div className="flex items-start gap-2 rounded-xl border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-600">
-          <AlertCircle className="mt-0.5 h-4 w-4" />
+        <div className="flex items-center gap-2 text-destructive text-sm">
+          <AlertCircle className="h-4 w-4" />
           <span>{error}</span>
         </div>
       )}
 
+      {/* Submit */}
       <Button
-        type="button"
-        className="w-full gap-2"
-        onClick={handleProcess}
-        disabled={isProcessing}
+        onClick={handleSubmit}
+        disabled={!text.trim() || isProcessing}
+        className="w-full"
+        size="lg"
       >
         {isProcessing ? (
           <>
-            <Loader2 className="h-4 w-4 animate-spin" />
+            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
             {t('demo.paste.processing')}
           </>
         ) : (
-          <>
-            <Clipboard className="h-4 w-4" />
-            {t('demo.paste.cta')}
-          </>
+          t('demo.paste.cta')
         )}
       </Button>
     </div>

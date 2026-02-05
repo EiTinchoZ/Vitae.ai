@@ -1,7 +1,7 @@
-﻿'use client';
+'use client';
 
-import { useRef, useState, type DragEvent } from 'react';
-import { Upload, FileText, Loader2, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { useState, useCallback } from 'react';
+import { Upload, FileText, Loader2, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/i18n';
 import type { CVData } from '@/types';
@@ -9,73 +9,62 @@ import type { CVData } from '@/types';
 interface DemoUploadProps {
   onCvGenerated: (data: Partial<CVData>) => void;
   isProcessing: boolean;
-  setIsProcessing: (value: boolean) => void;
+  setIsProcessing: (processing: boolean) => void;
 }
 
-const MAX_FILE_MB = 5;
-const ACCEPTED_TYPES = [
-  'application/pdf',
-  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-];
+const MAX_FILE_SIZE_MB = 5;
 
 export function DemoUpload({ onCvGenerated, isProcessing, setIsProcessing }: DemoUploadProps) {
-  const { t, language } = useTranslation();
+  const { t } = useTranslation();
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
-  const inputRef = useRef<HTMLInputElement | null>(null);
 
-  const fileHint = t('demo.upload.fileHint').replace('{max}', String(MAX_FILE_MB));
-
-  const resolveServerError = (code?: string, fallback?: string) => {
-    const errorMap: Record<string, string> = {
-      api_key_missing: t('demo.errors.apiKeyMissing'),
-      invalid_file: t('demo.errors.invalidFile'),
-      file_too_large: t('demo.errors.fileTooLarge'),
-      unsupported_format: t('demo.errors.unsupportedFormat'),
-      empty_text: t('demo.errors.emptyText'),
-      invalid_model_response: t('demo.errors.invalidResponse'),
-      rate_limited: t('demo.errors.rateLimited'),
-      processing_failed: t('demo.errors.processingFailed'),
-    };
-
-    if (code && errorMap[code]) {
-      return errorMap[code];
+  const validateFile = (f: File): string | null => {
+    const validTypes = ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+    if (!validTypes.includes(f.type)) {
+      return t('demo.upload.errorUnsupported');
     }
-
-    if (language === 'es' && fallback) {
-      return fallback;
+    if (f.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
+      return t('demo.upload.errorTooLarge').replace('{max}', String(MAX_FILE_SIZE_MB));
     }
-
-    return t('demo.errors.processingFailed');
+    return null;
   };
 
-  const validateFile = (selected: File) => {
-    if (!ACCEPTED_TYPES.includes(selected.type)) {
-      setError(t('demo.upload.errorUnsupported'));
-      return false;
+  const handleFile = (f: File) => {
+    const err = validateFile(f);
+    if (err) {
+      setError(err);
+      setFile(null);
+    } else {
+      setError(null);
+      setFile(f);
     }
-    if (selected.size > MAX_FILE_MB * 1024 * 1024) {
-      setError(t('demo.upload.errorTooLarge').replace('{max}', String(MAX_FILE_MB)));
-      return false;
-    }
-    return true;
   };
 
-  const handleFile = (selected: File) => {
-    setError(null);
-    if (!validateFile(selected)) return;
-    setFile(selected);
-  };
-
-  const handleDrop = (event: DragEvent<HTMLDivElement>) => {
-    event.preventDefault();
+  const handleDrop = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
     setIsDragging(false);
-    const dropped = event.dataTransfer.files?.[0];
-    if (dropped) handleFile(dropped);
+    const droppedFile = e.dataTransfer.files[0];
+    if (droppedFile) handleFile(droppedFile);
+  }, []);
+
+  const handleDragOver = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(true);
+  }, []);
+
+  const handleDragLeave = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+  }, []);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selected = e.target.files?.[0];
+    if (selected) handleFile(selected);
   };
 
-  const handleProcess = async () => {
+  const handleSubmit = async () => {
     if (!file) {
       setError(t('demo.upload.errorNoFile'));
       return;
@@ -87,115 +76,92 @@ export function DemoUpload({ onCvGenerated, isProcessing, setIsProcessing }: Dem
     try {
       const formData = new FormData();
       formData.append('file', file);
-      formData.append('language', language);
 
-      const response = await fetch('/api/demo/parse-cv', {
+      const res = await fetch('/api/demo/parse-cv', {
         method: 'POST',
         body: formData,
       });
 
-      const data = (await response.json().catch(() => ({}))) as {
-        error?: string;
-        errorCode?: string;
-      } & Partial<CVData>;
-
-      if (!response.ok) {
-        throw new Error(resolveServerError(data.errorCode, data.error));
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || t('demo.errors.processingFailed'));
       }
 
-      onCvGenerated(data);
+      const data = await res.json();
+      onCvGenerated(data.cvData);
     } catch (err) {
-      const message = err instanceof Error ? err.message : t('demo.errors.unknown');
-      setError(message);
+      setError(err instanceof Error ? err.message : t('demo.errors.unknown'));
     } finally {
       setIsProcessing(false);
     }
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
+      {/* Drop Zone */}
       <div
-        className={`relative rounded-2xl border-2 border-dashed p-8 text-center transition-colors ${
-          isDragging ? 'border-primary bg-primary/5' : 'border-border'
-        }`}
-        onDragOver={(event) => {
-          event.preventDefault();
-          setIsDragging(true);
-        }}
-        onDragLeave={() => setIsDragging(false)}
         onDrop={handleDrop}
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        className={`
+          relative border-2 border-dashed rounded-xl p-12 text-center transition-colors
+          ${isDragging ? 'border-primary bg-primary/5' : 'border-muted-foreground/25 hover:border-primary/50'}
+          ${file ? 'bg-primary/5 border-primary' : ''}
+        `}
       >
         <input
-          ref={inputRef}
           type="file"
           accept=".pdf,.docx"
-          className="hidden"
-          onChange={(event) => {
-            const selected = event.target.files?.[0];
-            if (selected) handleFile(selected);
-          }}
+          onChange={handleInputChange}
+          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+          disabled={isProcessing}
         />
 
+        {file ? (
           <div className="flex flex-col items-center gap-3">
-            <div className="h-14 w-14 rounded-full bg-primary/10 flex items-center justify-center">
-              <Upload className="h-6 w-6 text-primary" />
-            </div>
-            <div>
-            <p className="font-semibold">{t('demo.upload.dragTitle')}</p>
-            <p className="text-sm text-muted-foreground">{t('demo.upload.dragSubtitle')}</p>
-            </div>
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => inputRef.current?.click()}
-              disabled={isProcessing}
-            >
-            {t('demo.upload.selectButton')}
-            </Button>
-          <p className="text-xs text-muted-foreground">{fileHint}</p>
+            <FileText className="h-12 w-12 text-primary" />
+            <p className="font-medium">{file.name}</p>
+            <p className="text-sm text-muted-foreground">
+              {(file.size / 1024 / 1024).toFixed(2)} MB
+            </p>
           </div>
+        ) : (
+          <div className="flex flex-col items-center gap-3">
+            <Upload className="h-12 w-12 text-muted-foreground" />
+            <p className="font-medium">{t('demo.upload.dragTitle')}</p>
+            <p className="text-sm text-muted-foreground">{t('demo.upload.dragSubtitle')}</p>
+            <Button variant="outline" size="sm" className="mt-2" disabled={isProcessing}>
+              {t('demo.upload.selectButton')}
+            </Button>
+            <p className="text-xs text-muted-foreground mt-2">
+              {t('demo.upload.fileHint').replace('{max}', String(MAX_FILE_SIZE_MB))}
+            </p>
+          </div>
+        )}
       </div>
 
-      {file && (
-        <div className="flex items-center justify-between gap-3 rounded-xl border border-border p-4">
-          <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-lg bg-muted flex items-center justify-center">
-              <FileText className="h-5 w-5" />
-            </div>
-            <div>
-              <p className="text-sm font-medium">{file.name}</p>
-              <p className="text-xs text-muted-foreground">
-                {(file.size / 1024 / 1024).toFixed(2)} MB
-              </p>
-            </div>
-          </div>
-          <CheckCircle2 className="h-5 w-5 text-green-500" />
-        </div>
-      )}
-
+      {/* Error */}
       {error && (
-        <div className="flex items-start gap-2 rounded-xl border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-600">
-          <AlertCircle className="mt-0.5 h-4 w-4" />
+        <div className="flex items-center gap-2 text-destructive text-sm">
+          <AlertCircle className="h-4 w-4" />
           <span>{error}</span>
         </div>
       )}
 
+      {/* Submit */}
       <Button
-        type="button"
-        className="w-full gap-2"
-        onClick={handleProcess}
+        onClick={handleSubmit}
         disabled={!file || isProcessing}
+        className="w-full"
+        size="lg"
       >
         {isProcessing ? (
           <>
-            <Loader2 className="h-4 w-4 animate-spin" />
+            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
             {t('demo.upload.processing')}
           </>
         ) : (
-          <>
-            <Upload className="h-4 w-4" />
-            {t('demo.upload.cta')}
-          </>
+          t('demo.upload.cta')
         )}
       </Button>
     </div>

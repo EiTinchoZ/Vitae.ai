@@ -159,7 +159,7 @@ export async function POST(request: Request) {
     }
 
     const parsed = JSON.parse(jsonMatch[0]);
-    return new Response(JSON.stringify(parsed), {
+    return new Response(JSON.stringify({ cvData: parsed }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     });
