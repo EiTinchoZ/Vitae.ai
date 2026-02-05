@@ -1,76 +1,64 @@
-﻿# Vitae.ai Installation Guide
+﻿# Vita.ai Installation Guide
 
-Use this guide to set up your own AI-powered interactive CV.
+This guide explains how to install and run Vita.ai in two ways:
+
+- Simple setup (no terminal required)
+- Developer setup (fastest for technical users)
 
 ## Prerequisites
 
-- Node.js 20+
-- npm
-- Groq account (for API key)
-- Vercel account
 - GitHub account
+- Vercel account
+- Groq API key (for AI features)
 
-## 1. Fork and Clone
+Useful links:
+- [GitHub](https://github.com/)
+- [Vercel](https://vercel.com/)
+- [Groq API](https://console.groq.com/)
+- [GitHub Desktop](https://desktop.github.com/) (optional)
+
+## Option A: Simple Setup (No Terminal Required)
+
+1. Fork this repository in GitHub.
+2. Create a Vercel project and import your fork.
+3. In Vercel, open the project settings and add environment variables:
+   - GROQ_API_KEY
+   - NEXT_PUBLIC_GITHUB_USERNAME
+   - NEXT_PUBLIC_APP_MODE (personal or demo)
+   - NEXT_PUBLIC_DEMO_URL
+   - NEXT_PUBLIC_PERSONAL_URL
+4. Deploy the project.
+5. Edit your CV data in GitHub:
+   - Open `src/data/cv-data.ts`
+   - Replace the example content with your own
+
+## Option B: Developer Setup (Fastest)
 
 ```bash
-git clone https://github.com/EiTinchoZ/Portafolio-CV-Interactivo.git
-cd Portafolio-CV-Interactivo
-```
-
-## 2. Install Dependencies
-
-```bash
+git clone https://github.com/EiTinchoZ/Vita.ai.git
+cd Vita.ai
 npm install
-```
-
-## 3. Configure Environment Variables
-
-```bash
 cp .env.example .env.local
-```
-
-Edit `.env.local`:
-
-```bash
-GROQ_API_KEY=your_groq_api_key_here
-NEXT_PUBLIC_GITHUB_USERNAME=your_github_username
-NEXT_PUBLIC_APP_MODE=personal
-NEXT_PUBLIC_DEMO_URL=https://your-demo.vercel.app
-NEXT_PUBLIC_PERSONAL_URL=https://your-personal-cv.vercel.app
-```
-
-## 4. Add Your CV Data
-
-```bash
 cp src/data/cv-data.example.ts src/data/cv-data.ts
-```
-
-Edit `src/data/cv-data.ts` with your data. See `src/data/cv-schema.md` for the structure.
-
-## 5. Run Locally
-
-```bash
 npm run dev
 ```
 
-## 6. Deploy to Vercel (Recommended)
+Edit `src/data/cv-data.ts` with your data and refresh the site.
 
-### Personal CV Project
-- Deploy with `NEXT_PUBLIC_APP_MODE=personal`
-- Use your real CV data
+## Two Deployments (Recommended)
 
-### Public Demo Project
-- Deploy with `NEXT_PUBLIC_APP_MODE=demo`
-- Uses sample data and `/demo` preview
-- The demo shows a full preview with watermark (removed only after local install)
+You should deploy two separate Vercel projects:
 
-> Keep these as two **separate** Vercel projects to avoid mixing personal data and demo data.
+- Personal CV: `NEXT_PUBLIC_APP_MODE=personal`
+- Public Demo: `NEXT_PUBLIC_APP_MODE=demo`
+
+This keeps your real data isolated from the public demo.
+
+## CV Data Format
+
+The structure is documented in `src/data/cv-schema.md`.
 
 ## Troubleshooting
 
-- **AI not working:** ensure `GROQ_API_KEY` is set and active.
-- **Build errors:** run `npm run build` locally to inspect errors.
-
----
-
-Vitae.ai — Your career, powered by AI
+- AI not working: confirm `GROQ_API_KEY` is valid and active
+- Build errors: run `npm run build` locally to inspect

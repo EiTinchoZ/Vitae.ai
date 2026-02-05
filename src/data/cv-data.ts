@@ -2,7 +2,7 @@ import type { CVData } from '@/types';
 import type { LanguageCode } from '@/i18n';
 
 const personal = {
-  name: 'Martín Bundy',
+  name: 'Martín Alejandro Bundy Muñoz',
   fullName: 'Martín Alejandro Bundy Muñoz',
   location: 'Panamá',
   phone: '',
