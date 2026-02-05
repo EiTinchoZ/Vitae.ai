@@ -275,7 +275,7 @@
     }
   },
   "demo": {
-    "badge": "Demo p?blica",
+    "badge": "Demo pública",
     "titlePrefix": "Prueba",
     "titleBrand": "Vitae.ai",
     "description": "Sube tu CV para generar un preview limitado (aprox. 60%). El portafolio completo y los insights de IA se desbloquean al instalar Vitae.ai.",
@@ -374,6 +374,9 @@
         "specialization": "Tu especialidad",
         "institution": "Tu institución",
         "trainingDescription": "Formación destacada"
+      },
+      "errors": {
+        "nameRequired": "El nombre completo es obligatorio"
       }
     },
     "preview": {
@@ -414,7 +417,7 @@
         "title": "Desbloquea la experiencia completa",
         "description": "Instala Vitae.ai para ver el CV completo y los insights de IA.",
         "install": "Instalar Vitae.ai",
-        "guide": "Gu?a de configuraci?n"
+        "guide": "Guía de configuración"
       },
       "links": {
         "linkedin": "LinkedIn",

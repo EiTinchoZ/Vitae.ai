@@ -1,4 +1,4 @@
-﻿import { createGroq } from '@ai-sdk/groq';
+import { createGroq } from '@ai-sdk/groq';
 import { generateText } from 'ai';
 import { getLanguageInstruction } from '@/lib/ai-language';
 import { validateLanguage } from '@/lib/api-validation';
@@ -158,7 +158,12 @@ export async function POST(request: Request) {
       return createDemoError('invalid_model_response', 500);
     }
 
-    const parsed = JSON.parse(jsonMatch[0]);
+    let parsed;
+    try {
+      parsed = JSON.parse(jsonMatch[0]);
+    } catch {
+      return createDemoError('invalid_model_response', 500);
+    }
     return new Response(JSON.stringify({ cvData: parsed }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },

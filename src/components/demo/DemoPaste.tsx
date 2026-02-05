@@ -15,7 +15,7 @@ interface DemoPasteProps {
 }
 
 export function DemoPaste({ onCvGenerated, isProcessing, setIsProcessing }: DemoPasteProps) {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   const [text, setText] = useState('');
   const [error, setError] = useState<string | null>(null);
 
@@ -33,7 +33,7 @@ export function DemoPaste({ onCvGenerated, isProcessing, setIsProcessing }: Demo
       const res = await fetch('/api/demo/parse-cv', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: trimmed }),
+        body: JSON.stringify({ text: trimmed, language }),
       });
 
       if (!res.ok) {

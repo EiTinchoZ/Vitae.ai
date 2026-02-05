@@ -70,8 +70,12 @@ export function SkillRecommender() {
 
       const jsonMatch = fullText.match(/\{[\s\S]*\}/);
       if (jsonMatch) {
-        const parsed = JSON.parse(jsonMatch[0]);
-        setRecommendations(parsed);
+        try {
+          const parsed = JSON.parse(jsonMatch[0]);
+          setRecommendations(parsed);
+        } catch {
+          throw new Error('Invalid JSON in response');
+        }
       } else {
         throw new Error('Invalid response format');
       }

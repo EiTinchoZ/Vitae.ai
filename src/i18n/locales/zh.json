@@ -374,11 +374,14 @@
         "specialization": "你的专长",
         "institution": "你的机构",
         "trainingDescription": "重点教育"
+      },
+      "errors": {
+        "nameRequired": "全名为必填项"
       }
     },
     "preview": {
       "back": "返回",
-      "badge": "60% ??",
+      "badge": "60% 预览",
       "sections": {
         "summary": "职业概览",
         "skills": "突出技能",

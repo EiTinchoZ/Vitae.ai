@@ -93,8 +93,12 @@ export function InsightsDashboard() {
 
       const jsonMatch = fullText.match(/\{[\s\S]*\}/);
       if (jsonMatch) {
-        const parsed = JSON.parse(jsonMatch[0]);
-        setInsights(parsed);
+        try {
+          const parsed = JSON.parse(jsonMatch[0]);
+          setInsights(parsed);
+        } catch {
+          throw new Error('Invalid JSON in response');
+        }
       } else {
         throw new Error('Invalid response format');
       }

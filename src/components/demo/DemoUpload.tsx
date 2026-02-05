@@ -15,7 +15,7 @@ interface DemoUploadProps {
 const MAX_FILE_SIZE_MB = 5;
 
 export function DemoUpload({ onCvGenerated, isProcessing, setIsProcessing }: DemoUploadProps) {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -76,6 +76,7 @@ export function DemoUpload({ onCvGenerated, isProcessing, setIsProcessing }: Dem
     try {
       const formData = new FormData();
       formData.append('file', file);
+      formData.append('language', language);
 
       const res = await fetch('/api/demo/parse-cv', {
         method: 'POST',

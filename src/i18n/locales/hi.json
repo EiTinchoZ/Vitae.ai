@@ -374,11 +374,14 @@
         "specialization": "आपकी विशेषज्ञता",
         "institution": "आपका संस्थान",
         "trainingDescription": "मुख्य शिक्षा"
+      },
+      "errors": {
+        "nameRequired": "पूरा नाम आवश्यक है"
       }
     },
     "preview": {
       "back": "वापस",
-      "badge": "60% ????????",
+      "badge": "60% पूर्वावलोकन",
       "sections": {
         "summary": "प्रोफ़ेशनल सार",
         "skills": "हाइलाइटेड स्किल्स",

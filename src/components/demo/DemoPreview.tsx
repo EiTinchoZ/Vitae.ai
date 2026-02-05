@@ -15,6 +15,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useTranslation } from '@/i18n';
+import { REPO_URL } from '@/lib/app-config';
 import type { CVData } from '@/types';
 
 interface DemoPreviewProps {
@@ -197,7 +198,7 @@ export function DemoPreview({ cvData, onReset }: DemoPreviewProps) {
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button asChild size="lg">
                 <a
-                  href="https://github.com/vitae-ai/portfolio"
+                  href={REPO_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                 >

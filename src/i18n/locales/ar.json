@@ -374,11 +374,14 @@
         "specialization": "تخصصك",
         "institution": "مؤسستك",
         "trainingDescription": "تعليم مميز"
+      },
+      "errors": {
+        "nameRequired": "الاسم الكامل مطلوب"
       }
     },
     "preview": {
       "back": "رجوع",
-      "badge": "?????? 60%",
+      "badge": "معاينة 60%",
       "sections": {
         "summary": "ملخص مهني",
         "skills": "مهارات بارزة",

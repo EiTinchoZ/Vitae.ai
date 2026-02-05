@@ -61,7 +61,7 @@ export function DemoForm({ onCvGenerated, isProcessing, setIsProcessing }: DemoF
 
   const handleSubmit = async () => {
     if (!formData.fullName.trim()) {
-      setError(t('demo.form.fields.fullName') + ' is required');
+      setError(t('demo.form.errors.nameRequired'));
       return;
     }
 

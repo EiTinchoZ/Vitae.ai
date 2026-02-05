@@ -374,11 +374,14 @@
         "specialization": "당신의 전문 분야",
         "institution": "당신의 기관",
         "trainingDescription": "주요 학력"
+      },
+      "errors": {
+        "nameRequired": "이름은 필수입니다"
       }
     },
     "preview": {
       "back": "뒤로",
-      "badge": "60% ????",
+      "badge": "60% 미리보기",
       "sections": {
         "summary": "프로필 요약",
         "skills": "하이라이트 스킬",

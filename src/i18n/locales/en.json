@@ -374,6 +374,9 @@
         "specialization": "Your specialty",
         "institution": "Your institution",
         "trainingDescription": "Key education"
+      },
+      "errors": {
+        "nameRequired": "Full name is required"
       }
     },
     "preview": {

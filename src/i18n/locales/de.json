@@ -374,6 +374,9 @@
         "specialization": "Dein Schwerpunkt",
         "institution": "Deine Institution",
         "trainingDescription": "Hervorgehobene Ausbildung"
+      },
+      "errors": {
+        "nameRequired": "Vollständiger Name ist erforderlich"
       }
     },
     "preview": {

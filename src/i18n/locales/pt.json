@@ -275,7 +275,7 @@
     }
   },
   "demo": {
-    "badge": "Demo p?blica",
+    "badge": "Demo pública",
     "titlePrefix": "Experimente",
     "titleBrand": "Vitae.ai",
     "description": "Envie seu CV para gerar um preview limitado (aprox. 60%). O portfolio completo e os insights de IA sao liberados ao instalar o Vitae.ai.",
@@ -374,6 +374,9 @@
         "specialization": "Sua especialidade",
         "institution": "Sua instituição",
         "trainingDescription": "Formação em destaque"
+      },
+      "errors": {
+        "nameRequired": "O nome completo é obrigatório"
       }
     },
     "preview": {

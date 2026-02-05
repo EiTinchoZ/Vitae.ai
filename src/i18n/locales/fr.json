@@ -374,11 +374,14 @@
         "specialization": "Votre spécialité",
         "institution": "Votre établissement",
         "trainingDescription": "Formation mise en avant"
+      },
+      "errors": {
+        "nameRequired": "Le nom complet est obligatoire"
       }
     },
     "preview": {
       "back": "Retour",
-      "badge": "Aper?u 60 %",
+      "badge": "Aperçu 60 %",
       "sections": {
         "summary": "Résumé professionnel",
         "skills": "Compétences mises en avant",

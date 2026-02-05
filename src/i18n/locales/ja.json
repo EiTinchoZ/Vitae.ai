@@ -374,11 +374,14 @@
         "specialization": "あなたの専門",
         "institution": "あなたの学校",
         "trainingDescription": "注目の学歴"
+      },
+      "errors": {
+        "nameRequired": "氏名は必須です"
       }
     },
     "preview": {
       "back": "戻る",
-      "badge": "60%?????",
+      "badge": "60%プレビュー",
       "sections": {
         "summary": "職務概要",
         "skills": "注目スキル",

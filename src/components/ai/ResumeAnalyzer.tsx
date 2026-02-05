@@ -93,8 +93,12 @@ export function ResumeAnalyzer() {
 
       const jsonMatch = fullText.match(/\{[\s\S]*\}/);
       if (jsonMatch) {
-        const parsed = JSON.parse(jsonMatch[0]);
-        setAnalysis(parsed);
+        try {
+          const parsed = JSON.parse(jsonMatch[0]);
+          setAnalysis(parsed);
+        } catch {
+          throw new Error('Invalid JSON in response');
+        }
       } else {
         throw new Error('Invalid response format');
       }
