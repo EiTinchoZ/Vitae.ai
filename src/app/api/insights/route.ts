@@ -75,7 +75,7 @@ Respond ONLY with valid JSON (no markdown, no backticks) using this exact struct
 {
   "profileScore": <number 0-100 representing overall profile strength>,
   "keyStrengths": ["strength1", "strength2", "strength3"],
-  "uniqueValue": "<compelling one-sentence value proposition for recruiters>",
+  "uniqueValue": "<compelling one-sentence value proposition>",
   "idealRoles": ["role1", "role2", "role3"],
   "standoutFactors": ["what makes this candidate unique 1", "factor 2", "factor 3"],
   "skillsRadar": {
@@ -89,7 +89,7 @@ Respond ONLY with valid JSON (no markdown, no backticks) using this exact struct
     {"period": "year-year", "highlight": "key achievement or role"}
   ],
   "techStack": ["tech1", "tech2", "tech3", "tech4", "tech5"],
-  "recruiterSummary": "<2-3 sentence executive summary for busy recruiters>"
+  "executiveSummary": "<2-3 sentence executive summary>"
 }`;
 
     const result = streamText({

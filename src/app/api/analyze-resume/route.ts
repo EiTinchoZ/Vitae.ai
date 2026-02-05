@@ -55,7 +55,7 @@ Certifications (${cvData.certificates.length})
 Projects (${cvData.projects.length})
 `.trim();
 
-    const prompt = `You are an HR and recruitment expert. Analyze this CV and provide a recruiter-ready, strengths-only assessment that highlights value.
+    const prompt = `You are an HR and hiring expert. Analyze this CV and provide a strengths-only assessment that highlights value.
 
 ${getLanguageInstruction(language)}
 Use only the CV data provided. Do not assume or invent.
@@ -82,11 +82,11 @@ Respond ONLY with valid JSON (no markdown, no backticks) using this structure:
     "certificates": { "score": <0-100>, "feedback": "comment" },
     "projects": { "score": <0-100>, "feedback": "comment" }
   },
-  "gaps": ["recruiter highlight 1", "recruiter highlight 2"],
+  "gaps": ["highlight 1", "highlight 2"],
   "strengths": ["strength1", "strength2"],
   "improvements": ["value amplifier 1", "value amplifier 2", "value amplifier 3"],
   "atsCompatibility": <0-100>,
-  "overallFeedback": "recruiter-ready summary"
+  "overallFeedback": "executive summary"
 }`;
 
     const result = streamText({

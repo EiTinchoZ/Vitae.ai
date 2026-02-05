@@ -214,7 +214,6 @@
     "standoutFactors": "Fatores de Destaque",
     "skillsRadar": "Radar de Habilidades",
     "techStack": "Stack Tecnológico",
-    "recruiterSummary": "Resumo Executivo",
     "loading": "Analisando perfil...",
     "error": "Erro ao gerar insights. Tente novamente.",
     "scoreNote": {
@@ -228,21 +227,22 @@
       "industrial": "Industrial",
       "softSkills": "Soft Skills",
       "languages": "Idiomas"
-    }
+    },
+    "executiveSummary": "Resumo Executivo"
   },
   "resumeAnalyzer": {
     "title": "Analisador de CV",
-    "subtitle": "Resumo positivo e pronto para recrutadores deste CV.",
-    "analyze": "Gerar resumo para recrutadores",
+    "subtitle": "Resumo focado em forcas deste CV.",
+    "analyze": "Gerar resumo de forcas",
     "reanalyze": "Regenerar resumo",
     "loading": "Analisando CV...",
     "completeness": "Força do Perfil",
-    "atsScore": "Prontidão para Recrutadores",
+    "atsScore": "Pontuacao de Prontidao",
     "sections": "Panorama de Forças",
-    "gaps": "Destaques para Recrutadores",
+    "gaps": "Destaques",
     "strengths": "Forças",
     "improvements": "Amplificadores de Valor",
-    "overall": "Resumo para Recrutadores",
+    "overall": "Resumo Executivo",
     "error": "Erro ao analisar o CV. Tente novamente.",
     "sectionNames": {
       "personal": "Informações pessoais",
@@ -277,7 +277,7 @@
     "badge": "Demo p?blica",
     "titlePrefix": "Experimente",
     "titleBrand": "Vitae.ai",
-    "description": "Envie seu CV para gerar um preview limitado (aprox. 60%). O portf?lio completo, os insights de IA e as ferramentas para recrutadores s?o liberados ao instalar o Vitae.ai.",
+    "description": "Envie seu CV para gerar um preview limitado (aprox. 60%). O portfolio completo e os insights de IA sao liberados ao instalar o Vitae.ai.",
     "cardTitle": "Insira suas informações",
     "cardSubtitle": "Escolha como deseja fornecer os dados do seu CV",
     "tabs": {
@@ -411,7 +411,7 @@
       },
       "cta": {
         "title": "Desbloqueie a experi?ncia completa",
-        "description": "Instale o Vitae.ai para ver o CV completo, os insights de IA e a an?lise para recrutadores.",
+        "description": "Instale o Vitae.ai para ver o CV completo e os insights de IA.",
         "install": "Instalar Vitae.ai",
         "guide": "Guia de configura??o"
       },

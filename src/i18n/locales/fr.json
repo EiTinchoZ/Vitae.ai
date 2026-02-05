@@ -214,7 +214,6 @@
     "standoutFactors": "Facteurs Distinctifs",
     "skillsRadar": "Radar de compétences",
     "techStack": "Stack Technologique",
-    "recruiterSummary": "Résumé Exécutif",
     "loading": "Analyse du profil...",
     "error": "Erreur lors de la génération des insights. Réessaie.",
     "scoreNote": {
@@ -228,21 +227,22 @@
       "industrial": "Industriel",
       "softSkills": "Soft skills",
       "languages": "Langues"
-    }
+    },
+    "executiveSummary": "Resume Executif"
   },
   "resumeAnalyzer": {
     "title": "Analyseur de CV",
-    "subtitle": "Résumé positif et prêt pour les recruteurs de ce CV.",
-    "analyze": "Générer le résumé recruteur",
-    "reanalyze": "Régénérer le résumé",
+    "subtitle": "Resume axe sur les forces de ce CV.",
+    "analyze": "Generer le resume des forces",
+    "reanalyze": "Regenerer le resume",
     "loading": "Analyse du CV...",
     "completeness": "Force du Profil",
-    "atsScore": "Préparation Recruteur",
+    "atsScore": "Score de Preparation",
     "sections": "Panorama des Forces",
-    "gaps": "Points forts recruteur",
+    "gaps": "Points forts",
     "strengths": "Forces",
     "improvements": "Amplificateurs de valeur",
-    "overall": "Résumé recruteur",
+    "overall": "Resume Executif",
     "error": "Erreur lors de l'analyse du CV. Réessaie.",
     "sectionNames": {
       "personal": "Infos personnelles",
@@ -277,7 +277,7 @@
     "badge": "D?mo publique",
     "titlePrefix": "Essayez",
     "titleBrand": "Vitae.ai",
-    "description": "T?l?versez votre CV pour g?n?rer un aper?u limit? (env. 60 %). Le portfolio complet, les insights IA et les outils recruteur se d?bloquent en installant Vitae.ai.",
+    "description": "Televersez votre CV pour generer un apercu limite (env. 60 %). Le portfolio complet et les insights IA se debloquent en installant Vitae.ai.",
     "cardTitle": "Saisissez vos informations",
     "cardSubtitle": "Choisissez comment fournir les données de votre CV",
     "tabs": {
@@ -411,7 +411,7 @@
       },
       "cta": {
         "title": "D?bloquez l?exp?rience compl?te",
-        "description": "Installez Vitae.ai pour obtenir le CV complet, les insights IA et une analyse orient?e recruteur.",
+        "description": "Installez Vitae.ai pour obtenir le CV complet et les insights IA.",
         "install": "Installer Vitae.ai",
         "guide": "Guide d?installation"
       },

@@ -214,7 +214,6 @@
     "standoutFactors": "Standout Factors",
     "skillsRadar": "Skills Radar",
     "techStack": "Tech Stack",
-    "recruiterSummary": "Executive Summary",
     "loading": "Analyzing profile...",
     "error": "Error generating insights. Try again.",
     "scoreNote": {
@@ -228,21 +227,22 @@
       "industrial": "Industrial",
       "softSkills": "Soft Skills",
       "languages": "Languages"
-    }
+    },
+    "executiveSummary": "Executive Summary"
   },
   "resumeAnalyzer": {
     "title": "Resume Analyzer",
-    "subtitle": "Recruiter-ready strengths summary of this CV.",
-    "analyze": "Generate recruiter summary",
+    "subtitle": "Strength-focused summary of this CV.",
+    "analyze": "Generate strengths summary",
     "reanalyze": "Regenerate summary",
     "loading": "Analyzing resume...",
     "completeness": "Profile Strength",
-    "atsScore": "Recruiter Readiness",
+    "atsScore": "Readiness Score",
     "sections": "Strength Overview",
-    "gaps": "Recruiter Highlights",
+    "gaps": "Highlights",
     "strengths": "Strengths",
     "improvements": "Value Amplifiers",
-    "overall": "Recruiter Summary",
+    "overall": "Executive Summary",
     "error": "Error analyzing resume. Try again.",
     "sectionNames": {
       "personal": "Personal Info",
@@ -277,7 +277,7 @@
     "badge": "Public demo",
     "titlePrefix": "Try",
     "titleBrand": "Vitae.ai",
-    "description": "Upload your CV to generate a limited preview (about 60%). The full portfolio, AI insights, and recruiter tools unlock when you install Vitae.ai.",
+    "description": "Upload your CV to generate a limited preview (about 60%). The full portfolio and AI insights unlock when you install Vitae.ai.",
     "cardTitle": "Enter your information",
     "cardSubtitle": "Choose how you want to provide your CV data",
     "tabs": {
@@ -411,7 +411,7 @@
       },
       "cta": {
         "title": "Unlock the full experience",
-        "description": "Install Vitae.ai to get the complete CV, AI insights, and recruiter-focused analysis.",
+        "description": "Install Vitae.ai to get the complete CV and AI insights.",
         "install": "Install Vitae.ai",
         "guide": "Setup guide"
       },

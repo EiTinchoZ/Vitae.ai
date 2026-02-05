@@ -85,7 +85,7 @@ export async function POST(req: Request) {
     const cvData = getCvData(language);
     const context = buildSectionContext(section, cvData);
 
-    const systemPrompt = `You answer questions about a specific CV section for Martin Bundy, oriented to recruiter evaluation.
+    const systemPrompt = `You answer questions about a specific CV section for Martin Bundy, focused on presenting strengths and impact.
 
 ${context}
 

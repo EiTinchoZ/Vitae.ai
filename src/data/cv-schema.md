@@ -177,7 +177,7 @@ For other languages, you can provide minimal data (just `profile`, `about`, and 
 
 1. **Keep IDs consistent** across languages (e.g., `edu-1` should be the same education entry in all languages)
 
-2. **Use professional language** - This will be shown to recruiters
+2. **Use professional language** - This will be shown to hiring teams
 
 3. **Be specific with impacts** - Use numbers when possible (e.g., "Increased sales by 25%")
 

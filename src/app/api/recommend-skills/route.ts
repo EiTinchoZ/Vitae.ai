@@ -28,13 +28,13 @@ export async function POST(request: Request) {
 
     const currentSkills = cvData.skills.map((s) => s.name).join(', ');
 
-    const prompt = `You are a recruiter-focused career strategist. Highlight and amplify the candidate's EXISTING strengths for recruiters.
+    const prompt = `You are a career strategist. Highlight and amplify the candidate's EXISTING strengths for a standout profile.
 
 ${getLanguageInstruction(language)}
 Use only the CV data provided. Do not assume or invent.
 Use positive language only. Do not mention weaknesses or gaps.
 Do NOT recommend new skills. Only reference skills already present in the CV.
-Frame the output as strength highlights and recruiter-ready advantages.
+Frame the output as strength highlights and clear advantages.
 Prioritize AI, ML, generative AI, data science, automation, and industrial engineering.
 Avoid salary or compensation discussions.
 
@@ -53,14 +53,14 @@ Use "timeToLearn" as proof of experience (e.g., "Demonstrated in Conecta Panamá
   "recommendedSkills": [
     {
       "name": "skill name",
-      "reason": "why recruiters value this strength",
+      "reason": "why this strength stands out",
       "difficulty": "easy|medium|hard",
       "timeToLearn": "evidence or proof",
       "resources": ["proof point 1", "proof point 2"]
     }
   ],
   "marketTrends": ["market signal 1", "market signal 2", "market signal 3"],
-  "careerAdvice": "concise positioning statement for recruiters"
+  "careerAdvice": "concise positioning statement"
 }`;
 
     const result = streamText({

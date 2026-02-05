@@ -48,7 +48,7 @@ interface Insights {
     highlight: string;
   }>;
   techStack: string[];
-  recruiterSummary: string;
+  executiveSummary: string;
 }
 
 export function InsightsDashboard() {
@@ -189,12 +189,12 @@ export function InsightsDashboard() {
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm flex items-center gap-2">
                       <FileText className="h-4 w-4 text-primary" />
-                      {t('insights.recruiterSummary')}
+                      {t('insights.executiveSummary')}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-base leading-relaxed">
-                      {insights.recruiterSummary}
+                      {insights.executiveSummary}
                     </p>
                   </CardContent>
                 </Card>

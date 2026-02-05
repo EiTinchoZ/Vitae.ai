@@ -214,7 +214,6 @@
     "standoutFactors": "Herausragende Faktoren",
     "skillsRadar": "Kompetenzradar",
     "techStack": "Tech-Stack",
-    "recruiterSummary": "Executive Summary",
     "loading": "Profil wird analysiert...",
     "error": "Fehler beim Erstellen der Insights. Bitte versuche es erneut.",
     "scoreNote": {
@@ -228,21 +227,22 @@
       "industrial": "Industrie",
       "softSkills": "Soft Skills",
       "languages": "Sprachen"
-    }
+    },
+    "executiveSummary": "Executive Summary"
   },
   "resumeAnalyzer": {
     "title": "Lebenslauf-Analyzer",
-    "subtitle": "Positive, recruiter-fertige Zusammenfassung dieses CV.",
-    "analyze": "Recruiter-Zusammenfassung erstellen",
+    "subtitle": "Starkenorientierte Zusammenfassung dieses CV.",
+    "analyze": "Starken-Zusammenfassung erstellen",
     "reanalyze": "Zusammenfassung erneuern",
     "loading": "Lebenslauf wird analysiert...",
     "completeness": "Profilstärke",
-    "atsScore": "Recruiter-Bereitschaft",
+    "atsScore": "Bereitschafts-Score",
     "sections": "Stärkenübersicht",
-    "gaps": "Recruiter-Highlights",
+    "gaps": "Highlights",
     "strengths": "Stärken",
     "improvements": "Wertverstärker",
-    "overall": "Recruiter-Zusammenfassung",
+    "overall": "Executive Summary",
     "error": "Fehler beim Analysieren des Lebenslaufs. Bitte versuche es erneut.",
     "sectionNames": {
       "personal": "Persönliche Infos",
@@ -277,7 +277,7 @@
     "badge": "?ffentliche Demo",
     "titlePrefix": "Teste",
     "titleBrand": "Vitae.ai",
-    "description": "Lade deinen Lebenslauf hoch und erhalte eine begrenzte Vorschau (ca. 60 %). Das vollst?ndige Portfolio, KI-Insights und Recruiter-Tools werden nach der Installation von Vitae.ai freigeschaltet.",
+    "description": "Lade deinen Lebenslauf hoch und erhalte eine begrenzte Vorschau (ca. 60 %). Das vollstandige Portfolio und KI-Insights werden nach der Installation von Vitae.ai freigeschaltet.",
     "cardTitle": "Gib deine Informationen ein",
     "cardSubtitle": "Wähle, wie du deine CV-Daten bereitstellen möchtest",
     "tabs": {
@@ -411,7 +411,7 @@
       },
       "cta": {
         "title": "Vollst?ndiges Erlebnis freischalten",
-        "description": "Installiere Vitae.ai, um den vollst?ndigen CV, KI-Insights und eine recruiter-orientierte Analyse zu erhalten.",
+        "description": "Installiere Vitae.ai, um den vollstandigen CV und KI-Insights zu erhalten.",
         "install": "Vitae.ai installieren",
         "guide": "Setup-Anleitung"
       },
