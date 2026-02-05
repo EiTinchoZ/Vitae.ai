@@ -135,7 +135,7 @@
     },
     "linkedinLabel": "LinkedIn",
     "linkedinTitle": "Connectons-nous sur LinkedIn",
-    "linkedinDescription": "Suivez mes projets, publications et actualit?s pro."
+    "linkedinDescription": "Suivez mes projets, publications et actualités pro."
   },
   "footer": {
     "rights": "Tous droits reserves.",
@@ -184,9 +184,9 @@
     "error": "Erreur lors de la réponse. Réessaie.",
     "suggestions": {
       "skills": [
-        "Comment appliquerais-tu ces comp?tences en g?nie industriel ?",
-        "Comment tes comp?tences IA/innovation apportent-elles de la valeur ?",
-        "? quoi sert chaque comp?tence dans un projet r?el ?"
+        "Comment appliquerais-tu ces compétences en génie industriel ?",
+        "Comment tes compétences IA/innovation apportent-elles de la valeur ?",
+        "À quoi sert chaque compétence dans un projet réel ?"
       ],
       "projects": [
         "Quel a été le plus grand défi de Conecta Panamá ?",
@@ -199,9 +199,9 @@
         "Quel type de travail recherches-tu ?"
       ],
       "education": [
-        "Parle-moi de ton parcours au lyc?e.",
+        "Parle-moi de ton parcours au lycée.",
         "Pourquoi as-tu choisi la formation en IA ?",
-        "Que t?apporte le g?nie industriel ?"
+        "Que t'apporte le génie industriel ?"
       ]
     }
   },
@@ -439,57 +439,57 @@
       "unknown": "Erreur inconnue."
     },
     "customize": {
-      "title": "Personnaliser la d?mo",
-      "subtitle": "Ajustez la mise en page, l'espacement, les cartes et les couleurs pour voir votre style id?al.",
+      "title": "Personnaliser la démo",
+      "subtitle": "Ajustez la mise en page, l'espacement, les cartes et les couleurs pour voir votre style idéal.",
       "layout": {
         "label": "Largeur de mise en page",
         "4xl": "Compact",
-        "5xl": "?quilibr?",
+        "5xl": "Équilibré",
         "6xl": "Large"
       },
       "density": {
-        "label": "Densit? de contenu",
-        "compact": "Compacte",
+        "label": "Densité de contenu",
+        "compact": "Compact",
         "comfortable": "Confortable"
       },
       "cardStyle": {
         "label": "Style des cartes",
-        "solid": "Plein",
-        "glass": "Glass"
+        "solid": "Solide",
+        "glass": "Verre"
       },
       "accent": {
         "label": "Couleur d'accent",
         "blue": "Bleu",
-        "emerald": "?meraude",
+        "emerald": "Émeraude",
         "amber": "Ambre",
         "violet": "Violet"
       },
       "sections": {
         "label": "Sections",
-        "hero": "En-t?te",
-        "about": "? propos",
-        "skills": "Comp?tences",
-        "experience": "Exp?rience",
-        "education": "Formation",
+        "hero": "En-tête",
+        "about": "À propos",
+        "skills": "Compétences",
+        "experience": "Expérience",
+        "education": "Éducation",
         "projects": "Projets",
-        "certificates": "Certificats",
+        "certificates": "Certifications",
         "languages": "Langues"
       },
       "actions": {
         "visible": "Visible",
-        "hidden": "Masqu?e",
+        "hidden": "Masquée",
         "show": "Afficher",
         "hide": "Masquer",
         "moveUp": "Monter",
         "moveDown": "Descendre",
-        "reset": "R?initialiser"
+        "reset": "Réinitialiser"
       }
     }
   },
   "intro": {
     "title": "Activer le CV interactif",
-    "subtitle": "Touchez pour d?marrer l?exp?rience et charger tous les d?tails du CV.",
-    "cta": "D?marrer le chargement",
+    "subtitle": "Touchez pour démarrer l'expérience et charger tous les détails du CV.",
+    "cta": "Démarrer le chargement",
     "loadingTitle": "Initialisation du profil",
     "progressLabel": "Progression : {progress}%"
   }

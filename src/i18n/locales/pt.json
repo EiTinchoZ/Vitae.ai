@@ -134,8 +134,8 @@
       "english": "Nivel de Ingles"
     },
     "linkedinLabel": "LinkedIn",
-    "linkedinTitle": "Vamos nos conectar no LinkedIn",
-    "linkedinDescription": "Acompanhe meus projetos, posts e novidades profissionais."
+    "linkedinTitle": "Conecte-se comigo no LinkedIn",
+    "linkedinDescription": "Acompanhe meus projetos, publicações e novidades profissionais."
   },
   "footer": {
     "rights": "Todos os direitos reservados.",
@@ -184,8 +184,8 @@
     "error": "Erro ao obter resposta. Tente novamente.",
     "suggestions": {
       "skills": [
-        "Como voc? aplicaria essas habilidades na engenharia industrial?",
-        "Como suas skills em IA e inova??o digital agregam valor?",
+        "Como você aplicaria essas habilidades na engenharia industrial?",
+        "Como suas skills em IA e inovação digital agregam valor?",
         "Para que serve cada habilidade em projetos reais?"
       ],
       "projects": [
@@ -199,8 +199,8 @@
         "Que tipo de trabalho você procura?"
       ],
       "education": [
-        "Conte sobre seu ensino m?dio em Ci?ncias e Letras.",
-        "Por que voc? escolheu o t?cnico em IA?",
+        "Conte sobre seu ensino médio em Ciências e Letras.",
+        "Por que você escolheu o técnico em IA?",
         "O que a Engenharia Industrial agrega ao seu perfil?"
       ]
     }
@@ -440,7 +440,7 @@
     },
     "customize": {
       "title": "Personalize o demo",
-      "subtitle": "Ajuste layout, espa?amento, cards e cores para chegar ao estilo ideal do seu CV.",
+      "subtitle": "Ajuste layout, espaçamento, cards e cores para chegar ao estilo ideal do seu CV.",
       "layout": {
         "label": "Largura do layout",
         "4xl": "Compacto",
@@ -448,47 +448,47 @@
         "6xl": "Amplo"
       },
       "density": {
-        "label": "Densidade de conte?do",
-        "compact": "Compacta",
-        "comfortable": "Confort?vel"
+        "label": "Densidade de conteúdo",
+        "compact": "Compacto",
+        "comfortable": "Confortável"
       },
       "cardStyle": {
-        "label": "Estilo dos cards",
-        "solid": "S?lido",
+        "label": "Estilo de cards",
+        "solid": "Sólido",
         "glass": "Glass"
       },
       "accent": {
         "label": "Cor de destaque",
         "blue": "Azul",
         "emerald": "Esmeralda",
-        "amber": "?mbar",
+        "amber": "Âmbar",
         "violet": "Violeta"
       },
       "sections": {
-        "label": "Se??es",
-        "hero": "Cabe?alho",
-        "about": "Sobre",
+        "label": "Seções",
+        "hero": "Cabeçalho",
+        "about": "Sobre mim",
         "skills": "Habilidades",
-        "experience": "Experi?ncia",
-        "education": "Educa??o",
+        "experience": "Experiência",
+        "education": "Educação",
         "projects": "Projetos",
-        "certificates": "Certifica??es",
+        "certificates": "Certificações",
         "languages": "Idiomas"
       },
       "actions": {
-        "visible": "Vis?vel",
+        "visible": "Visível",
         "hidden": "Oculto",
         "show": "Mostrar",
         "hide": "Ocultar",
         "moveUp": "Subir",
         "moveDown": "Descer",
-        "reset": "Redefinir ajustes"
+        "reset": "Redefinir"
       }
     }
   },
   "intro": {
     "title": "Ativar CV interativo",
-    "subtitle": "Toque para iniciar a experi?ncia e carregar todos os detalhes do CV.",
+    "subtitle": "Toque para iniciar a experiência e carregar todos os detalhes do CV.",
     "cta": "Iniciar carregamento",
     "loadingTitle": "Inicializando perfil",
     "progressLabel": "Progresso: {progress}%"

@@ -134,8 +134,8 @@
       "english": "英语水平"
     },
     "linkedinLabel": "LinkedIn",
-    "linkedinTitle": "? LinkedIn ????",
-    "linkedinDescription": "???????????????"
+    "linkedinTitle": "Connect on LinkedIn",
+    "linkedinDescription": "Follow my projects, posts, and professional updates."
   },
   "footer": {
     "rights": "版权所有。",
@@ -184,9 +184,9 @@
     "error": "获取回复时出错。请重试。",
     "suggestions": {
       "skills": [
-        "?????????????????",
-        "?? AI ??????????????",
-        "????????????????"
+        "你为什么选择专注于AI？",
+        "你最强的技能是什么？",
+        "你是如何学习这些技术的？"
       ],
       "projects": [
         "Conecta Panamá 最大的挑战是什么？",
@@ -199,9 +199,9 @@
         "你在寻找什么类型的工作？"
       ],
       "education": [
-        "???????????",
-        "????? AI ?????",
-        "????????????"
+        "你为什么要学习两个学位？",
+        "你如何将AI与工业工程结合？",
+        "你的学术目标是什么？"
       ]
     }
   },
@@ -439,58 +439,58 @@
       "unknown": "未知错误。"
     },
     "customize": {
-      "title": "?????",
-      "subtitle": "?????????????????????????",
+      "title": "Customize the demo",
+      "subtitle": "Adjust layout, spacing, cards, and colors to preview your ideal CV style.",
       "layout": {
-        "label": "????",
-        "4xl": "??",
-        "5xl": "??",
-        "6xl": "??"
+        "label": "Layout width",
+        "4xl": "Compact",
+        "5xl": "Balanced",
+        "6xl": "Wide"
       },
       "density": {
-        "label": "????",
-        "compact": "??",
-        "comfortable": "??"
+        "label": "Content density",
+        "compact": "Compact",
+        "comfortable": "Comfortable"
       },
       "cardStyle": {
-        "label": "????",
-        "solid": "??",
-        "glass": "??"
+        "label": "Card style",
+        "solid": "Solid",
+        "glass": "Glass"
       },
       "accent": {
-        "label": "???",
-        "blue": "??",
-        "emerald": "???",
-        "amber": "??",
-        "violet": "??"
+        "label": "Accent color",
+        "blue": "Blue",
+        "emerald": "Emerald",
+        "amber": "Amber",
+        "violet": "Violet"
       },
       "sections": {
-        "label": "??",
-        "hero": "???",
-        "about": "??",
-        "skills": "??",
-        "experience": "??",
-        "education": "??",
-        "projects": "??",
-        "certificates": "??",
-        "languages": "??"
+        "label": "Sections",
+        "hero": "Hero",
+        "about": "About",
+        "skills": "Skills",
+        "experience": "Experience",
+        "education": "Education",
+        "projects": "Projects",
+        "certificates": "Certificates",
+        "languages": "Languages"
       },
       "actions": {
-        "visible": "??",
-        "hidden": "??",
-        "show": "??",
-        "hide": "??",
-        "moveUp": "??",
-        "moveDown": "??",
-        "reset": "????"
+        "visible": "Visible",
+        "hidden": "Hidden",
+        "show": "Show",
+        "hide": "Hide",
+        "moveUp": "Move up",
+        "moveDown": "Move down",
+        "reset": "Reset"
       }
     }
   },
   "intro": {
-    "title": "??????",
-    "subtitle": "????????????????",
-    "cta": "????",
-    "loadingTitle": "?????",
-    "progressLabel": "???{progress}%"
+    "title": "Activate interactive CV",
+    "subtitle": "Tap to start the experience and load all CV details.",
+    "cta": "Start loading",
+    "loadingTitle": "Initializing profile",
+    "progressLabel": "Progress: {progress}%"
   }
 }

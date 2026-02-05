@@ -134,7 +134,7 @@
       "english": "English Level"
     },
     "linkedinLabel": "LinkedIn",
-    "linkedinTitle": "Let?s connect on LinkedIn",
+    "linkedinTitle": "Let's connect on LinkedIn",
     "linkedinDescription": "Follow my projects, posts, and professional updates."
   },
   "footer": {
@@ -184,9 +184,9 @@
     "error": "Error getting response. Try again.",
     "suggestions": {
       "skills": [
-        "How would you apply these skills in industrial engineering?",
-        "How do your AI and digital innovation skills add value?",
-        "What does each skill enable in real projects?"
+        "Why did you choose to specialize in AI?",
+        "What is your strongest skill?",
+        "How did you learn these technologies?"
       ],
       "projects": [
         "What was the biggest challenge in Conecta Panamá?",
@@ -199,9 +199,9 @@
         "What type of work are you looking for?"
       ],
       "education": [
-        "Tell me about your high school experience.",
-        "Why did you choose the AI technical degree?",
-        "What does Industrial Engineering add to your profile?"
+        "Why are you studying two degrees?",
+        "How do you combine AI with Industrial Engineering?",
+        "What are your academic goals?"
       ]
     }
   },
@@ -440,7 +440,7 @@
     },
     "customize": {
       "title": "Customize the demo",
-      "subtitle": "Adjust layout, spacing, cards, and colors to match your ideal CV style.",
+      "subtitle": "Adjust layout, spacing, cards, and colors to preview your ideal CV style.",
       "layout": {
         "label": "Layout width",
         "4xl": "Compact",
@@ -466,7 +466,7 @@
       },
       "sections": {
         "label": "Sections",
-        "hero": "Header",
+        "hero": "Hero",
         "about": "About",
         "skills": "Skills",
         "experience": "Experience",
@@ -482,13 +482,13 @@
         "hide": "Hide",
         "moveUp": "Move up",
         "moveDown": "Move down",
-        "reset": "Reset customization"
+        "reset": "Reset"
       }
     }
   },
   "intro": {
     "title": "Activate interactive CV",
-    "subtitle": "Tap to start the experience and load the full CV details.",
+    "subtitle": "Tap to start the experience and load all CV details.",
     "cta": "Start loading",
     "loadingTitle": "Initializing profile",
     "progressLabel": "Progress: {progress}%"

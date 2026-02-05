@@ -184,9 +184,9 @@
     "error": "Error al obtener respuesta. Intenta de nuevo.",
     "suggestions": {
       "skills": [
-        "?C?mo aplicar?as estas habilidades en ingenier?a industrial?",
-        "?C?mo aportan tus skills en IA e innovaci?n digital?",
-        "?Para qu? sirve cada habilidad en un proyecto real?"
+        "¿Cómo aplicarías estas habilidades en ingeniería industrial?",
+        "¿Cómo aportan tus skills en IA e innovación digital?",
+        "¿Para qué sirve cada habilidad en un proyecto real?"
       ],
       "projects": [
         "¿Cuál fue el mayor reto de Conecta Panamá?",
@@ -199,9 +199,9 @@
         "¿Qué tipo de trabajo buscas?"
       ],
       "education": [
-        "Cu?ntame sobre tu bachiller en Ciencias y Letras.",
-        "?Por qu? elegiste el T?cnico en IA?",
-        "?Qu? te aporta Ingenier?a Industrial?"
+        "Cuéntame sobre tu bachiller en Ciencias y Letras.",
+        "¿Por qué elegiste el Técnico en IA?",
+        "¿Qué te aporta Ingeniería Industrial?"
       ]
     }
   },
@@ -450,27 +450,27 @@
       "density": {
         "label": "Densidad de contenido",
         "compact": "Compacta",
-        "comfortable": "C?moda"
+        "comfortable": "Cómoda"
       },
       "cardStyle": {
         "label": "Estilo de tarjetas",
-        "solid": "S?lido",
+        "solid": "Sólido",
         "glass": "Glass"
       },
       "accent": {
         "label": "Color acento",
         "blue": "Azul",
         "emerald": "Esmeralda",
-        "amber": "?mbar",
+        "amber": "Ámbar",
         "violet": "Violeta"
       },
       "sections": {
         "label": "Secciones",
         "hero": "Encabezado",
-        "about": "Sobre m?",
+        "about": "Sobre mí",
         "skills": "Habilidades",
         "experience": "Experiencia",
-        "education": "Educaci?n",
+        "education": "Educación",
         "projects": "Proyectos",
         "certificates": "Certificaciones",
         "languages": "Idiomas"

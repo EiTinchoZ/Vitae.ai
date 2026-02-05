@@ -134,8 +134,8 @@
       "english": "Englischniveau"
     },
     "linkedinLabel": "LinkedIn",
-    "linkedinTitle": "Lass uns auf LinkedIn verbinden",
-    "linkedinDescription": "Folge meinen Projekten, Posts und beruflichen Updates."
+    "linkedinTitle": "Lass uns auf LinkedIn vernetzen",
+    "linkedinDescription": "Folge meinen Projekten, Beiträgen und beruflichen Updates."
   },
   "footer": {
     "rights": "Alle Rechte vorbehalten.",
@@ -144,13 +144,13 @@
   },
   "chat": {
     "title": "Virtueller Assistent",
-    "welcome": "Hallo! Ich bin Martins virtueller Assistent. Ich kann Fragen zu seiner Erfahrung, Projekten, Fahigkeiten und mehr beantworten. Wie kann ich Ihnen helfen?",
+    "welcome": "Hallo! Ich bin Martins virtueller Assistent. Ich kann Fragen zu seiner Erfahrung, Projekten, Fähigkeiten und mehr beantworten. Wie kann ich Ihnen helfen?",
     "placeholder": "Geben Sie Ihre Frage ein...",
     "send": "Senden",
     "suggestedQuestions": [
       "Was ist Martins Erfahrung?",
-      "Welche Projekte hat er durchgefuhrt?",
-      "Was sind seine Fahigkeiten?",
+      "Welche Projekte hat er durchgeführt?",
+      "Was sind seine Fähigkeiten?",
       "Welche Zertifikate hat er?"
     ],
     "typing": "Schreibt...",
@@ -184,9 +184,9 @@
     "error": "Fehler beim Abrufen der Antwort. Bitte versuche es erneut.",
     "suggestions": {
       "skills": [
-        "Wie w?rdest du diese F?higkeiten in der Industrie einsetzen?",
+        "Wie würdest du diese Fähigkeiten in der Industrie einsetzen?",
         "Wie schaffen deine KI- und Digitalskills Mehrwert?",
-        "Wof?r steht jede F?higkeit in realen Projekten?"
+        "Wofür steht jede Fähigkeit in realen Projekten?"
       ],
       "projects": [
         "Was war die größte Herausforderung bei Conecta Panamá?",
@@ -199,8 +199,8 @@
         "Welche Art von Arbeit suchst du?"
       ],
       "education": [
-        "Erz?hl mir von deiner Schulzeit.",
-        "Warum hast du den KI-Studiengang gew?hlt?",
+        "Erzähl mir von deiner Schulzeit.",
+        "Warum hast du den KI-Studiengang gewählt?",
         "Was bringt dir Industrial Engineering?"
       ]
     }
@@ -278,7 +278,7 @@
     }
   },
   "demo": {
-    "badge": "?ffentliche Demo",
+    "badge": "Öffentliche Demo",
     "titlePrefix": "Teste",
     "titleBrand": "Vitae.ai",
     "description": "Lade deinen Lebenslauf hoch, um eine vollständige Vorschau mit Wasserzeichen zu erhalten. Entferne das Wasserzeichen, indem du Vitae.ai lokal installierst und konfigurierst.",
@@ -440,12 +440,12 @@
     },
     "customize": {
       "title": "Demo anpassen",
-      "subtitle": "Passe Layout, Abst?nde, Karten und Farben an, um deinen idealen CV-Stil zu sehen.",
+      "subtitle": "Passe Layout, Abstände, Karten und Farben an, um deinen idealen CV-Stil zu sehen.",
       "layout": {
         "label": "Layout-Breite",
         "4xl": "Kompakt",
         "5xl": "Ausgewogen",
-        "6xl": "Breit"
+        "6xl": "Weit"
       },
       "density": {
         "label": "Inhaltsdichte",
@@ -454,40 +454,40 @@
       },
       "cardStyle": {
         "label": "Kartenstil",
-        "solid": "Solide",
-        "glass": "Glass"
+        "solid": "Solid",
+        "glass": "Glas"
       },
       "accent": {
         "label": "Akzentfarbe",
         "blue": "Blau",
         "emerald": "Smaragd",
-        "amber": "Amber",
+        "amber": "Bernstein",
         "violet": "Violett"
       },
       "sections": {
-        "label": "Abschnitte",
+        "label": "Sektionen",
         "hero": "Header",
-        "about": "?ber mich",
-        "skills": "F?higkeiten",
+        "about": "Über mich",
+        "skills": "Fähigkeiten",
         "experience": "Erfahrung",
-        "education": "Ausbildung",
+        "education": "Bildung",
         "projects": "Projekte",
         "certificates": "Zertifikate",
         "languages": "Sprachen"
       },
       "actions": {
         "visible": "Sichtbar",
-        "hidden": "Ausgeblendet",
+        "hidden": "Versteckt",
         "show": "Anzeigen",
         "hide": "Ausblenden",
         "moveUp": "Nach oben",
         "moveDown": "Nach unten",
-        "reset": "Zur?cksetzen"
+        "reset": "Zurücksetzen"
       }
     }
   },
   "intro": {
-    "title": "Interaktiven CV starten",
+    "title": "Interaktiven CV aktivieren",
     "subtitle": "Tippe, um die Erfahrung zu starten und alle CV-Details zu laden.",
     "cta": "Laden starten",
     "loadingTitle": "Profil wird initialisiert",
