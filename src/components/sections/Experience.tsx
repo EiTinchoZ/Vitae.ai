@@ -137,13 +137,13 @@ export function Experience() {
                     priority
                   />
                 </div>
-                <div className="mt-12 relative overflow-hidden rounded-2xl border bg-muted/20">
+                <div className="mt-16 relative overflow-hidden rounded-2xl border bg-muted/20">
                   <Image
                     src="/experience-secondary.png"
                     alt="Martin Bundy en una actividad profesional"
                     width={1400}
                     height={900}
-                    className="h-[420px] w-full object-contain bg-background"
+                    className="h-[520px] w-full object-cover object-[50%_20%]"
                   />
                 </div>
               </div>
