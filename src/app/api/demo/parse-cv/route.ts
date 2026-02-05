@@ -1,7 +1,5 @@
 ﻿import { createGroq } from '@ai-sdk/groq';
 import { generateText } from 'ai';
-import { PDFParse } from 'pdf-parse';
-import mammoth from 'mammoth';
 import { getLanguageInstruction } from '@/lib/ai-language';
 import { validateLanguage } from '@/lib/api-validation';
 import { enforceRateLimit } from '@/lib/api-rate-limit';
@@ -39,12 +37,15 @@ async function extractTextFromFile(file: File): Promise<string> {
   const buffer = Buffer.from(await file.arrayBuffer());
 
   if (file.type === 'application/pdf') {
+    const { PDFParse } = await import('pdf-parse');
     const parser = new PDFParse({ data: buffer });
     const parsed = await parser.getText();
     await parser.destroy();
     return parsed.text ?? '';
   }
 
+  const mammothModule = await import('mammoth');
+  const mammoth = mammothModule.default ?? mammothModule;
   const result = await mammoth.extractRawText({ buffer });
   return result.value ?? '';
 }
