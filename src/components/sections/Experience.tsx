@@ -126,7 +126,7 @@ export function Experience() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <div className="space-y-4">
+              <div className="space-y-8">
                 <div className="relative overflow-hidden rounded-2xl border bg-muted/20">
                   <Image
                     src="/certificates-highlight.jpg"
