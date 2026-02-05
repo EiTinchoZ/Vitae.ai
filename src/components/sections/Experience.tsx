@@ -1,12 +1,14 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Briefcase, MapPin, Calendar } from 'lucide-react';
 import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
 import { SectionQA } from '@/components/ai/SectionQA';
 import { Badge } from '@/components/ui/badge';
 import { getCvData } from '@/data/cv-data';
 import { useTranslation } from '@/i18n';
+import { IS_DEMO } from '@/lib/app-config';
 
 export function Experience() {
   const { t, tArray, language } = useTranslation();
@@ -32,8 +34,9 @@ export function Experience() {
         {t('experience.title')}
       </SectionTitle>
 
-      <div className="max-w-4xl mx-auto">
-        <div className="relative">
+      {(() => {
+        const Timeline = (
+          <div className="relative">
           {/* Timeline line */}
           <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border" />
 
@@ -104,8 +107,42 @@ export function Experience() {
               </div>
             </motion.div>
           ))}
-        </div>
-      </div>
+          </div>
+        );
+
+        if (IS_DEMO) {
+          return (
+            <div className="max-w-4xl mx-auto">
+              {Timeline}
+            </div>
+          );
+        }
+
+        return (
+          <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 items-start max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="relative overflow-hidden rounded-2xl border bg-muted/20">
+                <Image
+                  src="/certificates-highlight.jpg"
+                  alt="Martin Bundy recibiendo un diploma"
+                  width={1400}
+                  height={900}
+                  className="h-[460px] w-full object-cover object-top"
+                  priority
+                />
+              </div>
+            </motion.div>
+            <div className="max-w-4xl">
+              {Timeline}
+            </div>
+          </div>
+        );
+      })()}
     </SectionWrapper>
   );
 }

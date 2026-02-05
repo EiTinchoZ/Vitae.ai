@@ -42,12 +42,6 @@ export function Contact() {
       value: '@EiTinchoZ',
       href: cvData.personal.github,
     },
-    {
-      icon: Linkedin,
-      label: t('contact.social.linkedin'),
-      value: 'martinbundy15',
-      href: cvData.personal.linkedin,
-    },
   ];
 
   return (
@@ -74,25 +68,6 @@ export function Contact() {
               </p>
             </div>
 
-            {/* LinkedIn highlight */}
-            <a
-              href={cvData.personal.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-4 rounded-2xl border bg-gradient-to-br from-primary/10 to-background p-5 transition hover:border-primary/50 hover:shadow-lg"
-            >
-              <div className="p-3 rounded-xl bg-primary text-primary-foreground">
-                <Linkedin className="h-6 w-6" />
-              </div>
-              <div>
-                <p className="text-xs text-muted-foreground">{t('contact.linkedinLabel')}</p>
-                <p className="font-semibold">{t('contact.linkedinTitle')}</p>
-                <p className="text-sm text-muted-foreground">
-                  {t('contact.linkedinDescription')}
-                </p>
-              </div>
-            </a>
-
             {!IS_DEMO && (
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
@@ -112,6 +87,25 @@ export function Contact() {
                 </div>
               </motion.div>
             )}
+
+            {/* LinkedIn highlight */}
+            <a
+              href={cvData.personal.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-4 rounded-2xl border bg-gradient-to-br from-primary/10 to-background p-5 transition hover:border-primary/50 hover:shadow-lg"
+            >
+              <div className="p-3 rounded-xl bg-primary text-primary-foreground">
+                <Linkedin className="h-6 w-6" />
+              </div>
+              <div>
+                <p className="text-xs text-muted-foreground">{t('contact.linkedinLabel')}</p>
+                <p className="font-semibold">{t('contact.linkedinTitle')}</p>
+                <p className="text-sm text-muted-foreground">
+                  {t('contact.linkedinDescription')}
+                </p>
+              </div>
+            </a>
 
             {/* Contact cards */}
             <div className="space-y-3">
@@ -159,10 +153,10 @@ export function Contact() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors"
+                  className="flex items-center gap-3 px-5 py-3 rounded-xl bg-muted/30 hover:bg-muted/50 transition-colors text-base font-semibold"
                 >
-                  <link.icon className="h-4 w-4" />
-                  <span className="text-sm">{link.value}</span>
+                  <link.icon className="h-5 w-5" />
+                  <span>{link.value}</span>
                 </a>
               ))}
             </div>
