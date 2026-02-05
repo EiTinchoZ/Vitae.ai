@@ -7,6 +7,9 @@ import { validateLanguage } from '@/lib/api-validation';
 import { enforceRateLimit } from '@/lib/api-rate-limit';
 import type { LanguageCode } from '@/i18n';
 
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
 const MAX_TEXT_LENGTH = 12000;
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
 const ALLOWED_TYPES = new Set([
