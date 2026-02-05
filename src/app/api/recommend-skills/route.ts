@@ -28,17 +28,22 @@ export async function POST(request: Request) {
 
     const currentSkills = cvData.skills.map((s) => s.name).join(', ');
 
-    const prompt = `You are a career strategist. Highlight and amplify the candidate's EXISTING strengths for a standout profile.
+    const prompt = `You are a career coach highlighting personal values and soft skills that make this candidate stand out.
 
 ${getLanguageInstruction(language)}
-Use only the CV data provided. Do not assume or invent.
-Use positive language only. Do not mention weaknesses or gaps.
-Do NOT recommend new skills. Only reference skills already present in the CV.
-Frame the output as strength highlights and clear advantages.
-Prioritize AI, ML, generative AI, data science, automation, and industrial engineering.
-Avoid salary or compensation discussions.
+Use only the CV data provided to find evidence of these values.
+Use positive language only. Focus on character strengths and professional values.
+Analyze the CV to identify evidence of these personal values:
+- Responsable (Responsible)
+- Proactivo (Proactive)
+- Autodidacta (Self-taught/Self-learner)
+- Trabajo en equipo (Teamwork)
+- Resolución de problemas (Problem-solving)
+- Adaptabilidad (Adaptability)
+- Comunicación efectiva (Effective communication)
+- Pensamiento crítico (Critical thinking)
 
-CURRENT SKILLS:
+CURRENT SKILLS AND EXPERIENCE:
 ${currentSkills}
 
 PROFILE SUMMARY:
@@ -46,21 +51,21 @@ ${cvData.profile}
 
 INSTRUCTIONS:
 Respond ONLY with valid JSON (no markdown, no backticks) using this structure.
-Use "easy|medium|hard" as difficulty values (do not translate those tokens).
-Use "difficulty" to represent depth (easy=core, medium=advanced, hard=expert).
-Use "timeToLearn" as proof of experience (e.g., "Demonstrated in Conecta Panamá").
+Select 4 personal values/strengths from the list above that are most evident in the CV.
+Use "easy|medium|hard" to represent how strongly this value is demonstrated (easy=evident, medium=strong, hard=exceptional).
+Use "timeToLearn" to show concrete evidence from the CV (projects, experiences, achievements).
 {
   "recommendedSkills": [
     {
-      "name": "skill name",
-      "reason": "why this strength stands out",
+      "name": "personal value name",
+      "reason": "how this value is demonstrated in the CV",
       "difficulty": "easy|medium|hard",
-      "timeToLearn": "evidence or proof",
-      "resources": ["proof point 1", "proof point 2"]
+      "timeToLearn": "concrete evidence from CV",
+      "resources": ["specific example 1", "specific example 2"]
     }
   ],
-  "marketTrends": ["market signal 1", "market signal 2", "market signal 3"],
-  "careerAdvice": "concise positioning statement"
+  "marketTrends": ["why value 1 matters", "why value 2 matters", "why value 3 matters"],
+  "careerAdvice": "summary of how these values make the candidate unique"
 }`;
 
     const result = streamText({

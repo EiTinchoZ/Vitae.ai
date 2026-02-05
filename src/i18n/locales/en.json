@@ -256,29 +256,29 @@
     }
   },
   "skillRecommender": {
-    "title": "Strength Amplifier",
-    "subtitle": "Highlight the strongest skills already in the CV",
-    "generate": "Generate highlights",
-    "regenerate": "Regenerate highlights",
-    "loading": "Analyzing strengths...",
-    "recommended": "Signature Strengths",
-    "trends": "Market Signals",
-    "advice": "Positioning Statement",
-    "difficulty": "Depth",
+    "title": "Personal Values & Strengths",
+    "subtitle": "Discover the values that make you unique as a professional",
+    "generate": "Discover values",
+    "regenerate": "Regenerate analysis",
+    "loading": "Analyzing personal values...",
+    "recommended": "Key Values",
+    "trends": "Why They Matter",
+    "advice": "Your Differentiator",
+    "difficulty": "Level",
     "time": "Evidence",
-    "resources": "Proof points",
-    "error": "Error generating highlights. Try again.",
+    "resources": "Examples",
+    "error": "Error analyzing values. Try again.",
     "difficultyLabels": {
-      "easy": "Core",
-      "medium": "Advanced",
-      "hard": "Expert"
+      "easy": "Evident",
+      "medium": "Strong",
+      "hard": "Exceptional"
     }
   },
   "demo": {
     "badge": "Public demo",
     "titlePrefix": "Try",
     "titleBrand": "Vitae.ai",
-    "description": "Upload your CV to generate a limited preview (about 60%). The full portfolio and AI insights unlock when you install Vitae.ai.",
+    "description": "Upload your CV to generate a full preview with a watermark. Remove the watermark by installing and configuring Vitae.ai locally.",
     "cardTitle": "Enter your information",
     "cardSubtitle": "Choose how you want to provide your CV data",
     "tabs": {
@@ -381,7 +381,7 @@
     },
     "preview": {
       "back": "Back",
-      "badge": "60% preview",
+      "badge": "Full preview",
       "sections": {
         "summary": "Professional summary",
         "skills": "Highlighted skills",
@@ -411,11 +411,11 @@
         "projects": "Featured projects",
         "certificates": "Certifications",
         "insights": "AI insights",
-        "label": "Locked in demo"
+        "label": "Watermark active"
       },
       "cta": {
-        "title": "Unlock the full experience",
-        "description": "Install Vitae.ai to get the complete CV and AI insights.",
+        "title": "Remove the watermark",
+        "description": "Install Vitae.ai to unlock a full, customizable CV without the watermark.",
         "install": "Install Vitae.ai",
         "guide": "Setup guide"
       },

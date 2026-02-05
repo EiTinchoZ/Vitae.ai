@@ -62,6 +62,7 @@ npm run dev
 ### Public Demo Project
 - Deploy with `NEXT_PUBLIC_APP_MODE=demo`
 - Uses sample data and `/demo` preview
+- The demo shows a full preview with watermark (removed only after local install)
 
 > Keep these as two **separate** Vercel projects to avoid mixing personal data and demo data.
 

@@ -228,22 +228,22 @@
       "softSkills": "软技能",
       "languages": "语言"
     },
-    "executiveSummary": "????"
+    "executiveSummary": "执行摘要"
   },
   "resumeAnalyzer": {
     "title": "简历分析",
-    "subtitle": "???????????",
-    "analyze": "??????",
-    "reanalyze": "??????",
+    "subtitle": "面向优势的简历摘要。",
+    "analyze": "生成优势摘要",
+    "reanalyze": "重新生成摘要",
     "loading": "正在分析简历...",
-    "completeness": "????",
-    "atsScore": "?????",
-    "sections": "????",
+    "completeness": "档案强度",
+    "atsScore": "ATS 准备度",
+    "sections": "优势概览",
     "gaps": "亮点",
     "noHighlights": "杰出成就将通过完整分析生成。",
     "strengths": "优势",
-    "improvements": "?????",
-    "overall": "????",
+    "improvements": "价值放大器",
+    "overall": "执行摘要",
     "error": "简历分析出错。请重试。",
     "sectionNames": {
       "personal": "个人信息",
@@ -256,29 +256,29 @@
     }
   },
   "skillRecommender": {
-    "title": "优势强化",
-    "subtitle": "强调 CV 中已有的技能",
-    "generate": "生成亮点",
-    "regenerate": "重新生成",
-    "loading": "正在分析优势...",
-    "recommended": "核心优势",
-    "trends": "市场信号",
-    "advice": "定位陈述",
-    "difficulty": "深度",
+    "title": "个人价值观与优势",
+    "subtitle": "发现让您作为专业人士独一无二的价值观",
+    "generate": "发现价值观",
+    "regenerate": "重新分析",
+    "loading": "正在分析个人价值观...",
+    "recommended": "核心价值观",
+    "trends": "为何重要",
+    "advice": "您的差异化优势",
+    "difficulty": "等级",
     "time": "证据",
-    "resources": "证明要点",
-    "error": "生成亮点时出错，请重试。",
+    "resources": "示例",
+    "error": "分析价值观时出错，请重试。",
     "difficultyLabels": {
-      "easy": "基础",
-      "medium": "进阶",
-      "hard": "专家"
+      "easy": "明显",
+      "medium": "强烈",
+      "hard": "卓越"
     }
   },
   "demo": {
-    "badge": "????",
+    "badge": "公开预览",
     "titlePrefix": "体验",
     "titleBrand": "Vitae.ai",
-    "description": "?????????? 60% ???????????? AI ?????? Vitae.ai ?????",
+    "description": "展示完整 CV 并添加水印。安装 Vitae.ai 后可移除水印并完全自定义。",
     "cardTitle": "填写你的信息",
     "cardSubtitle": "选择你提供简历数据的方式",
     "tabs": {
@@ -381,7 +381,7 @@
     },
     "preview": {
       "back": "返回",
-      "badge": "60% 预览",
+      "badge": "完整预览",
       "sections": {
         "summary": "职业概览",
         "skills": "突出技能",
@@ -411,13 +411,13 @@
         "projects": "重点项目",
         "certificates": "证书",
         "insights": "AI 洞察",
-        "label": "??????"
+        "label": "演示水印"
       },
       "cta": {
-        "title": "??????",
-        "description": "?? Vitae.ai ????????? AI ???",
-        "install": "?? Vitae.ai",
-        "guide": "????"
+        "title": "准备好你的完整 CV？",
+        "description": "安装 Vitae.ai 解锁无水印与完整自定义。",
+        "install": "安装 Vitae.ai",
+        "guide": "配置指南"
       },
       "links": {
         "linkedin": "LinkedIn",

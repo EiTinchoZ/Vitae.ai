@@ -256,29 +256,29 @@
     }
   },
   "skillRecommender": {
-    "title": "Amplificateur de forces",
-    "subtitle": "Met en avant les compétences déjà présentes dans le CV",
-    "generate": "Générer les points forts",
-    "regenerate": "Régénérer",
-    "loading": "Analyse des forces...",
-    "recommended": "Forces clés",
-    "trends": "Signaux du marché",
-    "advice": "Positionnement",
-    "difficulty": "Profondeur",
+    "title": "Valeurs Personnelles & Forces",
+    "subtitle": "Découvrez les valeurs qui vous rendent unique en tant que professionnel",
+    "generate": "Découvrir les valeurs",
+    "regenerate": "Régénérer l'analyse",
+    "loading": "Analyse des valeurs personnelles...",
+    "recommended": "Valeurs Clés",
+    "trends": "Pourquoi Elles Comptent",
+    "advice": "Votre Différenciateur",
+    "difficulty": "Niveau",
     "time": "Preuve",
-    "resources": "Justificatifs",
-    "error": "Erreur lors de la génération des points forts. Réessaie.",
+    "resources": "Exemples",
+    "error": "Erreur lors de l'analyse des valeurs. Réessayez.",
     "difficultyLabels": {
-      "easy": "Base",
-      "medium": "Avancé",
-      "hard": "Expert"
+      "easy": "Évident",
+      "medium": "Fort",
+      "hard": "Exceptionnel"
     }
   },
   "demo": {
-    "badge": "D?mo publique",
+    "badge": "Démo publique",
     "titlePrefix": "Essayez",
     "titleBrand": "Vitae.ai",
-    "description": "Televersez votre CV pour generer un apercu limite (env. 60 %). Le portfolio complet et les insights IA se debloquent en installant Vitae.ai.",
+    "description": "Téléversez votre CV pour générer un aperçu complet avec filigrane. Retirez le filigrane en installant et configurant Vitae.ai localement.",
     "cardTitle": "Saisissez vos informations",
     "cardSubtitle": "Choisissez comment fournir les données de votre CV",
     "tabs": {
@@ -381,7 +381,7 @@
     },
     "preview": {
       "back": "Retour",
-      "badge": "Aperçu 60 %",
+      "badge": "Aperçu complet",
       "sections": {
         "summary": "Résumé professionnel",
         "skills": "Compétences mises en avant",
@@ -411,13 +411,13 @@
         "projects": "Projets mis en avant",
         "certificates": "Certifications",
         "insights": "Insights IA",
-        "label": "Verrouill? dans la d?mo"
+        "label": "Filigrane actif"
       },
       "cta": {
-        "title": "D?bloquez l?exp?rience compl?te",
-        "description": "Installez Vitae.ai pour obtenir le CV complet et les insights IA.",
+        "title": "Retirer le filigrane",
+        "description": "Installez Vitae.ai pour débloquer un CV complet et personnalisable sans filigrane.",
         "install": "Installer Vitae.ai",
-        "guide": "Guide d?installation"
+        "guide": "Guide d'installation"
       },
       "links": {
         "linkedin": "LinkedIn",
@@ -437,3 +437,4 @@
     }
   }
 }
+

@@ -228,22 +228,22 @@
       "softSkills": "ソフトスキル",
       "languages": "言語"
     },
-    "executiveSummary": "???????????"
+    "executiveSummary": "エグゼクティブサマリー"
   },
   "resumeAnalyzer": {
     "title": "履歴書アナライザー",
-    "subtitle": "??CV?????????????",
-    "analyze": "????????",
-    "reanalyze": "??????",
+    "subtitle": "強み重視の履歴書サマリー。",
+    "analyze": "強みサマリーを生成",
+    "reanalyze": "サマリーを再生成",
     "loading": "履歴書を分析中...",
-    "completeness": "?????????",
-    "atsScore": "?????",
-    "sections": "?????",
+    "completeness": "プロフィール強度",
+    "atsScore": "ATS準備度",
+    "sections": "強みの概要",
     "gaps": "ハイライト",
     "noHighlights": "完全な分析で優れた実績が生成されます。",
     "strengths": "強み",
-    "improvements": "??????????",
-    "overall": "???????????",
+    "improvements": "価値の増幅ポイント",
+    "overall": "エグゼクティブサマリー",
     "error": "履歴書の分析に失敗しました。もう一度お試しください。",
     "sectionNames": {
       "personal": "個人情報",
@@ -256,29 +256,29 @@
     }
   },
   "skillRecommender": {
-    "title": "強み強化",
-    "subtitle": "CVにある強みを強調",
-    "generate": "強みを生成",
-    "regenerate": "再生成",
-    "loading": "強みを分析中...",
-    "recommended": "主要な強み",
-    "trends": "市場シグナル",
-    "advice": "ポジショニング",
-    "difficulty": "深さ",
+    "title": "個人の価値観と強み",
+    "subtitle": "プロフェッショナルとしてあなたを際立たせる価値観を発見",
+    "generate": "価値観を発見",
+    "regenerate": "分析を再生成",
+    "loading": "個人の価値観を分析中...",
+    "recommended": "主要な価値観",
+    "trends": "なぜ重要か",
+    "advice": "あなたの差別化要素",
+    "difficulty": "レベル",
     "time": "証拠",
-    "resources": "エビデンス",
-    "error": "強みの生成に失敗しました。もう一度お試しください。",
+    "resources": "例",
+    "error": "価値観の分析に失敗しました。もう一度お試しください。",
     "difficultyLabels": {
-      "easy": "基本",
-      "medium": "応用",
-      "hard": "専門"
+      "easy": "明確",
+      "medium": "強い",
+      "hard": "卓越"
     }
   },
   "demo": {
-    "badge": "????",
+    "badge": "公開プレビュー",
     "titlePrefix": "試してみる",
     "titleBrand": "Vitae.ai",
-    "description": "?????????????60%???????????????????????????AI??????Vitae.ai?????????????????",
+    "description": "完全版CVを表示し、透かしを追加します。Vitae.ai をインストールすると透かしを削除して完全にカスタマイズできます。",
     "cardTitle": "情報を入力",
     "cardSubtitle": "履歴書データの提供方法を選択してください",
     "tabs": {
@@ -381,7 +381,7 @@
     },
     "preview": {
       "back": "戻る",
-      "badge": "60%プレビュー",
+      "badge": "完全プレビュー",
       "sections": {
         "summary": "職務概要",
         "skills": "注目スキル",
@@ -411,13 +411,13 @@
         "projects": "注目プロジェクト",
         "certificates": "認定資格",
         "insights": "AIインサイト",
-        "label": "???????"
+        "label": "デモ透かし"
       },
       "cta": {
-        "title": "??????",
-        "description": "Vitae.ai?????????????CV?AI???????????????",
-        "install": "Vitae.ai???????",
-        "guide": "?????????"
+        "title": "完全なCVを作成しますか？",
+        "description": "Vitae.ai をインストールして透かしなしの完全カスタマイズを解放。",
+        "install": "Vitae.ai をインストール",
+        "guide": "設定ガイド"
       },
       "links": {
         "linkedin": "LinkedIn",

@@ -256,29 +256,29 @@
     }
   },
   "skillRecommender": {
-    "title": "Stärkenverstärker",
-    "subtitle": "Stellt die bereits vorhandenen Fähigkeiten im CV heraus",
-    "generate": "Highlights generieren",
-    "regenerate": "Neu generieren",
-    "loading": "Stärken werden analysiert...",
-    "recommended": "Schlüsselstärken",
-    "trends": "Marktsignale",
-    "advice": "Positionierung",
-    "difficulty": "Tiefe",
+    "title": "Persönliche Werte & Stärken",
+    "subtitle": "Entdecken Sie die Werte, die Sie als Fachkraft einzigartig machen",
+    "generate": "Werte entdecken",
+    "regenerate": "Analyse neu generieren",
+    "loading": "Persönliche Werte werden analysiert...",
+    "recommended": "Schlüsselwerte",
+    "trends": "Warum sie wichtig sind",
+    "advice": "Ihr Alleinstellungsmerkmal",
+    "difficulty": "Stufe",
     "time": "Nachweis",
-    "resources": "Belege",
-    "error": "Fehler beim Erstellen der Highlights. Bitte erneut versuchen.",
+    "resources": "Beispiele",
+    "error": "Fehler bei der Werteanalyse. Bitte erneut versuchen.",
     "difficultyLabels": {
-      "easy": "Basis",
-      "medium": "Fortgeschritten",
-      "hard": "Experte"
+      "easy": "Erkennbar",
+      "medium": "Stark",
+      "hard": "Außergewöhnlich"
     }
   },
   "demo": {
     "badge": "?ffentliche Demo",
     "titlePrefix": "Teste",
     "titleBrand": "Vitae.ai",
-    "description": "Lade deinen Lebenslauf hoch und erhalte eine begrenzte Vorschau (ca. 60 %). Das vollstandige Portfolio und KI-Insights werden nach der Installation von Vitae.ai freigeschaltet.",
+    "description": "Lade deinen Lebenslauf hoch, um eine vollständige Vorschau mit Wasserzeichen zu erhalten. Entferne das Wasserzeichen, indem du Vitae.ai lokal installierst und konfigurierst.",
     "cardTitle": "Gib deine Informationen ein",
     "cardSubtitle": "Wähle, wie du deine CV-Daten bereitstellen möchtest",
     "tabs": {
@@ -381,7 +381,7 @@
     },
     "preview": {
       "back": "Zurück",
-      "badge": "60%-Vorschau",
+      "badge": "Vollständige Vorschau",
       "sections": {
         "summary": "Berufliches Profil",
         "skills": "Hervorgehobene Skills",
@@ -411,11 +411,11 @@
         "projects": "Hervorgehobene Projekte",
         "certificates": "Zertifikate",
         "insights": "KI-Insights",
-        "label": "In der Demo gesperrt"
+        "label": "Wasserzeichen aktiv"
       },
       "cta": {
-        "title": "Vollst?ndiges Erlebnis freischalten",
-        "description": "Installiere Vitae.ai, um den vollstandigen CV und KI-Insights zu erhalten.",
+        "title": "Wasserzeichen entfernen",
+        "description": "Installiere Vitae.ai, um einen vollständigen, anpassbaren CV ohne Wasserzeichen zu erhalten.",
         "install": "Vitae.ai installieren",
         "guide": "Setup-Anleitung"
       },

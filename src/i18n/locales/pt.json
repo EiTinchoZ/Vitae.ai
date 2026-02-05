@@ -256,29 +256,29 @@
     }
   },
   "skillRecommender": {
-    "title": "Amplificador de Forças",
-    "subtitle": "Destaque as habilidades já presentes no CV",
-    "generate": "Gerar destaques",
-    "regenerate": "Gerar novamente",
-    "loading": "Analisando forças...",
-    "recommended": "Forças-chave",
-    "trends": "Sinais de mercado",
-    "advice": "Posicionamento",
-    "difficulty": "Profundidade",
+    "title": "Valores Pessoais e Forças",
+    "subtitle": "Descubra os valores que o tornam único como profissional",
+    "generate": "Descobrir valores",
+    "regenerate": "Regenerar análise",
+    "loading": "Analisando valores pessoais...",
+    "recommended": "Valores-Chave",
+    "trends": "Por Que Importam",
+    "advice": "Seu Diferencial",
+    "difficulty": "Nível",
     "time": "Evidência",
-    "resources": "Provas",
-    "error": "Erro ao gerar destaques. Tente novamente.",
+    "resources": "Exemplos",
+    "error": "Erro ao analisar valores. Tente novamente.",
     "difficultyLabels": {
-      "easy": "Base",
-      "medium": "Avançado",
-      "hard": "Especialista"
+      "easy": "Evidente",
+      "medium": "Forte",
+      "hard": "Excepcional"
     }
   },
   "demo": {
     "badge": "Demo pública",
     "titlePrefix": "Experimente",
     "titleBrand": "Vitae.ai",
-    "description": "Envie seu CV para gerar um preview limitado (aprox. 60%). O portfolio completo e os insights de IA sao liberados ao instalar o Vitae.ai.",
+    "description": "Envie seu CV para gerar um preview completo com marca d'água. Remova a marca instalando e configurando o Vitae.ai localmente.",
     "cardTitle": "Insira suas informações",
     "cardSubtitle": "Escolha como deseja fornecer os dados do seu CV",
     "tabs": {
@@ -381,7 +381,7 @@
     },
     "preview": {
       "back": "Voltar",
-      "badge": "Preview 60%",
+      "badge": "Preview completo",
       "sections": {
         "summary": "Resumo profissional",
         "skills": "Habilidades destacadas",
@@ -411,13 +411,13 @@
         "projects": "Projetos em destaque",
         "certificates": "Certificações",
         "insights": "Insights com IA",
-        "label": "Bloqueado na demo"
+        "label": "Marca d'água ativa"
       },
       "cta": {
-        "title": "Desbloqueie a experi?ncia completa",
-        "description": "Instale o Vitae.ai para ver o CV completo e os insights de IA.",
+        "title": "Remover a marca d'água",
+        "description": "Instale o Vitae.ai para liberar um CV completo e personalizável sem marca d'água.",
         "install": "Instalar Vitae.ai",
-        "guide": "Guia de configura??o"
+        "guide": "Guia de configuração"
       },
       "links": {
         "linkedin": "LinkedIn",

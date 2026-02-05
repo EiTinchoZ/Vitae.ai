@@ -86,21 +86,7 @@ export function Hero() {
             </span>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: -6 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.05 }}
-            className="mb-6"
-          >
-            <p className="text-sm font-medium text-foreground/80">
-              {t('hero.attributionTitle')}
-            </p>
-            <p className="text-xs md:text-sm text-muted-foreground">
-              {t('hero.attributionDescription')}
-            </p>
-          </motion.div>
-
-          {/* Profile photo placeholder */}
+          {/* Profile photo */}
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -108,9 +94,11 @@ export function Hero() {
             className="mb-8"
           >
             <div className="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full bg-gradient-to-br from-primary to-secondary p-1">
-              <div className="w-full h-full rounded-full bg-muted flex items-center justify-center text-4xl md:text-5xl font-bold text-primary">
-                MB
-              </div>
+              <img
+                src="/martin-profile.png"
+                alt={cvData.personal.name}
+                className="w-full h-full rounded-full object-cover"
+              />
             </div>
           </motion.div>
 

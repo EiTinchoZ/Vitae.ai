@@ -228,22 +228,22 @@
       "softSkills": "소프트 스킬",
       "languages": "언어"
     },
-    "executiveSummary": "?????? ???"
+    "executiveSummary": "경영진 요약"
   },
   "resumeAnalyzer": {
     "title": "이력서 분석기",
-    "subtitle": "? CV? ??? ???? ?????.",
-    "analyze": "?? ?? ??",
-    "reanalyze": "?? ???",
+    "subtitle": "강점 중심의 CV 요약입니다.",
+    "analyze": "강점 요약 생성",
+    "reanalyze": "요약 다시 생성",
     "loading": "이력서 분석 중...",
-    "completeness": "??? ??",
-    "atsScore": "?? ??",
-    "sections": "?? ??",
+    "completeness": "프로필 강도",
+    "atsScore": "ATS 준비도",
+    "sections": "강점 개요",
     "gaps": "하이라이트",
     "noHighlights": "전체 분석과 함께 뛰어난 성과가 생성됩니다.",
     "strengths": "강점",
-    "improvements": "?? ?? ???",
-    "overall": "?????? ???",
+    "improvements": "가치 증폭 요소",
+    "overall": "경영진 요약",
     "error": "이력서 분석 중 오류가 발생했습니다. 다시 시도하세요.",
     "sectionNames": {
       "personal": "개인 정보",
@@ -256,29 +256,29 @@
     }
   },
   "skillRecommender": {
-    "title": "강점 강화",
-    "subtitle": "CV에 존재하는 강점을 강조",
-    "generate": "하이라이트 생성",
-    "regenerate": "다시 생성",
-    "loading": "강점 분석 중...",
-    "recommended": "핵심 강점",
-    "trends": "시장 신호",
-    "advice": "포지셔닝",
-    "difficulty": "심화 단계",
+    "title": "개인 가치관 & 강점",
+    "subtitle": "전문가로서 당신을 독특하게 만드는 가치관을 발견하세요",
+    "generate": "가치관 발견",
+    "regenerate": "분석 재생성",
+    "loading": "개인 가치관 분석 중...",
+    "recommended": "핵심 가치관",
+    "trends": "왜 중요한가",
+    "advice": "당신의 차별화 요소",
+    "difficulty": "수준",
     "time": "증거",
-    "resources": "증빙 포인트",
-    "error": "하이라이트 생성 중 오류가 발생했습니다. 다시 시도해 주세요.",
+    "resources": "예시",
+    "error": "가치관 분석 중 오류가 발생했습니다. 다시 시도해 주세요.",
     "difficultyLabels": {
-      "easy": "기본",
-      "medium": "중급",
-      "hard": "전문"
+      "easy": "명확함",
+      "medium": "강함",
+      "hard": "탁월함"
     }
   },
   "demo": {
-    "badge": "?? ??",
+    "badge": "공개 미리보기",
     "titlePrefix": "체험하기",
     "titleBrand": "Vitae.ai",
-    "description": "CV? ???? ? 60%? ??? ????? ?????. ?? ?????? AI ????? Vitae.ai ?? ? ??? ? ????.",
+    "description": "전체 CV를 표시하고 워터마크를 추가합니다. Vitae.ai 설치 후 워터마크 제거 및 완전한 커스터마이즈가 가능합니다.",
     "cardTitle": "정보를 입력하세요",
     "cardSubtitle": "CV 데이터를 제공하는 방법을 선택하세요",
     "tabs": {
@@ -381,7 +381,7 @@
     },
     "preview": {
       "back": "뒤로",
-      "badge": "60% 미리보기",
+      "badge": "전체 미리보기",
       "sections": {
         "summary": "프로필 요약",
         "skills": "하이라이트 스킬",
@@ -411,13 +411,13 @@
         "projects": "추천 프로젝트",
         "certificates": "자격증",
         "insights": "AI 인사이트",
-        "label": "???? ??"
+        "label": "데모 워터마크"
       },
       "cta": {
-        "title": "?? ?? ?? ??",
-        "description": "Vitae.ai? ???? ?? CV? AI ????? ?????.",
-        "install": "Vitae.ai ??",
-        "guide": "?? ???"
+        "title": "완전한 CV를 만들 준비가 되었나요?",
+        "description": "Vitae.ai를 설치하면 워터마크 없이 완전한 커스터마이즈를 사용할 수 있습니다.",
+        "install": "Vitae.ai 설치",
+        "guide": "설정 가이드"
       },
       "links": {
         "linkedin": "LinkedIn",

@@ -1,57 +1,27 @@
-﻿# Vitae.ai
+# Vitae.ai
 
-AI-powered interactive CV and portfolio built with Next.js. Designed to help recruiters understand a candidate fast through smart insights, Q&A, and a polished visual narrative.
+An AI-powered, interactive CV and portfolio template built with Next.js. It turns a traditional CV into a modern, visual experience with insights, Q&A, and dynamic sections — fully customizable for your own data.
 
-## Live Sites
+**Live Demos**
+- Personal CV example: `https://portfolio-eitinchos-projects.vercel.app`
+- Public demo (template preview): `https://vitae-demo.vercel.app`
 
-- **Personal CV (Martin Bundy)**: https://portfolio-eitinchos-projects.vercel.app
-- **Public Demo (Customizable Preview)**: https://vitae-demo.vercel.app
-
-## Two Modes (Do Not Mix)
-
-### 1. Personal Mode (Your real CV)
-- Uses real data from `src/data/cv-data.ts`
-- Intended for recruiters and job applications
-- Default build mode: `NEXT_PUBLIC_APP_MODE=personal`
-
-### 2. Demo Mode (Public template)
-- Uses sample data from `src/data/cv-data.example.ts`
-- Includes `/demo` upload + 60% preview with watermark
-- Build mode: `NEXT_PUBLIC_APP_MODE=demo`
-
-> The demo is deployed as a **separate Vercel project**. Keep personal data out of the demo deployment.
-
----
-
-## What This App Includes
-
-**For recruiters**
-- AI insights dashboard (profile strength, standout factors, ideal roles)
-- Recruiter-oriented CV analysis and summaries
-- Section Q&A (skills, projects, education, experience)
-- Skill recommender based on the CV
-
-**For candidates**
-- Interactive CV layout
+**Why Vitae.ai**
+- Interactive CV layout with clean, modern UI
+- AI insights, section Q&A, and CV analysis
 - 10-language localization
-- Responsive design with modern visual structure
 - Dark/light mode
+- Public demo with full preview and watermark
+
+**Two Modes (Keep Them Separate)**
+- `personal` mode: your real CV data for your personal link
+- `demo` mode: public template preview with watermark
+
+Both modes are deployed as separate Vercel projects.
 
 ---
 
-## Tech Stack
-
-- **Framework:** Next.js (App Router)
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS + shadcn/ui
-- **Animations:** Framer Motion
-- **AI:** Groq + Vercel AI SDK
-- **Hosting:** Vercel
-
----
-
-## Quick Start
-
+**Quick Start**
 ```bash
 git clone https://github.com/EiTinchoZ/Portafolio-CV-Interactivo.git
 cd Portafolio-CV-Interactivo
@@ -59,8 +29,7 @@ npm install
 cp .env.example .env.local
 ```
 
-Edit `.env.local` with your values:
-
+Update `.env.local`:
 ```bash
 GROQ_API_KEY=your_groq_api_key_here
 NEXT_PUBLIC_GITHUB_USERNAME=your_github_username
@@ -69,62 +38,63 @@ NEXT_PUBLIC_DEMO_URL=https://your-demo.vercel.app
 NEXT_PUBLIC_PERSONAL_URL=https://your-personal-cv.vercel.app
 ```
 
-Create your CV file:
-
+Create your CV data:
 ```bash
 cp src/data/cv-data.example.ts src/data/cv-data.ts
 ```
 
 Run locally:
-
 ```bash
 npm run dev
 ```
 
 ---
 
-## Deployment (Two Separate Projects)
-
-### Personal CV (Production)
-- Deploy with `NEXT_PUBLIC_APP_MODE=personal`
-- Uses your real CV data
-
-### Public Demo (Template)
-- Deploy with `NEXT_PUBLIC_APP_MODE=demo`
-- Uses example data + `/demo` uploader
-
-> If you are using this repo as a public template, do **not** commit real CV data. Keep `src/data/cv-data.ts` private.
+**Demo Mode**
+- `/demo` lets users upload or paste a CV to generate a full preview
+- A watermark is always visible in demo mode
+- To remove the watermark, install and configure Vitae.ai locally
 
 ---
 
-## CV Data Format
+**Deployment (Two Vercel Projects)**
+- Personal CV: `NEXT_PUBLIC_APP_MODE=personal`
+- Public demo: `NEXT_PUBLIC_APP_MODE=demo`
 
-See `src/data/cv-schema.md` for the required structure and examples.
+Keep these deployments separate to avoid mixing personal data with the public demo.
 
 ---
 
-## Security
+**CV Data Format**
+See `src/data/cv-schema.md` for the exact structure required.
 
+---
+
+**Customization**
+- Update data in `src/data/cv-data.ts`
+- Edit sections in `src/components/sections`
+- Adjust styles in `src/app/globals.css` and Tailwind config
+
+---
+
+**Security & Privacy**
 - Never commit API keys
-- Use `.env.local` and Vercel Environment Variables
-- Keep personal data out of public templates
+- Keep real CV data out of public templates
+- Use `.env.local` and Vercel environment variables
 
 ---
 
-## Contributing
-
-Please read `CONTRIBUTING.md`. Contributions are welcome.
-
----
-
-## License
-
-MIT License. See `LICENSE`.
+**Contributing**
+Read `CONTRIBUTING.md` before opening PRs.
 
 ---
 
-## Credits
+**License**
+MIT. See `LICENSE`.
 
-- Martin Alejandro Bundy Munoz (Owner)
-- Claude Code (AI collaborator)
-- Codex (AI collaborator)
+---
+
+**Credits**
+- Martín Alejandro Bundy Muñoz — Owner
+- Claude Code — AI collaborator
+- Codex — AI collaborator

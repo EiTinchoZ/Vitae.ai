@@ -6,7 +6,6 @@ import {
   MapPin,
   Linkedin,
   Github,
-  Lock,
   RefreshCw,
   ExternalLink,
   Sparkles,
@@ -27,9 +26,13 @@ export function DemoPreview({ cvData, onReset }: DemoPreviewProps) {
   const { t } = useTranslation();
 
   const personal = cvData.personal;
-  const skills = cvData.skills?.slice(0, 6) || [];
-  const experience = cvData.experience?.[0];
-  const education = cvData.education?.[0];
+  const about = cvData.about;
+  const skills = cvData.skills ?? [];
+  const experience = cvData.experience ?? [];
+  const education = cvData.education ?? [];
+  const projects = cvData.projects ?? [];
+  const certificates = cvData.certificates ?? [];
+  const languages = cvData.languages ?? [];
 
   return (
     <div className="max-w-4xl mx-auto space-y-8">
@@ -51,139 +54,224 @@ export function DemoPreview({ cvData, onReset }: DemoPreviewProps) {
       {/* Preview Content */}
       <div className="relative">
         {/* Watermark Overlay */}
-        <div className="absolute inset-0 pointer-events-none z-10 flex items-center justify-center opacity-5">
-          <span className="text-8xl font-bold text-primary rotate-[-30deg] select-none">
+        <div className="absolute inset-0 pointer-events-none z-10 flex items-center justify-center opacity-10">
+          <span className="text-7xl md:text-8xl font-bold text-primary rotate-[-30deg] select-none">
             VITAE.AI DEMO
           </span>
         </div>
 
-        {/* Hero Section (Visible) */}
-        <Card className="mb-6">
-          <CardContent className="pt-6">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-              <div>
-                <h1 className="text-3xl font-bold">{personal?.fullName || personal?.name || 'Your Name'}</h1>
-                {cvData.profile && (
-                  <p className="text-muted-foreground mt-2 line-clamp-2">{cvData.profile}</p>
-                )}
+        <div className="relative z-0 space-y-6">
+          {/* Hero Section */}
+          <Card>
+            <CardContent className="pt-6">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                  <h1 className="text-3xl font-bold">
+                    {personal?.fullName || personal?.name || t('demo.preview.fallbacks.fullName')}
+                  </h1>
+                  {cvData.profile && (
+                    <p className="text-muted-foreground mt-2">{cvData.profile}</p>
+                  )}
+                </div>
+                <div className="flex flex-col gap-2 text-sm text-muted-foreground">
+                  {personal?.email && (
+                    <div className="flex items-center gap-2">
+                      <Mail className="h-4 w-4" />
+                      <span>{personal.email}</span>
+                    </div>
+                  )}
+                  {personal?.location && (
+                    <div className="flex items-center gap-2">
+                      <MapPin className="h-4 w-4" />
+                      <span>{personal.location}</span>
+                    </div>
+                  )}
+                </div>
               </div>
-              <div className="flex flex-col gap-2 text-sm text-muted-foreground">
-                {personal?.email && (
-                  <div className="flex items-center gap-2">
-                    <Mail className="h-4 w-4" />
-                    <span>{personal.email}</span>
-                  </div>
-                )}
-                {personal?.location && (
-                  <div className="flex items-center gap-2">
-                    <MapPin className="h-4 w-4" />
-                    <span>{personal.location}</span>
-                  </div>
-                )}
-              </div>
-            </div>
 
-            {/* Links */}
-            {(personal?.linkedin || personal?.github) && (
-              <div className="flex gap-3 mt-4">
-                {personal.linkedin && (
-                  <Badge variant="outline" className="gap-1">
-                    <Linkedin className="h-3 w-3" />
-                    {t('demo.preview.links.linkedin')}
-                  </Badge>
-                )}
-                {personal.github && (
-                  <Badge variant="outline" className="gap-1">
-                    <Github className="h-3 w-3" />
-                    {t('demo.preview.links.github')}
-                  </Badge>
-                )}
-              </div>
-            )}
-          </CardContent>
-        </Card>
+              {(personal?.linkedin || personal?.github) && (
+                <div className="flex gap-3 mt-4">
+                  {personal.linkedin && (
+                    <Badge variant="outline" className="gap-1">
+                      <Linkedin className="h-3 w-3" />
+                      {t('demo.preview.links.linkedin')}
+                    </Badge>
+                  )}
+                  {personal.github && (
+                    <Badge variant="outline" className="gap-1">
+                      <Github className="h-3 w-3" />
+                      {t('demo.preview.links.github')}
+                    </Badge>
+                  )}
+                </div>
+              )}
+            </CardContent>
+          </Card>
 
-        {/* Skills Section (Partial - 60%) */}
-        {skills.length > 0 && (
-          <Card className="mb-6">
-            <CardHeader>
-              <CardTitle className="text-lg">{t('skills.title')}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-2">
-                {skills.map((skill, i) => (
-                  <Badge key={i} variant="secondary">
-                    {skill.name}
-                  </Badge>
+          {/* About / Quote */}
+          {(about?.quote || about?.specialties?.length) && (
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">{t('about.title')}</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {about?.quote && (
+                  <p className="text-muted-foreground italic">“{about.quote}”</p>
+                )}
+                {about?.specialties?.length ? (
+                  <div className="flex flex-wrap gap-2">
+                    {about.specialties.map((specialty) => (
+                      <Badge key={specialty} variant="secondary">
+                        {specialty}
+                      </Badge>
+                    ))}
+                  </div>
+                ) : null}
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Skills */}
+          {skills.length > 0 && (
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">{t('skills.title')}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  {skills.map((skill, i) => (
+                    <Badge key={`${skill.name}-${i}`} variant="secondary">
+                      {skill.name}
+                    </Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Experience */}
+          {experience.length > 0 && (
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">{t('experience.title')}</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {experience.map((exp) => (
+                  <div key={exp.id} className="border-l-2 border-primary/30 pl-4">
+                    <h3 className="font-semibold">{exp.position}</h3>
+                    <p className="text-sm text-muted-foreground">
+                      {exp.company} · {exp.startPeriod} - {exp.endPeriod}
+                    </p>
+                    {exp.responsibilities?.length ? (
+                      <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
+                        {exp.responsibilities.map((resp, i) => (
+                          <li key={i}>• {resp}</li>
+                        ))}
+                      </ul>
+                    ) : null}
+                  </div>
                 ))}
-                {(cvData.skills?.length || 0) > skills.length && (
-                  <Badge variant="outline" className="opacity-50 gap-1">
-                    <Lock className="h-3 w-3" />
-                    +{(cvData.skills?.length || 0) - skills.length} more
-                  </Badge>
-                )}
-              </div>
-            </CardContent>
-          </Card>
-        )}
+              </CardContent>
+            </Card>
+          )}
 
-        {/* Experience (Partial) */}
-        {experience && (
-          <Card className="mb-6">
-            <CardHeader>
-              <CardTitle className="text-lg">{t('experience.title')}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="border-l-2 border-primary/30 pl-4">
-                <h3 className="font-semibold">{experience.position}</h3>
-                <p className="text-sm text-muted-foreground">{experience.company}</p>
-                {experience.responsibilities?.slice(0, 2).map((resp, i) => (
-                  <p key={i} className="text-sm mt-2">• {resp}</p>
-                ))}
-                {(experience.responsibilities?.length || 0) > 2 && (
-                  <div className="flex items-center gap-1 text-sm text-muted-foreground mt-2 opacity-50">
-                    <Lock className="h-3 w-3" />
-                    <span>{t('demo.preview.locked.label')}</span>
+          {/* Education */}
+          {education.length > 0 && (
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">{t('education.title')}</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {education.map((edu) => (
+                  <div key={edu.id} className="border-l-2 border-primary/30 pl-4">
+                    <h3 className="font-semibold">{edu.title}</h3>
+                    {edu.institution && (
+                      <p className="text-sm text-muted-foreground">{edu.institution}</p>
+                    )}
+                    <p className="text-xs text-muted-foreground mt-1">
+                      {edu.startYear ? `${edu.startYear} - ` : ''}
+                      {edu.endYear}
+                    </p>
                   </div>
-                )}
-              </div>
-            </CardContent>
-          </Card>
-        )}
+                ))}
+              </CardContent>
+            </Card>
+          )}
 
-        {/* Education (Partial) */}
-        {education && (
-          <Card className="mb-6">
-            <CardHeader>
-              <CardTitle className="text-lg">{t('education.title')}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="border-l-2 border-primary/30 pl-4">
-                <h3 className="font-semibold">{education.title}</h3>
-                {education.institution && (
-                  <p className="text-sm text-muted-foreground">{education.institution}</p>
-                )}
-              </div>
-            </CardContent>
-          </Card>
-        )}
+          {/* Projects */}
+          {projects.length > 0 && (
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">{t('projects.title')}</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {projects.map((project) => (
+                  <div key={project.id} className="border-l-2 border-primary/30 pl-4">
+                    <h3 className="font-semibold">{project.name}</h3>
+                    <p className="text-sm text-muted-foreground">
+                      {project.event ? `${project.event} · ` : ''}{project.year}
+                    </p>
+                    {project.shortDescription && (
+                      <p className="text-sm text-muted-foreground mt-2">
+                        {project.shortDescription}
+                      </p>
+                    )}
+                    {project.features?.length ? (
+                      <div className="flex flex-wrap gap-2 mt-3">
+                        {project.features.map((feature, i) => (
+                          <Badge key={`${project.id}-feature-${i}`} variant="outline">
+                            {feature}
+                          </Badge>
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          )}
 
-        {/* Locked Sections */}
-        <div className="grid md:grid-cols-2 gap-4 mb-6">
-          <Card className="bg-muted/30 border-dashed">
-            <CardContent className="pt-6 text-center">
-              <Lock className="h-8 w-8 mx-auto text-muted-foreground mb-2" />
-              <p className="font-medium">{t('projects.title')}</p>
-              <p className="text-sm text-muted-foreground">{t('demo.preview.locked.label')}</p>
-            </CardContent>
-          </Card>
-          <Card className="bg-muted/30 border-dashed">
-            <CardContent className="pt-6 text-center">
-              <Lock className="h-8 w-8 mx-auto text-muted-foreground mb-2" />
-              <p className="font-medium">{t('insights.title')}</p>
-              <p className="text-sm text-muted-foreground">{t('demo.preview.locked.label')}</p>
-            </CardContent>
-          </Card>
+          {/* Certificates */}
+          {certificates.length > 0 && (
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">{t('certificates.title')}</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                {certificates.map((cert) => (
+                  <div key={cert.id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                    <div>
+                      <p className="font-medium">{cert.name}</p>
+                      <p className="text-sm text-muted-foreground">{cert.institution}</p>
+                    </div>
+                    <Badge variant={cert.status === 'completed' ? 'default' : 'secondary'}>
+                      {cert.period}
+                    </Badge>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Languages */}
+          {languages.length > 0 && (
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">{t('languages.title')}</CardTitle>
+              </CardHeader>
+              <CardContent className="grid sm:grid-cols-2 gap-3">
+                {languages.map((lang) => (
+                  <div key={lang.id} className="p-3 rounded-lg bg-muted/30">
+                    <p className="font-medium">{lang.name}</p>
+                    <p className="text-sm text-muted-foreground">{lang.level}</p>
+                    {lang.description && (
+                      <p className="text-xs text-muted-foreground mt-1">{lang.description}</p>
+                    )}
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          )}
         </div>
       </div>
 
@@ -197,11 +285,7 @@ export function DemoPreview({ cvData, onReset }: DemoPreviewProps) {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button asChild size="lg">
-                <a
-                  href={REPO_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href={REPO_URL} target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="mr-2 h-4 w-4" />
                   {t('demo.preview.cta.install')}
                 </a>

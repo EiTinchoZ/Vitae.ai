@@ -55,7 +55,7 @@ Certifications (${cvData.certificates.length})
 Projects (${cvData.projects.length})
 `.trim();
 
-    const prompt = `You are an HR and hiring expert. Analyze this CV and provide a strengths-only assessment that highlights value.
+    const prompt = `You are a career branding expert. Analyze this CV and provide a strengths-only assessment that highlights value.
 
 ${getLanguageInstruction(language)}
 Use only the CV data provided. Do not assume or invent.
@@ -65,6 +65,7 @@ All scores must be in the 80-100 range.
 Prioritize AI, ML, generative AI, data science, automation, and industrial engineering.
 The electrical distribution internship was a learning experience and is not the main focus.
 Avoid salary or compensation discussions.
+In "improvements", return value amplifiers such as: responsible, proactive, self-taught, teamwork, problem-solving, adaptability, effective communication, and critical thinking.
 
 CV SUMMARY:
 ${cvSummary}

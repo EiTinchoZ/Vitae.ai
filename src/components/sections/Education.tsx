@@ -94,13 +94,13 @@ export function Education() {
                     <div className="flex justify-between text-xs text-muted-foreground mb-1">
                       <span>{t('education.estimatedProgress')}</span>
                       <span>
-                        {edu.id === 'edu-2' ? '15%' : '10%'}
+                        {edu.id === 'edu-2' ? '38%' : '57%'}
                       </span>
                     </div>
                     <div className="h-2 bg-muted rounded-full overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
-                        whileInView={{ width: edu.id === 'edu-2' ? '15%' : '10%' }}
+                        whileInView={{ width: edu.id === 'edu-2' ? '38%' : '57%' }}
                         viewport={{ once: true }}
                         transition={{ duration: 1, delay: 0.5 }}
                         className="h-full bg-primary rounded-full"
