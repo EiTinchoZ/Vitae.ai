@@ -39,6 +39,10 @@ Vitae.ai started as a personal CV project. The goal was to build a portfolio tha
 
 The demo lets anyone test the experience with their own data. The watermark stays in place unless the project is installed locally.
 
+## Demo Status
+
+The public demo is under active construction. You can already test the flow, but some features (especially PDF upload) may fail intermittently while the parsing pipeline is stabilized. If upload fails, use the paste or manual input paths.
+
 ## How The Demo Works
 
 1. Upload or paste a CV
