@@ -4,6 +4,8 @@ import { buildSystemPrompt } from '@/lib/ai-system-prompt';
 import { getCvData } from '@/data/cv-data';
 import { validateLanguage, createErrorResponse } from '@/lib/api-validation';
 import { enforceRateLimit } from '@/lib/api-rate-limit';
+import { IS_DEMO } from '@/lib/app-config';
+import { EMPTY_CV_DATA, mergeCvData } from '@/lib/cv-data-utils';
 
 
 export async function POST(req: Request) {
@@ -32,7 +34,8 @@ export async function POST(req: Request) {
       return createErrorResponse('Invalid messages format', 400, 'invalid_messages');
     }
 
-    const cvData = getCvData(language);
+    const override = IS_DEMO && body?.cvData && typeof body.cvData === 'object' ? body.cvData : null;
+    const cvData = override ? mergeCvData(EMPTY_CV_DATA, override) : getCvData(language);
     const enhancedSystemPrompt = buildSystemPrompt(language, cvData);
 
     const result = streamText({

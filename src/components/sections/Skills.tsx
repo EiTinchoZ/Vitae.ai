@@ -7,7 +7,8 @@ import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper
 import { SectionQA } from '@/components/ai/SectionQA';
 import { SkillRecommender } from '@/components/ai/SkillRecommender';
 import { Button } from '@/components/ui/button';
-import { getCvData, type SkillCategory } from '@/data/cv-data';
+import { useCvData } from '@/lib/cv-data-context';
+import { type SkillCategory } from '@/data/cv-data';
 import { useTranslation } from '@/i18n';
 import { cn } from '@/lib/utils';
 
@@ -21,8 +22,8 @@ const categoryIcons = {
 const categoryKeys: SkillCategory[] = ['ai', 'programming', 'industrial', 'technology'];
 
 export function Skills() {
-  const { t, tArray, language } = useTranslation();
-  const cvData = getCvData(language);
+  const { t, tArray } = useTranslation();
+  const { cvData } = useCvData();
   const [activeCategory, setActiveCategory] = useState<SkillCategory | 'all'>('all');
 
   const filteredSkills =

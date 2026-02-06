@@ -1,31 +1,34 @@
 'use client';
 
 import { Github, Linkedin, Mail } from 'lucide-react';
-import { getCvData } from '@/data/cv-data';
+import { useCvData } from '@/lib/cv-data-context';
+import { IS_DEMO } from '@/lib/app-config';
 import { useTranslation } from '@/i18n';
 
 export function Footer() {
-  const { t, language } = useTranslation();
-  const cvData = getCvData(language);
+  const { t } = useTranslation();
+  const { cvData } = useCvData();
   const currentYear = new Date().getFullYear();
 
-  const socialLinks = [
-    {
-      name: 'GitHub',
-      href: cvData.personal.github,
-      icon: Github,
-    },
-    {
-      name: 'LinkedIn',
-      href: cvData.personal.linkedin,
-      icon: Linkedin,
-    },
-    {
-      name: 'Email',
-      href: `mailto:${cvData.personal.email}`,
-      icon: Mail,
-    },
-  ];
+  const socialLinks = IS_DEMO
+    ? []
+    : [
+        {
+          name: 'GitHub',
+          href: cvData.personal.github,
+          icon: Github,
+        },
+        {
+          name: 'LinkedIn',
+          href: cvData.personal.linkedin,
+          icon: Linkedin,
+        },
+        {
+          name: 'Email',
+          href: `mailto:${cvData.personal.email}`,
+          icon: Mail,
+        },
+      ];
 
   return (
     <footer className="border-t bg-muted/30">
@@ -33,7 +36,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-center md:text-left">
             <p className="text-sm text-muted-foreground">
-              &copy; {currentYear} {cvData.personal.name}. {t('footer.rights')}
+              &copy; {currentYear} {IS_DEMO ? 'Vitae.ai Demo' : cvData.personal.name}. {t('footer.rights')}
             </p>
             <p className="text-xs text-muted-foreground/70 mt-1">
               {t('footer.madeWith')} | {t('footer.poweredBy')}{' '}

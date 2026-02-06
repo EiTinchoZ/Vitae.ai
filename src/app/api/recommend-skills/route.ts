@@ -4,6 +4,8 @@ import { getCvData } from '@/data/cv-data';
 import { getLanguageInstruction } from '@/lib/ai-language';
 import { validateLanguage, createErrorResponse } from '@/lib/api-validation';
 import { enforceRateLimit } from '@/lib/api-rate-limit';
+import { IS_DEMO } from '@/lib/app-config';
+import { EMPTY_CV_DATA, mergeCvData } from '@/lib/cv-data-utils';
 
 export async function POST(request: Request) {
   try {
@@ -24,11 +26,13 @@ export async function POST(request: Request) {
 
     const body = await request.json();
     const language = validateLanguage(body.language);
-    const cvData = getCvData(language);
+    const override = IS_DEMO && body?.cvData && typeof body.cvData === 'object' ? body.cvData : null;
+    const cvData = override ? mergeCvData(EMPTY_CV_DATA, override) : getCvData(language);
+    const candidateName = cvData.personal.fullName || cvData.personal.name || 'the candidate';
 
     const currentSkills = cvData.skills.map((s) => s.name).join(', ');
 
-    const prompt = `You are a career coach highlighting personal values and soft skills that make this candidate stand out.
+    const prompt = `You are a career coach highlighting personal values and soft skills that make ${candidateName} stand out.
 
 ${getLanguageInstruction(language)}
 Use only the CV data provided to find evidence of these values.

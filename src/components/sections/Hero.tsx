@@ -3,13 +3,13 @@
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, Download, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { getCvData } from '@/data/cv-data';
+import { useCvData } from '@/lib/cv-data-context';
 import { useTranslation } from '@/i18n';
 import { DEMO_URL, IS_DEMO, PERSONAL_URL } from '@/lib/app-config';
 
 export function Hero() {
-  const { t, language } = useTranslation();
-  const cvData = getCvData(language);
+  const { t } = useTranslation();
+  const { cvData } = useCvData();
   const primaryCta = IS_DEMO
     ? { href: '/demo', label: t('hero.demoCta') }
     : { href: '/cv/CV_Martin_Bundy_2026.pdf', label: t('hero.downloadCV'), download: true };
@@ -20,7 +20,7 @@ export function Hero() {
     { name: 'GitHub', href: cvData.personal.github, icon: Github },
     { name: 'LinkedIn', href: cvData.personal.linkedin, icon: Linkedin },
     { name: 'Email', href: `mailto:${cvData.personal.email}`, icon: Mail },
-  ];
+  ].filter((link) => link.href && link.href !== 'mailto:');
 
   const scrollToAbout = () => {
     const element = document.querySelector('#about');
@@ -96,7 +96,7 @@ export function Hero() {
             <div className="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full bg-gradient-to-br from-primary to-secondary p-1">
               <img
                 src="/martin-profile.png"
-                alt={cvData.personal.name}
+                alt={cvData.personal.fullName || cvData.personal.name}
                 className="w-full h-full rounded-full object-cover"
               />
             </div>
@@ -109,7 +109,7 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-4xl md:text-6xl font-bold mb-4"
           >
-            {cvData.personal.name}
+            {cvData.personal.fullName || cvData.personal.name}
           </motion.h1>
 
           {/* Title */}

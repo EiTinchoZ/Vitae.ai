@@ -7,6 +7,8 @@ import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/i18n';
 import { cn } from '@/lib/utils';
 import { resolveAiError } from '@/lib/ai-errors';
+import { useCvData } from '@/lib/cv-data-context';
+import { IS_DEMO } from '@/lib/app-config';
 
 interface Message {
   id: string;
@@ -16,6 +18,7 @@ interface Message {
 
 export function ChatBot() {
   const { t, tArray, language } = useTranslation();
+  const { cvData, mode } = useCvData();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
@@ -65,6 +68,7 @@ export function ChatBot() {
             content: m.content,
           })),
           language,
+          ...(mode === 'demo' ? { cvData } : {}),
         }),
       });
 
@@ -184,7 +188,9 @@ export function ChatBot() {
                 <div>
                   <h3 className="font-semibold">{t('chat.title')}</h3>
                   <p className="text-xs text-muted-foreground">
-                    Vitae.ai - Martin Bundy
+                    {IS_DEMO
+                      ? 'Vitae.ai Demo'
+                      : `Vitae.ai - ${cvData.personal.fullName || cvData.personal.name}`}
                   </p>
                 </div>
               </div>

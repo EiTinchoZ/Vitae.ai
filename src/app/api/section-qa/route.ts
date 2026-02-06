@@ -5,6 +5,8 @@ import { getLanguageInstruction } from '@/lib/ai-language';
 import { validateLanguage, validateSection, validateQuestion, createErrorResponse } from '@/lib/api-validation';
 import { enforceRateLimit } from '@/lib/api-rate-limit';
 import type { CVData } from '@/types';
+import { IS_DEMO } from '@/lib/app-config';
+import { EMPTY_CV_DATA, mergeCvData } from '@/lib/cv-data-utils';
 
 const educationNarrative = `Notas personales para responder sobre educación:
 - Bachiller en Ciencias y Letras: Estudié en el Colegio San Agustín de Panamá desde pre-kínder hasta 12° grado. Fue una etapa retadora que fortaleció mis bases en matemática y gramática, además de disciplina, responsabilidad y perseverancia.
@@ -52,7 +54,7 @@ ${cvData.education
   )
   .join('\n')}
 
-${educationNarrative ? `\n${educationNarrative}` : ''}\n\nUse this to answer questions about academic focus, motivations, and personal growth.`;
+${!IS_DEMO && educationNarrative ? `\n${educationNarrative}` : ''}\n\nUse this to answer questions about academic focus, motivations, and personal growth.`;
     default:
       return '';
   }
@@ -87,10 +89,18 @@ export async function POST(req: Request) {
       return createErrorResponse('Invalid question', 400, 'invalid_question');
     }
 
-    const cvData = getCvData(language);
+    const override = IS_DEMO && body?.cvData && typeof body.cvData === 'object' ? body.cvData : null;
+    const cvData = override ? mergeCvData(EMPTY_CV_DATA, override) : getCvData(language);
+    const candidateName = cvData.personal.fullName || cvData.personal.name || 'the candidate';
+    const hasElectricInternship = cvData.experience.some(
+      (exp) =>
+        exp.company.toLowerCase().includes('primer empleo') ||
+        exp.position.toLowerCase().includes('distribuci') ||
+        exp.position.toLowerCase().includes('electric')
+    );
     const context = buildSectionContext(section, cvData, language);
 
-    const systemPrompt = `You answer questions about a specific CV section for Martin Bundy, focused on presenting strengths and impact.
+    const systemPrompt = `You answer questions about a specific CV section for ${candidateName}, focused on presenting strengths and impact.
 
 ${context}
 
@@ -101,7 +111,7 @@ INSTRUCTIONS:
 - If details are missing, say they are not included in the CV and highlight relevant strengths instead.
 - Keep responses concise (2-3 sentences).
 - Prioritize AI, ML, generative AI, data science, automation, and industrial engineering.
-- The electrical distribution internship was a learning experience; do not present it as a core specialization.`;
+${hasElectricInternship ? '- The electrical distribution internship was a learning experience; do not present it as a core specialization.' : ''}`;
 
     const result = streamText({
       model: groq('llama-3.3-70b-versatile'),

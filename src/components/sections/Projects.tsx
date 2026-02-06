@@ -17,7 +17,7 @@ import { SectionQA } from '@/components/ai/SectionQA';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { getCvData } from '@/data/cv-data';
+import { useCvData } from '@/lib/cv-data-context';
 import { useTranslation } from '@/i18n';
 import { getGitHubRepos, formatDate } from '@/lib/github-api';
 import type { GitHubRepo } from '@/types';
@@ -44,7 +44,7 @@ const featuredLogos: Record<string, { src: string; alt: string }> = {
 
 export function Projects() {
   const { t, tArray, language } = useTranslation();
-  const cvData = getCvData(language);
+  const { cvData } = useCvData();
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -57,8 +57,13 @@ export function Projects() {
     fetchRepos();
   }, []);
 
-  const featuredProject = cvData.projects[0]; // Conecta Panama
-  const featuredLogo = featuredLogos[featuredProject.id];
+  const featuredProject =
+    cvData.projects.find((project) => project.isHighlighted) ?? cvData.projects[0];
+  const featuredLogo = featuredProject ? featuredLogos[featuredProject.id] : null;
+
+  if (!featuredProject) {
+    return null;
+  }
 
   const suggestedQuestions = tArray('qa.suggestions.projects');
 

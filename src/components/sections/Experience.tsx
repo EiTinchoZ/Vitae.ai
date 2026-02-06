@@ -6,13 +6,13 @@ import { Briefcase, MapPin, Calendar } from 'lucide-react';
 import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
 import { SectionQA } from '@/components/ai/SectionQA';
 import { Badge } from '@/components/ui/badge';
-import { getCvData } from '@/data/cv-data';
+import { useCvData } from '@/lib/cv-data-context';
 import { useTranslation } from '@/i18n';
 import { IS_DEMO } from '@/lib/app-config';
 
 export function Experience() {
-  const { t, tArray, language } = useTranslation();
-  const cvData = getCvData(language);
+  const { t, tArray } = useTranslation();
+  const { cvData } = useCvData();
 
   const suggestedQuestions = tArray('qa.suggestions.experience');
   const preferredOrder = ['exp-2', 'exp-1', 'exp-deta'];

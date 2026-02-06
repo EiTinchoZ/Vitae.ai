@@ -22,6 +22,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useTranslation } from '@/i18n';
 import { cn } from '@/lib/utils';
 import { resolveAiError } from '@/lib/ai-errors';
+import { useCvData } from '@/lib/cv-data-context';
 
 interface SectionAnalysis {
   score: number;
@@ -58,6 +59,7 @@ const sectionIcons = {
 
 export function ResumeAnalyzer() {
   const { t, language } = useTranslation();
+  const { cvData, mode } = useCvData();
   const [analysis, setAnalysis] = useState<Analysis | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -71,7 +73,7 @@ export function ResumeAnalyzer() {
       const response = await fetch('/api/analyze-resume', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ language }),
+        body: JSON.stringify({ language, ...(mode === 'demo' ? { cvData } : {}) }),
       });
 
       if (!response.ok) {

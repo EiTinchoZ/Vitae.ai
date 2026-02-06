@@ -29,6 +29,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useTranslation } from '@/i18n';
 import { resolveAiError } from '@/lib/ai-errors';
+import { useCvData } from '@/lib/cv-data-context';
 
 interface Insights {
   profileScore: number;
@@ -53,6 +54,7 @@ interface Insights {
 
 export function InsightsDashboard() {
   const { t, language } = useTranslation();
+  const { cvData, mode } = useCvData();
   const [insights, setInsights] = useState<Insights | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -71,7 +73,7 @@ export function InsightsDashboard() {
       const response = await fetch('/api/insights', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ language }),
+        body: JSON.stringify({ language, ...(mode === 'demo' ? { cvData } : {}) }),
       });
 
       if (!response.ok) {

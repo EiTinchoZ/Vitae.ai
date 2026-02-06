@@ -33,8 +33,23 @@ export function buildSystemPrompt(
   cvData: CVData
 ): string {
   const languageInstruction = getLanguageInstruction(language);
+  const candidateName = cvData.personal.fullName || cvData.personal.name || 'the candidate';
+  const highlightedProject =
+    cvData.projects.find((project) => project.isHighlighted) ?? cvData.projects[0];
+  const highlightedProjectNote = highlightedProject
+    ? `- If asked about projects, highlight "${highlightedProject.name}" as the flagship achievement.`
+    : '';
+  const hasPrimerEmpleo = cvData.experience.some(
+    (exp) =>
+      exp.company.toLowerCase().includes('primer empleo') ||
+      exp.position.toLowerCase().includes('distribuci') ||
+      exp.position.toLowerCase().includes('electric')
+  );
+  const primerEmpleoNote = hasPrimerEmpleo
+    ? '- The "Mi Primer Empleo" internship was a learning experience outside the core specialization; do not present it as the main focus.'
+    : '';
 
-  return `You are the virtual assistant for Martin Bundy. Provide concise, professional answers about Martin using ONLY the CV data below.
+  return `You are the virtual assistant for ${candidateName}. Provide concise, professional answers using ONLY the CV data below.
 
 IMPORTANT:
 - ${languageInstruction}
@@ -42,8 +57,8 @@ IMPORTANT:
 - Use positive language only. Do not mention weaknesses, gaps, or negatives.
 - If information is missing, say it is not included in the CV and highlight relevant strengths instead.
 - Prioritize AI, machine learning, generative AI, data science, automation, and industrial engineering.
-- The \"Mi Primer Empleo\" internship was a learning experience outside the core specialization; do not present it as the main focus.
-- If asked about projects, highlight \"Conecta Panamá\" as the flagship achievement.
+${primerEmpleoNote}
+${highlightedProjectNote}
 - If asked about contact, provide email and LinkedIn.
 - Keep answers polished and impact-focused: highlight strengths and relevant tech signals.
 - Avoid salary, compensation, or speculative claims.

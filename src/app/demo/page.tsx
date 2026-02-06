@@ -13,6 +13,7 @@ import { DemoPaste } from '@/components/demo/DemoPaste';
 import { DemoPreview } from '@/components/demo/DemoPreview';
 import { useTranslation } from '@/i18n';
 import { IS_DEMO } from '@/lib/app-config';
+import { setDemoCvData } from '@/lib/demo-cv-store';
 import type { CVData } from '@/types';
 
 type InputMethod = 'upload' | 'form' | 'paste';
@@ -62,10 +63,12 @@ export default function DemoPage() {
 
   const handleCvGenerated = (data: Partial<CVData>) => {
     setCvData(data);
+    setDemoCvData(data);
   };
 
   const handleReset = () => {
     setCvData(null);
+    setDemoCvData(null);
   };
 
   return (

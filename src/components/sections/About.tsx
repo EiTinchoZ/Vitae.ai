@@ -6,13 +6,13 @@ import { MapPin, GraduationCap, Briefcase, Languages } from 'lucide-react';
 import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
 import { InsightsDashboard } from '@/components/ai/InsightsDashboard';
 import { ResumeAnalyzer } from '@/components/ai/ResumeAnalyzer';
-import { getCvData } from '@/data/cv-data';
+import { useCvData } from '@/lib/cv-data-context';
 import { useTranslation } from '@/i18n';
 import { cn } from '@/lib/utils';
 
 export function About() {
-  const { t, language } = useTranslation();
-  const cvData = getCvData(language);
+  const { t } = useTranslation();
+  const { cvData } = useCvData();
 
   const highlights = [
     {

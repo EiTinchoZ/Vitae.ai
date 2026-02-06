@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { useSectionLayout } from '@/lib/section-layout-context';
 
 interface SectionWrapperProps {
   children: React.ReactNode;
@@ -16,6 +17,18 @@ export function SectionWrapper({
   className,
   fullHeight = false,
 }: SectionWrapperProps) {
+  const layout = useSectionLayout();
+  const densityClass =
+    layout?.density === 'compact' ? 'py-10 md:py-16' : 'py-16 md:py-24';
+  const containerWidth =
+    layout?.containerWidth === '6xl'
+      ? 'max-w-6xl'
+      : layout?.containerWidth === '5xl'
+        ? 'max-w-5xl'
+        : layout?.containerWidth === '4xl'
+          ? 'max-w-4xl'
+          : null;
+
   return (
     <motion.section
       id={id}
@@ -24,12 +37,19 @@ export function SectionWrapper({
       viewport={{ once: true, margin: '-100px' }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
       className={cn(
-        'py-16 md:py-24',
+        densityClass,
         fullHeight && 'min-h-screen flex items-center',
         className
       )}
     >
-      <div className="container mx-auto px-4">{children}</div>
+      <div
+        className={cn(
+          containerWidth ? 'mx-auto w-full px-4' : 'container mx-auto px-4',
+          containerWidth
+        )}
+      >
+        {children}
+      </div>
     </motion.section>
   );
 }

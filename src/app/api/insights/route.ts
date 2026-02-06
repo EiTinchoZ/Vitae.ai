@@ -4,6 +4,8 @@ import { getCvData } from '@/data/cv-data';
 import { getLanguageInstruction } from '@/lib/ai-language';
 import { validateLanguage, createErrorResponse } from '@/lib/api-validation';
 import { enforceRateLimit } from '@/lib/api-rate-limit';
+import { IS_DEMO } from '@/lib/app-config';
+import { EMPTY_CV_DATA, mergeCvData } from '@/lib/cv-data-utils';
 
 export async function POST(req: Request) {
   try {
@@ -24,10 +26,18 @@ export async function POST(req: Request) {
 
     const body = await req.json();
     const language = validateLanguage(body.language);
-    const cvData = getCvData(language);
+    const override = IS_DEMO && body?.cvData && typeof body.cvData === 'object' ? body.cvData : null;
+    const cvData = override ? mergeCvData(EMPTY_CV_DATA, override) : getCvData(language);
+    const candidateName = cvData.personal.fullName || cvData.personal.name || 'the candidate';
+    const hasElectricInternship = cvData.experience.some(
+      (exp) =>
+        exp.company.toLowerCase().includes('primer empleo') ||
+        exp.position.toLowerCase().includes('distribuci') ||
+        exp.position.toLowerCase().includes('electric')
+    );
 
     const cvSummary = `
-Name: ${cvData.personal.name}
+Name: ${cvData.personal.fullName || cvData.personal.name}
 Location: ${cvData.personal.location}
 
 Profile:
@@ -55,7 +65,7 @@ Projects:
 ${cvData.projects.map((p) => `- ${p.name} (${p.year})`).join('\n')}
 `.trim();
 
-    const insightsPrompt = `You are an expert career branding analyst. Analyze this CV and provide strengths-only AI insights that summarize the profile quickly and effectively.
+    const insightsPrompt = `You are an expert career branding analyst. Analyze this CV and provide strengths-only AI insights that summarize ${candidateName}'s profile quickly and effectively.
 
 ${getLanguageInstruction(language)}
 Use only the CV data provided. Do not assume or invent.
@@ -63,7 +73,7 @@ Use positive language only. Do not mention weaknesses, gaps, or negatives.
 If something is missing, omit it instead of calling it out.
 All scores must be in the 80-100 range.
 Focus on AI, ML, generative AI, data science, automation, and industrial engineering expertise.
-The electrical distribution internship was a learning experience, not a core specialization.
+${hasElectricInternship ? 'The electrical distribution internship was a learning experience, not a core specialization.' : ''}
 Avoid salary or compensation discussions.
 
 CV SUMMARY:

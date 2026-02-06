@@ -56,7 +56,7 @@ function buildPrompt(language: LanguageCode, text: string) {
 ${getLanguageInstruction(language)}
 Use ONLY the information explicitly present. Do not invent or assume.
 If a field is missing, return an empty string or empty array.
-Limit each array to a maximum of 2 items.
+Include as many items as the CV provides, up to a maximum of 8 per list.
 
 Return JSON using this exact structure:
 {

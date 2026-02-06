@@ -19,7 +19,7 @@ import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
-import { getCvData } from '@/data/cv-data';
+import { useCvData } from '@/lib/cv-data-context';
 import { useTranslation } from '@/i18n';
 import type { Certificate } from '@/types';
 import { cn } from '@/lib/utils';
@@ -35,8 +35,8 @@ const categoryIcons = {
 const categoryKeys = ['master', 'specialization', 'technical', 'languages', 'programming'] as const;
 
 export function Certificates() {
-  const { t, language } = useTranslation();
-  const cvData = getCvData(language);
+  const { t } = useTranslation();
+  const { cvData } = useCvData();
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
   const [activeCategory, setActiveCategory] = useState<string | 'all'>('all');
 

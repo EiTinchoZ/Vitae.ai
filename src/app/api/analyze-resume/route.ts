@@ -4,6 +4,8 @@ import { getCvData } from '@/data/cv-data';
 import { getLanguageInstruction } from '@/lib/ai-language';
 import { validateLanguage, createErrorResponse } from '@/lib/api-validation';
 import { enforceRateLimit } from '@/lib/api-rate-limit';
+import { IS_DEMO } from '@/lib/app-config';
+import { EMPTY_CV_DATA, mergeCvData } from '@/lib/cv-data-utils';
 
 export async function POST(request: Request) {
   try {
@@ -24,11 +26,19 @@ export async function POST(request: Request) {
 
     const body = await request.json();
     const language = validateLanguage(body.language);
-    const cvData = getCvData(language);
+    const override = IS_DEMO && body?.cvData && typeof body.cvData === 'object' ? body.cvData : null;
+    const cvData = override ? mergeCvData(EMPTY_CV_DATA, override) : getCvData(language);
+    const candidateName = cvData.personal.fullName || cvData.personal.name || 'the candidate';
+    const hasElectricInternship = cvData.experience.some(
+      (exp) =>
+        exp.company.toLowerCase().includes('primer empleo') ||
+        exp.position.toLowerCase().includes('distribuci') ||
+        exp.position.toLowerCase().includes('electric')
+    );
 
     const cvSummary = `
 Personal:
-- Name: ${cvData.personal.name}
+- Name: ${cvData.personal.fullName || cvData.personal.name}
 - Location: ${cvData.personal.location}
 - Email: ${cvData.personal.email}
 - LinkedIn: ${cvData.personal.linkedin}
@@ -55,7 +65,7 @@ Certifications (${cvData.certificates.length})
 Projects (${cvData.projects.length})
 `.trim();
 
-    const prompt = `You are a career branding expert. Analyze this CV and provide a strengths-only assessment that highlights value.
+    const prompt = `You are a career branding expert. Analyze this CV and provide a strengths-only assessment that highlights value for ${candidateName}.
 
 ${getLanguageInstruction(language)}
 Use only the CV data provided. Do not assume or invent.
@@ -63,7 +73,7 @@ Use positive language only. Do not mention weaknesses, gaps, or negatives.
 If something is missing, omit it instead of calling it out.
 All scores must be in the 80-100 range.
 Prioritize AI, ML, generative AI, data science, automation, and industrial engineering.
-The electrical distribution internship was a learning experience and is not the main focus.
+${hasElectricInternship ? 'The electrical distribution internship was a learning experience and is not the main focus.' : ''}
 Avoid salary or compensation discussions.
 In "improvements", return value amplifiers such as: responsible, proactive, self-taught, teamwork, problem-solving, adaptability, effective communication, and critical thinking.
 

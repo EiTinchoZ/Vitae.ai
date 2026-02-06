@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/i18n';
 import { cn } from '@/lib/utils';
 import { resolveAiError } from '@/lib/ai-errors';
+import { useCvData } from '@/lib/cv-data-context';
 
 interface SectionQAProps {
   section: 'skills' | 'projects' | 'experience' | 'education';
@@ -15,6 +16,7 @@ interface SectionQAProps {
 
 export function SectionQA({ section, suggestedQuestions }: SectionQAProps) {
   const { t, language } = useTranslation();
+  const { cvData, mode } = useCvData();
   const [isOpen, setIsOpen] = useState(false);
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
@@ -31,7 +33,12 @@ export function SectionQA({ section, suggestedQuestions }: SectionQAProps) {
       const response = await fetch('/api/section-qa', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ section, question: q, language }),
+        body: JSON.stringify({
+          section,
+          question: q,
+          language,
+          ...(mode === 'demo' ? { cvData } : {}),
+        }),
       });
 
       if (!response.ok) {

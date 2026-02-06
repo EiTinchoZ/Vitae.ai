@@ -17,6 +17,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useTranslation } from '@/i18n';
 import { resolveAiError } from '@/lib/ai-errors';
+import { useCvData } from '@/lib/cv-data-context';
 
 interface RecommendedSkill {
   name: string;
@@ -34,6 +35,7 @@ interface Recommendations {
 
 export function SkillRecommender() {
   const { t, language } = useTranslation();
+  const { cvData, mode } = useCvData();
   const [recommendations, setRecommendations] = useState<Recommendations | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -47,7 +49,7 @@ export function SkillRecommender() {
       const response = await fetch('/api/recommend-skills', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ language }),
+        body: JSON.stringify({ language, ...(mode === 'demo' ? { cvData } : {}) }),
       });
 
       if (!response.ok) {

@@ -126,3 +126,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+.demo-preview[data-card-style='glass'] [data-slot='card'] {
+  background-color: color-mix(in oklch, var(--card) 70%, transparent);
+  backdrop-filter: blur(14px);
+  border-color: color-mix(in oklch, var(--border) 70%, transparent);
+}

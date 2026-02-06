@@ -6,13 +6,13 @@ import { Mail, Phone, MapPin, Github, Linkedin, Download, Send } from 'lucide-re
 import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { getCvData } from '@/data/cv-data';
+import { useCvData } from '@/lib/cv-data-context';
 import { useTranslation } from '@/i18n';
 import { IS_DEMO } from '@/lib/app-config';
 
 export function Contact() {
-  const { t, language } = useTranslation();
-  const cvData = getCvData(language);
+  const { t } = useTranslation();
+  const { cvData } = useCvData();
 
   const contactInfo = [
     {
