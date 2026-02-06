@@ -36,6 +36,8 @@ const repoLogos: Record<string, { src: string; alt: string }> = {
   'tin.io': { src: '/images/projects/tin-io-logo.jpg', alt: 'Tin.io' },
   'tin-io': { src: '/images/projects/tin-io-logo.jpg', alt: 'Tin.io' },
   'tyr': { src: '/images/projects/tyr-logo.png', alt: 'TYR' },
+  'vitae.ai': { src: '/brand/vitae-logo.png', alt: 'Vitae.ai' },
+  'vitae-ai': { src: '/brand/vitae-logo.png', alt: 'Vitae.ai' },
 };
 
 const featuredLogos: Record<string, { src: string; alt: string }> = {
@@ -60,6 +62,7 @@ export function Projects() {
   const featuredProject =
     cvData.projects.find((project) => project.isHighlighted) ?? cvData.projects[0];
   const featuredLogo = featuredProject ? featuredLogos[featuredProject.id] : null;
+  const otherProjects = cvData.projects.filter((project) => !project.isHighlighted);
 
   if (!featuredProject) {
     return null;
@@ -163,6 +166,82 @@ export function Projects() {
           </CardContent>
         </Card>
       </motion.div>
+
+      {otherProjects.length > 0 && (
+        <div className="mb-12 grid gap-4 md:grid-cols-2">
+          {otherProjects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: index * 0.1 }}
+              className="h-full"
+            >
+              <Card className="h-full border border-border/60 bg-background/60">
+                <CardHeader>
+                  <div className="flex flex-wrap items-center gap-2 mb-2">
+                    <Badge variant="outline">{project.year}</Badge>
+                    <Badge variant="secondary">{project.type}</Badge>
+                  </div>
+                  <CardTitle className="text-xl">{project.name}</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  {project.images?.[0] && (
+                    <div className="relative w-full h-36 sm:h-44 rounded-xl overflow-hidden border bg-muted/20">
+                      <Image
+                        src={project.images[0]}
+                        alt={project.name}
+                        fill
+                        className="object-contain p-4"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                    </div>
+                  )}
+                  <p className="text-sm text-muted-foreground">
+                    {project.shortDescription}
+                  </p>
+                  {project.technologies.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech) => (
+                        <Badge key={tech} variant="outline">
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  )}
+                  <div className="flex flex-wrap gap-2">
+                    {project.githubUrl && (
+                      <Button variant="outline" size="sm" asChild>
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          GitHub
+                          <ExternalLink className="h-4 w-4 ml-2" />
+                        </a>
+                      </Button>
+                    )}
+                    {project.demoUrl && (
+                      <Button variant="outline" size="sm" asChild>
+                        <a
+                          href={project.demoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Demo
+                          <ExternalLink className="h-4 w-4 ml-2" />
+                        </a>
+                      </Button>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      )}
 
       {/* GitHub Repos */}
       <div className="mb-6">

@@ -373,6 +373,31 @@ const cvByLanguage: Record<LanguageCode, Omit<CVData, 'personal'>> = {
           'Democratiza acceso a educación e impulsa economía comunitaria en Panamá',
         isHighlighted: true,
       },
+      {
+        id: 'project-2',
+        name: 'Vitae.ai',
+        type: 'Plataforma de CV con IA',
+        year: 2026,
+        shortDescription:
+          'Plataforma de CV digital con IA para presentar experiencia, educación y habilidades en un formato moderno y visual.',
+        longDescription:
+          'Vitae.ai transforma un CV tradicional en un perfil digital interactivo. Incluye análisis con IA, Q&A por secciones, soporte multilenguaje y un modo demo con marca de agua para que otros prueben la experiencia antes de instalarla.',
+        features: [
+          'CV digital interactivo con diseño moderno',
+          'Insights con IA y Q&A por secciones',
+          '10 idiomas y modo oscuro/claro',
+          'Demo pública con marca de agua',
+        ],
+        technologies: [
+          'Next.js',
+          'TypeScript',
+          'Tailwind CSS',
+          'Framer Motion',
+          'Groq AI',
+        ],
+        githubUrl: 'https://github.com/EiTinchoZ/Vitae.ai',
+        images: ['/brand/vitae-logo.png'],
+      },
     ],
     languages: [
       {
@@ -759,6 +784,31 @@ const cvByLanguage: Record<LanguageCode, Omit<CVData, 'personal'>> = {
           'Democratizes access to education and boosts the community economy in Panama',
         isHighlighted: true,
       },
+      {
+        id: 'project-2',
+        name: 'Vitae.ai',
+        type: 'AI CV Platform',
+        year: 2026,
+        shortDescription:
+          'AI-powered digital CV platform to present experience, education, and skills in a modern visual format.',
+        longDescription:
+          'Vitae.ai turns a traditional resume into an interactive digital profile. It includes AI insights, section Q&A, multi-language support, and a public demo with watermark for testing before local install.',
+        features: [
+          'Interactive digital CV with modern UI',
+          'AI insights and section Q&A',
+          '10 languages with dark/light mode',
+          'Public demo with watermark',
+        ],
+        technologies: [
+          'Next.js',
+          'TypeScript',
+          'Tailwind CSS',
+          'Framer Motion',
+          'Groq AI',
+        ],
+        githubUrl: 'https://github.com/EiTinchoZ/Vitae.ai',
+        images: ['/brand/vitae-logo.png'],
+      },
     ],
     languages: [
       {
@@ -1144,6 +1194,31 @@ const cvByLanguage: Record<LanguageCode, Omit<CVData, 'personal'>> = {
           'Democratiza o acesso à educação e impulsiona a economia comunitária no Panamá',
         isHighlighted: true,
       },
+      {
+        id: 'project-2',
+        name: 'Vitae.ai',
+        type: 'Plataforma de CV com IA',
+        year: 2026,
+        shortDescription:
+          'Plataforma de CV digital com IA para apresentar experiência, educação e habilidades em um formato moderno e visual.',
+        longDescription:
+          'Vitae.ai transforma um CV tradicional em um perfil digital interativo. Inclui insights com IA, Q&A por seções, suporte multilíngue e um modo demo com marca d’água para testar antes de instalar localmente.',
+        features: [
+          'CV digital interativo com design moderno',
+          'Insights de IA e Q&A por seções',
+          '10 idiomas e modo claro/escuro',
+          'Demo pública com marca d’água',
+        ],
+        technologies: [
+          'Next.js',
+          'TypeScript',
+          'Tailwind CSS',
+          'Framer Motion',
+          'Groq AI',
+        ],
+        githubUrl: 'https://github.com/EiTinchoZ/Vitae.ai',
+        images: ['/brand/vitae-logo.png'],
+      },
     ],
     languages: [
       { id: 'lang-1', name: 'Espanhol', level: 'Nativo', description: 'Língua materna' },
@@ -1504,6 +1579,31 @@ const cvByLanguage: Record<LanguageCode, Omit<CVData, 'personal'>> = {
         technologies: ['KI', 'Machine Learning', 'Geolokalisierung', 'Personalisierte Empfehlungen', 'React', 'Node.js'],
         impact: 'Demokratisiert den Zugang zu Bildung und stärkt die lokale Wirtschaft in Panama',
         isHighlighted: true,
+      },
+      {
+        id: 'project-2',
+        name: 'Vitae.ai',
+        type: 'KI-Lebenslaufplattform',
+        year: 2026,
+        shortDescription:
+          'KI-gestützte digitale CV-Plattform, um Erfahrung, Bildung und Fähigkeiten modern und visuell zu präsentieren.',
+        longDescription:
+          'Vitae.ai verwandelt einen klassischen Lebenslauf in ein interaktives digitales Profil. Enthält KI-Insights, Q&A pro Abschnitt, Mehrsprachen-Support und eine öffentliche Demo mit Wasserzeichen.',
+        features: [
+          'Interaktiver digitaler CV mit modernem Design',
+          'KI-Insights und Q&A pro Abschnitt',
+          '10 Sprachen und Dark/Light-Modus',
+          'Öffentliche Demo mit Wasserzeichen',
+        ],
+        technologies: [
+          'Next.js',
+          'TypeScript',
+          'Tailwind CSS',
+          'Framer Motion',
+          'Groq AI',
+        ],
+        githubUrl: 'https://github.com/EiTinchoZ/Vitae.ai',
+        images: ['/brand/vitae-logo.png'],
       },
     ],
     languages: [
@@ -1866,6 +1966,31 @@ const cvByLanguage: Record<LanguageCode, Omit<CVData, 'personal'>> = {
         impact: "Démocratise l’accès à l’éducation et stimule l’économie communautaire au Panama",
         isHighlighted: true,
       },
+      {
+        id: 'project-2',
+        name: 'Vitae.ai',
+        type: 'Plateforme de CV IA',
+        year: 2026,
+        shortDescription:
+          'Plateforme de CV digital avec IA pour présenter expérience, formation et compétences dans un format moderne et visuel.',
+        longDescription:
+          'Vitae.ai transforme un CV traditionnel en profil numérique interactif. Inclut des insights IA, un Q&A par section, le multilingue et une démo publique avec filigrane.',
+        features: [
+          'CV numérique interactif au design moderne',
+          'Insights IA et Q&A par section',
+          '10 langues et mode clair/sombre',
+          'Démo publique avec filigrane',
+        ],
+        technologies: [
+          'Next.js',
+          'TypeScript',
+          'Tailwind CSS',
+          'Framer Motion',
+          'Groq AI',
+        ],
+        githubUrl: 'https://github.com/EiTinchoZ/Vitae.ai',
+        images: ['/brand/vitae-logo.png'],
+      },
     ],
     languages: [
       { id: 'lang-1', name: 'Espagnol', level: 'Natif', description: 'Langue maternelle' },
@@ -2086,6 +2211,31 @@ const cvByLanguage: Record<LanguageCode, Omit<CVData, 'personal'>> = {
         technologies: ['AI', '机器学习', '地理定位', '个性化推荐', 'React', 'Node.js'],
         impact: '促进教育普及并带动巴拿马社区经济',
         isHighlighted: true,
+      },
+      {
+        id: 'project-2',
+        name: 'Vitae.ai',
+        type: 'AI简历平台',
+        year: 2026,
+        shortDescription:
+          'AI驱动的数字简历平台，以现代化可视方式展示经验、教育和技能。',
+        longDescription:
+          'Vitae.ai 将传统简历转化为交互式数字档案，包含AI洞察、分区问答、多语言支持和带水印的公开演示。',
+        features: [
+          '现代设计的交互式数字简历',
+          'AI洞察与分区问答',
+          '10种语言与明暗模式',
+          '带水印的公开演示',
+        ],
+        technologies: [
+          'Next.js',
+          'TypeScript',
+          'Tailwind CSS',
+          'Framer Motion',
+          'Groq AI',
+        ],
+        githubUrl: 'https://github.com/EiTinchoZ/Vitae.ai',
+        images: ['/brand/vitae-logo.png'],
       },
     ],
     languages: [
@@ -2318,6 +2468,31 @@ const cvByLanguage: Record<LanguageCode, Omit<CVData, 'personal'>> = {
         impact: '教育アクセスの民主化と地域経済の活性化',
         isHighlighted: true,
       },
+      {
+        id: 'project-2',
+        name: 'Vitae.ai',
+        type: 'AI履歴書プラットフォーム',
+        year: 2026,
+        shortDescription:
+          '経験・学歴・スキルをモダンに可視化するAIデジタル履歴書プラットフォーム。',
+        longDescription:
+          'Vitae.ai は従来の履歴書をインタラクティブなデジタルプロフィールへ変換。AIインサイト、セクションQ&A、多言語対応、ウォーターマーク付き公開デモを搭載。',
+        features: [
+          'モダンUIのインタラクティブ履歴書',
+          'AIインサイトとセクションQ&A',
+          '10言語・ダーク/ライトモード',
+          'ウォーターマーク付き公開デモ',
+        ],
+        technologies: [
+          'Next.js',
+          'TypeScript',
+          'Tailwind CSS',
+          'Framer Motion',
+          'Groq AI',
+        ],
+        githubUrl: 'https://github.com/EiTinchoZ/Vitae.ai',
+        images: ['/brand/vitae-logo.png'],
+      },
     ],
     languages: [
       { id: 'lang-1', name: 'スペイン語', level: '母語', description: '母語' },
@@ -2545,6 +2720,31 @@ const cvByLanguage: Record<LanguageCode, Omit<CVData, 'personal'>> = {
         technologies: ['الذكاء الاصطناعي', 'تعلم الآلة', 'التموضع الجغرافي', 'توصيات مخصصة', 'React', 'Node.js'],
         impact: 'يعزز الوصول للتعليم ويدعم الاقتصاد المجتمعي في بنما',
         isHighlighted: true,
+      },
+      {
+        id: 'project-2',
+        name: 'Vitae.ai',
+        type: 'منصة سيرة ذاتية بالذكاء الاصطناعي',
+        year: 2026,
+        shortDescription:
+          'منصة سيرة ذاتية رقمية مدعومة بالذكاء الاصطناعي لعرض الخبرة والتعليم والمهارات بشكل حديث وبصري.',
+        longDescription:
+          'تحول Vitae.ai السيرة التقليدية إلى ملف رقمي تفاعلي. تتضمن تحليلات ذكاء اصطناعي وأسئلة وأجوبة لكل قسم ودعمًا متعدد اللغات ووضعًا تجريبيًا بعلامة مائية.',
+        features: [
+          'سيرة رقمية تفاعلية بتصميم حديث',
+          'تحليلات ذكاء اصطناعي وأسئلة لكل قسم',
+          '10 لغات مع وضع فاتح/داكن',
+          'نسخة تجريبية عامة بعلامة مائية',
+        ],
+        technologies: [
+          'Next.js',
+          'TypeScript',
+          'Tailwind CSS',
+          'Framer Motion',
+          'Groq AI',
+        ],
+        githubUrl: 'https://github.com/EiTinchoZ/Vitae.ai',
+        images: ['/brand/vitae-logo.png'],
       },
     ],
     languages: [
@@ -2779,6 +2979,31 @@ const cvByLanguage: Record<LanguageCode, Omit<CVData, 'personal'>> = {
         impact:
           'शिक्षा तक पहुँच को लोकतांत्रिक बनाता है और सामुदायिक अर्थव्यवस्था को बढ़ावा देता है',
         isHighlighted: true,
+      },
+      {
+        id: 'project-2',
+        name: 'Vitae.ai',
+        type: 'AI CV प्लेटफ़ॉर्म',
+        year: 2026,
+        shortDescription:
+          'अनुभव, शिक्षा और कौशल को आधुनिक दृश्य प्रारूप में दिखाने के लिए AI-संचालित डिजिटल CV प्लेटफ़ॉर्म।',
+        longDescription:
+          'Vitae.ai पारंपरिक रिज़्यूमे को इंटरैक्टिव डिजिटल प्रोफ़ाइल में बदलता है। इसमें AI इनसाइट्स, सेक्शन Q&A, बहुभाषी समर्थन और वॉटरमार्क के साथ सार्वजनिक डेमो शामिल है।',
+        features: [
+          'आधुनिक डिज़ाइन वाला इंटरैक्टिव डिजिटल CV',
+          'AI इनसाइट्स और सेक्शन Q&A',
+          '10 भाषाएँ और डार्क/लाइट मोड',
+          'वॉटरमार्क के साथ सार्वजनिक डेमो',
+        ],
+        technologies: [
+          'Next.js',
+          'TypeScript',
+          'Tailwind CSS',
+          'Framer Motion',
+          'Groq AI',
+        ],
+        githubUrl: 'https://github.com/EiTinchoZ/Vitae.ai',
+        images: ['/brand/vitae-logo.png'],
       },
     ],
     languages: [
@@ -3138,6 +3363,31 @@ const cvByLanguage: Record<LanguageCode, Omit<CVData, 'personal'>> = {
         technologies: ['AI', '머신러닝', '지오로케이션', '개인화 추천', 'React', 'Node.js'],
         impact: '교육 접근성 확대와 지역 경제 활성화',
         isHighlighted: true,
+      },
+      {
+        id: 'project-2',
+        name: 'Vitae.ai',
+        type: 'AI CV 플랫폼',
+        year: 2026,
+        shortDescription:
+          '경험, 학력, 기술을 현대적이고 시각적으로 보여주는 AI 기반 디지털 CV 플랫폼.',
+        longDescription:
+          'Vitae.ai는 전통적인 이력서를 인터랙티브한 디지털 프로필로 전환합니다. AI 인사이트, 섹션 Q&A, 다국어 지원, 워터마크가 있는 공개 데모를 포함합니다.',
+        features: [
+          '모던 UI의 인터랙티브 디지털 CV',
+          'AI 인사이트와 섹션 Q&A',
+          '10개 언어 및 다크/라이트 모드',
+          '워터마크 공개 데모',
+        ],
+        technologies: [
+          'Next.js',
+          'TypeScript',
+          'Tailwind CSS',
+          'Framer Motion',
+          'Groq AI',
+        ],
+        githubUrl: 'https://github.com/EiTinchoZ/Vitae.ai',
+        images: ['/brand/vitae-logo.png'],
       },
     ],
     languages: [
