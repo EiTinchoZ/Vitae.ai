@@ -22,9 +22,7 @@
       "dl": "딥러닝",
       "genai": "생성형 AI",
       "python": "Python"
-    },
-    "attributionTitle": "Vitae.ai로 제작한 CV",
-    "attributionDescription": "AI 기반 혁신 디지털 CV 도구. 제작: Martin Bundy"
+    }
   },
   "about": {
     "title": "소개",

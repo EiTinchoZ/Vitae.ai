@@ -396,7 +396,7 @@ const cvByLanguage: Record<LanguageCode, Omit<CVData, 'personal'>> = {
           'Groq AI',
         ],
         githubUrl: 'https://github.com/EiTinchoZ/Vitae.ai',
-        images: ['/brand/vitae-logo.png'],
+        images: ['/brand/vitae-logo.webp'],
       },
     ],
     languages: [
@@ -807,7 +807,7 @@ const cvByLanguage: Record<LanguageCode, Omit<CVData, 'personal'>> = {
           'Groq AI',
         ],
         githubUrl: 'https://github.com/EiTinchoZ/Vitae.ai',
-        images: ['/brand/vitae-logo.png'],
+        images: ['/brand/vitae-logo.webp'],
       },
     ],
     languages: [
@@ -1217,7 +1217,7 @@ const cvByLanguage: Record<LanguageCode, Omit<CVData, 'personal'>> = {
           'Groq AI',
         ],
         githubUrl: 'https://github.com/EiTinchoZ/Vitae.ai',
-        images: ['/brand/vitae-logo.png'],
+        images: ['/brand/vitae-logo.webp'],
       },
     ],
     languages: [
@@ -1603,7 +1603,7 @@ const cvByLanguage: Record<LanguageCode, Omit<CVData, 'personal'>> = {
           'Groq AI',
         ],
         githubUrl: 'https://github.com/EiTinchoZ/Vitae.ai',
-        images: ['/brand/vitae-logo.png'],
+        images: ['/brand/vitae-logo.webp'],
       },
     ],
     languages: [
@@ -1989,7 +1989,7 @@ const cvByLanguage: Record<LanguageCode, Omit<CVData, 'personal'>> = {
           'Groq AI',
         ],
         githubUrl: 'https://github.com/EiTinchoZ/Vitae.ai',
-        images: ['/brand/vitae-logo.png'],
+        images: ['/brand/vitae-logo.webp'],
       },
     ],
     languages: [
@@ -2235,7 +2235,7 @@ const cvByLanguage: Record<LanguageCode, Omit<CVData, 'personal'>> = {
           'Groq AI',
         ],
         githubUrl: 'https://github.com/EiTinchoZ/Vitae.ai',
-        images: ['/brand/vitae-logo.png'],
+        images: ['/brand/vitae-logo.webp'],
       },
     ],
     languages: [
@@ -2491,7 +2491,7 @@ const cvByLanguage: Record<LanguageCode, Omit<CVData, 'personal'>> = {
           'Groq AI',
         ],
         githubUrl: 'https://github.com/EiTinchoZ/Vitae.ai',
-        images: ['/brand/vitae-logo.png'],
+        images: ['/brand/vitae-logo.webp'],
       },
     ],
     languages: [
@@ -2744,7 +2744,7 @@ const cvByLanguage: Record<LanguageCode, Omit<CVData, 'personal'>> = {
           'Groq AI',
         ],
         githubUrl: 'https://github.com/EiTinchoZ/Vitae.ai',
-        images: ['/brand/vitae-logo.png'],
+        images: ['/brand/vitae-logo.webp'],
       },
     ],
     languages: [
@@ -3003,7 +3003,7 @@ const cvByLanguage: Record<LanguageCode, Omit<CVData, 'personal'>> = {
           'Groq AI',
         ],
         githubUrl: 'https://github.com/EiTinchoZ/Vitae.ai',
-        images: ['/brand/vitae-logo.png'],
+        images: ['/brand/vitae-logo.webp'],
       },
     ],
     languages: [
@@ -3387,7 +3387,7 @@ const cvByLanguage: Record<LanguageCode, Omit<CVData, 'personal'>> = {
           'Groq AI',
         ],
         githubUrl: 'https://github.com/EiTinchoZ/Vitae.ai',
-        images: ['/brand/vitae-logo.png'],
+        images: ['/brand/vitae-logo.webp'],
       },
     ],
     languages: [

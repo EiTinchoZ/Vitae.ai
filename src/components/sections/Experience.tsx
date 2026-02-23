@@ -3,9 +3,14 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Briefcase, MapPin, Calendar } from 'lucide-react';
+import dynamic from 'next/dynamic';
 import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
-import { SectionQA } from '@/components/ai/SectionQA';
 import { Badge } from '@/components/ui/badge';
+
+const SectionQA = dynamic(
+  () => import('@/components/ai/SectionQA').then(m => m.SectionQA),
+  { ssr: false }
+);
 import { useCvData } from '@/lib/cv-data-context';
 import { useTranslation } from '@/i18n';
 import { IS_DEMO } from '@/lib/app-config';
@@ -51,10 +56,10 @@ export function Experience() {
               className="relative pl-14 sm:pl-20 pb-12 last:pb-0"
             >
               {/* Timeline dot */}
-              <div className="absolute left-4 sm:left-6 w-5 h-5 rounded-full border-4 border-background bg-primary" />
+              <div className="absolute left-4 sm:left-6 w-5 h-5 rounded-full border-4 border-background bg-primary shadow-[0_0_8px_hsl(var(--primary)/0.4)]" />
 
               {/* Content card */}
-              <div className="bg-background rounded-xl p-6 border hover:shadow-md transition-shadow">
+              <div className="bg-background rounded-xl p-6 border hover:shadow-md hover:-translate-y-0.5 transition-all">
                 <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
                   <div>
                     <div className="flex items-center gap-2 mb-1">
@@ -139,7 +144,7 @@ export function Experience() {
                 </div>
                 <div className="mt-8 md:mt-12 lg:mt-16 relative overflow-hidden rounded-2xl border bg-muted/20">
                   <Image
-                    src="/experience-secondary.png"
+                    src="/experience-secondary.webp"
                     alt="Martin Bundy en una actividad profesional"
                     width={1400}
                     height={900}

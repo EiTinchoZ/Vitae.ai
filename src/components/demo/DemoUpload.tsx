@@ -20,34 +20,28 @@ export function DemoUpload({ onCvGenerated, isProcessing, setIsProcessing }: Dem
   const [error, setError] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
 
-  const validateFile = (f: File): string | null => {
+  const handleFile = useCallback((f: File) => {
     const validTypes = ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
     if (!validTypes.includes(f.type)) {
-      return t('demo.upload.errorUnsupported');
+      setError(t('demo.upload.errorUnsupported'));
+      setFile(null);
+      return;
     }
     if (f.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
-      return t('demo.upload.errorTooLarge').replace('{max}', String(MAX_FILE_SIZE_MB));
-    }
-    return null;
-  };
-
-  const handleFile = (f: File) => {
-    const err = validateFile(f);
-    if (err) {
-      setError(err);
+      setError(t('demo.upload.errorTooLarge').replace('{max}', String(MAX_FILE_SIZE_MB)));
       setFile(null);
-    } else {
-      setError(null);
-      setFile(f);
+      return;
     }
-  };
+    setError(null);
+    setFile(f);
+  }, [t]);
 
   const handleDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     setIsDragging(false);
     const droppedFile = e.dataTransfer.files[0];
     if (droppedFile) handleFile(droppedFile);
-  }, []);
+  }, [handleFile]);
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();

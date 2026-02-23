@@ -1,10 +1,11 @@
-﻿# Vitae.ai
+# Vitae.ai
 
 <img src="public/brand/vitae-logo.png" alt="Vitae.ai Logo" width="220" />
 
-Vitae.ai is an AI-powered, interactive CV platform that turns a traditional resume into a clean, visual, and structured digital profile. It helps students and professionals present their experience, education, and skills in a format that is easier to read, easier to update, and more memorable than a standard PDF.
+**Your career, powered by artificial intelligence.**
 
-[![Vitae.ai](https://img.shields.io/badge/Vitae.ai-Digital_CV-2563eb?style=for-the-badge)](https://github.com/EiTinchoZ/Vitae.ai)
+An open-source, AI-powered digital CV platform that turns a plain resume into an interactive, multilingual portfolio with built-in chatbot, resume analysis, and recruiter-ready design.
+
 [![Next.js](https://img.shields.io/badge/Next.js-16-111827?style=for-the-badge)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-0ea5e9?style=for-the-badge)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-14b8a6?style=for-the-badge)](https://tailwindcss.com/)
@@ -13,135 +14,130 @@ Vitae.ai is an AI-powered, interactive CV platform that turns a traditional resu
 [![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-111827?style=for-the-badge)](https://vercel.com/)
 [![License](https://img.shields.io/badge/License-Non--Commercial-94a3b8?style=for-the-badge)](./LICENSE)
 
-## Vision
+---
 
-Most people still manage their CVs in scattered formats and update them manually. Vitae.ai provides a single structured source of truth with an elegant, modern presentation so your professional story is always current and easy to share.
+## Why Vitae.ai?
 
-This project was created by a university student with the goal of helping young professionals and students stand out with a more modern and compelling CV experience.
+Recruiters spend **6 seconds** on a resume. Vitae.ai makes those seconds count.
 
-## Origin
+- **AI Chatbot** - Recruiters ask questions about you and get instant, accurate answers from your CV data
+- **Resume Analyzer** - Upload any CV and get AI-powered scoring, highlights, and improvement suggestions
+- **10 Languages** - Auto-detects and serves content in ES, EN, PT, FR, DE, ZH, JA, AR, HI, KO
+- **Personal Values Engine** - AI identifies and showcases your soft skills with concrete evidence from your CV
+- **Section Q&A** - Each section has an AI assistant that answers context-specific questions
+- **Dark/Light Mode** - Full theme support with smooth transitions
+- **Mobile-First** - Responsive design optimized for every screen size
+- **Framer Motion** - Smooth scroll animations on every section
 
-Vitae.ai started as a personal CV project. The goal was to build a portfolio that felt modern and genuinely useful for real-world job applications. As the project grew, it became a template that other students and professionals could reuse to build their own digital CVs without losing the structure and design quality of the original.
+## Live Demos
 
-## What It Includes
+| Mode | URL | Description |
+|------|-----|-------------|
+| Personal CV | [portfolio-eitinchos-projects.vercel.app](https://portfolio-eitinchos-projects.vercel.app) | Full personal CV with AI features |
+| Public Demo | [vitae-demo.vercel.app](https://vitae-demo.vercel.app) | Try it with your own CV data |
 
-- Interactive CV layout with modern UI
-- AI insights, section Q&A, and CV analysis
-- Multi-language support (10 languages)
-- Dark and light themes
-- Public demo with full preview and watermark
-- Two deployment modes (personal and demo)
-
-## Live Previews
-
-- Personal CV example: [View the live CV](https://portfolio-eitinchos-projects.vercel.app)
-- Public demo (watermarked preview): [Try the demo](https://vitae-demo.vercel.app)
-
-The demo lets anyone test the experience with their own data. The watermark stays in place unless the project is installed locally.
-
-## Demo Status
-
-The public demo is under active construction. You can already test the flow, but some features (especially PDF upload) may fail intermittently while the parsing pipeline is stabilized. If upload fails, use the paste or manual input paths.
-
-## How The Demo Works
-
-1. Upload or paste a CV
-2. The app builds a full preview with your content
-3. A watermark remains visible in demo mode
-4. Remove the watermark by installing the project locally
-
-## About Groq
-
-Vitae.ai uses Groq to power the AI features (insights, Q&A, and CV analysis). Groq provides fast, production-grade inference for large language models. To use these features, you need a Groq API key.
-
-How to get a Groq API key:
-
-1. Create a Groq account
-2. Open the Groq console
-3. Generate a new API key
-4. Copy the key into your environment variables
-
-## Tech Stack
-
-- Next.js 16 (App Router)
-- TypeScript
-- Tailwind CSS
-- Framer Motion
-- Groq AI
-- Vercel (deployment)
-
-## Getting Started
-
-For a step-by-step guide (including a no-terminal path), read [INSTALL.md](./INSTALL.md).
-
-### Option A: Simple Setup (No Terminal Required)
-
-This path is for people who are not comfortable with command line tools.
-
-1. Create a GitHub account.
-2. Fork this repository to your account.
-3. Create a Vercel project and import your fork.
-4. Create a Groq API key.
-5. Set the environment variables inside Vercel:
-   - GROQ_API_KEY
-   - NEXT_PUBLIC_GITHUB_USERNAME
-   - NEXT_PUBLIC_APP_MODE (personal or demo)
-   - NEXT_PUBLIC_DEMO_URL
-   - NEXT_PUBLIC_PERSONAL_URL
-6. Deploy.
-7. Edit your CV data directly in GitHub by opening `src/data/cv-data.ts` and updating the values.
-
-### Option B: Developer Setup (Fastest for technical users)
+## Quick Start
 
 ```bash
 git clone https://github.com/EiTinchoZ/Vitae.ai.git
 cd Vitae.ai
 npm install
 cp .env.example .env.local
-cp src/data/cv-data.example.ts src/data/cv-data.ts
+# Add your GROQ_API_KEY to .env.local
 npm run dev
 ```
 
-Then edit `src/data/cv-data.ts` and refresh your local site.
+Then edit `src/data/cv-data.ts` with your own data and refresh.
+
+For a detailed setup guide (including a no-terminal path for non-developers), see [INSTALL.md](./INSTALL.md).
+
+## Tech Stack
+
+| Technology | Purpose |
+|------------|---------|
+| **Next.js 16** | App Router, Server Components, API Routes |
+| **React 19** | UI rendering with latest features |
+| **TypeScript** | Full type safety across the codebase |
+| **Tailwind CSS 4** | Utility-first styling with CSS variables |
+| **Framer Motion** | Scroll animations, layout transitions |
+| **Groq + Vercel AI SDK** | Fast LLM inference for all AI features |
+| **Vercel** | Zero-config deployment |
+
+## Architecture
+
+```
+src/
+├── app/                    # Next.js routes and API endpoints
+│   └── api/                # Chat, analyze, parse-cv, recommend-skills
+├── components/
+│   ├── ai/                 # SectionQA, ResumeAnalyzer, SkillRecommender
+│   ├── chat/               # AI chatbot widget
+│   ├── demo/               # Demo flow (form, upload, paste, preview)
+│   ├── sections/           # Hero, About, Skills, Education, etc.
+│   ├── shared/             # Navbar, Footer, SectionWrapper
+│   └── ui/                 # Base components (Button, Card, Badge)
+├── data/                   # CV data per language
+├── i18n/                   # 10 locale files + translation hooks
+├── lib/                    # Utilities, config, API helpers
+└── types/                  # TypeScript interfaces
+```
+
+## Two Deployment Modes
+
+Vitae.ai supports two modes via `NEXT_PUBLIC_APP_MODE`:
+
+| Mode | What it does |
+|------|-------------|
+| `personal` | Shows your real CV with all AI features enabled |
+| `demo` | Public demo where visitors upload/paste their own CV, preview includes watermark |
+
+Deploy both as separate Vercel projects pointing to the same repo.
 
 ## Environment Variables
 
-These variables control the AI features and deployment mode. Set them in Vercel or in `.env.local`.
-
 | Variable | Required | Purpose |
-| --- | --- | --- |
-| GROQ_API_KEY | Yes | Enables AI features (insights, Q&A, CV analysis). |
-| NEXT_PUBLIC_GITHUB_USERNAME | Yes | Shows your GitHub profile and repositories. |
-| NEXT_PUBLIC_APP_MODE | Yes | `personal` shows your real CV; `demo` enables the public demo flow. |
-| NEXT_PUBLIC_DEMO_URL | Recommended | Public demo URL used in navigation and CTA links. |
-| NEXT_PUBLIC_PERSONAL_URL | Recommended | Personal CV URL used in navigation and CTA links. |
+|----------|----------|---------|
+| `GROQ_API_KEY` | Yes | Powers all AI features (chat, analysis, Q&A) |
+| `NEXT_PUBLIC_APP_MODE` | Yes | `personal` or `demo` |
+| `NEXT_PUBLIC_GITHUB_USERNAME` | Yes | GitHub profile integration |
+| `NEXT_PUBLIC_DEMO_URL` | Recommended | Links to your demo deployment |
+| `NEXT_PUBLIC_PERSONAL_URL` | Recommended | Links to your personal CV deployment |
 
-## Project Structure
+## AI Features
 
-- `src/app` - Next.js routes and layout
-- `src/components` - UI sections, shared components, AI widgets
-- `src/data` - CV data and schema
-- `public` - static assets (images, certificates, CV PDF)
+All AI features run through **Groq** for fast, cost-effective LLM inference:
 
-## Deployment Notes
+- **Chatbot** (`/api/chat`) - Conversational assistant that answers questions about the CV owner
+- **Resume Analyzer** (`/api/analyze-cv`) - Scores and provides feedback on uploaded CVs
+- **CV Parser** (`/api/parse-cv`) - Extracts structured data from raw text or PDF uploads
+- **Values Engine** (`/api/recommend-skills`) - Identifies personal values and strengths with evidence
 
-Deploy two separate Vercel projects:
+Get a free Groq API key at [console.groq.com](https://console.groq.com).
 
-- Personal CV: `NEXT_PUBLIC_APP_MODE=personal`
-- Public Demo: `NEXT_PUBLIC_APP_MODE=demo`
+## Customization
 
-This keeps your real data isolated from the public demo.
+The demo mode includes a live customization panel:
 
-## Privacy and Security
+- **Accent color** - Blue, Emerald, Amber, Violet
+- **Layout width** - 4xl, 5xl, 6xl
+- **Density** - Compact or Comfortable
+- **Card style** - Solid or Glass
+- **Section order** - Drag sections up/down
+- **Section visibility** - Show/hide any section
 
-- Never commit API keys
-- Keep real CV data out of public templates
-- Use `.env.local` and Vercel environment variables
+## Privacy
+
+- API keys are never committed or exposed to the client
+- Real CV data stays in your personal deployment
+- Demo mode uses ephemeral data that is not stored server-side
 
 ## License
 
-This project uses a non-commercial license. See `LICENSE` for details.
+Non-commercial license. See [LICENSE](./LICENSE) for details.
 
-## Credits
+## Author
 
-Created and maintained by Martín Alejandro Bundy Muñoz.
+Created by **Martin Bundy** - Industrial Engineering student and AI specialist from Panama.
+
+- [LinkedIn](https://linkedin.com/in/martinbundy15)
+- [GitHub](https://github.com/EiTinchoZ)

@@ -1,11 +1,13 @@
 ﻿'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useSyncExternalStore } from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles, Power } from 'lucide-react';
 import { useTranslation } from '@/i18n';
 import { cn } from '@/lib/utils';
 import { IS_DEMO } from '@/lib/app-config';
+
+const subscribe = () => () => {};
 
 interface PersonalIntroGateProps {
   children: React.ReactNode;
@@ -13,17 +15,14 @@ interface PersonalIntroGateProps {
 
 export function PersonalIntroGate({ children }: PersonalIntroGateProps) {
   const { t } = useTranslation();
-  const [isReady, setIsReady] = useState(IS_DEMO);
+  const cachedReady = useSyncExternalStore(
+    subscribe,
+    () => IS_DEMO || sessionStorage.getItem('vitae-intro-ready') === '1',
+    () => IS_DEMO
+  );
+  const [isReady, setIsReady] = useState(cachedReady);
   const [isStarting, setIsStarting] = useState(false);
   const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    if (IS_DEMO) return;
-    const cached = sessionStorage.getItem('vitae-intro-ready');
-    if (cached === '1') {
-      setIsReady(true);
-    }
-  }, []);
 
   useEffect(() => {
     if (!isStarting) return;

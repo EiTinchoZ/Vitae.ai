@@ -30,8 +30,9 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -40,14 +41,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# vercel (duplicate removed)
-.vercel
-
 # ===========================================
 # TEMPLATE USERS: Uncomment the line below
 # to keep your personal CV data private
 # ===========================================
 # src/data/cv-data.ts
-
-.vercel
-.env*.local

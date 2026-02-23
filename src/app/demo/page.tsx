@@ -1,10 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useSyncExternalStore } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Upload, FileText, Clipboard, ArrowRight, Sparkles } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Upload, FileText, Clipboard, Sparkles } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { DemoUpload } from '@/components/demo/DemoUpload';
@@ -18,22 +17,23 @@ import type { CVData } from '@/types';
 
 type InputMethod = 'upload' | 'form' | 'paste';
 
+const subscribe = () => () => {};
+
 export default function DemoPage() {
   const { t } = useTranslation();
   const router = useRouter();
   const [inputMethod, setInputMethod] = useState<InputMethod>('upload');
   const [cvData, setCvData] = useState<Partial<CVData> | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
-  const [isDemoHost, setIsDemoHost] = useState(false);
-  const [checkedHost, setCheckedHost] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
+  const isDemoHost = useSyncExternalStore(
+    subscribe,
+    () => {
       const host = window.location.hostname;
-      setIsDemoHost(host.includes('vitae-demo') || host.includes('demo'));
-      setCheckedHost(true);
-    }
-  }, []);
+      return host.includes('vitae-demo') || host.includes('demo');
+    },
+    () => false
+  );
+  const checkedHost = useSyncExternalStore(subscribe, () => true, () => false);
 
   useEffect(() => {
     if (!IS_DEMO && checkedHost && !isDemoHost) {

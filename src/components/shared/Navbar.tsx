@@ -8,7 +8,7 @@ import { ThemeToggle } from './ThemeToggle';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { useTranslation } from '@/i18n';
 import { cn } from '@/lib/utils';
-import { DEMO_URL, IS_DEMO, PERSONAL_URL } from '@/lib/app-config';
+import { IS_DEMO, PERSONAL_URL } from '@/lib/app-config';
 
 const navKeys = [
   { key: 'nav.home', href: '#hero' },
@@ -71,7 +71,7 @@ export function Navbar() {
             <a
               key={item.href}
               href={item.href}
-              className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              className="relative px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors after:absolute after:bottom-0 after:left-3 after:right-3 after:h-0.5 after:bg-primary after:scale-x-0 after:origin-left after:transition-transform hover:after:scale-x-100"
               onClick={(e) => {
                 e.preventDefault();
                 handleNavClick(item.href);

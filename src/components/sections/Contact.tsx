@@ -77,7 +77,7 @@ export function Contact() {
               >
                 <div className="relative overflow-hidden rounded-2xl border bg-muted/20">
                   <Image
-                    src="/contact-photo.jpg"
+                    src="/contact-photo.webp"
                     alt="Martin Bundy en un evento"
                     width={1400}
                     height={900}
@@ -93,7 +93,7 @@ export function Contact() {
               href={cvData.personal.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-4 rounded-2xl border bg-gradient-to-br from-primary/10 to-background p-5 transition hover:border-primary/50 hover:shadow-lg"
+              className="group flex items-center gap-4 rounded-2xl border bg-gradient-to-br from-primary/10 to-background p-5 transition-all hover:border-primary/50 hover:shadow-lg hover:-translate-y-0.5"
             >
               <div className="p-3 rounded-xl bg-primary text-primary-foreground">
                 <Linkedin className="h-6 w-6" />
@@ -120,7 +120,7 @@ export function Contact() {
                   {item.href ? (
                     <a
                       href={item.href}
-                      className="flex items-center gap-4 p-4 rounded-xl bg-muted/30 hover:bg-muted/50 transition-colors group"
+                      className="flex items-center gap-4 p-4 rounded-xl bg-muted/30 hover:bg-muted/50 hover:-translate-y-0.5 transition-all group"
                     >
                       <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                         <item.icon className="h-5 w-5" />
@@ -153,7 +153,7 @@ export function Contact() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 px-5 py-3 rounded-xl bg-muted/30 hover:bg-muted/50 transition-colors text-base font-semibold"
+                  className="flex items-center gap-3 px-5 py-3 rounded-xl bg-muted/30 hover:bg-muted/50 hover:-translate-y-0.5 active:scale-[0.97] transition-all text-base font-semibold"
                 >
                   <link.icon className="h-5 w-5" />
                   <span>{link.value}</span>

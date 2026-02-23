@@ -1,11 +1,13 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { LanguageProvider } from '@/i18n';
 import { Navbar } from '@/components/shared/Navbar';
 import { Footer } from '@/components/shared/Footer';
-import { ChatBot } from '@/components/chat/ChatBot';
+import dynamic from 'next/dynamic';
 import './globals.css';
+
+const ChatBot = dynamic(() => import('@/components/chat/ChatBot').then(m => m.ChatBot));
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -16,6 +18,15 @@ const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
 });
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#0a0a0a' },
+  ],
+};
 
 export const metadata: Metadata = {
   title: 'Vitae.ai | Martín Bundy - CV Digital con IA',
@@ -34,6 +45,7 @@ export const metadata: Metadata = {
     'Panamá',
   ],
   authors: [{ name: 'Martín Bundy' }],
+  robots: { index: true, follow: true },
   openGraph: {
     title: 'Vitae.ai | Martín Bundy - CV Digital con IA',
     description:
@@ -60,6 +72,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-primary focus:text-primary-foreground focus:text-sm focus:font-medium"
+        >
+          Skip to content
+        </a>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -68,7 +86,7 @@ export default function RootLayout({
         >
           <LanguageProvider>
             <Navbar />
-            <main className="min-h-screen">{children}</main>
+            <main id="main-content" className="min-h-screen">{children}</main>
             <Footer />
             <ChatBot />
           </LanguageProvider>

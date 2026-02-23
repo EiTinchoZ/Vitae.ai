@@ -12,9 +12,14 @@ import {
   Sparkles,
   Zap,
 } from 'lucide-react';
+import dynamic from 'next/dynamic';
 import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
-import { SectionQA } from '@/components/ai/SectionQA';
 import { Button } from '@/components/ui/button';
+
+const SectionQA = dynamic(
+  () => import('@/components/ai/SectionQA').then(m => m.SectionQA),
+  { ssr: false }
+);
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useCvData } from '@/lib/cv-data-context';
@@ -35,9 +40,9 @@ const languageColors: Record<string, string> = {
 const repoLogos: Record<string, { src: string; alt: string }> = {
   'tin.io': { src: '/images/projects/tin-io-logo.jpg', alt: 'Tin.io' },
   'tin-io': { src: '/images/projects/tin-io-logo.jpg', alt: 'Tin.io' },
-  'tyr': { src: '/images/projects/tyr-logo.png', alt: 'TYR' },
-  'vitae.ai': { src: '/brand/vitae-logo.png', alt: 'Vitae.ai' },
-  'vitae-ai': { src: '/brand/vitae-logo.png', alt: 'Vitae.ai' },
+  'tyr': { src: '/images/projects/tyr-logo.webp', alt: 'TYR' },
+  'vitae.ai': { src: '/brand/vitae-logo.webp', alt: 'Vitae.ai' },
+  'vitae-ai': { src: '/brand/vitae-logo.webp', alt: 'Vitae.ai' },
 };
 
 const featuredLogos: Record<string, { src: string; alt: string }> = {
@@ -287,7 +292,7 @@ export function Projects() {
                 transition={{ duration: 0.3, delay: index * 0.1 }}
                 className={cn(
                   'group block p-5 rounded-xl border bg-background',
-                  'hover:border-primary/50 hover:shadow-lg transition-all'
+                  'hover:border-primary/50 hover:shadow-lg hover:-translate-y-1 transition-all'
                 )}
               >
                 <div className="flex items-start justify-between mb-3">

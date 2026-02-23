@@ -4,7 +4,7 @@ import {
   createContext,
   useContext,
   useState,
-  useEffect,
+  useSyncExternalStore,
   ReactNode,
 } from 'react';
 import { LanguageCode, defaultLanguage, languages } from './config';
@@ -50,6 +50,8 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
 
 const STORAGE_KEY = 'vitae-language';
 
+const subscribe = () => () => {};
+
 function getNestedRawValue(
   obj: Record<string, unknown>,
   path: string
@@ -69,16 +71,16 @@ function getNestedRawValue(
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<LanguageCode>(defaultLanguage);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY) as LanguageCode | null;
-    if (stored && languages.some((l) => l.code === stored)) {
-      setLanguageState(stored);
-    }
-    setIsLoading(false);
-  }, []);
+  const storedLang = useSyncExternalStore(
+    subscribe,
+    () => {
+      const stored = localStorage.getItem(STORAGE_KEY) as LanguageCode | null;
+      return stored && languages.some((l) => l.code === stored) ? stored : null;
+    },
+    () => null
+  );
+  const [language, setLanguageState] = useState<LanguageCode>(storedLang ?? defaultLanguage);
+  const isLoading = useSyncExternalStore(subscribe, () => false, () => true);
 
   const setLanguage = (lang: LanguageCode) => {
     setLanguageState(lang);

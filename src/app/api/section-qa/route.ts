@@ -13,7 +13,7 @@ const educationNarrative = `Notas personales para responder sobre educación:
 - Técnico Superior en IA: Desde pequeño siempre tuve tecnología cerca y desarrollé pasión por los videojuegos y la innovación. Elegí esta carrera porque la IA es el presente. Disfruto aprender, investigar y construir soluciones con IA y datos. He fortalecido resiliencia, confianza y el hábito autodidacta, trabajando en proyectos personales para resolver problemas reales y aportar soluciones innovadoras.
 - Ingeniería Industrial: Fue mi carrera soñada desde la escuela. Me atrae la visión sistémica, la optimización de procesos y la gestión de proyectos. Es una carrera muy adaptable y combinada con IA crea un perfil profesional diferenciado y de alto impacto.`;
 
-function buildSectionContext(section: string, cvData: CVData, language: string): string {
+function buildSectionContext(section: string, cvData: CVData): string {
   switch (section) {
     case 'skills':
       return `Skills:
@@ -98,7 +98,7 @@ export async function POST(req: Request) {
         exp.position.toLowerCase().includes('distribuci') ||
         exp.position.toLowerCase().includes('electric')
     );
-    const context = buildSectionContext(section, cvData, language);
+    const context = buildSectionContext(section, cvData);
 
     const systemPrompt = `You answer questions about a specific CV section for ${candidateName}, focused on presenting strengths and impact.
 

@@ -2,15 +2,23 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
 import { Brain, Code, Factory, Laptop } from 'lucide-react';
 import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
-import { SectionQA } from '@/components/ai/SectionQA';
-import { SkillRecommender } from '@/components/ai/SkillRecommender';
 import { Button } from '@/components/ui/button';
 import { useCvData } from '@/lib/cv-data-context';
 import { type SkillCategory } from '@/data/cv-data';
 import { useTranslation } from '@/i18n';
 import { cn } from '@/lib/utils';
+
+const SectionQA = dynamic(
+  () => import('@/components/ai/SectionQA').then(m => m.SectionQA),
+  { ssr: false }
+);
+const SkillRecommender = dynamic(
+  () => import('@/components/ai/SkillRecommender').then(m => m.SkillRecommender),
+  { ssr: false }
+);
 
 const categoryIcons = {
   ai: Brain,
@@ -86,7 +94,7 @@ export function Skills() {
               transition={{ duration: 0.2, delay: index * 0.02 }}
               className={cn(
                 'group relative p-4 rounded-xl border bg-background',
-                'hover:border-primary/50 hover:shadow-md transition-all cursor-default'
+                'hover:border-primary/50 hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default'
               )}
             >
               <div className="flex items-center gap-3">

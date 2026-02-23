@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Award,
@@ -62,10 +63,13 @@ export function Certificates() {
   const renderPreview = (cert: Certificate) => {
     if (cert.thumbnail) {
       return (
-        <img
+        <Image
           src={cert.thumbnail}
           alt={cert.name}
+          width={400}
+          height={112}
           className="w-full h-28 object-cover rounded-lg border"
+          loading="lazy"
         />
       );
     }
@@ -146,7 +150,7 @@ export function Certificates() {
                 onClick={() => setSelectedCert(cert)}
                 className={cn(
                   'group relative p-6 rounded-xl border bg-background cursor-pointer',
-                  'hover:border-primary/50 hover:shadow-lg transition-all'
+                  'hover:border-primary/50 hover:shadow-lg hover:-translate-y-1 transition-all'
                 )}
               >
                 {/* Category badge */}

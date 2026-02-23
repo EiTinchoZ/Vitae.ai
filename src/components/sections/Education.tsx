@@ -1,11 +1,17 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { GraduationCap, Calendar, CheckCircle2, Clock } from 'lucide-react';
+import dynamic from 'next/dynamic';
 import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
-import { SectionQA } from '@/components/ai/SectionQA';
 import { Badge } from '@/components/ui/badge';
+
+const SectionQA = dynamic(
+  () => import('@/components/ai/SectionQA').then(m => m.SectionQA),
+  { ssr: false }
+);
 import { useCvData } from '@/lib/cv-data-context';
 import { useTranslation } from '@/i18n';
 import { IS_DEMO } from '@/lib/app-config';
@@ -24,12 +30,12 @@ export function Education() {
     'edu-3': 55,
   };
 
+  const [now] = useState(Date.now);
   const computeProgress = (startDate?: string, endDate?: string) => {
     if (!startDate || !endDate) return null;
     const start = new Date(startDate).getTime();
     const end = new Date(endDate).getTime();
     if (Number.isNaN(start) || Number.isNaN(end) || end <= start) return null;
-    const now = Date.now();
     const elapsed = Math.min(Math.max(now - start, 0), end - start);
     return Math.round((elapsed / (end - start)) * 100);
   };
@@ -63,13 +69,13 @@ export function Education() {
               <div
                 className={`absolute left-4 sm:left-6 w-5 h-5 rounded-full border-4 border-background ${
                   edu.status === 'completed'
-                    ? 'bg-green-500'
-                    : 'bg-primary animate-pulse'
+                    ? 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]'
+                    : 'bg-primary animate-pulse shadow-[0_0_12px_hsl(var(--primary)/0.5)]'
                 }`}
               />
 
               {/* Content card */}
-              <div className="bg-muted/30 rounded-xl p-6 hover:shadow-md transition-shadow">
+              <div className="bg-muted/30 rounded-xl p-6 hover:shadow-md hover:-translate-y-0.5 transition-all">
                 <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
                   <div className="flex items-center gap-2">
                     <GraduationCap className="h-5 w-5 text-primary" />

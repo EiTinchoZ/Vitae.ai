@@ -22,9 +22,7 @@
       "dl": "Deep Learning",
       "genai": "Generative AI",
       "python": "Python"
-    },
-    "attributionTitle": "CV built with Vitae.ai",
-    "attributionDescription": "An AI-powered platform for innovative digital CVs. Created by Martin Bundy."
+    }
   },
   "about": {
     "title": "About Me",

@@ -1,11 +1,12 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Github, Linkedin, Mail, Download, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useCvData } from '@/lib/cv-data-context';
 import { useTranslation } from '@/i18n';
-import { DEMO_URL, IS_DEMO, PERSONAL_URL } from '@/lib/app-config';
+import { IS_DEMO, PERSONAL_URL } from '@/lib/app-config';
 
 export function Hero() {
   const { t } = useTranslation();
@@ -94,10 +95,13 @@ export function Hero() {
             className="mb-8"
           >
             <div className="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full bg-gradient-to-br from-primary to-secondary p-1">
-              <img
-                src="/martin-profile.png"
+              <Image
+                src="/martin-profile.webp"
                 alt={cvData.personal.fullName || cvData.personal.name}
+                width={160}
+                height={160}
                 className="w-full h-full rounded-full object-cover"
+                priority
               />
             </div>
           </motion.div>
@@ -132,7 +136,7 @@ export function Hero() {
             {specialties.map((skill) => (
               <span
                 key={skill}
-                className="px-3 py-1 text-sm bg-primary/10 text-primary rounded-full"
+                className="px-3 py-1 text-sm bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors"
               >
                 {skill}
               </span>
@@ -152,7 +156,7 @@ export function Hero() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground transition-colors"
+                className="p-3 rounded-full bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground hover:scale-110 hover:-translate-y-0.5 active:scale-95 transition-all"
                 aria-label={link.name}
               >
                 <link.icon className="h-5 w-5" />

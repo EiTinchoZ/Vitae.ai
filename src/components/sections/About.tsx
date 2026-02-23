@@ -2,13 +2,21 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { MapPin, GraduationCap, Briefcase, Languages } from 'lucide-react';
 import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
-import { InsightsDashboard } from '@/components/ai/InsightsDashboard';
-import { ResumeAnalyzer } from '@/components/ai/ResumeAnalyzer';
 import { useCvData } from '@/lib/cv-data-context';
 import { useTranslation } from '@/i18n';
 import { cn } from '@/lib/utils';
+
+const InsightsDashboard = dynamic(
+  () => import('@/components/ai/InsightsDashboard').then(m => m.InsightsDashboard),
+  { ssr: false }
+);
+const ResumeAnalyzer = dynamic(
+  () => import('@/components/ai/ResumeAnalyzer').then(m => m.ResumeAnalyzer),
+  { ssr: false }
+);
 
 export function About() {
   const { t } = useTranslation();
@@ -142,7 +150,7 @@ export function About() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
-                className="px-4 py-2 bg-background rounded-full text-sm font-medium border hover:border-primary/50 transition-colors cursor-default"
+                className="px-4 py-2 bg-background rounded-full text-sm font-medium border hover:border-primary/50 hover:bg-primary/5 hover:-translate-y-0.5 transition-all cursor-default"
               >
                 {specialty}
               </motion.span>
