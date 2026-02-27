@@ -133,12 +133,23 @@
     },
     "linkedinLabel": "LinkedIn",
     "linkedinTitle": "LinkedIn에서 연결하기",
-    "linkedinDescription": "프로젝트, 게시물, 최신 소식을 확인하세요."
+    "linkedinDescription": "프로젝트, 게시물, 최신 소식을 확인하세요.",
+    "form": {
+      "namePlaceholder": "이름",
+      "emailPlaceholder": "you@email.com",
+      "messagePlaceholder": "프로젝트나 문의사항을 알려주세요...",
+      "send": "메시지 보내기",
+      "sending": "전송 중...",
+      "success": "메시지가 전송되었습니다!",
+      "error": "전송 오류. 계속되면 직접 이메일을 사용하세요."
+    }
   },
   "footer": {
     "rights": "모든 권리 보유.",
     "madeWith": "Next.js와 TailwindCSS로 제작",
-    "poweredBy": "제공"
+    "poweredBy": "제공",
+    "navigation": "탐색",
+    "connect": "연결"
   },
   "chat": {
     "title": "가상 어시스턴트",

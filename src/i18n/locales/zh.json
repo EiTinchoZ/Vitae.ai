@@ -133,12 +133,23 @@
     },
     "linkedinLabel": "LinkedIn",
     "linkedinTitle": "在 LinkedIn 上联系我",
-    "linkedinDescription": "关注我的项目、发布和职业动态。"
+    "linkedinDescription": "关注我的项目、发布和职业动态。",
+    "form": {
+      "namePlaceholder": "您的姓名",
+      "emailPlaceholder": "you@email.com",
+      "messagePlaceholder": "告诉我关于您的项目或问题...",
+      "send": "发送消息",
+      "sending": "发送中...",
+      "success": "消息已发送！",
+      "error": "发送失败。如果持续请使用直接邮件。"
+    }
   },
   "footer": {
     "rights": "版权所有。",
     "madeWith": "使用 Next.js 和 TailwindCSS 构建",
-    "poweredBy": "技术支持"
+    "poweredBy": "技术支持",
+    "navigation": "导航",
+    "connect": "联系"
   },
   "chat": {
     "title": "虚拟助手",

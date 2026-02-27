@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Plus_Jakarta_Sans, Cormorant_Garamond, Geist_Mono } from 'next/font/google';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { LanguageProvider } from '@/i18n';
 import { Navbar } from '@/components/shared/Navbar';
@@ -9,9 +9,17 @@ import './globals.css';
 
 const ChatBot = dynamic(() => import('@/components/chat/ChatBot').then(m => m.ChatBot));
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: '--font-jakarta',
   subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+});
+
+const cormorantGaramond = Cormorant_Garamond({
+  variable: '--font-cormorant',
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  style: ['normal', 'italic'],
 });
 
 const geistMono = Geist_Mono({
@@ -23,12 +31,15 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#0a0a0a' },
+    { media: '(prefers-color-scheme: light)', color: '#F2F0E9' },
+    { media: '(prefers-color-scheme: dark)', color: '#1A1A1A' },
   ],
 };
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://vitae.lat';
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: 'Vitae.ai | Martín Bundy - CV Digital con IA',
   description:
     'Vitae.ai - Tu carrera, potenciada por inteligencia artificial. CV digital interactivo de Martín Bundy con análisis de IA, recomendaciones personalizadas y chat inteligente.',
@@ -53,13 +64,53 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'es_PA',
     siteName: 'Vitae.ai',
+    images: [{ url: '/og', width: 1200, height: 630, alt: 'Vitae.ai — Martín Bundy' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Vitae.ai | Martín Bundy - CV Digital con IA',
     description:
       'Tu carrera, potenciada por inteligencia artificial. CV digital interactivo con análisis de IA.',
+    images: ['/og'],
   },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      name: 'Martín Alejandro Bundy Muñoz',
+      jobTitle: 'Industrial Engineering Student & AI Technical Specialist',
+      url: siteUrl,
+      email: 'mbundy15@gmail.com',
+      sameAs: [
+        'https://linkedin.com/in/martinbundy15',
+        'https://github.com/EiTinchoZ',
+      ],
+      address: {
+        '@type': 'PostalAddress',
+        addressCountry: 'PA',
+        addressLocality: 'Panamá',
+      },
+      knowsAbout: [
+        'Machine Learning',
+        'Deep Learning',
+        'Generative AI',
+        'RAG',
+        'Industrial Engineering',
+        'Python',
+        'Process Optimization',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      name: 'Vitae.ai — Martín Bundy',
+      url: siteUrl,
+      description:
+        'CV digital interactivo con IA. Portfolio profesional de Martín Bundy.',
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -69,8 +120,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${plusJakartaSans.variable} ${cormorantGaramond.variable} ${geistMono.variable} antialiased`}
       >
         <a
           href="#main-content"

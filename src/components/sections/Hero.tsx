@@ -2,20 +2,40 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { Github, Linkedin, Mail, Download, ChevronDown } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Github, Linkedin, Mail, Download, ArrowRight } from 'lucide-react';
 import { useCvData } from '@/lib/cv-data-context';
 import { useTranslation } from '@/i18n';
 import { IS_DEMO, PERSONAL_URL } from '@/lib/app-config';
 
+// ── Framer Motion variants ── mirrors GSAP staggered fade-up
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.13,
+      delayChildren: 0.25,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 56 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.85, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] },
+  },
+};
+
 export function Hero() {
   const { t } = useTranslation();
   const { cvData } = useCvData();
+
   const primaryCta = IS_DEMO
     ? { href: '/demo', label: t('hero.demoCta') }
     : { href: '/cv/CV_Martin_Bundy_2026.pdf', label: t('hero.downloadCV'), download: true };
+
   const secondaryCtaHref = IS_DEMO ? PERSONAL_URL : null;
-  const secondaryCtaLabel = t('hero.personalPreview');
 
   const socialLinks = [
     { name: 'GitHub', href: cvData.personal.github, icon: Github },
@@ -24,189 +44,218 @@ export function Hero() {
   ].filter((link) => link.href && link.href !== 'mailto:');
 
   const scrollToAbout = () => {
-    const element = document.querySelector('#about');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const specialties = cvData.about.specialties.slice(0, 4);
+  // Name split for dramatic typography contrast
+  // "Martín Alejandro Bundy Muñoz" → "Martín" + "Bundy"
+  const fullName = cvData.personal.fullName || cvData.personal.name || 'Martín Bundy';
+  const nameParts = fullName.trim().split(/\s+/);
+  const givenName = nameParts[0];
+  const familyName = nameParts.length >= 3 ? nameParts[2] : nameParts[1] || 'Bundy';
 
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      className="relative min-h-screen w-full flex items-end overflow-hidden"
     >
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/5" />
+      {/* ── Background image ── */}
+      <Image
+        src="/hero-forest.jpeg"
+        alt="Hero background — moody forest"
+        fill
+        priority
+        className="object-cover object-center"
+        sizes="100vw"
+      />
 
-      {/* Animated background shapes */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          className="absolute -top-1/2 -right-1/2 w-full h-full rounded-full bg-primary/5 blur-3xl"
-          animate={{
-            scale: [1, 1.1, 1],
-            rotate: [0, 90, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: 'linear',
-          }}
-        />
-        <motion.div
-          className="absolute -bottom-1/2 -left-1/2 w-full h-full rounded-full bg-secondary/5 blur-3xl"
-          animate={{
-            scale: [1.1, 1, 1.1],
-            rotate: [0, -90, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: 'linear',
-          }}
-        />
-      </div>
+      {/* ── Gradient overlay: moss green → charcoal ── */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            'linear-gradient(to top, rgba(46,64,54,0.97) 0%, rgba(46,64,54,0.80) 30%, rgba(26,26,26,0.60) 58%, rgba(0,0,0,0.18) 100%)',
+        }}
+      />
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Vitae.ai Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="mb-6"
-          >
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
-              <span className="text-sm font-semibold bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent">
-                Vitae.ai
-              </span>
-              <span className="text-xs text-muted-foreground">
-                {t('hero.slogan')}
-              </span>
+      {/* ── Main content — bottom-left layout ── */}
+      <div className="relative z-10 w-full px-6 md:px-12 lg:px-20 pb-20 md:pb-28">
+        <motion.div
+          className="max-w-3xl"
+          variants={container}
+          initial="hidden"
+          animate="show"
+        >
+          {/* Label row: Vitae.ai · tagline */}
+          <motion.div variants={item} className="flex items-center gap-3 mb-6">
+            <span
+              className="text-xs tracking-[0.3em] uppercase font-semibold"
+              style={{ color: 'oklch(0.565 0.158 37)' }}
+            >
+              Vitae.ai
+            </span>
+            <div
+              className="h-px w-12 flex-shrink-0"
+              style={{ backgroundColor: 'oklch(0.565 0.158 37)' }}
+            />
+            <span
+              className="text-xs tracking-[0.2em] uppercase font-medium"
+              style={{ color: 'rgba(242,240,233,0.58)' }}
+            >
+              {t('hero.slogan')}
             </span>
           </motion.div>
 
-          {/* Profile photo */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="mb-8"
-          >
-            <div className="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full bg-gradient-to-br from-primary to-secondary p-1">
+          {/* Avatar + location */}
+          <motion.div variants={item} className="flex items-center gap-3 mb-3">
+            <div className="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden flex-shrink-0"
+              style={{ boxShadow: '0 0 0 2px rgba(242,240,233,0.20)' }}
+            >
               <Image
                 src="/martin-profile.webp"
                 alt={cvData.personal.fullName || cvData.personal.name}
-                width={160}
-                height={160}
-                className="w-full h-full rounded-full object-cover"
+                width={56}
+                height={56}
+                className="w-full h-full object-cover"
                 priority
               />
             </div>
+            <span
+              className="text-sm font-light tracking-wide"
+              style={{ color: 'rgba(242,240,233,0.62)' }}
+            >
+              {cvData.personal.location}
+            </span>
           </motion.div>
 
-          {/* Name */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-4xl md:text-6xl font-bold mb-4"
-          >
-            {cvData.personal.fullName || cvData.personal.name}
+          {/* ── Dramatic heading: Bold Sans + Massive Serif Italic ── */}
+          <motion.h1 variants={item} className="mb-5 leading-none">
+            {/* Line 1: Given name — Plus Jakarta Sans bold */}
+            <span
+              className="block font-bold text-white"
+              style={{
+                fontFamily: 'var(--font-jakarta), sans-serif',
+                fontSize: 'clamp(2.8rem, 7.5vw, 5.5rem)',
+                letterSpacing: '-0.01em',
+              }}
+            >
+              {givenName}
+            </span>
+            {/* Line 2: Family name — Cormorant Garamond italic, massive */}
+            <span
+              className="block italic"
+              style={{
+                fontFamily: 'var(--font-cormorant), serif',
+                fontSize: 'clamp(4.8rem, 14vw, 9.5rem)',
+                color: 'oklch(0.962 0.007 83)',
+                letterSpacing: '-0.025em',
+                lineHeight: '0.9',
+              }}
+            >
+              {familyName}.
+            </span>
           </motion.h1>
 
-          {/* Title */}
+          {/* Professional role tagline */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-lg md:text-xl text-muted-foreground mb-6 max-w-2xl mx-auto"
+            variants={item}
+            className="text-base md:text-lg font-light max-w-lg mb-8 leading-relaxed"
+            style={{ color: 'rgba(242,240,233,0.68)' }}
           >
             {t('hero.title')}
           </motion.p>
 
-          {/* Specialties */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex flex-wrap justify-center gap-2 mb-8"
-          >
-            {specialties.map((skill) => (
-              <span
-                key={skill}
-                className="px-3 py-1 text-sm bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors"
-              >
-                {skill}
-              </span>
-            ))}
-          </motion.div>
+          {/* ── Social links + CTA buttons ── */}
+          <motion.div variants={item} className="flex flex-wrap items-center gap-3">
 
-          {/* Social links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="flex justify-center gap-4 mb-8"
-          >
-            {socialLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-full bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground hover:scale-110 hover:-translate-y-0.5 active:scale-95 transition-all"
-                aria-label={link.name}
-              >
-                <link.icon className="h-5 w-5" />
-              </a>
-            ))}
-          </motion.div>
-
-          {/* CTA Button */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-          >
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              <Button asChild size="lg" className="gap-2">
+            {/* Social icon buttons */}
+            <div className="flex items-center gap-2 mr-1">
+              {socialLinks.map((link) => (
                 <a
-                  href={primaryCta.href}
-                  {...(primaryCta.download ? { download: true } : {})}
-                  {...(IS_DEMO ? { target: '_self' } : {})}
+                  key={link.name}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:scale-110 active:scale-95"
+                  style={{
+                    background: 'rgba(242,240,233,0.10)',
+                    color: 'rgba(242,240,233,0.82)',
+                    border: '1px solid rgba(242,240,233,0.18)',
+                  }}
+                  aria-label={link.name}
                 >
-                  {!IS_DEMO && <Download className="h-4 w-4" />}
-                  {primaryCta.label}
+                  <link.icon className="h-4 w-4" />
                 </a>
-              </Button>
-              {secondaryCtaHref && (
-                <Button asChild size="lg" variant="outline" className="gap-2">
-                  <a href={secondaryCtaHref} target="_blank" rel="noreferrer">
-                    {secondaryCtaLabel}
-                  </a>
-                </Button>
-              )}
+              ))}
             </div>
+
+            {/* Primary CTA — Clay/Burnt-Orange */}
+            <a
+              href={primaryCta.href}
+              {...(primaryCta.download ? { download: true } : {})}
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-semibold transition-all hover:scale-105 hover:brightness-110 active:scale-95"
+              style={{
+                background: 'oklch(0.565 0.158 37)',
+                color: 'oklch(0.962 0.007 83)',
+              }}
+            >
+              {!IS_DEMO && <Download className="h-4 w-4" />}
+              {primaryCta.label}
+            </a>
+
+            {/* Secondary CTA — ghost */}
+            {secondaryCtaHref && (
+              <a
+                href={secondaryCtaHref}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-medium transition-all hover:scale-105 active:scale-95"
+                style={{
+                  color: 'rgba(242,240,233,0.88)',
+                  border: '1px solid rgba(242,240,233,0.25)',
+                }}
+              >
+                {t('hero.personalPreview')}
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            )}
           </motion.div>
-        </div>
+        </motion.div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* ── Status indicator — bottom right ── */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.6, duration: 0.6 }}
+        className="absolute bottom-8 right-6 md:right-10 z-10 flex items-center gap-2"
+      >
+        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+        <span
+          className="text-xs tracking-[0.22em] uppercase"
+          style={{
+            fontFamily: 'var(--font-geist-mono), monospace',
+            color: 'rgba(242,240,233,0.42)',
+          }}
+        >
+          Available for hire
+        </span>
+      </motion.div>
+
+      {/* ── Scroll cue — bottom center ── */}
       <motion.button
         onClick={scrollToAbout}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-foreground transition-colors"
+        transition={{ delay: 1.9, duration: 0.5 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 transition-opacity hover:opacity-60"
+        style={{ color: 'rgba(242,240,233,0.38)' }}
         aria-label="Scroll to about section"
       >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-        >
-          <ChevronDown className="h-8 w-8" />
+        <motion.div animate={{ y: [0, 7, 0] }} transition={{ duration: 1.6, repeat: Infinity }}>
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
+          </svg>
         </motion.div>
       </motion.button>
     </section>

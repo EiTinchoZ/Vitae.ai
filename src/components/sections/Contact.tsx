@@ -1,18 +1,55 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { Mail, Phone, MapPin, Github, Linkedin, Download, Send } from 'lucide-react';
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Github,
+  Linkedin,
+  Download,
+  Send,
+  Loader2,
+  CheckCircle,
+  AlertCircle,
+} from 'lucide-react';
 import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { useCvData } from '@/lib/cv-data-context';
 import { useTranslation } from '@/i18n';
 import { IS_DEMO } from '@/lib/app-config';
 
+type FormStatus = 'idle' | 'loading' | 'success' | 'error';
+
 export function Contact() {
   const { t } = useTranslation();
   const { cvData } = useCvData();
+
+  const [formName, setFormName] = useState('');
+  const [formEmail, setFormEmail] = useState('');
+  const [formMessage, setFormMessage] = useState('');
+  const [formStatus, setFormStatus] = useState<FormStatus>('idle');
+
+  const handleContactSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormStatus('loading');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ name: formName, email: formEmail, message: formMessage }),
+      });
+      if (!res.ok) throw new Error('server error');
+      setFormStatus('success');
+      setFormName('');
+      setFormEmail('');
+      setFormMessage('');
+    } catch {
+      setFormStatus('error');
+    }
+  };
 
   const contactInfo = [
     {
@@ -44,13 +81,16 @@ export function Contact() {
     },
   ];
 
+  const inputClass =
+    'w-full rounded-xl border px-4 py-2.5 text-sm transition-colors placeholder:text-[rgba(242,240,233,0.45)] focus:outline-none focus:ring-1 disabled:opacity-50 disabled:cursor-not-allowed';
+
   return (
-    <SectionWrapper id="contact">
+    <SectionWrapper id="contact" className="bg-muted/20">
       <SectionTitle subtitle={t('contact.subtitle')}>
         {t('contact.title')}
       </SectionTitle>
 
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-8">
           {/* Contact Info */}
           <motion.div
@@ -60,10 +100,25 @@ export function Contact() {
             className="space-y-6"
           >
             <div>
-              <h3 className="text-xl font-semibold mb-4">
+              <p
+                className="text-xs tracking-[0.26em] uppercase mb-3"
+                style={{
+                  color: 'oklch(0.565 0.158 37)',
+                  fontFamily: 'var(--font-geist-mono), monospace',
+                }}
+              >
+                Vitae.ai
+              </p>
+              <h3 className="text-2xl md:text-3xl font-semibold mb-2">
                 {t('contact.letsConnect')}
               </h3>
-              <p className="text-muted-foreground mb-6">
+              <p
+                className="text-3xl md:text-4xl italic text-primary/85 mb-4"
+                style={{ fontFamily: 'var(--font-cormorant), serif' }}
+              >
+                construyamos algo real.
+              </p>
+              <p className="text-muted-foreground">
                 {t('contact.description')}
               </p>
             </div>
@@ -75,7 +130,7 @@ export function Contact() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                <div className="relative overflow-hidden rounded-2xl border bg-muted/20">
+                <div className="relative overflow-hidden rounded-[2rem] border bg-muted/20">
                   <Image
                     src="/contact-photo.webp"
                     alt="Martin Bundy en un evento"
@@ -93,14 +148,26 @@ export function Contact() {
               href={cvData.personal.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-4 rounded-2xl border bg-gradient-to-br from-primary/10 to-background p-5 transition-all hover:border-primary/50 hover:shadow-lg hover:-translate-y-0.5"
+              className="group flex items-center gap-4 rounded-[1.5rem] border p-5 transition-all hover:-translate-y-0.5"
+              style={{
+                backgroundColor: 'oklch(0.282 0.038 152 / 0.08)',
+                borderColor: 'oklch(0.282 0.038 152 / 0.22)',
+              }}
             >
-              <div className="p-3 rounded-xl bg-primary text-primary-foreground">
+              <div
+                className="p-3 rounded-xl"
+                style={{
+                  backgroundColor: 'oklch(0.565 0.158 37)',
+                  color: 'oklch(0.962 0.007 83)',
+                }}
+              >
                 <Linkedin className="h-6 w-6" />
               </div>
               <div>
-                <p className="text-xs text-muted-foreground">{t('contact.linkedinLabel')}</p>
-                <p className="font-semibold">{t('contact.linkedinTitle')}</p>
+                <p className="text-xs text-muted-foreground uppercase tracking-[0.14em]">
+                  {t('contact.linkedinLabel')}
+                </p>
+                <p className="font-semibold text-base">{t('contact.linkedinTitle')}</p>
                 <p className="text-sm text-muted-foreground">
                   {t('contact.linkedinDescription')}
                 </p>
@@ -120,23 +187,33 @@ export function Contact() {
                   {item.href ? (
                     <a
                       href={item.href}
-                      className="flex items-center gap-4 p-4 rounded-xl bg-muted/30 hover:bg-muted/50 hover:-translate-y-0.5 transition-all group"
+                      className="flex items-center gap-4 p-4 rounded-[1.25rem] border hover:-translate-y-0.5 transition-all group"
+                      style={{
+                        backgroundColor: 'oklch(0.282 0.038 152 / 0.05)',
+                        borderColor: 'oklch(0.282 0.038 152 / 0.16)',
+                      }}
                     >
-                      <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                      <div className="p-2 rounded-lg bg-primary/10 text-primary transition-colors">
                         <item.icon className="h-5 w-5" />
                       </div>
                       <div>
-                        <p className="text-xs text-muted-foreground">{item.label}</p>
+                        <p className="text-xs text-muted-foreground uppercase tracking-[0.12em]">{item.label}</p>
                         <p className="font-medium">{item.value}</p>
                       </div>
                     </a>
                   ) : (
-                    <div className="flex items-center gap-4 p-4 rounded-xl bg-muted/30">
+                    <div
+                      className="flex items-center gap-4 p-4 rounded-[1.25rem] border"
+                      style={{
+                        backgroundColor: 'oklch(0.282 0.038 152 / 0.05)',
+                        borderColor: 'oklch(0.282 0.038 152 / 0.16)',
+                      }}
+                    >
                       <div className="p-2 rounded-lg bg-primary/10 text-primary">
                         <item.icon className="h-5 w-5" />
                       </div>
                       <div>
-                        <p className="text-xs text-muted-foreground">{item.label}</p>
+                        <p className="text-xs text-muted-foreground uppercase tracking-[0.12em]">{item.label}</p>
                         <p className="font-medium">{item.value}</p>
                       </div>
                     </div>
@@ -153,7 +230,11 @@ export function Contact() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 px-5 py-3 rounded-xl bg-muted/30 hover:bg-muted/50 hover:-translate-y-0.5 active:scale-[0.97] transition-all text-base font-semibold"
+                  className="flex items-center gap-3 px-5 py-3 rounded-full border hover:-translate-y-0.5 active:scale-[0.97] transition-all text-base font-semibold"
+                  style={{
+                    backgroundColor: 'oklch(0.282 0.038 152 / 0.05)',
+                    borderColor: 'oklch(0.282 0.038 152 / 0.20)',
+                  }}
                 >
                   <link.icon className="h-5 w-5" />
                   <span>{link.value}</span>
@@ -162,66 +243,222 @@ export function Contact() {
             </div>
           </motion.div>
 
-          {/* CTA Card */}
+          {/* Contact Form Card */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <Card className="h-full bg-gradient-to-br from-primary/5 to-secondary/5">
-              <CardContent className="p-8 h-full flex flex-col justify-center">
-                <div className="text-center">
-                  <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-primary to-secondary p-1">
-                    <div className="w-full h-full rounded-full bg-background flex items-center justify-center">
-                      <Send className="h-8 w-8 text-primary" />
-                    </div>
-                  </div>
+            <div
+              className="h-full rounded-[2rem] border p-7 md:p-8 flex flex-col"
+              style={{
+                backgroundColor: 'oklch(0.127 0 0)',
+                borderColor: 'rgba(242,240,233,0.14)',
+              }}
+            >
+              <div className="mb-6">
+                <h3
+                  className="text-2xl font-semibold mb-1"
+                  style={{ color: 'rgba(242,240,233,0.95)' }}
+                >
+                  {t('contact.cta.title')}
+                </h3>
+                <p
+                  className="text-3xl italic leading-tight mb-2"
+                  style={{
+                    fontFamily: 'var(--font-cormorant), serif',
+                    color: 'oklch(0.565 0.158 37)',
+                  }}
+                >
+                  mensaje directo.
+                </p>
+                <p className="text-sm" style={{ color: 'rgba(242,240,233,0.65)' }}>
+                  {t('contact.cta.description')}
+                </p>
+              </div>
 
-                  <h3 className="text-xl font-semibold mb-3">
-                    {t('contact.cta.title')}
-                  </h3>
-                  <p className="text-muted-foreground mb-6">
-                    {t('contact.cta.description')}
+              <form onSubmit={handleContactSubmit} className="flex-1 flex flex-col gap-3">
+                <div className="space-y-1.5">
+                  <label
+                    className="text-xs uppercase tracking-[0.14em]"
+                    style={{
+                      color: 'rgba(242,240,233,0.60)',
+                      fontFamily: 'var(--font-geist-mono), monospace',
+                    }}
+                  >
+                    {t('contact.form.namePlaceholder')}
+                  </label>
+                  <input
+                    type="text"
+                    placeholder={t('contact.form.namePlaceholder')}
+                    value={formName}
+                    onChange={(e) => setFormName(e.target.value)}
+                    disabled={formStatus === 'loading' || formStatus === 'success'}
+                    required
+                    className={inputClass}
+                    style={{
+                      backgroundColor: 'rgba(242,240,233,0.06)',
+                      borderColor: 'rgba(242,240,233,0.16)',
+                      color: 'rgba(242,240,233,0.95)',
+                      boxShadow: 'none',
+                    }}
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <label
+                    className="text-xs uppercase tracking-[0.14em]"
+                    style={{
+                      color: 'rgba(242,240,233,0.60)',
+                      fontFamily: 'var(--font-geist-mono), monospace',
+                    }}
+                  >
+                    {t('contact.info.email')}
+                  </label>
+                  <input
+                    type="email"
+                    placeholder={t('contact.form.emailPlaceholder')}
+                    value={formEmail}
+                    onChange={(e) => setFormEmail(e.target.value)}
+                    disabled={formStatus === 'loading' || formStatus === 'success'}
+                    required
+                    className={inputClass}
+                    style={{
+                      backgroundColor: 'rgba(242,240,233,0.06)',
+                      borderColor: 'rgba(242,240,233,0.16)',
+                      color: 'rgba(242,240,233,0.95)',
+                      boxShadow: 'none',
+                    }}
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <label
+                    className="text-xs uppercase tracking-[0.14em]"
+                    style={{
+                      color: 'rgba(242,240,233,0.60)',
+                      fontFamily: 'var(--font-geist-mono), monospace',
+                    }}
+                  >
+                    {t('contact.form.messagePlaceholder')}
+                  </label>
+                  <textarea
+                    placeholder={t('contact.form.messagePlaceholder')}
+                    value={formMessage}
+                    onChange={(e) => setFormMessage(e.target.value)}
+                    disabled={formStatus === 'loading' || formStatus === 'success'}
+                    required
+                    rows={4}
+                    className={`${inputClass} resize-none`}
+                    style={{
+                      backgroundColor: 'rgba(242,240,233,0.06)',
+                      borderColor: 'rgba(242,240,233,0.16)',
+                      color: 'rgba(242,240,233,0.95)',
+                      boxShadow: 'none',
+                    }}
+                  />
+                </div>
+
+                <Button
+                  type="submit"
+                  disabled={formStatus === 'loading' || formStatus === 'success'}
+                  className="w-full gap-2 mt-1 border-0 hover:brightness-110"
+                  style={{
+                    backgroundColor: 'oklch(0.565 0.158 37)',
+                    color: 'oklch(0.962 0.007 83)',
+                  }}
+                >
+                  {formStatus === 'loading' ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      {t('contact.form.sending')}
+                    </>
+                  ) : formStatus === 'success' ? (
+                    <>
+                      <CheckCircle className="h-4 w-4" />
+                      {t('contact.form.success')}
+                    </>
+                  ) : (
+                    <>
+                      <Send className="h-4 w-4" />
+                      {t('contact.form.send')}
+                    </>
+                  )}
+                </Button>
+
+                {formStatus === 'error' && (
+                  <p
+                    className="text-xs text-center flex items-center justify-center gap-1.5"
+                    style={{ color: '#f87171' }}
+                  >
+                    <AlertCircle className="h-3.5 w-3.5 shrink-0" />
+                    {t('contact.form.error')}
                   </p>
+                )}
+              </form>
 
-                  <div className="space-y-3">
-                    <Button asChild size="lg" className="w-full gap-2">
-                      <a href="/cv/CV_Martin_Bundy_2026.pdf" download>
-                        <Download className="h-4 w-4" />
-                        {t('contact.cta.downloadCV')}
-                      </a>
-                    </Button>
-                    <Button
-                      asChild
-                      variant="outline"
-                      size="lg"
-                      className="w-full gap-2"
+              <div className="mt-6 pt-5 border-t space-y-5" style={{ borderColor: 'rgba(242,240,233,0.14)' }}>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="sm"
+                  className="w-full gap-2"
+                  style={{
+                    borderColor: 'rgba(242,240,233,0.22)',
+                    color: 'rgba(242,240,233,0.88)',
+                    backgroundColor: 'transparent',
+                  }}
+                >
+                  <a href="/cv/CV_Martin_Bundy_2026.pdf" download>
+                    <Download className="h-3.5 w-3.5" />
+                    {t('contact.cta.downloadCV')}
+                  </a>
+                </Button>
+
+                <div className="grid grid-cols-3 gap-4">
+                  <div className="text-center">
+                    <p
+                      className="text-3xl italic leading-none"
+                      style={{
+                        fontFamily: 'var(--font-cormorant), serif',
+                        color: 'oklch(0.565 0.158 37)',
+                      }}
                     >
-                      <a href={`mailto:${cvData.personal.email}`}>
-                        <Mail className="h-4 w-4" />
-                        {t('contact.cta.sendEmail')}
-                      </a>
-                    </Button>
+                      2+
+                    </p>
+                    <p className="text-xs mt-1" style={{ color: 'rgba(242,240,233,0.58)' }}>
+                      {t('contact.stats.careers')}
+                    </p>
                   </div>
-
-                  {/* Quick stats */}
-                  <div className="grid grid-cols-3 gap-4 mt-8 pt-6 border-t">
-                    <div className="text-center">
-                      <p className="text-2xl font-bold text-primary">2+</p>
-                      <p className="text-xs text-muted-foreground">{t('contact.stats.careers')}</p>
-                    </div>
-                    <div className="text-center">
-                      <p className="text-2xl font-bold text-primary">{cvData.certificates.length}</p>
-                      <p className="text-xs text-muted-foreground">{t('contact.stats.certifications')}</p>
-                    </div>
-                    <div className="text-center">
-                      <p className="text-2xl font-bold text-primary">C2</p>
-                      <p className="text-xs text-muted-foreground">{t('contact.stats.english')}</p>
-                    </div>
+                  <div className="text-center">
+                    <p
+                      className="text-3xl italic leading-none"
+                      style={{
+                        fontFamily: 'var(--font-cormorant), serif',
+                        color: 'oklch(0.565 0.158 37)',
+                      }}
+                    >
+                      {cvData.certificates.length}
+                    </p>
+                    <p className="text-xs mt-1" style={{ color: 'rgba(242,240,233,0.58)' }}>
+                      {t('contact.stats.certifications')}
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <p
+                      className="text-3xl italic leading-none"
+                      style={{
+                        fontFamily: 'var(--font-cormorant), serif',
+                        color: 'oklch(0.565 0.158 37)',
+                      }}
+                    >
+                      C2
+                    </p>
+                    <p className="text-xs mt-1" style={{ color: 'rgba(242,240,233,0.58)' }}>
+                      {t('contact.stats.english')}
+                    </p>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>

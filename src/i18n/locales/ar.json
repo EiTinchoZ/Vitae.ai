@@ -133,12 +133,23 @@
     },
     "linkedinLabel": "LinkedIn",
     "linkedinTitle": "تواصل معي على LinkedIn",
-    "linkedinDescription": "تابع مشاريعي ومنشوراتي وآخر أخباري المهنية."
+    "linkedinDescription": "تابع مشاريعي ومنشوراتي وآخر أخباري المهنية.",
+    "form": {
+      "namePlaceholder": "اسمك",
+      "emailPlaceholder": "you@email.com",
+      "messagePlaceholder": "أخبرني عن مشروعك أو استفسارك...",
+      "send": "إرسال الرسالة",
+      "sending": "جارٍ الإرسال...",
+      "success": "تم إرسال الرسالة!",
+      "error": "خطأ في الإرسال. استخدم البريد المباشر إذا استمر."
+    }
   },
   "footer": {
     "rights": "جميع الحقوق محفوظة.",
     "madeWith": "تم التطوير باستخدام Next.js و TailwindCSS",
-    "poweredBy": "مدعوم من"
+    "poweredBy": "مدعوم من",
+    "navigation": "التنقل",
+    "connect": "تواصل"
   },
   "chat": {
     "title": "المساعد الافتراضي",

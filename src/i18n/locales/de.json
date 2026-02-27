@@ -133,12 +133,23 @@
     },
     "linkedinLabel": "LinkedIn",
     "linkedinTitle": "Lass uns auf LinkedIn vernetzen",
-    "linkedinDescription": "Folge meinen Projekten, Beiträgen und beruflichen Updates."
+    "linkedinDescription": "Folge meinen Projekten, Beiträgen und beruflichen Updates.",
+    "form": {
+      "namePlaceholder": "Dein Name",
+      "emailPlaceholder": "du@email.com",
+      "messagePlaceholder": "Erzähl mir von deinem Projekt oder deiner Anfrage...",
+      "send": "Nachricht senden",
+      "sending": "Senden...",
+      "success": "Nachricht gesendet!",
+      "error": "Fehler beim Senden. Nutze die direkte E-Mail wenn es anhält."
+    }
   },
   "footer": {
     "rights": "Alle Rechte vorbehalten.",
     "madeWith": "Entwickelt mit Next.js und TailwindCSS",
-    "poweredBy": "Betrieben von"
+    "poweredBy": "Betrieben von",
+    "navigation": "Navigation",
+    "connect": "Verbinden"
   },
   "chat": {
     "title": "Virtueller Assistent",

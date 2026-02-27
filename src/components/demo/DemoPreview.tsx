@@ -376,7 +376,7 @@ export function DemoPreview({ cvData, onReset }: DemoPreviewProps) {
         </CvDataProvider>
       </SectionLayoutProvider>
 
-      <Card className={cn('bg-gradient-to-r from-primary/5 to-blue-500/5 border-primary/20')}>
+      <Card className={cn('bg-gradient-to-r from-primary/5 to-accent/10 border-primary/20')}>
         <CardContent className="pt-6">
           <div className="text-center space-y-4">
             <h3 className="text-xl font-semibold">{t('demo.preview.cta.title')}</h3>

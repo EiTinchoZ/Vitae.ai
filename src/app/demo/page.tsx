@@ -86,7 +86,7 @@ export default function DemoPage() {
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             {t('demo.titlePrefix')}{' '}
-            <span className="bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               {t('demo.titleBrand')}
             </span>
           </h1>

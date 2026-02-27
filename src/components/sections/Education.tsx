@@ -6,15 +6,14 @@ import Image from 'next/image';
 import { GraduationCap, Calendar, CheckCircle2, Clock } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
-import { Badge } from '@/components/ui/badge';
+import { useCvData } from '@/lib/cv-data-context';
+import { useTranslation } from '@/i18n';
+import { IS_DEMO } from '@/lib/app-config';
 
 const SectionQA = dynamic(
   () => import('@/components/ai/SectionQA').then(m => m.SectionQA),
   { ssr: false }
 );
-import { useCvData } from '@/lib/cv-data-context';
-import { useTranslation } from '@/i18n';
-import { IS_DEMO } from '@/lib/app-config';
 
 export function Education() {
   const { t, tArray } = useTranslation();
@@ -40,8 +39,147 @@ export function Education() {
     return Math.round((elapsed / (end - start)) * 100);
   };
 
+  const educationCards = (
+    <div className="space-y-5">
+      {cvData.education.map((edu, index) => (
+        <motion.article
+          key={edu.id}
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45, delay: index * 0.08 }}
+          className="rounded-[2rem] border bg-card/80 p-6 md:p-8"
+          style={{ borderColor: 'oklch(0.282 0.038 152 / 0.18)' }}
+        >
+          <div className="flex flex-wrap items-start justify-between gap-4">
+            <div className="space-y-2">
+              <p
+                className="text-xs uppercase tracking-[0.22em]"
+                style={{
+                  color: 'oklch(0.282 0.038 152 / 0.75)',
+                  fontFamily: 'var(--font-geist-mono), monospace',
+                }}
+              >
+                {edu.institution}
+              </p>
+              <h3
+                className="font-bold leading-tight text-xl md:text-2xl"
+                style={{ fontFamily: 'var(--font-jakarta), sans-serif' }}
+              >
+                {edu.title}
+              </h3>
+            </div>
+            <span
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold tracking-[0.12em] uppercase"
+              style={
+                edu.status === 'completed'
+                  ? {
+                      backgroundColor: 'rgba(52,211,153,0.14)',
+                      border: '1px solid rgba(52,211,153,0.36)',
+                      color: 'rgb(5,150,105)',
+                      fontFamily: 'var(--font-geist-mono), monospace',
+                    }
+                  : {
+                      backgroundColor: 'rgba(204,88,51,0.14)',
+                      border: '1px solid rgba(204,88,51,0.36)',
+                      color: 'oklch(0.565 0.158 37)',
+                      fontFamily: 'var(--font-geist-mono), monospace',
+                    }
+              }
+            >
+              {edu.status === 'completed' ? (
+                <CheckCircle2 className="h-3.5 w-3.5" />
+              ) : (
+                <Clock className="h-3.5 w-3.5" />
+              )}
+              {edu.status === 'completed' ? t('education.completed') : t('education.inProgress')}
+            </span>
+          </div>
+
+          <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+            <span className="inline-flex items-center gap-1.5">
+              <GraduationCap className="h-4 w-4" />
+              {edu.institution}
+            </span>
+            <span
+              className="opacity-40"
+              style={{ fontFamily: 'var(--font-geist-mono), monospace' }}
+            >
+              -
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <Calendar className="h-4 w-4" />
+              {edu.startYear ? `${edu.startYear} - ` : ''}
+              {typeof edu.endYear === 'number'
+                ? edu.endYear
+                : `${t('education.completionLabel')}: ${edu.endYear}`}
+            </span>
+          </div>
+
+          {edu.description && (
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{edu.description}</p>
+          )}
+
+          {edu.status === 'in_progress' && (
+            <div className="mt-5">
+              {(() => {
+                const timeline = timelineById[edu.id];
+                const computed = computeProgress(
+                  edu.startDate ?? timeline?.startDate,
+                  edu.endDate ?? timeline?.endDate
+                );
+                const progress = Math.min(
+                  100,
+                  Math.max(computed ?? 0, minProgressById[edu.id] ?? 0)
+                );
+                return (
+                  <>
+                    <div
+                      className="flex items-center justify-between mb-2 text-xs uppercase tracking-[0.14em]"
+                      style={{
+                        color: 'oklch(0.565 0.158 37 / 0.85)',
+                        fontFamily: 'var(--font-geist-mono), monospace',
+                      }}
+                    >
+                      <span>{t('education.estimatedProgress')}</span>
+                      <span>{progress}%</span>
+                    </div>
+                    <div className="h-2 rounded-full overflow-hidden bg-muted">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${progress}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.9, delay: 0.25, ease: 'easeOut' }}
+                        className="h-full rounded-full"
+                        style={{ backgroundColor: 'oklch(0.565 0.158 37)' }}
+                      />
+                    </div>
+                  </>
+                );
+              })()}
+            </div>
+          )}
+        </motion.article>
+      ))}
+    </div>
+  );
+
+  if (IS_DEMO) {
+    return (
+      <SectionWrapper id="education" className="bg-muted/20">
+        <SectionTitle
+          subtitle={t('education.subtitle')}
+          action={<SectionQA section="education" suggestedQuestions={suggestedQuestions} />}
+        >
+          {t('education.title')}
+        </SectionTitle>
+        <div className="max-w-3xl mx-auto">{educationCards}</div>
+      </SectionWrapper>
+    );
+  }
+
   return (
-    <SectionWrapper id="education">
+    <SectionWrapper id="education" className="bg-muted/20">
       <SectionTitle
         subtitle={t('education.subtitle')}
         action={<SectionQA section="education" suggestedQuestions={suggestedQuestions} />}
@@ -49,145 +187,44 @@ export function Education() {
         {t('education.title')}
       </SectionTitle>
 
-      {(() => {
-        const Timeline = (
-          <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-5 sm:left-8 top-0 bottom-0 w-0.5 bg-border" />
-
-          {/* Education items */}
-          {cvData.education.map((edu, index) => (
-            <motion.div
-              key={edu.id}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative pl-14 sm:pl-20 pb-12 last:pb-0"
-            >
-              {/* Timeline dot */}
-              <div
-                className={`absolute left-4 sm:left-6 w-5 h-5 rounded-full border-4 border-background ${
-                  edu.status === 'completed'
-                    ? 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]'
-                    : 'bg-primary animate-pulse shadow-[0_0_12px_hsl(var(--primary)/0.5)]'
-                }`}
-              />
-
-              {/* Content card */}
-              <div className="bg-muted/30 rounded-xl p-6 hover:shadow-md hover:-translate-y-0.5 transition-all">
-                <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
-                  <div className="flex items-center gap-2">
-                    <GraduationCap className="h-5 w-5 text-primary" />
-                    <h3 className="font-semibold text-lg">{edu.title}</h3>
-                  </div>
-                  <Badge
-                    variant={edu.status === 'completed' ? 'default' : 'secondary'}
-                    className="gap-1"
-                  >
-                    {edu.status === 'completed' ? (
-                      <>
-                        <CheckCircle2 className="h-3 w-3" />
-                        {t('education.completed')}
-                      </>
-                    ) : (
-                      <>
-                        <Clock className="h-3 w-3" />
-                        {t('education.inProgress')}
-                      </>
-                    )}
-                  </Badge>
-                </div>
-
-                <p className="text-muted-foreground mb-2">{edu.institution}</p>
-
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Calendar className="h-4 w-4" />
-                  {edu.startYear ? `${edu.startYear} - ` : ''}
-                  {typeof edu.endYear === 'number'
-                    ? edu.endYear
-                    : `${t('education.completionLabel')}: ${edu.endYear}`}
-                </div>
-
-                {edu.description && (
-                  <p className="mt-3 text-sm text-muted-foreground">
-                    {edu.description}
-                  </p>
-                )}
-
-                {/* Progress bar for in-progress education */}
-                {edu.status === 'in_progress' && (
-                  <div className="mt-4">
-                    {(() => {
-                      const timeline = timelineById[edu.id];
-                      const computed = computeProgress(
-                        edu.startDate ?? timeline?.startDate,
-                        edu.endDate ?? timeline?.endDate
-                      );
-                      const progress = Math.min(
-                        100,
-                        Math.max(computed ?? 0, minProgressById[edu.id] ?? 0)
-                      );
-                      return (
-                        <>
-                          <div className="flex justify-between text-xs text-muted-foreground mb-1">
-                            <span>{t('education.estimatedProgress')}</span>
-                            <span>{progress}%</span>
-                          </div>
-                          <div className="h-2 bg-muted rounded-full overflow-hidden">
-                            <motion.div
-                              initial={{ width: 0 }}
-                              whileInView={{ width: `${progress}%` }}
-                              viewport={{ once: true }}
-                              transition={{ duration: 1, delay: 0.5 }}
-                              className="h-full bg-primary rounded-full"
-                            />
-                          </div>
-                        </>
-                      );
-                    })()}
-                  </div>
-                )}
-              </div>
-            </motion.div>
-          ))}
+      <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-8 lg:gap-10 items-start">
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45 }}
+          className="space-y-5"
+        >
+          <div className="relative overflow-hidden rounded-[2rem] border bg-muted/20">
+            <Image
+              src="/education-highlight.jpg"
+              alt="Martin Bundy en un evento academico"
+              width={1400}
+              height={900}
+              className="h-56 sm:h-72 md:h-[360px] lg:h-[440px] w-full object-cover object-top"
+              priority
+            />
           </div>
-        );
-
-        if (IS_DEMO) {
-          return (
-            <div className="max-w-3xl mx-auto">
-              {Timeline}
-            </div>
-          );
-        }
-
-        return (
-          <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 items-start">
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="order-first"
+          <div
+            className="rounded-[1.5rem] p-6 border"
+            style={{
+              backgroundColor: 'oklch(0.282 0.038 152 / 0.06)',
+              borderColor: 'oklch(0.282 0.038 152 / 0.14)',
+            }}
+          >
+            <p
+              className="text-3xl md:text-4xl italic leading-tight text-primary"
+              style={{ fontFamily: 'var(--font-cormorant), serif' }}
             >
-              <div className="relative overflow-hidden rounded-2xl border bg-muted/20">
-                <Image
-                  src="/education-highlight.jpg"
-                  alt="Martin Bundy en un evento academico"
-                  width={1400}
-                  height={900}
-                  className="h-56 sm:h-72 md:h-[360px] lg:h-[460px] w-full object-cover object-top"
-                  priority
-                />
-              </div>
-            </motion.div>
-            <div className="max-w-3xl">
-              {Timeline}
-            </div>
+              aprendizaje continuo.
+            </p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Formacion tecnica aplicada a soluciones reales de IA e ingenieria.
+            </p>
           </div>
-        );
-      })()}
+        </motion.div>
+        <div>{educationCards}</div>
+      </div>
     </SectionWrapper>
   );
 }

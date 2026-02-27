@@ -47,7 +47,12 @@ export function About() {
 
   return (
     <SectionWrapper id="about">
-      <SectionTitle subtitle={t('about.subtitle')}>
+      <div className="text-center">
+        <span className="inline-block text-xs tracking-[0.3em] uppercase font-semibold text-accent mb-2">
+          {t('about.subtitle')}
+        </span>
+      </div>
+      <SectionTitle>
         {t('about.title')}
       </SectionTitle>
 
@@ -72,9 +77,9 @@ export function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
-                className="flex items-start gap-3"
+                className="flex items-start gap-3 rounded-[1.5rem] border bg-background/70 p-4 hover:scale-[1.02] transition-all duration-300"
               >
-                <div className="p-2 rounded-lg bg-primary/10 text-primary">
+                <div className="p-2 rounded-[1.5rem] bg-primary/10 text-primary">
                   <item.icon className="h-4 w-4" />
                 </div>
                 <div>
@@ -159,9 +164,12 @@ export function About() {
 
           {/* Quote */}
           <div className="mt-6 pt-6 border-t">
-            <p className="text-sm text-muted-foreground italic">
-              &ldquo;{cvData.about.quote}&rdquo;
-            </p>
+            <blockquote
+              className="text-2xl md:text-3xl font-medium italic leading-relaxed mb-6 text-primary/90"
+              style={{ fontFamily: 'var(--font-cormorant), serif' }}
+            >
+              &quot;{cvData.about.quote}&quot;
+            </blockquote>
           </div>
         </motion.div>
       </div>

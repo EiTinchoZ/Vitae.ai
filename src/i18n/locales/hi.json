@@ -133,12 +133,23 @@
     },
     "linkedinLabel": "LinkedIn",
     "linkedinTitle": "LinkedIn पर जुड़ें",
-    "linkedinDescription": "मेरे प्रोजेक्ट्स, पोस्ट्स और प्रोफेशनल अपडेट्स देखें।"
+    "linkedinDescription": "मेरे प्रोजेक्ट्स, पोस्ट्स और प्रोफेशनल अपडेट्स देखें।",
+    "form": {
+      "namePlaceholder": "आपका नाम",
+      "emailPlaceholder": "you@email.com",
+      "messagePlaceholder": "अपने प्रोजेक्ट या प्रश्न के बारे में बताएं...",
+      "send": "संदेश भेजें",
+      "sending": "भेज रहा है...",
+      "success": "संदेश भेज दिया गया!",
+      "error": "भेजने में त्रुटि। यदि जारी रहे तो सीधे ईमेल का उपयोग करें।"
+    }
   },
   "footer": {
     "rights": "सर्वाधिकार सुरक्षित।",
     "madeWith": "Next.js और TailwindCSS के साथ बनाया गया",
-    "poweredBy": "द्वारा संचालित"
+    "poweredBy": "द्वारा संचालित",
+    "navigation": "नेविगेशन",
+    "connect": "संपर्क"
   },
   "chat": {
     "title": "वर्चुअल असिस्टेंट",

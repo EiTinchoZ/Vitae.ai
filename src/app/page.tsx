@@ -5,6 +5,7 @@ import { Skills } from '@/components/sections/Skills';
 import { Education } from '@/components/sections/Education';
 import { Certificates } from '@/components/sections/Certificates';
 import { Projects } from '@/components/sections/Projects';
+import { ManifestoSection } from '@/components/sections/ManifestoSection';
 import { Experience } from '@/components/sections/Experience';
 import { Contact } from '@/components/sections/Contact';
 import { PersonalIntroGate } from '@/components/shared/PersonalIntroGate';
@@ -23,6 +24,7 @@ export default function Home() {
       <Education />
       <Certificates />
       <Projects />
+      <ManifestoSection />
       <Experience />
       <Contact />
     </PersonalIntroGate>

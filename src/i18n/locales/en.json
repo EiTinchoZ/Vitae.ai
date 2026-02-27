@@ -133,12 +133,23 @@
     },
     "linkedinLabel": "LinkedIn",
     "linkedinTitle": "Let's connect on LinkedIn",
-    "linkedinDescription": "Follow my projects, posts, and professional updates."
+    "linkedinDescription": "Follow my projects, posts, and professional updates.",
+    "form": {
+      "namePlaceholder": "Your name",
+      "emailPlaceholder": "you@email.com",
+      "messagePlaceholder": "Tell me about your project or inquiry...",
+      "send": "Send message",
+      "sending": "Sending...",
+      "success": "Message sent!",
+      "error": "Error sending. Use direct email if it persists."
+    }
   },
   "footer": {
     "rights": "All rights reserved.",
     "madeWith": "Built with Next.js and TailwindCSS",
-    "poweredBy": "Powered by"
+    "poweredBy": "Powered by",
+    "navigation": "Navigation",
+    "connect": "Connect"
   },
   "chat": {
     "title": "Virtual Assistant",

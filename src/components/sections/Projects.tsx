@@ -9,40 +9,39 @@ import {
   Github,
   Star,
   GitFork,
-  Sparkles,
   Zap,
 } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
-import { Button } from '@/components/ui/button';
-
-const SectionQA = dynamic(
-  () => import('@/components/ai/SectionQA').then(m => m.SectionQA),
-  { ssr: false }
-);
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useCvData } from '@/lib/cv-data-context';
 import { useTranslation } from '@/i18n';
 import { getGitHubRepos, formatDate } from '@/lib/github-api';
 import type { GitHubRepo } from '@/types';
 import { cn } from '@/lib/utils';
 
+const SectionQA = dynamic(
+  () => import('@/components/ai/SectionQA').then(m => m.SectionQA),
+  { ssr: false }
+);
+
+// ── Language dot colors — mapped to design palette ─────────────────
 const languageColors: Record<string, string> = {
-  TypeScript: 'bg-blue-500',
-  JavaScript: 'bg-yellow-500',
-  Python: 'bg-green-500',
-  HTML: 'bg-orange-500',
-  CSS: 'bg-purple-500',
-  default: 'bg-gray-500',
+  TypeScript:  'oklch(0.565 0.158 37)',   // Clay
+  JavaScript:  'oklch(0.720 0.110 77)',   // Amber/Gold
+  Python:      'oklch(0.355 0.048 152)',  // Mid moss
+  HTML:        'oklch(0.480 0.120 35)',   // Terra
+  CSS:         'oklch(0.450 0.070 270)',  // Muted purple
+  Rust:        'oklch(0.520 0.140 30)',   // Rust orange
+  Go:          'oklch(0.560 0.100 200)',  // Teal
+  default:     'oklch(0.500 0 0)',        // Neutral
 };
 
 const repoLogos: Record<string, { src: string; alt: string }> = {
-  'tin.io': { src: '/images/projects/tin-io-logo.jpg', alt: 'Tin.io' },
-  'tin-io': { src: '/images/projects/tin-io-logo.jpg', alt: 'Tin.io' },
-  'tyr': { src: '/images/projects/tyr-logo.webp', alt: 'TYR' },
-  'vitae.ai': { src: '/brand/vitae-logo.webp', alt: 'Vitae.ai' },
-  'vitae-ai': { src: '/brand/vitae-logo.webp', alt: 'Vitae.ai' },
+  'tin.io':   { src: '/images/projects/tin-io-logo.jpg',         alt: 'Tin.io' },
+  'tin-io':   { src: '/images/projects/tin-io-logo.jpg',         alt: 'Tin.io' },
+  'tyr':      { src: '/images/projects/tyr-logo.webp',           alt: 'TYR' },
+  'vitae.ai': { src: '/brand/vitae-logo.webp',                   alt: 'Vitae.ai' },
+  'vitae-ai': { src: '/brand/vitae-logo.webp',                   alt: 'Vitae.ai' },
 };
 
 const featuredLogos: Record<string, { src: string; alt: string }> = {
@@ -69,9 +68,7 @@ export function Projects() {
   const featuredLogo = featuredProject ? featuredLogos[featuredProject.id] : null;
   const otherProjects = cvData.projects.filter((project) => !project.isHighlighted);
 
-  if (!featuredProject) {
-    return null;
-  }
+  if (!featuredProject) return null;
 
   const suggestedQuestions = tArray('qa.suggestions.projects');
 
@@ -84,187 +81,326 @@ export function Projects() {
         {t('projects.title')}
       </SectionTitle>
 
-      {/* Featured Project - Conecta Panama */}
+      {/* ── Featured Project — dark moss hero card ── */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mb-12"
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] }}
+        className="mb-10"
       >
-        <Card className="overflow-hidden border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-background">
-          <CardHeader className="pb-4">
-            <div className="flex flex-wrap items-start justify-between gap-4">
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <Badge className="gap-1 bg-amber-500 hover:bg-amber-600">
-                    <Trophy className="h-3 w-3" />
-                    {featuredProject.result}
-                  </Badge>
-                  <Badge variant="outline">{featuredProject.year}</Badge>
-                </div>
-                <CardTitle className="text-2xl md:text-3xl">
-                  {featuredProject.name}
-                </CardTitle>
-                <CardDescription className="text-base mt-1">
-                  {featuredProject.event}
-                </CardDescription>
-                {featuredLogo && (
-                  <div className="mt-4">
-                    <div className="relative h-16 w-40 sm:h-20 sm:w-52 rounded-lg border bg-muted/20 p-2">
-                      <Image
-                        src={featuredLogo.src}
-                        alt={featuredLogo.alt}
-                        fill
-                        className="object-contain"
-                        sizes="(max-width: 768px) 160px, 208px"
-                      />
-                    </div>
-                  </div>
-                )}
-              </div>
-              <div className="p-3 rounded-xl bg-amber-500/10">
-                <Trophy className="h-10 w-10 text-amber-500" />
-              </div>
-            </div>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground mb-6">
-              {featuredProject.longDescription}
-            </p>
-
-            {/* Features */}
-            <div className="grid sm:grid-cols-2 gap-3 mb-6">
-              {featuredProject.features.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex items-center gap-2 text-sm"
+        <div
+          className="rounded-[2.5rem] overflow-hidden border"
+          style={{
+            backgroundColor: 'oklch(0.230 0.030 152)',
+            borderColor: 'rgba(242,240,233,0.09)',
+          }}
+        >
+          <div className="p-7 md:p-10 lg:p-12">
+            {/* Badge row */}
+            <div className="flex flex-wrap items-center gap-3 mb-6">
+              <div
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full"
+                style={{
+                  backgroundColor: 'rgba(204,88,51,0.18)',
+                  border: '1px solid rgba(204,88,51,0.32)',
+                }}
+              >
+                <Trophy className="h-3.5 w-3.5 flex-shrink-0" style={{ color: 'oklch(0.565 0.158 37)' }} />
+                <span
+                  className="text-xs font-semibold tracking-[0.18em] uppercase"
+                  style={{
+                    color: 'oklch(0.565 0.158 37)',
+                    fontFamily: 'var(--font-geist-mono), monospace',
+                  }}
                 >
-                  <Sparkles className="h-4 w-4 text-primary flex-shrink-0" />
-                  {feature}
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Technologies */}
-            <div className="flex flex-wrap gap-2 mb-6">
-              {featuredProject.technologies.map((tech) => (
-                <Badge key={tech} variant="secondary">
-                  {tech}
-                </Badge>
-              ))}
-            </div>
-
-            {/* Impact */}
-            <div className="flex items-start gap-3 p-4 rounded-xl bg-muted/50">
-              <Zap className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-medium text-sm">{t('projects.impact')}</p>
-                <p className="text-sm text-muted-foreground">
-                  {featuredProject.impact}
-                </p>
+                  {featuredProject.result}
+                </span>
               </div>
+              <span
+                className="text-xs tracking-[0.2em] uppercase"
+                style={{
+                  color: 'rgba(242,240,233,0.38)',
+                  fontFamily: 'var(--font-geist-mono), monospace',
+                }}
+              >
+                {featuredProject.year}
+              </span>
             </div>
-          </CardContent>
-        </Card>
+
+            <div className="grid lg:grid-cols-[1fr_auto] gap-8 lg:gap-14 items-start">
+              {/* Left: text */}
+              <div>
+                <h3
+                  className="font-bold leading-tight mb-2"
+                  style={{
+                    fontFamily: 'var(--font-jakarta), sans-serif',
+                    fontSize: 'clamp(1.5rem, 4vw, 2.6rem)',
+                    color: 'rgba(242,240,233,0.97)',
+                  }}
+                >
+                  {featuredProject.name}
+                </h3>
+                <p
+                  className="italic mb-6 leading-relaxed"
+                  style={{
+                    fontFamily: 'var(--font-cormorant), serif',
+                    fontSize: 'clamp(1.1rem, 2.5vw, 1.45rem)',
+                    color: 'rgba(242,240,233,0.50)',
+                  }}
+                >
+                  {featuredProject.event}
+                </p>
+
+                <p
+                  className="text-sm leading-relaxed mb-7"
+                  style={{ color: 'rgba(242,240,233,0.60)' }}
+                >
+                  {featuredProject.longDescription}
+                </p>
+
+                {/* Features */}
+                <div className="grid sm:grid-cols-2 gap-2.5 mb-7">
+                  {featuredProject.features.map((feature, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: -8 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.1 + index * 0.055, duration: 0.35 }}
+                      className="flex items-start gap-2.5"
+                    >
+                      <span
+                        className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5"
+                        style={{ backgroundColor: 'oklch(0.565 0.158 37)' }}
+                      />
+                      <span
+                        className="text-sm leading-relaxed"
+                        style={{ color: 'rgba(242,240,233,0.65)' }}
+                      >
+                        {feature}
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Technologies */}
+                <div className="flex flex-wrap gap-2 mb-7">
+                  {featuredProject.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1 rounded-full text-xs font-medium"
+                      style={{
+                        backgroundColor: 'rgba(242,240,233,0.06)',
+                        border: '1px solid rgba(242,240,233,0.12)',
+                        color: 'rgba(242,240,233,0.65)',
+                        fontFamily: 'var(--font-geist-mono), monospace',
+                      }}
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Impact callout */}
+                <div
+                  className="flex items-start gap-3 p-4 rounded-2xl"
+                  style={{
+                    backgroundColor: 'rgba(204,88,51,0.08)',
+                    borderLeft: '3px solid oklch(0.565 0.158 37)',
+                  }}
+                >
+                  <Zap
+                    className="h-4 w-4 flex-shrink-0 mt-0.5"
+                    style={{ color: 'oklch(0.565 0.158 37)' }}
+                  />
+                  <div>
+                    <p
+                      className="text-xs uppercase tracking-[0.18em] font-semibold mb-1"
+                      style={{
+                        color: 'oklch(0.565 0.158 37)',
+                        fontFamily: 'var(--font-geist-mono), monospace',
+                      }}
+                    >
+                      {t('projects.impact')}
+                    </p>
+                    <p
+                      className="text-sm leading-relaxed"
+                      style={{ color: 'rgba(242,240,233,0.60)' }}
+                    >
+                      {featuredProject.impact}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: logo */}
+              {featuredLogo && (
+                <div
+                  className="hidden lg:flex items-center justify-center rounded-[1.5rem] p-7 flex-shrink-0"
+                  style={{
+                    backgroundColor: 'rgba(242,240,233,0.04)',
+                    border: '1px solid rgba(242,240,233,0.07)',
+                    minWidth: '190px',
+                  }}
+                >
+                  <div className="relative h-28 w-36">
+                    <Image
+                      src={featuredLogo.src}
+                      alt={featuredLogo.alt}
+                      fill
+                      className="object-contain"
+                      sizes="144px"
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
       </motion.div>
 
+      {/* ── Other Projects ── */}
       {otherProjects.length > 0 && (
-        <div className="mb-12 grid gap-4 md:grid-cols-2">
+        <div className="mb-10 grid gap-5 md:grid-cols-2">
           {otherProjects.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-              className="h-full"
+              transition={{ duration: 0.5, delay: index * 0.08 }}
+              className="rounded-[2rem] overflow-hidden border bg-card hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
+              style={{ borderColor: 'oklch(0.282 0.038 152 / 0.14)' }}
             >
-              <Card className="h-full border border-border/60 bg-background/60">
-                <CardHeader>
-                  <div className="flex flex-wrap items-center gap-2 mb-2">
-                    <Badge variant="outline">{project.year}</Badge>
-                    <Badge variant="secondary">{project.type}</Badge>
-                  </div>
-                  <CardTitle className="text-xl">{project.name}</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {project.images?.[0] && (
-                    <div className="relative w-full h-36 sm:h-44 rounded-xl overflow-hidden border bg-muted/20">
-                      <Image
-                        src={project.images[0]}
-                        alt={project.name}
-                        fill
-                        className="object-contain p-4"
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                      />
-                    </div>
+              {project.images?.[0] && (
+                <div
+                  className="relative w-full h-40 overflow-hidden border-b bg-muted/20"
+                  style={{ borderColor: 'oklch(0.282 0.038 152 / 0.10)' }}
+                >
+                  <Image
+                    src={project.images[0]}
+                    alt={project.name}
+                    fill
+                    className="object-contain p-5"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+              )}
+              <div className="p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <span
+                    className="text-xs tracking-[0.2em] uppercase font-medium"
+                    style={{
+                      fontFamily: 'var(--font-geist-mono), monospace',
+                      color: 'oklch(0.565 0.158 37)',
+                    }}
+                  >
+                    {project.year}
+                  </span>
+                  {project.type && (
+                    <>
+                      <span className="opacity-30">·</span>
+                      <span
+                        className="text-xs tracking-[0.12em] uppercase"
+                        style={{
+                          fontFamily: 'var(--font-geist-mono), monospace',
+                          color: 'oklch(0.282 0.038 152 / 0.55)',
+                        }}
+                      >
+                        {project.type}
+                      </span>
+                    </>
                   )}
-                  <p className="text-sm text-muted-foreground">
-                    {project.shortDescription}
-                  </p>
-                  {project.technologies.length > 0 && (
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech) => (
-                        <Badge key={tech} variant="outline">
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                  )}
-                  <div className="flex flex-wrap gap-2">
-                    {project.githubUrl && (
-                      <Button variant="outline" size="sm" asChild>
-                        <a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          GitHub
-                          <ExternalLink className="h-4 w-4 ml-2" />
-                        </a>
-                      </Button>
-                    )}
-                    {project.demoUrl && (
-                      <Button variant="outline" size="sm" asChild>
-                        <a
-                          href={project.demoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Demo
-                          <ExternalLink className="h-4 w-4 ml-2" />
-                        </a>
-                      </Button>
-                    )}
+                </div>
+                <h4
+                  className="font-bold text-lg mb-2 leading-tight"
+                  style={{ fontFamily: 'var(--font-jakarta), sans-serif' }}
+                >
+                  {project.name}
+                </h4>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                  {project.shortDescription}
+                </p>
+                {project.technologies.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5 mb-5">
+                    {project.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2.5 py-0.5 rounded-full text-xs"
+                        style={{
+                          backgroundColor: 'oklch(0.282 0.038 152 / 0.07)',
+                          border: '1px solid oklch(0.282 0.038 152 / 0.15)',
+                          color: 'oklch(0.282 0.038 152)',
+                          fontFamily: 'var(--font-geist-mono), monospace',
+                        }}
+                      >
+                        {tech}
+                      </span>
+                    ))}
                   </div>
-                </CardContent>
-              </Card>
+                )}
+                <div className="flex gap-2.5">
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-medium transition-all hover:scale-105 active:scale-95"
+                      style={{
+                        border: '1px solid oklch(0.282 0.038 152 / 0.24)',
+                        color: 'oklch(0.282 0.038 152)',
+                      }}
+                    >
+                      <Github className="h-3.5 w-3.5" />
+                      GitHub
+                    </a>
+                  )}
+                  {project.demoUrl && (
+                    <a
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold transition-all hover:scale-105 hover:brightness-110 active:scale-95"
+                      style={{
+                        backgroundColor: 'oklch(0.565 0.158 37)',
+                        color: 'oklch(0.962 0.007 83)',
+                      }}
+                    >
+                      Demo
+                      <ExternalLink className="h-3.5 w-3.5" />
+                    </a>
+                  )}
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
       )}
 
-      {/* GitHub Repos */}
-      <div className="mb-6">
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-semibold flex items-center gap-2">
-            <Github className="h-5 w-5" />
+      {/* ── GitHub Repos ── */}
+      <div>
+        <div className="flex items-center justify-between mb-5">
+          <h3
+            className="font-semibold flex items-center gap-2 text-lg"
+            style={{ fontFamily: 'var(--font-jakarta), sans-serif' }}
+          >
+            <Github className="h-5 w-5 text-primary" />
             {t('projects.githubRepos')}
           </h3>
-          <Button variant="outline" size="sm" asChild>
-            <a
-              href={cvData.personal.github}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {t('projects.viewProfile')}
-              <ExternalLink className="h-4 w-4 ml-2" />
-            </a>
-          </Button>
+          <a
+            href={cvData.personal.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-medium transition-all hover:scale-105 active:scale-95"
+            style={{
+              border: '1px solid oklch(0.282 0.038 152 / 0.22)',
+              color: 'oklch(0.282 0.038 152)',
+            }}
+          >
+            {t('projects.viewProfile')}
+            <ExternalLink className="h-3.5 w-3.5" />
+          </a>
         </div>
 
         {loading ? (
@@ -272,7 +408,8 @@ export function Projects() {
             {[1, 2, 3].map((i) => (
               <div
                 key={i}
-                className="h-48 rounded-xl bg-muted/50 animate-pulse"
+                className="h-48 rounded-[1.5rem] animate-pulse"
+                style={{ backgroundColor: 'oklch(0.282 0.038 152 / 0.07)' }}
               />
             ))}
           </div>
@@ -281,76 +418,111 @@ export function Projects() {
             {repos.map((repo, index) => {
               const logo = repoLogos[repo.name.toLowerCase()];
               return (
-              <motion.a
-                key={repo.id}
-                href={repo.htmlUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-                className={cn(
-                  'group block p-5 rounded-xl border bg-background',
-                  'hover:border-primary/50 hover:shadow-lg hover:-translate-y-1 transition-all'
-                )}
-              >
-                <div className="flex items-start justify-between mb-3">
-                  <Github className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                  <ExternalLink className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
-                </div>
-
-                <h4 className="font-semibold mb-1 group-hover:text-primary transition-colors">
-                  {repo.name}
-                </h4>
-                {logo && (
-                  <div className="relative w-full h-52 rounded-xl overflow-hidden border bg-muted/20 mb-3">
-                    <Image
-                      src={logo.src}
-                      alt={logo.alt}
-                      fill
-                      className="object-contain p-3"
-                      sizes="(max-width: 768px) 100vw, 33vw"
+                <motion.a
+                  key={repo.id}
+                  href={repo.htmlUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.35, delay: index * 0.07 }}
+                  className={cn(
+                    'group block p-5 rounded-[1.5rem] border bg-card',
+                    'hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300'
+                  )}
+                  style={{ borderColor: 'oklch(0.282 0.038 152 / 0.12)' }}
+                >
+                  <div className="flex items-start justify-between mb-3">
+                    <Github
+                      className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors"
+                    />
+                    <ExternalLink
+                      className="h-3.5 w-3.5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity"
                     />
                   </div>
-                )}
-                <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-                  {repo.description || t('projects.noDescription')}
-                </p>
 
-                <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                  {repo.language && (
-                    <div className="flex items-center gap-1">
-                      <span
-                        className={cn(
-                          'w-2 h-2 rounded-full',
-                          languageColors[repo.language] || languageColors.default
-                        )}
+                  <h4
+                    className="font-semibold mb-1 group-hover:text-primary transition-colors leading-tight"
+                    style={{ fontFamily: 'var(--font-jakarta), sans-serif' }}
+                  >
+                    {repo.name}
+                  </h4>
+
+                  {logo && (
+                    <div
+                      className="relative w-full h-44 rounded-xl overflow-hidden border bg-muted/20 mb-3"
+                      style={{ borderColor: 'oklch(0.282 0.038 152 / 0.10)' }}
+                    >
+                      <Image
+                        src={logo.src}
+                        alt={logo.alt}
+                        fill
+                        className="object-contain p-3"
+                        sizes="(max-width: 768px) 100vw, 33vw"
                       />
-                      {repo.language}
                     </div>
                   )}
-                  <div className="flex items-center gap-1">
-                    <Star className="h-3 w-3" />
-                    {repo.stargazersCount}
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <GitFork className="h-3 w-3" />
-                    {repo.forksCount}
-                  </div>
-                </div>
 
-                <p className="text-xs text-muted-foreground mt-3">
-                  {t('projects.updated')}: {formatDate(repo.updatedAt, language)}
-                </p>
-              </motion.a>
+                  <p
+                    className="text-muted-foreground mb-4 line-clamp-2 leading-relaxed"
+                    style={{ fontSize: '0.78rem' }}
+                  >
+                    {repo.description || t('projects.noDescription')}
+                  </p>
+
+                  <div
+                    className="flex items-center gap-4 text-muted-foreground"
+                    style={{
+                      fontFamily: 'var(--font-geist-mono), monospace',
+                      fontSize: '0.70rem',
+                    }}
+                  >
+                    {repo.language && (
+                      <div className="flex items-center gap-1.5">
+                        <span
+                          className="w-2 h-2 rounded-full flex-shrink-0"
+                          style={{
+                            backgroundColor:
+                              languageColors[repo.language] ?? languageColors.default,
+                          }}
+                        />
+                        {repo.language}
+                      </div>
+                    )}
+                    <div className="flex items-center gap-1">
+                      <Star className="h-3 w-3" />
+                      {repo.stargazersCount}
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <GitFork className="h-3 w-3" />
+                      {repo.forksCount}
+                    </div>
+                  </div>
+
+                  <p
+                    className="text-muted-foreground mt-2.5"
+                    style={{
+                      fontFamily: 'var(--font-geist-mono), monospace',
+                      fontSize: '0.68rem',
+                    }}
+                  >
+                    {t('projects.updated')}: {formatDate(repo.updatedAt, language)}
+                  </p>
+                </motion.a>
               );
             })}
           </div>
         ) : (
-          <div className="text-center py-12 text-muted-foreground">
-            <Github className="h-12 w-12 mx-auto mb-4 opacity-50" />
-            <p>{t('projects.loadError')}</p>
+          <div
+            className="text-center py-16 rounded-[2rem]"
+            style={{
+              backgroundColor: 'oklch(0.282 0.038 152 / 0.05)',
+              border: '1px solid oklch(0.282 0.038 152 / 0.10)',
+            }}
+          >
+            <Github className="h-10 w-10 mx-auto mb-4 opacity-25 text-primary" />
+            <p className="text-sm text-muted-foreground">{t('projects.loadError')}</p>
           </div>
         )}
       </div>

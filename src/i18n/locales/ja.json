@@ -133,12 +133,23 @@
     },
     "linkedinLabel": "LinkedIn",
     "linkedinTitle": "LinkedInでつながりましょう",
-    "linkedinDescription": "プロジェクトや投稿、最新の活動をチェックしてください。"
+    "linkedinDescription": "プロジェクトや投稿、最新の活動をチェックしてください。",
+    "form": {
+      "namePlaceholder": "お名前",
+      "emailPlaceholder": "you@email.com",
+      "messagePlaceholder": "プロジェクトやお問い合わせについて教えてください...",
+      "send": "メッセージを送る",
+      "sending": "送信中...",
+      "success": "メッセージを送信しました！",
+      "error": "送信エラー。直接メールをご利用ください。"
+    }
   },
   "footer": {
     "rights": "全著作権所有。",
     "madeWith": "Next.jsとTailwindCSSで構築",
-    "poweredBy": "提供"
+    "poweredBy": "提供",
+    "navigation": "ナビゲーション",
+    "connect": "つながり"
   },
   "chat": {
     "title": "バーチャルアシスタント",

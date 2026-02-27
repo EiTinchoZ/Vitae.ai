@@ -23,6 +23,10 @@
 # misc
 .DS_Store
 *.pem
+/.agents/
+/.claude/
+/.playwright-cli/
+/output/
 
 # debug
 npm-debug.log*

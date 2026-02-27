@@ -133,12 +133,23 @@
     },
     "linkedinLabel": "LinkedIn",
     "linkedinTitle": "Conecte-se comigo no LinkedIn",
-    "linkedinDescription": "Acompanhe meus projetos, publicações e novidades profissionais."
+    "linkedinDescription": "Acompanhe meus projetos, publicações e novidades profissionais.",
+    "form": {
+      "namePlaceholder": "Seu nome",
+      "emailPlaceholder": "voce@email.com",
+      "messagePlaceholder": "Fale sobre seu projeto ou dúvida...",
+      "send": "Enviar mensagem",
+      "sending": "Enviando...",
+      "success": "Mensagem enviada!",
+      "error": "Erro ao enviar. Use o email direto se persistir."
+    }
   },
   "footer": {
     "rights": "Todos os direitos reservados.",
     "madeWith": "Desenvolvido com Next.js e TailwindCSS",
-    "poweredBy": "Desenvolvido por"
+    "poweredBy": "Desenvolvido por",
+    "navigation": "Navegação",
+    "connect": "Conectar"
   },
   "chat": {
     "title": "Assistente Virtual",

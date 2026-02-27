@@ -149,8 +149,8 @@ export function Certificates() {
                 transition={{ duration: 0.2, delay: index * 0.05 }}
                 onClick={() => setSelectedCert(cert)}
                 className={cn(
-                  'group relative p-6 rounded-xl border bg-background cursor-pointer',
-                  'hover:border-primary/50 hover:shadow-lg hover:-translate-y-1 transition-all'
+                  'group relative p-6 rounded-[2rem] border bg-background cursor-pointer',
+                  'hover:scale-[1.02] hover:border-primary/50 hover:shadow-lg transition-all duration-300'
                 )}
               >
                 {/* Category badge */}
@@ -188,7 +188,7 @@ export function Certificates() {
                 <div className="mt-4">{renderPreview(cert)}</div>
 
                 {/* Hover overlay */}
-                <div className="absolute inset-0 rounded-xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                <div className="absolute inset-0 rounded-[2rem] bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
               </motion.div>
             );
           })}
@@ -225,7 +225,7 @@ export function Certificates() {
               {/* Details */}
               <div className="space-y-4">
                 <div className="flex flex-wrap gap-2">
-                  <Badge variant="outline">
+                  <Badge variant="outline" className="text-accent border-accent/30">
                     {t(`certificates.categories.${selectedCert.category}`)}
                   </Badge>
                   <Badge variant="outline">{selectedCert.period}</Badge>
