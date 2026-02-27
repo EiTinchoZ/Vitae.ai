@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -7,7 +7,6 @@ import { useCvData } from '@/lib/cv-data-context';
 import { useTranslation } from '@/i18n';
 import { IS_DEMO, PERSONAL_URL } from '@/lib/app-config';
 
-// ── Framer Motion variants ── mirrors GSAP staggered fade-up
 const container = {
   hidden: {},
   show: {
@@ -47,9 +46,7 @@ export function Hero() {
     document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Name split for dramatic typography contrast
-  // "Martín Alejandro Bundy Muñoz" → "Martín" + "Bundy"
-  const fullName = cvData.personal.fullName || cvData.personal.name || 'Martín Bundy';
+  const fullName = cvData.personal.fullName || cvData.personal.name || 'Martin Bundy';
   const nameParts = fullName.trim().split(/\s+/);
   const givenName = nameParts[0];
   const familyName = nameParts.length >= 3 ? nameParts[2] : nameParts[1] || 'Bundy';
@@ -57,19 +54,17 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen w-full flex items-end overflow-hidden"
+      className="relative min-h-[100dvh] w-full flex items-end overflow-hidden"
     >
-      {/* ── Background image ── */}
       <Image
         src="/hero-forest.jpeg"
-        alt="Hero background — moody forest"
+        alt="Hero background moody forest"
         fill
         priority
         className="object-cover object-center"
         sizes="100vw"
       />
 
-      {/* ── Gradient overlay: moss green → charcoal ── */}
       <div
         className="absolute inset-0"
         style={{
@@ -78,7 +73,6 @@ export function Hero() {
         }}
       />
 
-      {/* ── Main content — bottom-left layout ── */}
       <div className="relative z-10 w-full px-6 md:px-12 lg:px-20 pb-20 md:pb-28">
         <motion.div
           className="max-w-3xl"
@@ -86,7 +80,6 @@ export function Hero() {
           initial="hidden"
           animate="show"
         >
-          {/* Label row: Vitae.ai · tagline */}
           <motion.div variants={item} className="flex items-center gap-3 mb-6">
             <span
               className="text-xs tracking-[0.3em] uppercase font-semibold"
@@ -106,9 +99,9 @@ export function Hero() {
             </span>
           </motion.div>
 
-          {/* Avatar + location */}
           <motion.div variants={item} className="flex items-center gap-3 mb-3">
-            <div className="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden flex-shrink-0"
+            <div
+              className="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden flex-shrink-0"
               style={{ boxShadow: '0 0 0 2px rgba(242,240,233,0.20)' }}
             >
               <Image
@@ -128,9 +121,7 @@ export function Hero() {
             </span>
           </motion.div>
 
-          {/* ── Dramatic heading: Bold Sans + Massive Serif Italic ── */}
           <motion.h1 variants={item} className="mb-5 leading-none">
-            {/* Line 1: Given name — Plus Jakarta Sans bold */}
             <span
               className="block font-bold text-white"
               style={{
@@ -141,7 +132,6 @@ export function Hero() {
             >
               {givenName}
             </span>
-            {/* Line 2: Family name — Cormorant Garamond italic, massive */}
             <span
               className="block italic"
               style={{
@@ -156,7 +146,6 @@ export function Hero() {
             </span>
           </motion.h1>
 
-          {/* Professional role tagline */}
           <motion.p
             variants={item}
             className="text-base md:text-lg font-light max-w-lg mb-8 leading-relaxed"
@@ -165,10 +154,7 @@ export function Hero() {
             {t('hero.title')}
           </motion.p>
 
-          {/* ── Social links + CTA buttons ── */}
           <motion.div variants={item} className="flex flex-wrap items-center gap-3">
-
-            {/* Social icon buttons */}
             <div className="flex items-center gap-2 mr-1">
               {socialLinks.map((link) => (
                 <a
@@ -189,7 +175,6 @@ export function Hero() {
               ))}
             </div>
 
-            {/* Primary CTA — Clay/Burnt-Orange */}
             <a
               href={primaryCta.href}
               {...(primaryCta.download ? { download: true } : {})}
@@ -203,7 +188,6 @@ export function Hero() {
               {primaryCta.label}
             </a>
 
-            {/* Secondary CTA — ghost */}
             {secondaryCtaHref && (
               <a
                 href={secondaryCtaHref}
@@ -223,7 +207,94 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* ── Status indicator — bottom right ── */}
+      <div className="hidden lg:flex flex-col gap-4 absolute right-8 xl:right-14 bottom-24 z-10 pointer-events-none">
+        <motion.div
+          initial={{ opacity: 0, y: 26 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.9 }}
+          className="rounded-[1.4rem] p-5 w-[280px]"
+          style={{
+            backgroundColor: 'rgba(242,240,233,0.1)',
+            border: '1px solid rgba(242,240,233,0.22)',
+            backdropFilter: 'blur(12px)',
+            boxShadow: '0 22px 40px rgba(0,0,0,0.24)',
+          }}
+        >
+          <p
+            className="text-[10px] uppercase tracking-[0.2em] mb-2"
+            style={{ color: 'rgba(242,240,233,0.62)', fontFamily: 'var(--font-geist-mono), monospace' }}
+          >
+            Career Signal
+          </p>
+          <div className="relative h-16 mb-2">
+            <svg viewBox="0 0 280 64" className="w-full h-full">
+              <motion.path
+                d="M0 44 C24 44, 30 24, 56 24 C82 24, 92 49, 120 49 C148 49, 160 18, 190 18 C220 18, 230 36, 280 36"
+                fill="none"
+                stroke="rgba(204,88,51,0.95)"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 1 }}
+                transition={{ duration: 1.5, delay: 1.1, ease: 'easeInOut' }}
+              />
+              <motion.circle
+                cx="190"
+                cy="18"
+                r="4"
+                fill="oklch(0.565 0.158 37)"
+                animate={{ scale: [1, 1.5, 1], opacity: [1, 0.6, 1] }}
+                transition={{ repeat: Infinity, duration: 2.2 }}
+              />
+            </svg>
+          </div>
+          <div
+            className="flex justify-between text-[10px]"
+            style={{ color: 'rgba(242,240,233,0.45)', fontFamily: 'var(--font-geist-mono), monospace' }}
+          >
+            <span>Impact</span>
+            <span>Performance</span>
+            <span>Growth</span>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 26 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.15 }}
+          className="rounded-[1.4rem] p-5 w-[280px]"
+          style={{
+            backgroundColor: 'rgba(26,26,26,0.45)',
+            border: '1px solid rgba(242,240,233,0.18)',
+            backdropFilter: 'blur(12px)',
+            boxShadow: '0 22px 40px rgba(0,0,0,0.24)',
+          }}
+        >
+          <p
+            className="text-[10px] uppercase tracking-[0.2em] mb-2"
+            style={{ color: 'rgba(242,240,233,0.55)', fontFamily: 'var(--font-geist-mono), monospace' }}
+          >
+            Active Stack
+          </p>
+          <div className="space-y-2.5">
+            {['AI/ML', 'Industrial Eng.', 'Automation'].map((tag, i) => (
+              <div key={tag} className="flex items-center justify-between gap-3">
+                <span className="text-xs" style={{ color: 'rgba(242,240,233,0.82)' }}>{tag}</span>
+                <div className="h-1.5 flex-1 rounded-full bg-white/10 overflow-hidden">
+                  <motion.div
+                    className="h-full rounded-full"
+                    style={{ backgroundColor: 'oklch(0.565 0.158 37)' }}
+                    initial={{ width: 0 }}
+                    animate={{ width: `${88 - i * 14}%` }}
+                    transition={{ duration: 1.1, delay: 1.3 + i * 0.12 }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -242,7 +313,6 @@ export function Hero() {
         </span>
       </motion.div>
 
-      {/* ── Scroll cue — bottom center ── */}
       <motion.button
         onClick={scrollToAbout}
         initial={{ opacity: 0 }}

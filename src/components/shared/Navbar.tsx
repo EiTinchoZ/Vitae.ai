@@ -100,9 +100,9 @@ export function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  'px-2.5 py-1.5 rounded-full text-xs font-medium transition-all whitespace-nowrap',
+                  'relative px-2.5 py-1.5 rounded-full text-xs font-medium transition-all whitespace-nowrap',
                   activeSection === item.href
-                    ? 'bg-primary/15 text-primary'
+                    ? 'text-primary'
                     : 'text-muted-foreground hover:text-foreground hover:bg-foreground/5'
                 )}
                 onClick={(e) => {
@@ -110,7 +110,18 @@ export function Navbar() {
                   handleNavClick(item.href);
                 }}
               >
-                {t(item.key)}
+                {activeSection === item.href && (
+                  <motion.span
+                    layoutId="nav-active-pill"
+                    className="absolute inset-0 rounded-full"
+                    style={{
+                      background: 'linear-gradient(90deg, rgba(46,64,54,0.17), rgba(204,88,51,0.14))',
+                      border: '1px solid rgba(46,64,54,0.18)',
+                    }}
+                    transition={{ type: 'spring', stiffness: 420, damping: 34, mass: 0.8 }}
+                  />
+                )}
+                <span className="relative z-10">{t(item.key)}</span>
               </a>
             ))}
           </div>

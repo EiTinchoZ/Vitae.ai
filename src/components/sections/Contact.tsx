@@ -187,7 +187,7 @@ export function Contact() {
                   {item.href ? (
                     <a
                       href={item.href}
-                      className="flex items-center gap-4 p-4 rounded-[1.25rem] border hover:-translate-y-0.5 transition-all group"
+                      className="flex items-center gap-4 p-4 rounded-[1.25rem] border hover:-translate-y-0.5 transition-all group nura-hover-card"
                       style={{
                         backgroundColor: 'oklch(0.282 0.038 152 / 0.05)',
                         borderColor: 'oklch(0.282 0.038 152 / 0.16)',
@@ -203,7 +203,7 @@ export function Contact() {
                     </a>
                   ) : (
                     <div
-                      className="flex items-center gap-4 p-4 rounded-[1.25rem] border"
+                      className="flex items-center gap-4 p-4 rounded-[1.25rem] border nura-hover-card"
                       style={{
                         backgroundColor: 'oklch(0.282 0.038 152 / 0.05)',
                         borderColor: 'oklch(0.282 0.038 152 / 0.16)',
@@ -230,7 +230,7 @@ export function Contact() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 px-5 py-3 rounded-full border hover:-translate-y-0.5 active:scale-[0.97] transition-all text-base font-semibold"
+                  className="flex items-center gap-3 px-5 py-3 rounded-full border hover:-translate-y-0.5 active:scale-[0.97] transition-all text-base font-semibold nura-hover-card"
                   style={{
                     backgroundColor: 'oklch(0.282 0.038 152 / 0.05)',
                     borderColor: 'oklch(0.282 0.038 152 / 0.20)',
@@ -250,7 +250,7 @@ export function Contact() {
             viewport={{ once: true }}
           >
             <div
-              className="h-full rounded-[2rem] border p-7 md:p-8 flex flex-col"
+              className="h-full rounded-[2rem] border p-7 md:p-8 flex flex-col nura-hover-card"
               style={{
                 backgroundColor: 'oklch(0.127 0 0)',
                 borderColor: 'rgba(242,240,233,0.14)',

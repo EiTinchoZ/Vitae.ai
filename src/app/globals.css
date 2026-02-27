@@ -158,6 +158,25 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-image:
+      radial-gradient(circle at 10% 15%, color-mix(in oklch, var(--accent) 8%, transparent) 0%, transparent 36%),
+      radial-gradient(circle at 88% 78%, color-mix(in oklch, var(--primary) 12%, transparent) 0%, transparent 42%);
+    background-attachment: fixed;
+  }
+
+  section {
+    position: relative;
+  }
+
+  button,
+  a {
+    transition:
+      transform 260ms cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 260ms cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 260ms cubic-bezier(0.16, 1, 0.3, 1),
+      background-color 260ms cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 260ms cubic-bezier(0.16, 1, 0.3, 1),
+      color 260ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 }
 
@@ -251,4 +270,16 @@ body::before {
   background-color: color-mix(in oklch, var(--card) 70%, transparent);
   backdrop-filter: blur(14px);
   border-color: color-mix(in oklch, var(--border) 70%, transparent);
+}
+
+.nura-hover-card {
+  transition:
+    transform 340ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 340ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 340ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nura-hover-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 24px 40px -22px rgba(26, 26, 26, 0.35);
 }
