@@ -9,7 +9,9 @@
 </p>
 
 <p align="center">
-  <a href="https://vitae.lat"><strong>🌐 Live Demo → vitae.lat</strong></a>
+  <a href="https://portfolio-eitinchos-projects.vercel.app"><strong>🌐 Live CV → portfolio-eitinchos-projects.vercel.app</strong></a>
+  &nbsp;&nbsp;·&nbsp;&nbsp;
+  <a href="https://vitae-demo-eitinchos-projects.vercel.app"><strong>🚀 Vitae Platform (preview)</strong></a>
 </p>
 
 <p align="center">
@@ -248,7 +250,7 @@ The easiest way is **[Vercel](https://vercel.com)** — the same company that ma
 4. Click **"Deploy"** → Vercel builds and publishes it automatically
 
 Your site will be live at `your-project-name.vercel.app` in about 60 seconds.
-You can then connect a custom domain (like `vitae.lat`) for free.
+You can then connect a custom domain for free.
 
 ---
 
@@ -284,11 +286,25 @@ This is my take on what a modern professional identity can look like in 2026.
 
 ---
 
+## What's Next — Vitae Platform
+
+This portfolio is the **first piece** of something bigger.
+
+**Vitae Platform** is the next step: a tool that lets *anyone* build their own AI-powered
+interactive CV — not just developers. Upload your resume, and the platform generates a
+full cinematic portfolio for you.
+
+> 🚀 **Early preview:** [vitae-demo-eitinchos-projects.vercel.app](https://vitae-demo-eitinchos-projects.vercel.app)
+
+The platform is currently in private development. Stay tuned.
+
+---
+
 ## Author
 
 **Martin Bundy** — Industrial Engineering student + AI Technician
 
-- 🌐 [vitae.lat](https://vitae.lat)
+- 🌐 [portfolio-eitinchos-projects.vercel.app](https://portfolio-eitinchos-projects.vercel.app)
 - 💻 [github.com/EiTinchoZ](https://github.com/EiTinchoZ)
 - 💼 [linkedin.com/in/martin-bundy](https://www.linkedin.com/in/martin-bundy)
 
