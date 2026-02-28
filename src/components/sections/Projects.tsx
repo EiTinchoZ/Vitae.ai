@@ -74,12 +74,47 @@ export function Projects() {
 
   return (
     <SectionWrapper id="projects" className="bg-muted/20">
-      <SectionTitle
-        subtitle={t('projects.subtitle')}
-        action={<SectionQA section="projects" suggestedQuestions={suggestedQuestions} />}
+      <div
+        className="relative overflow-hidden rounded-[2.8rem] border px-5 py-10 md:px-8 md:py-12 lg:px-10 lg:py-14"
+        style={{
+          borderColor: 'oklch(0.282 0.038 152 / 0.16)',
+          boxShadow: '0 30px 64px -44px rgba(26,26,26,0.38)',
+        }}
       >
-        {t('projects.title')}
-      </SectionTitle>
+        <Image
+          src="/images/backgrounds/education-nura-bg.jpeg"
+          alt=""
+          aria-hidden
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(to bottom, rgba(242,240,233,0.95) 0%, rgba(242,240,233,0.90) 42%, rgba(242,240,233,0.96) 100%)',
+          }}
+        />
+        <motion.div
+          className="absolute inset-0 pointer-events-none"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.85 }}
+          style={{
+            background:
+              'radial-gradient(circle at 12% 14%, rgba(46,64,54,0.14) 0%, rgba(46,64,54,0) 39%), radial-gradient(circle at 88% 86%, rgba(204,88,51,0.11) 0%, rgba(204,88,51,0) 42%)',
+          }}
+        />
+
+        <div className="relative z-10">
+          <SectionTitle
+            subtitle={t('projects.subtitle')}
+            action={<SectionQA section="projects" suggestedQuestions={suggestedQuestions} />}
+          >
+            {t('projects.title')}
+          </SectionTitle>
 
       {/* ── Featured Project — dark moss hero card ── */}
       <motion.div
@@ -120,7 +155,7 @@ export function Projects() {
               <span
                 className="text-xs tracking-[0.2em] uppercase"
                 style={{
-                  color: 'rgba(242,240,233,0.38)',
+                  color: 'rgba(242,240,233,0.54)',
                   fontFamily: 'var(--font-geist-mono), monospace',
                 }}
               >
@@ -146,7 +181,7 @@ export function Projects() {
                   style={{
                     fontFamily: 'var(--font-cormorant), serif',
                     fontSize: 'clamp(1.1rem, 2.5vw, 1.45rem)',
-                    color: 'rgba(242,240,233,0.50)',
+                    color: 'rgba(242,240,233,0.66)',
                   }}
                 >
                   {featuredProject.event}
@@ -154,7 +189,7 @@ export function Projects() {
 
                 <p
                   className="text-sm leading-relaxed mb-7"
-                  style={{ color: 'rgba(242,240,233,0.60)' }}
+                  style={{ color: 'rgba(242,240,233,0.74)' }}
                 >
                   {featuredProject.longDescription}
                 </p>
@@ -176,7 +211,7 @@ export function Projects() {
                       />
                       <span
                         className="text-sm leading-relaxed"
-                        style={{ color: 'rgba(242,240,233,0.65)' }}
+                        style={{ color: 'rgba(242,240,233,0.76)' }}
                       >
                         {feature}
                       </span>
@@ -226,7 +261,7 @@ export function Projects() {
                     </p>
                     <p
                       className="text-sm leading-relaxed"
-                      style={{ color: 'rgba(242,240,233,0.60)' }}
+                      style={{ color: 'rgba(242,240,233,0.74)' }}
                     >
                       {featuredProject.impact}
                     </p>
@@ -525,6 +560,8 @@ export function Projects() {
             <p className="text-sm text-muted-foreground">{t('projects.loadError')}</p>
           </div>
         )}
+      </div>
+        </div>
       </div>
     </SectionWrapper>
   );

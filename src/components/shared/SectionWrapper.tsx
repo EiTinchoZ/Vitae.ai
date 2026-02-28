@@ -32,11 +32,24 @@ export function SectionWrapper({
   return (
     <motion.section
       id={id}
-      initial={{ opacity: 0, y: 52, filter: 'blur(6px)' }}
-      whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+      initial={{ opacity: 0, y: 42 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-100px' }}
       transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
+        '[--background:oklch(0.962_0.007_83)]',
+        '[--card:oklch(1_0_0)]',
+        '[--popover:oklch(1_0_0)]',
+        '[--foreground:oklch(0.16_0.006_83)]',
+        '[--card-foreground:oklch(0.16_0.006_83)]',
+        '[--popover-foreground:oklch(0.16_0.006_83)]',
+        '[--secondary:oklch(0.93_0.006_83)]',
+        '[--secondary-foreground:oklch(0.25_0.02_152)]',
+        '[--muted:oklch(0.93_0.006_83)]',
+        '[--muted-foreground:oklch(0.34_0.012_152)]',
+        '[--border:oklch(0.875_0.008_83)]',
+        '[--input:oklch(0.875_0.008_83)]',
+        'text-foreground',
         densityClass,
         fullHeight && 'min-h-[100dvh] flex items-center',
         className
@@ -89,7 +102,7 @@ export function SectionTitle({
       </div>
       <div className="flex items-center justify-center gap-4 mb-4">
         <h2
-          className="text-3xl md:text-5xl font-bold tracking-tight"
+          className="text-3xl md:text-5xl font-bold tracking-tight text-foreground"
           style={{ fontFamily: 'var(--font-jakarta), sans-serif' }}
         >
           {children}

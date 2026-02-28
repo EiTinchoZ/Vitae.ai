@@ -22,7 +22,8 @@
       "dl": "Deep Learning",
       "genai": "Generative AI",
       "python": "Python"
-    }
+    },
+    "availableForHire": "Available for hire"
   },
   "about": {
     "title": "About Me",
@@ -67,7 +68,9 @@
     "completed": "Completed",
     "inProgress": "In Progress",
     "estimatedProgress": "Estimated progress",
-    "completionLabel": "Completion"
+    "completionLabel": "Completion",
+    "quote": "continuous learning.",
+    "quoteDescription": "Technical training applied to real-world AI and engineering solutions."
   },
   "certificates": {
     "title": "Certifications",
@@ -142,7 +145,9 @@
       "sending": "Sending...",
       "success": "Message sent!",
       "error": "Error sending. Use direct email if it persists."
-    }
+    },
+    "tagline": "let's build something real.",
+    "formTagline": "direct message."
   },
   "footer": {
     "rights": "All rights reserved.",
@@ -497,5 +502,17 @@
     "cta": "Start loading",
     "loadingTitle": "Initializing profile",
     "progressLabel": "Progress: {progress}%"
+  },
+  "manifesto": {
+    "eyebrow": "The Manifesto",
+    "leftQuote": "Traditional CVs tell you what someone did.",
+    "rightTop": "This portfolio shows you",
+    "rightBig": "who I am.",
+    "copy": "Conversational AI, real projects, verifiable skills.",
+    "stats": {
+      "hackathonLabel": "Hackathon Winner",
+      "bilingualLabel": "Bilingual Certified",
+      "degreesLabel": "Industrial Eng + AI"
+    }
   }
 }

@@ -22,7 +22,8 @@
       "dl": "深度学习",
       "genai": "生成式AI",
       "python": "Python"
-    }
+    },
+    "availableForHire": "可接受招聘"
   },
   "about": {
     "title": "关于我",
@@ -67,7 +68,9 @@
     "completed": "已完成",
     "inProgress": "进行中",
     "estimatedProgress": "预计进度",
-    "completionLabel": "完成"
+    "completionLabel": "完成",
+    "quote": "持续学习。",
+    "quoteDescription": "应用于实际AI和工程解决方案的技术培训。"
   },
   "certificates": {
     "title": "证书",
@@ -142,7 +145,9 @@
       "sending": "发送中...",
       "success": "消息已发送！",
       "error": "发送失败。如果持续请使用直接邮件。"
-    }
+    },
+    "tagline": "让我们共同创造真实的事物。",
+    "formTagline": "直接消息。"
   },
   "footer": {
     "rights": "版权所有。",
@@ -497,5 +502,17 @@
     "cta": "开始加载",
     "loadingTitle": "正在初始化档案",
     "progressLabel": "进度：{progress}%"
+  },
+  "manifesto": {
+    "eyebrow": "宣言",
+    "leftQuote": "传统简历告诉你一个人做了什么。",
+    "rightTop": "这个作品集向你展示",
+    "rightBig": "我是谁。",
+    "copy": "对话式AI，真实项目，可验证的技能。",
+    "stats": {
+      "hackathonLabel": "黑客马拉松冠军",
+      "bilingualLabel": "双语认证",
+      "degreesLabel": "工业工程 + AI"
+    }
   }
 }

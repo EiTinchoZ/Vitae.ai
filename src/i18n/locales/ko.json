@@ -22,7 +22,8 @@
       "dl": "딥러닝",
       "genai": "생성형 AI",
       "python": "Python"
-    }
+    },
+    "availableForHire": "채용 가능"
   },
   "about": {
     "title": "소개",
@@ -67,7 +68,9 @@
     "completed": "수료",
     "inProgress": "진행 중",
     "estimatedProgress": "예상 진행률",
-    "completionLabel": "완료"
+    "completionLabel": "완료",
+    "quote": "지속적인 학습.",
+    "quoteDescription": "실제 AI 및 엔지니어링 솔루션에 적용된 기술 교육."
   },
   "certificates": {
     "title": "자격증",
@@ -142,7 +145,9 @@
       "sending": "전송 중...",
       "success": "메시지가 전송되었습니다!",
       "error": "전송 오류. 계속되면 직접 이메일을 사용하세요."
-    }
+    },
+    "tagline": "진짜를 함께 만들어 봅시다.",
+    "formTagline": "직접 메시지."
   },
   "footer": {
     "rights": "모든 권리 보유.",
@@ -497,5 +502,17 @@
     "cta": "로딩 시작",
     "loadingTitle": "프로필 초기화 중",
     "progressLabel": "진행률: {progress}%"
+  },
+  "manifesto": {
+    "eyebrow": "매니페스토",
+    "leftQuote": "전통적인 이력서는 누군가가 무엇을 했는지 알려줍니다.",
+    "rightTop": "이 포트폴리오는",
+    "rightBig": "내가 누구인지 보여줍니다.",
+    "copy": "대화형 AI, 실제 프로젝트, 검증 가능한 기술.",
+    "stats": {
+      "hackathonLabel": "해커톤 우승자",
+      "bilingualLabel": "이중 언어 인증",
+      "degreesLabel": "산업공학 + AI"
+    }
   }
 }

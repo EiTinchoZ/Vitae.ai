@@ -1,68 +1,182 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
-import { Brain, Code2, Factory, Cpu } from 'lucide-react';
+import { Brain, Code2, Factory, Cpu, MousePointer2, Check } from 'lucide-react';
 import { SectionWrapper, SectionTitle } from '@/components/shared/SectionWrapper';
 import { useCvData } from '@/lib/cv-data-context';
 import { useTranslation } from '@/i18n';
 
 const SectionQA = dynamic(
-  () => import('@/components/ai/SectionQA').then(m => m.SectionQA),
+  () => import('@/components/ai/SectionQA').then((m) => m.SectionQA),
   { ssr: false }
 );
 const SkillRecommender = dynamic(
-  () => import('@/components/ai/SkillRecommender').then(m => m.SkillRecommender),
+  () => import('@/components/ai/SkillRecommender').then((m) => m.SkillRecommender),
   { ssr: false }
 );
 
-// ─────────────────────────────────────────────────────────────────
-// CARD 1 — AI / ML: Live Terminal Typewriter
-// Dark charcoal card, monospace, streaming skill names
-// ─────────────────────────────────────────────────────────────────
-function AITerminalCard({ skills, label }: { skills: string[]; label: string }) {
-  const [currentIdx, setCurrentIdx] = useState(0);
-  const [displayed, setDisplayed] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
+function DiagnosticShufflerCard({ label, skills }: { label: string; skills: string[] }) {
+  const initialStack = skills.slice(0, 3).map((skill, i) => {
+    const values = ['Expert', 'Advanced', 'Proficient'];
+    const notes = ['Production pipelines', 'Core expertise', 'Applied projects'];
+    return { title: skill, value: values[i] ?? 'Proficient', note: notes[i] ?? 'Applied' };
+  });
+  const [stack, setStack] = useState(
+    initialStack.length
+      ? initialStack
+      : [
+          { title: 'Machine Learning', value: 'Expert', note: 'Production pipelines' },
+          { title: 'Deep Learning', value: 'Advanced', note: 'Neural network design' },
+          { title: 'LLM Integration', value: 'Proficient', note: 'Applied projects' },
+        ]
+  );
 
   useEffect(() => {
-    if (!skills.length) return;
-    const current = skills[currentIdx];
+    const id = setInterval(() => {
+      setStack((prev) => {
+        const next = [...prev];
+        const last = next.pop();
+        if (last) next.unshift(last);
+        return next;
+      });
+    }, 3000);
+    return () => clearInterval(id);
+  }, []);
 
-    if (!isDeleting && displayed === current) {
-      const t = setTimeout(() => setIsDeleting(true), 1900);
-      return () => clearTimeout(t);
+  return (
+    <div
+      className="rounded-[2rem] p-6 flex flex-col h-full min-h-[300px] border"
+      style={{
+        backgroundColor: 'oklch(0.962 0.007 83)',
+        borderColor: 'oklch(0.282 0.038 152 / 0.16)',
+      }}
+    >
+      <div className="flex items-center gap-2 mb-1">
+        <Brain className="h-4 w-4 text-primary" />
+        <span className="text-xs tracking-[0.28em] uppercase font-semibold text-accent">{label}</span>
+      </div>
+      <p
+        className="text-3xl font-medium italic mb-5 text-primary leading-tight"
+        style={{ fontFamily: 'var(--font-cormorant), serif' }}
+      >
+        diagnostic shuffle.
+      </p>
+
+      <div className="relative h-[170px] mb-4">
+        {stack.map((card, idx) => (
+          <motion.div
+            key={card.title}
+            layout
+            transition={{ duration: 0.65, ease: [0.34, 1.56, 0.64, 1] }}
+            className="absolute inset-x-0 rounded-[1.2rem] border p-4"
+            style={{
+              top: `${idx * 16}px`,
+              zIndex: 40 - idx,
+              scale: 1 - idx * 0.06,
+              opacity: 1 - idx * 0.18,
+              backgroundColor: idx === 0 ? 'rgba(255,255,255,0.96)' : 'rgba(255,255,255,0.86)',
+              borderColor: 'oklch(0.282 0.038 152 / 0.16)',
+              boxShadow: idx === 0 ? '0 14px 24px -16px rgba(26,26,26,0.45)' : 'none',
+            }}
+          >
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <p
+                  className="text-[0.62rem] uppercase tracking-[0.18em]"
+                  style={{ color: 'oklch(0.40 0.012 152)', fontFamily: 'var(--font-geist-mono), monospace' }}
+                >
+                  AI Skill
+                </p>
+                <p className="text-sm font-semibold text-foreground mt-1">{card.title}</p>
+              </div>
+              <span
+                className="text-sm font-semibold"
+                style={{ color: 'oklch(0.565 0.158 37)', fontFamily: 'var(--font-geist-mono), monospace' }}
+              >
+                {card.value}
+              </span>
+            </div>
+            <p className="text-xs mt-2" style={{ color: 'oklch(0.40 0.012 152)' }}>
+              {card.note}
+            </p>
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="flex flex-wrap gap-2 mt-auto">
+        {skills.slice(0, 3).map((tag) => (
+          <span
+            key={tag}
+            className="px-2.5 py-1 rounded-full text-xs"
+            style={{
+              backgroundColor: 'oklch(0.282 0.038 152 / 0.08)',
+              border: '1px solid oklch(0.282 0.038 152 / 0.16)',
+              color: 'oklch(0.282 0.038 152)',
+              fontFamily: 'var(--font-geist-mono), monospace',
+            }}
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function TelemetryTypewriterCard({ label, skills }: { label: string; skills: string[] }) {
+  const messages = useMemo(() => {
+    const dynamicSkills = skills.slice(0, 3).map((s) => `Mapping ${s} proficiency...`);
+    return [
+      'Parsing model architecture...',
+      'Configuring training pipeline...',
+      'Optimizing inference latency...',
+      ...dynamicSkills,
+    ];
+  }, [skills]);
+
+  const [msgIdx, setMsgIdx] = useState(0);
+  const [displayed, setDisplayed] = useState('');
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    if (!messages.length) return;
+    const current = messages[msgIdx];
+
+    if (!deleting && displayed === current) {
+      const hold = setTimeout(() => setDeleting(true), 1300);
+      return () => clearTimeout(hold);
     }
 
     const t = setTimeout(() => {
-      if (isDeleting && displayed === '') {
-        setIsDeleting(false);
-        setCurrentIdx(i => (i + 1) % skills.length);
+      if (deleting && displayed === '') {
+        setDeleting(false);
+        setMsgIdx((i) => (i + 1) % messages.length);
         return;
       }
-      setDisplayed(d =>
-        isDeleting ? d.slice(0, -1) : current.slice(0, d.length + 1)
+      setDisplayed((prev) =>
+        deleting ? prev.slice(0, -1) : current.slice(0, prev.length + 1)
       );
-    }, isDeleting ? 36 : 60);
+    }, deleting ? 34 : 52);
+
     return () => clearTimeout(t);
-  }, [displayed, isDeleting, currentIdx, skills]);
+  }, [messages, msgIdx, displayed, deleting]);
 
   return (
     <div
       className="rounded-[2rem] p-6 flex flex-col h-full min-h-[300px] border"
       style={{
         backgroundColor: 'oklch(0.155 0.012 152)',
-        borderColor: 'rgba(242,240,233,0.08)',
+        borderColor: 'rgba(242,240,233,0.10)',
       }}
     >
-      {/* Header */}
       <div className="flex items-center justify-between mb-5">
         <div className="flex items-center gap-2">
-          <Brain className="h-4 w-4 flex-shrink-0" style={{ color: 'oklch(0.565 0.158 37)' }} />
+          <Code2 className="h-4 w-4" style={{ color: 'oklch(0.565 0.158 37)' }} />
           <span
             className="text-xs tracking-[0.28em] uppercase font-semibold"
-            style={{ color: 'rgba(242,240,233,0.58)' }}
+            style={{ color: 'rgba(242,240,233,0.62)' }}
           >
             {label}
           </span>
@@ -70,39 +184,38 @@ function AITerminalCard({ skills, label }: { skills: string[]; label: string }) 
         <div className="flex items-center gap-1.5">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
           <span
-            className="text-xs tracking-[0.18em] uppercase"
-            style={{ fontFamily: 'var(--font-geist-mono), monospace', color: 'rgba(242,240,233,0.32)' }}
+            className="text-[0.62rem] uppercase tracking-[0.18em]"
+            style={{ color: 'rgba(242,240,233,0.48)', fontFamily: 'var(--font-geist-mono), monospace' }}
           >
-            live
+            Live Feed
           </span>
         </div>
       </div>
 
-      {/* Terminal window */}
       <div
-        className="flex-1 rounded-xl p-4 mb-4 flex flex-col justify-between"
+        className="flex-1 rounded-[1.2rem] border p-4 md:p-5"
         style={{
           backgroundColor: 'rgba(242,240,233,0.04)',
-          border: '1px solid rgba(242,240,233,0.07)',
+          borderColor: 'rgba(242,240,233,0.09)',
         }}
       >
         <p
-          className="text-xs mb-4 select-none"
-          style={{ fontFamily: 'var(--font-geist-mono), monospace', color: 'rgba(242,240,233,0.25)' }}
+          className="text-xs mb-4"
+          style={{ color: 'rgba(242,240,233,0.52)', fontFamily: 'var(--font-geist-mono), monospace' }}
         >
-          $ vitae stream --category=ai
+          $ telemetry.stream --mode=adaptive
         </p>
 
-        <div className="flex items-start gap-2">
+        <div className="flex items-start gap-2 min-h-12">
           <span
-            className="text-sm font-bold mt-0.5 flex-shrink-0"
+            className="text-sm font-bold mt-0.5"
             style={{ color: 'oklch(0.565 0.158 37)', fontFamily: 'var(--font-geist-mono), monospace' }}
           >
-            ›
+            {'>'}
           </span>
           <p
-            className="text-sm leading-relaxed text-white"
-            style={{ fontFamily: 'var(--font-geist-mono), monospace', minHeight: '1.5rem' }}
+            className="text-sm leading-relaxed"
+            style={{ color: 'rgba(242,240,233,0.92)', fontFamily: 'var(--font-geist-mono), monospace' }}
           >
             {displayed}
             <span
@@ -112,222 +225,156 @@ function AITerminalCard({ skills, label }: { skills: string[]; label: string }) 
           </p>
         </div>
 
-        <div className="mt-3 flex gap-1">
-          {[0, 1, 2, 3, 4, 5, 6, 7].map(i => (
+        <div className="mt-5 grid grid-cols-7 gap-1.5">
+          {[...Array(7)].map((_, i) => (
             <motion.div
               key={i}
-              className="flex-1 rounded-sm"
-              style={{ backgroundColor: 'rgba(242,240,233,0.12)', height: '3px' }}
-              animate={{ opacity: [0.3, i === currentIdx % 8 ? 1 : 0.3, 0.3] }}
-              transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2 }}
+              className="h-1.5 rounded-full"
+              style={{ backgroundColor: 'rgba(242,240,233,0.16)' }}
+              animate={{ opacity: [0.25, i === msgIdx % 7 ? 1 : 0.3, 0.25] }}
+              transition={{ duration: 1.2, repeat: Infinity, delay: i * 0.08 }}
             />
           ))}
         </div>
       </div>
-
-      {/* Active skill tags */}
-      <div className="flex flex-wrap gap-1.5">
-        {skills.slice(0, 5).map((s, i) => (
-          <span
-            key={s}
-            className="px-2.5 py-1 rounded-full text-xs transition-all duration-300"
-            style={{
-              backgroundColor: i === currentIdx % skills.length
-                ? 'rgba(204,88,51,0.22)'
-                : 'rgba(242,240,233,0.07)',
-              color: i === currentIdx % skills.length
-                ? 'oklch(0.565 0.158 37)'
-                : 'rgba(242,240,233,0.42)',
-              border: `1px solid ${i === currentIdx % skills.length ? 'rgba(204,88,51,0.38)' : 'rgba(242,240,233,0.09)'}`,
-              fontFamily: 'var(--font-geist-mono), monospace',
-            }}
-          >
-            {s}
-          </span>
-        ))}
-      </div>
     </div>
   );
 }
 
-// ─────────────────────────────────────────────────────────────────
-// CARD 2 — Programming: Animated Skill Bars
-// Cream/card bg, Cormorant italic header, clay+moss bars
-// ─────────────────────────────────────────────────────────────────
-function ProgrammingBarsCard({ skills, label }: { skills: string[]; label: string }) {
-  const top = skills.slice(0, 7);
-  // Levels: descending from 96% — visually implies priority order
-  const levels = top.map((_, i) => Math.round(96 - (i / top.length) * 38));
+function SchedulerCard({ label, skills }: { label: string; skills: string[] }) {
+  const week = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+  const dayPositions = [
+    { x: 8, y: 34 },
+    { x: 21, y: 34 },
+    { x: 34, y: 34 },
+    { x: 47, y: 34 },
+    { x: 60, y: 34 },
+    { x: 73, y: 34 },
+    { x: 86, y: 34 },
+  ];
 
-  return (
-    <div className="rounded-[2rem] p-6 flex flex-col h-full min-h-[300px] bg-card border border-border">
-      <div className="flex items-center gap-2 mb-1">
-        <Code2 className="h-4 w-4 text-primary" />
-        <span className="text-xs tracking-[0.28em] uppercase font-semibold text-accent">
-          {label}
-        </span>
-      </div>
-      <p
-        className="text-3xl font-medium italic mb-6 text-primary leading-tight"
-        style={{ fontFamily: 'var(--font-cormorant), serif' }}
-      >
-        stack técnico.
-      </p>
+  const [step, setStep] = useState(0);
 
-      <div className="flex-1 space-y-3.5">
-        {top.map((skill, i) => (
-          <div key={skill}>
-            <div className="flex items-center justify-between mb-1.5">
-              <span className="text-xs font-medium text-foreground/80">{skill}</span>
-              <span
-                className="text-xs tabular-nums"
-                style={{
-                  fontFamily: 'var(--font-geist-mono), monospace',
-                  color: 'oklch(0.565 0.158 37)',
-                }}
-              >
-                {levels[i]}%
-              </span>
-            </div>
-            <div className="h-1.5 rounded-full bg-border overflow-hidden">
-              <motion.div
-                className="h-full rounded-full"
-                style={{
-                  backgroundColor:
-                    i === 0
-                      ? 'oklch(0.565 0.158 37)'
-                      : i < 3
-                        ? 'oklch(0.282 0.038 152)'
-                        : 'oklch(0.282 0.038 152 / 0.55)',
-                }}
-                initial={{ width: 0 }}
-                whileInView={{ width: `${levels[i]}%` }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.9, delay: i * 0.07, ease: 'easeOut' }}
-              />
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
+  useEffect(() => {
+    const id = setInterval(() => {
+      setStep((prev) => (prev + 1) % 9);
+    }, 1150);
+    return () => clearInterval(id);
+  }, []);
 
-// ─────────────────────────────────────────────────────────────────
-// CARD 3 — Industrial: Blueprint Schematic
-// CSS grid background, moss nodes, Cormorant italic
-// ─────────────────────────────────────────────────────────────────
-function IndustrialBlueprintCard({ skills, label }: { skills: string[]; label: string }) {
+  const activeDay = step < 7 ? step : null;
+  const saveActive = step === 7;
+  const cursorVisible = step !== 8;
+  const cursorPos = step < 7 ? dayPositions[step] : { x: 82, y: 79 };
+
   return (
     <div
-      className="rounded-[2rem] p-6 flex flex-col h-full min-h-[300px] relative overflow-hidden border"
+      className="rounded-[2rem] p-6 flex flex-col h-full min-h-[300px] border"
       style={{
         backgroundColor: 'oklch(0.962 0.007 83)',
-        borderColor: 'oklch(0.282 0.038 152 / 0.18)',
+        borderColor: 'oklch(0.282 0.038 152 / 0.16)',
       }}
     >
-      {/* Blueprint grid lines */}
-      <div
-        className="absolute inset-0 opacity-[0.065] pointer-events-none"
-        style={{
-          backgroundImage:
-            'linear-gradient(oklch(0.282 0.038 152) 1px, transparent 1px), linear-gradient(90deg, oklch(0.282 0.038 152) 1px, transparent 1px)',
-          backgroundSize: '22px 22px',
-        }}
-      />
-      {/* Corner crosshairs */}
-      <div
-        className="absolute top-5 right-5 w-6 h-6 opacity-20 pointer-events-none"
-        style={{
-          backgroundImage:
-            'linear-gradient(oklch(0.282 0.038 152) 1px, transparent 1px), linear-gradient(90deg, oklch(0.282 0.038 152) 1px, transparent 1px)',
-          backgroundSize: '50% 50%',
-        }}
-      />
+      <div className="flex items-center gap-2 mb-1">
+        <Factory className="h-4 w-4 text-primary" />
+        <span className="text-xs tracking-[0.28em] uppercase font-semibold text-accent">{label}</span>
+      </div>
+      <p
+        className="text-3xl font-medium italic mb-5 text-primary leading-tight"
+        style={{ fontFamily: 'var(--font-cormorant), serif' }}
+      >
+        protocol scheduler.
+      </p>
 
-      <div className="relative z-10 flex flex-col h-full">
-        <div className="flex items-center gap-2 mb-1">
-          <Factory className="h-4 w-4 text-primary" />
-          <span className="text-xs tracking-[0.28em] uppercase font-semibold text-accent">
-            {label}
-          </span>
-        </div>
-        <p
-          className="text-3xl font-medium italic mb-5 text-primary leading-tight"
-          style={{ fontFamily: 'var(--font-cormorant), serif' }}
-        >
-          ingeniería.
-        </p>
-
-        {/* Skill nodes */}
-        <div className="flex-1 flex flex-wrap gap-2 content-start">
-          {skills.slice(0, 9).map((skill, i) => (
-            <motion.span
-              key={skill}
-              initial={{ opacity: 0, scale: 0.85 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.055, duration: 0.3, ease: 'easeOut' }}
-              className="px-3 py-1.5 rounded-full text-xs font-medium"
+      <div
+        className="relative rounded-[1.2rem] border p-4 mb-4"
+        style={{
+          backgroundColor: 'rgba(255,255,255,0.82)',
+          borderColor: 'oklch(0.282 0.038 152 / 0.16)',
+        }}
+      >
+        <div className="grid grid-cols-7 gap-1.5 mb-5">
+          {week.map((d, i) => (
+            <div
+              key={`${d}-${i}`}
+              className="h-9 rounded-lg flex items-center justify-center text-xs font-semibold border"
               style={{
-                backgroundColor:
-                  i === 0
-                    ? 'oklch(0.282 0.038 152)'
-                    : i < 3
-                      ? 'oklch(0.282 0.038 152 / 0.14)'
-                      : 'oklch(0.282 0.038 152 / 0.07)',
-                color:
-                  i === 0
-                    ? 'oklch(0.962 0.007 83)'
-                    : 'oklch(0.282 0.038 152)',
-                border: '1px solid oklch(0.282 0.038 152 / 0.22)',
+                backgroundColor: activeDay === i ? 'oklch(0.282 0.038 152)' : 'rgba(255,255,255,0.88)',
+                color: activeDay === i ? 'oklch(0.962 0.007 83)' : 'oklch(0.282 0.038 152)',
+                borderColor: activeDay === i ? 'oklch(0.282 0.038 152)' : 'oklch(0.282 0.038 152 / 0.22)',
+                transition: 'all 280ms cubic-bezier(0.16, 1, 0.3, 1)',
               }}
             >
-              {skill}
-            </motion.span>
+              {d}
+            </div>
           ))}
         </div>
 
-        {/* Schematic label */}
-        <div className="mt-4 flex items-center gap-2">
-          <div
-            className="h-px flex-1 opacity-20"
-            style={{ backgroundColor: 'oklch(0.282 0.038 152)' }}
-          />
-          <span
-            className="text-xs tracking-[0.25em] uppercase opacity-35"
-            style={{ fontFamily: 'var(--font-geist-mono), monospace', color: 'oklch(0.282 0.038 152)' }}
+        <div className="flex justify-end">
+          <motion.button
+            type="button"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold"
+            animate={{ scale: saveActive ? [1, 0.96, 1] : 1 }}
+            transition={{ duration: 0.35 }}
+            style={{
+              backgroundColor: saveActive ? 'oklch(0.565 0.158 37)' : 'oklch(0.282 0.038 152)',
+              color: 'oklch(0.962 0.007 83)',
+            }}
           >
-            ING-{skills.length.toString().padStart(2, '0')}
-          </span>
-          <div
-            className="h-px flex-1 opacity-20"
-            style={{ backgroundColor: 'oklch(0.282 0.038 152)' }}
-          />
+            {saveActive && <Check className="h-3 w-3" />}
+            Save
+          </motion.button>
         </div>
+
+        <motion.div
+          className="absolute pointer-events-none"
+          animate={{
+            left: `${cursorPos.x}%`,
+            top: `${cursorPos.y}%`,
+            opacity: cursorVisible ? 1 : 0,
+            scale: saveActive ? [1, 0.92, 1] : 1,
+          }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          style={{ translateX: '-50%', translateY: '-50%' }}
+        >
+          <div className="h-7 w-7 rounded-full border flex items-center justify-center bg-white/95 shadow-sm">
+            <MousePointer2 className="h-3.5 w-3.5" style={{ color: 'oklch(0.565 0.158 37)' }} />
+          </div>
+        </motion.div>
+      </div>
+
+      <div className="flex flex-wrap gap-1.5 mt-auto">
+        {skills.slice(0, 4).map((skill) => (
+          <span
+            key={skill}
+            className="px-2.5 py-1 rounded-full text-xs"
+            style={{
+              backgroundColor: 'oklch(0.282 0.038 152 / 0.08)',
+              border: '1px solid oklch(0.282 0.038 152 / 0.16)',
+              color: 'oklch(0.282 0.038 152)',
+              fontFamily: 'var(--font-geist-mono), monospace',
+            }}
+          >
+            {skill}
+          </span>
+        ))}
       </div>
     </div>
   );
 }
 
-// ─────────────────────────────────────────────────────────────────
-// CARD 4 — Technology: Metric Dashboard Tiles
-// Card bg, icon dots, subtle grid layout
-// ─────────────────────────────────────────────────────────────────
 function TechDashboardCard({ skills, label }: { skills: string[]; label: string }) {
   return (
     <div className="rounded-[2rem] p-6 flex flex-col h-full min-h-[300px] bg-card border border-border">
       <div className="flex items-center gap-2 mb-1">
         <Cpu className="h-4 w-4 text-primary" />
-        <span className="text-xs tracking-[0.28em] uppercase font-semibold text-accent">
-          {label}
-        </span>
+        <span className="text-xs tracking-[0.28em] uppercase font-semibold text-accent">{label}</span>
       </div>
       <p
         className="text-3xl font-medium italic mb-5 text-primary/80 leading-tight"
         style={{ fontFamily: 'var(--font-cormorant), serif' }}
       >
-        tools & tech.
+        tools and tech.
       </p>
 
       <div className="flex-1 grid grid-cols-2 gap-2">
@@ -355,9 +402,7 @@ function TechDashboardCard({ skills, label }: { skills: string[]; label: string 
                       : 'oklch(0.282 0.038 152 / 0.35)',
               }}
             />
-            <span className="text-xs font-medium text-foreground/75 truncate leading-tight">
-              {skill}
-            </span>
+            <span className="text-xs font-medium text-foreground/75 truncate leading-tight">{skill}</span>
           </motion.div>
         ))}
       </div>
@@ -365,15 +410,16 @@ function TechDashboardCard({ skills, label }: { skills: string[]; label: string 
   );
 }
 
-// ─────────────────────────────────────────────────────────────────
-// MAIN SECTION
-// ─────────────────────────────────────────────────────────────────
 const cardVariants = {
   hidden: { opacity: 0, y: 28 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, delay: i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] },
+    transition: {
+      duration: 0.7,
+      delay: i * 0.1,
+      ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
+    },
   }),
 };
 
@@ -382,86 +428,97 @@ export function Skills() {
   const { cvData } = useCvData();
 
   const byCategory = {
-    ai:          cvData.skills.filter(s => s.category === 'ai').map(s => s.name),
-    programming: cvData.skills.filter(s => s.category === 'programming').map(s => s.name),
-    industrial:  cvData.skills.filter(s => s.category === 'industrial').map(s => s.name),
-    technology:  cvData.skills.filter(s => s.category === 'technology').map(s => s.name),
+    ai: cvData.skills.filter((s) => s.category === 'ai').map((s) => s.name),
+    programming: cvData.skills.filter((s) => s.category === 'programming').map((s) => s.name),
+    industrial: cvData.skills.filter((s) => s.category === 'industrial').map((s) => s.name),
+    technology: cvData.skills.filter((s) => s.category === 'technology').map((s) => s.name),
   };
 
   const suggestedQuestions = tArray('qa.suggestions.skills');
 
   return (
-    <SectionWrapper id="skills" className="bg-muted/20">
-      <SectionTitle
-        subtitle={t('skills.subtitle')}
-        action={<SectionQA section="skills" suggestedQuestions={suggestedQuestions} />}
+    <SectionWrapper id="skills" className="bg-[oklch(0.986_0.003_83)]">
+      <div
+        className="relative overflow-hidden rounded-[2.7rem] border px-5 py-10 md:px-9 md:py-12 lg:px-12 lg:py-14"
+        style={{
+          backgroundColor: 'oklch(1 0 0)',
+          borderColor: 'oklch(0.875 0.008 83 / 0.9)',
+          boxShadow: '0 28px 62px -42px rgba(26,26,26,0.42)',
+        }}
       >
-        {t('skills.title')}
-      </SectionTitle>
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              'radial-gradient(circle at 12% 15%, rgba(46,64,54,0.10) 0%, rgba(46,64,54,0) 42%), radial-gradient(circle at 86% 88%, rgba(204,88,51,0.10) 0%, rgba(204,88,51,0) 40%)',
+          }}
+        />
 
-      {/* 2×2 grid of functional artifact cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+        <div className="relative z-10">
+          <SectionTitle
+            subtitle={t('skills.subtitle')}
+            action={<SectionQA section="skills" suggestedQuestions={suggestedQuestions} />}
+          >
+            {t('skills.title')}
+          </SectionTitle>
 
-        <motion.div
-          custom={0}
-          variants={cardVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-60px' }}
-          className="h-full"
-        >
-          <AITerminalCard
-            skills={byCategory.ai}
-            label={t('skills.categories.ai')}
-          />
-        </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+            <motion.div
+              custom={0}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-60px' }}
+              className="h-full"
+            >
+              <DiagnosticShufflerCard label={t('skills.categories.ai')} skills={byCategory.ai} />
+            </motion.div>
 
-        <motion.div
-          custom={1}
-          variants={cardVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-60px' }}
-          className="h-full"
-        >
-          <ProgrammingBarsCard
-            skills={byCategory.programming}
-            label={t('skills.categories.programming')}
-          />
-        </motion.div>
+            <motion.div
+              custom={1}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-60px' }}
+              className="h-full"
+            >
+              <TelemetryTypewriterCard
+                skills={byCategory.programming}
+                label={t('skills.categories.programming')}
+              />
+            </motion.div>
 
-        <motion.div
-          custom={2}
-          variants={cardVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-60px' }}
-          className="h-full"
-        >
-          <IndustrialBlueprintCard
-            skills={byCategory.industrial}
-            label={t('skills.categories.industrial')}
-          />
-        </motion.div>
+            <motion.div
+              custom={2}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-60px' }}
+              className="h-full"
+            >
+              <SchedulerCard skills={byCategory.industrial} label={t('skills.categories.industrial')} />
+            </motion.div>
 
-        <motion.div
-          custom={3}
-          variants={cardVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-60px' }}
-          className="h-full"
-        >
-          <TechDashboardCard
-            skills={byCategory.technology}
-            label={t('skills.categories.technology')}
-          />
-        </motion.div>
+            <motion.div
+              custom={3}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-60px' }}
+              className="h-full"
+            >
+              <TechDashboardCard
+                skills={byCategory.technology}
+                label={t('skills.categories.technology')}
+              />
+            </motion.div>
+          </div>
 
+          <div className="mt-10 md:mt-12">
+            <SkillRecommender />
+          </div>
+        </div>
       </div>
-
-      {/* AI Skill Recommender — preserved from original */}
-      <SkillRecommender />
     </SectionWrapper>
   );
 }

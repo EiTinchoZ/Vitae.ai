@@ -22,7 +22,8 @@
       "dl": "Deep Learning",
       "genai": "IA Generativa",
       "python": "Python"
-    }
+    },
+    "availableForHire": "Disponible para contratación"
   },
   "about": {
     "title": "Sobre Mi",
@@ -67,7 +68,9 @@
     "completed": "Completado",
     "inProgress": "En curso",
     "estimatedProgress": "Progreso estimado",
-    "completionLabel": "Finalización"
+    "completionLabel": "Finalización",
+    "quote": "aprendizaje continuo.",
+    "quoteDescription": "Formacion tecnica aplicada a soluciones reales de IA e ingenieria."
   },
   "certificates": {
     "title": "Certificaciones",
@@ -142,7 +145,9 @@
       "sending": "Enviando...",
       "success": "¡Mensaje enviado!",
       "error": "Error al enviar. Usa el email directo si persiste."
-    }
+    },
+    "tagline": "construyamos algo real.",
+    "formTagline": "mensaje directo."
   },
   "footer": {
     "rights": "Todos los derechos reservados.",
@@ -497,5 +502,17 @@
     "cta": "Iniciar carga",
     "loadingTitle": "Inicializando perfil",
     "progressLabel": "Progreso: {progress}%"
+  },
+  "manifesto": {
+    "eyebrow": "El Manifiesto",
+    "leftQuote": "Los CVs tradicionales te dicen que hizo alguien.",
+    "rightTop": "Este portfolio te muestra",
+    "rightBig": "quien soy.",
+    "copy": "IA conversacional, proyectos reales, habilidades verificables.",
+    "stats": {
+      "hackathonLabel": "Ganador de Hackathon",
+      "bilingualLabel": "Bilingüe Certificado",
+      "degreesLabel": "Ing. Industrial + IA"
+    }
   }
 }

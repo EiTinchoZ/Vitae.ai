@@ -167,63 +167,138 @@ export function Education() {
   if (IS_DEMO) {
     return (
       <SectionWrapper id="education" className="bg-muted/20">
-        <SectionTitle
-          subtitle={t('education.subtitle')}
-          action={<SectionQA section="education" suggestedQuestions={suggestedQuestions} />}
+        <div
+          className="relative overflow-hidden rounded-[2.6rem] border px-5 py-10 md:px-8 md:py-12"
+          style={{
+            borderColor: 'oklch(0.282 0.038 152 / 0.16)',
+            boxShadow: '0 28px 58px -42px rgba(26,26,26,0.36)',
+          }}
         >
-          {t('education.title')}
-        </SectionTitle>
-        <div className="max-w-3xl mx-auto">{educationCards}</div>
+          <Image
+            src="/images/backgrounds/education-nura-bg.jpeg"
+            alt=""
+            aria-hidden
+            fill
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                'linear-gradient(to bottom, rgba(242,240,233,0.95) 0%, rgba(242,240,233,0.90) 42%, rgba(242,240,233,0.96) 100%)',
+            }}
+          />
+          <motion.div
+            className="absolute inset-0 pointer-events-none"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            style={{
+              background:
+                'radial-gradient(circle at 10% 16%, rgba(46,64,54,0.12) 0%, rgba(46,64,54,0) 38%), radial-gradient(circle at 86% 84%, rgba(204,88,51,0.10) 0%, rgba(204,88,51,0) 40%)',
+            }}
+          />
+
+          <div className="relative z-10">
+            <SectionTitle
+              subtitle={t('education.subtitle')}
+              action={<SectionQA section="education" suggestedQuestions={suggestedQuestions} />}
+            >
+              {t('education.title')}
+            </SectionTitle>
+            <div className="max-w-3xl mx-auto">{educationCards}</div>
+          </div>
+        </div>
       </SectionWrapper>
     );
   }
 
   return (
     <SectionWrapper id="education" className="bg-muted/20">
-      <SectionTitle
-        subtitle={t('education.subtitle')}
-        action={<SectionQA section="education" suggestedQuestions={suggestedQuestions} />}
+      <div
+        className="relative overflow-hidden rounded-[2.8rem] border px-5 py-10 md:px-8 md:py-12 lg:px-10 lg:py-14"
+        style={{
+          borderColor: 'oklch(0.282 0.038 152 / 0.16)',
+          boxShadow: '0 30px 64px -44px rgba(26,26,26,0.38)',
+        }}
       >
-        {t('education.title')}
-      </SectionTitle>
-
-      <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-8 lg:gap-10 items-start">
+        <Image
+          src="/images/backgrounds/education-nura-bg.jpeg"
+          alt=""
+          aria-hidden
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+          priority
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(to bottom, rgba(242,240,233,0.95) 0%, rgba(242,240,233,0.90) 42%, rgba(242,240,233,0.96) 100%)',
+          }}
+        />
         <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          className="absolute inset-0 pointer-events-none"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.45 }}
-          className="space-y-5"
-        >
-          <div className="relative overflow-hidden rounded-[2rem] border bg-muted/20">
-            <Image
-              src="/education-highlight.jpg"
-              alt="Martin Bundy en un evento academico"
-              width={1400}
-              height={900}
-              className="h-56 sm:h-72 md:h-[360px] lg:h-[440px] w-full object-cover object-top"
-              priority
-            />
-          </div>
-          <div
-            className="rounded-[1.5rem] p-6 border"
-            style={{
-              backgroundColor: 'oklch(0.282 0.038 152 / 0.06)',
-              borderColor: 'oklch(0.282 0.038 152 / 0.14)',
-            }}
+          transition={{ duration: 0.85 }}
+          style={{
+            background:
+              'radial-gradient(circle at 12% 14%, rgba(46,64,54,0.14) 0%, rgba(46,64,54,0) 39%), radial-gradient(circle at 88% 86%, rgba(204,88,51,0.11) 0%, rgba(204,88,51,0) 42%)',
+          }}
+        />
+
+        <div className="relative z-10">
+          <SectionTitle
+            subtitle={t('education.subtitle')}
+            action={<SectionQA section="education" suggestedQuestions={suggestedQuestions} />}
           >
-            <p
-              className="text-3xl md:text-4xl italic leading-tight text-primary"
-              style={{ fontFamily: 'var(--font-cormorant), serif' }}
+            {t('education.title')}
+          </SectionTitle>
+
+          <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-8 lg:gap-10 items-start">
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45 }}
+              className="space-y-5"
             >
-              aprendizaje continuo.
-            </p>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Formacion tecnica aplicada a soluciones reales de IA e ingenieria.
-            </p>
+              <div className="relative overflow-hidden rounded-[2rem] border bg-muted/20">
+                <Image
+                  src="/education-highlight.jpg"
+                  alt="Martin Bundy en un evento academico"
+                  width={1400}
+                  height={900}
+                  className="h-56 sm:h-72 md:h-[360px] lg:h-[440px] w-full object-cover object-top"
+                  priority
+                />
+              </div>
+              <div
+                className="rounded-[1.5rem] p-6 border"
+                style={{
+                  backgroundColor: 'oklch(0.282 0.038 152 / 0.06)',
+                  borderColor: 'oklch(0.282 0.038 152 / 0.14)',
+                }}
+              >
+                <p
+                  className="text-3xl md:text-4xl italic leading-tight text-primary"
+                  style={{ fontFamily: 'var(--font-cormorant), serif' }}
+                >
+                  {t('education.quote')}
+                </p>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  {t('education.quoteDescription')}
+                </p>
+              </div>
+            </motion.div>
+            <div>{educationCards}</div>
           </div>
-        </motion.div>
-        <div>{educationCards}</div>
+        </div>
       </div>
     </SectionWrapper>
   );

@@ -22,7 +22,8 @@
       "dl": "ディープラーニング",
       "genai": "生成AI",
       "python": "Python"
-    }
+    },
+    "availableForHire": "採用可能"
   },
   "about": {
     "title": "自己紹介",
@@ -67,7 +68,9 @@
     "completed": "修了",
     "inProgress": "在学中",
     "estimatedProgress": "推定進捗",
-    "completionLabel": "修了"
+    "completionLabel": "修了",
+    "quote": "継続的な学習。",
+    "quoteDescription": "AIと工学の実際のソリューションに適用された技術トレーニング。"
   },
   "certificates": {
     "title": "資格・認定",
@@ -142,7 +145,9 @@
       "sending": "送信中...",
       "success": "メッセージを送信しました！",
       "error": "送信エラー。直接メールをご利用ください。"
-    }
+    },
+    "tagline": "本物のものを一緒に作りましょう。",
+    "formTagline": "ダイレクトメッセージ。"
   },
   "footer": {
     "rights": "全著作権所有。",
@@ -497,5 +502,17 @@
     "cta": "読み込み開始",
     "loadingTitle": "プロフィールを初期化中",
     "progressLabel": "進行状況：{progress}%"
+  },
+  "manifesto": {
+    "eyebrow": "マニフェスト",
+    "leftQuote": "従来の履歴書は、その人が何をしたかを伝えます。",
+    "rightTop": "このポートフォリオは",
+    "rightBig": "私が誰かを見せます。",
+    "copy": "会話型AI、実際のプロジェクト、検証可能なスキル。",
+    "stats": {
+      "hackathonLabel": "ハッカソン優勝",
+      "bilingualLabel": "バイリンガル認定",
+      "degreesLabel": "産業工学 + AI"
+    }
   }
 }

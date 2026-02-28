@@ -96,10 +96,45 @@ export function Certificates() {
   };
 
   return (
-    <SectionWrapper id="certificates">
-      <SectionTitle subtitle={t('certificates.subtitle')}>
-        {t('certificates.title')}
-      </SectionTitle>
+    <SectionWrapper id="certificates" className="bg-muted/20">
+      <div
+        className="relative overflow-hidden rounded-[2.8rem] border px-5 py-10 md:px-8 md:py-12 lg:px-10 lg:py-14"
+        style={{
+          borderColor: 'oklch(0.282 0.038 152 / 0.16)',
+          boxShadow: '0 30px 64px -44px rgba(26,26,26,0.38)',
+        }}
+      >
+        <Image
+          src="/images/backgrounds/education-nura-bg.jpeg"
+          alt=""
+          aria-hidden
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(to bottom, rgba(242,240,233,0.84) 0%, rgba(242,240,233,0.76) 42%, rgba(242,240,233,0.88) 100%)',
+          }}
+        />
+        <motion.div
+          className="absolute inset-0 pointer-events-none"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.85 }}
+          style={{
+            background:
+              'radial-gradient(circle at 12% 14%, rgba(46,64,54,0.14) 0%, rgba(46,64,54,0) 39%), radial-gradient(circle at 88% 86%, rgba(204,88,51,0.11) 0%, rgba(204,88,51,0) 42%)',
+          }}
+        />
+
+        <div className="relative z-10">
+          <SectionTitle subtitle={t('certificates.subtitle')}>
+            {t('certificates.title')}
+          </SectionTitle>
 
       {/* Category filters */}
       <div className="flex flex-wrap justify-center gap-2 mb-8">
@@ -195,11 +230,11 @@ export function Certificates() {
         </AnimatePresence>
       </motion.div>
 
-      {/* Certificate Modal */}
-      <Dialog open={!!selectedCert} onOpenChange={() => setSelectedCert(null)}>
-        <DialogContent className="max-w-2xl">
-          {selectedCert && (
-            <div className="relative">
+          {/* Certificate Modal */}
+          <Dialog open={!!selectedCert} onOpenChange={() => setSelectedCert(null)}>
+            <DialogContent className="max-w-2xl">
+              {selectedCert && (
+                <div className="relative">
               {/* Close button */}
               <button
                 onClick={() => setSelectedCert(null)}
@@ -295,10 +330,12 @@ export function Certificates() {
                   <ChevronRight className="h-4 w-4 ml-1" />
                 </Button>
               </div>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
+                </div>
+              )}
+            </DialogContent>
+          </Dialog>
+        </div>
+      </div>
     </SectionWrapper>
   );
 }

@@ -22,7 +22,8 @@
       "dl": "Deep Learning",
       "genai": "Generative KI",
       "python": "Python"
-    }
+    },
+    "availableForHire": "Verfügbar für Anstellungen"
   },
   "about": {
     "title": "Uber mich",
@@ -67,7 +68,9 @@
     "completed": "Abgeschlossen",
     "inProgress": "In Bearbeitung",
     "estimatedProgress": "Geschatzter Fortschritt",
-    "completionLabel": "Abschluss"
+    "completionLabel": "Abschluss",
+    "quote": "kontinuierliches Lernen.",
+    "quoteDescription": "Technische Ausbildung für reale KI- und Ingenieurlösungen."
   },
   "certificates": {
     "title": "Zertifikate",
@@ -142,7 +145,9 @@
       "sending": "Senden...",
       "success": "Nachricht gesendet!",
       "error": "Fehler beim Senden. Nutze die direkte E-Mail wenn es anhält."
-    }
+    },
+    "tagline": "lass uns etwas Echtes bauen.",
+    "formTagline": "direkte Nachricht."
   },
   "footer": {
     "rights": "Alle Rechte vorbehalten.",
@@ -497,5 +502,17 @@
     "cta": "Laden starten",
     "loadingTitle": "Profil wird initialisiert",
     "progressLabel": "Fortschritt: {progress}%"
+  },
+  "manifesto": {
+    "eyebrow": "Das Manifest",
+    "leftQuote": "Traditionelle Lebensläufe sagen dir, was jemand getan hat.",
+    "rightTop": "Dieses Portfolio zeigt dir",
+    "rightBig": "wer ich bin.",
+    "copy": "Konversationelle KI, echte Projekte, überprüfbare Fähigkeiten.",
+    "stats": {
+      "hackathonLabel": "Hackathon-Sieger",
+      "bilingualLabel": "Zweisprachig Zertifiziert",
+      "degreesLabel": "Ing. Industrial + KI"
+    }
   }
 }

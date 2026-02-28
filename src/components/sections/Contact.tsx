@@ -86,11 +86,46 @@ export function Contact() {
 
   return (
     <SectionWrapper id="contact" className="bg-muted/20">
-      <SectionTitle subtitle={t('contact.subtitle')}>
-        {t('contact.title')}
-      </SectionTitle>
+      <div
+        className="relative overflow-hidden rounded-[2.8rem] border px-5 py-10 md:px-8 md:py-12 lg:px-10 lg:py-14"
+        style={{
+          borderColor: 'oklch(0.282 0.038 152 / 0.16)',
+          boxShadow: '0 30px 64px -44px rgba(26,26,26,0.38)',
+        }}
+      >
+        <Image
+          src="/images/backgrounds/education-nura-bg.jpeg"
+          alt=""
+          aria-hidden
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(to bottom, rgba(242,240,233,0.95) 0%, rgba(242,240,233,0.90) 42%, rgba(242,240,233,0.96) 100%)',
+          }}
+        />
+        <motion.div
+          className="absolute inset-0 pointer-events-none"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.85 }}
+          style={{
+            background:
+              'radial-gradient(circle at 12% 14%, rgba(46,64,54,0.14) 0%, rgba(46,64,54,0) 39%), radial-gradient(circle at 88% 86%, rgba(204,88,51,0.11) 0%, rgba(204,88,51,0) 42%)',
+          }}
+        />
 
-      <div className="max-w-6xl mx-auto">
+        <div className="relative z-10">
+          <SectionTitle subtitle={t('contact.subtitle')}>
+            {t('contact.title')}
+          </SectionTitle>
+
+          <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-8">
           {/* Contact Info */}
           <motion.div
@@ -116,7 +151,7 @@ export function Contact() {
                 className="text-3xl md:text-4xl italic text-primary/85 mb-4"
                 style={{ fontFamily: 'var(--font-cormorant), serif' }}
               >
-                construyamos algo real.
+                {t('contact.tagline')}
               </p>
               <p className="text-muted-foreground">
                 {t('contact.description')}
@@ -270,7 +305,7 @@ export function Contact() {
                     color: 'oklch(0.565 0.158 37)',
                   }}
                 >
-                  mensaje directo.
+                  {t('contact.formTagline')}
                 </p>
                 <p className="text-sm" style={{ color: 'rgba(242,240,233,0.65)' }}>
                   {t('contact.cta.description')}
@@ -280,15 +315,17 @@ export function Contact() {
               <form onSubmit={handleContactSubmit} className="flex-1 flex flex-col gap-3">
                 <div className="space-y-1.5">
                   <label
+                    htmlFor="contact-name"
                     className="text-xs uppercase tracking-[0.14em]"
                     style={{
-                      color: 'rgba(242,240,233,0.60)',
+                      color: 'rgba(242,240,233,0.72)',
                       fontFamily: 'var(--font-geist-mono), monospace',
                     }}
                   >
                     {t('contact.form.namePlaceholder')}
                   </label>
                   <input
+                    id="contact-name"
                     type="text"
                     placeholder={t('contact.form.namePlaceholder')}
                     value={formName}
@@ -306,15 +343,17 @@ export function Contact() {
                 </div>
                 <div className="space-y-1.5">
                   <label
+                    htmlFor="contact-email"
                     className="text-xs uppercase tracking-[0.14em]"
                     style={{
-                      color: 'rgba(242,240,233,0.60)',
+                      color: 'rgba(242,240,233,0.72)',
                       fontFamily: 'var(--font-geist-mono), monospace',
                     }}
                   >
                     {t('contact.info.email')}
                   </label>
                   <input
+                    id="contact-email"
                     type="email"
                     placeholder={t('contact.form.emailPlaceholder')}
                     value={formEmail}
@@ -332,15 +371,17 @@ export function Contact() {
                 </div>
                 <div className="space-y-1.5">
                   <label
+                    htmlFor="contact-message"
                     className="text-xs uppercase tracking-[0.14em]"
                     style={{
-                      color: 'rgba(242,240,233,0.60)',
+                      color: 'rgba(242,240,233,0.72)',
                       fontFamily: 'var(--font-geist-mono), monospace',
                     }}
                   >
                     {t('contact.form.messagePlaceholder')}
                   </label>
                   <textarea
+                    id="contact-message"
                     placeholder={t('contact.form.messagePlaceholder')}
                     value={formMessage}
                     onChange={(e) => setFormMessage(e.target.value)}
@@ -424,7 +465,7 @@ export function Contact() {
                     >
                       2+
                     </p>
-                    <p className="text-xs mt-1" style={{ color: 'rgba(242,240,233,0.58)' }}>
+                    <p className="text-xs mt-1" style={{ color: 'rgba(242,240,233,0.70)' }}>
                       {t('contact.stats.careers')}
                     </p>
                   </div>
@@ -438,7 +479,7 @@ export function Contact() {
                     >
                       {cvData.certificates.length}
                     </p>
-                    <p className="text-xs mt-1" style={{ color: 'rgba(242,240,233,0.58)' }}>
+                    <p className="text-xs mt-1" style={{ color: 'rgba(242,240,233,0.70)' }}>
                       {t('contact.stats.certifications')}
                     </p>
                   </div>
@@ -452,7 +493,7 @@ export function Contact() {
                     >
                       C2
                     </p>
-                    <p className="text-xs mt-1" style={{ color: 'rgba(242,240,233,0.58)' }}>
+                    <p className="text-xs mt-1" style={{ color: 'rgba(242,240,233,0.70)' }}>
                       {t('contact.stats.english')}
                     </p>
                   </div>
@@ -460,6 +501,8 @@ export function Contact() {
               </div>
             </div>
           </motion.div>
+        </div>
+      </div>
         </div>
       </div>
     </SectionWrapper>
