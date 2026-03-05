@@ -77,7 +77,7 @@ function ExperienceCard({ exp, index }: { exp: ExpItem; index: number }) {
 
   return (
     <article
-      className="experience-stack-card rounded-[2.5rem] p-6 sm:p-8 md:p-10 border"
+      className="experience-stack-card relative rounded-[2.5rem] p-6 sm:p-8 md:p-10 border"
       style={{
         backgroundColor: theme.bg,
         borderColor: theme.border,
@@ -224,9 +224,8 @@ function ExperienceStack({
 
         if (index < cards.length - 1) {
           gsap.to(card, {
-            scale: 0.972,
-            y: -12,
-            opacity: 0.72,
+            scale: 0.985,
+            y: -8,
             ease: 'none',
             scrollTrigger: {
               trigger: shells[index + 1],
@@ -259,8 +258,8 @@ function ExperienceStack({
             </span>
           </div>
 
-          <div data-header-reveal className="flex items-center justify-center gap-4 mb-4">
-            <h2 className="text-3xl md:text-4xl font-bold" style={{ color: 'rgba(242,240,233,0.95)' }}>
+          <div data-header-reveal className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold" style={{ color: 'rgba(242,240,233,0.95)' }}>
               {t('experience.title')}
             </h2>
             <SectionQA section="experience" suggestedQuestions={suggestedQuestions} />
@@ -272,13 +271,13 @@ function ExperienceStack({
         </div>
       </div>
 
-      <div className="relative mx-auto px-4 md:px-8 max-w-4xl" style={{ height: `calc(${(total - 1) * 44}vh + 580px)` }}>
+      <div className="relative mx-auto px-4 md:px-8 max-w-4xl" style={{ height: `calc(${(total - 1) * 46}vh + 580px)` }}>
         {items.map((exp, i) => (
           <div
             key={exp.id}
             className="experience-stack-shell sticky"
             style={{
-              top: `${90 + i * 22}px`,
+              top: `${92 + i * 30}px`,
               zIndex: 10 + i * 10,
             }}
           >
@@ -297,7 +296,7 @@ export function Experience() {
   const { cvData } = useCvData();
 
   const suggestedQuestions = tArray('qa.suggestions.experience');
-  const preferredOrder = ['exp-2', 'exp-1', 'exp-deta'];
+  const preferredOrder = ['exp-vitae', 'exp-conecta', 'exp-tyr', 'exp-sena', 'exp-tinio', 'exp-deta'];
   const experienceItems = [...cvData.experience].sort((a, b) => {
     const indexA = preferredOrder.indexOf(a.id);
     const indexB = preferredOrder.indexOf(b.id);

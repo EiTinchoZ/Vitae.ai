@@ -1,4 +1,4 @@
-﻿import { ImageResponse } from 'next/og';
+import { ImageResponse } from 'next/og';
 import type { NextRequest } from 'next/server';
 
 export const runtime = 'edge';
@@ -145,7 +145,7 @@ export function GET(request: NextRequest) {
           <span>|</span>
           <span style={{ color: '#C4C0B4' }}>ES / EN (C2)</span>
           <span>|</span>
-          <span style={{ color: '#CC5833', fontWeight: 600 }}>vitae.lat</span>
+          <span style={{ color: '#CC5833', fontWeight: 600 }}>portfolio-eitinchos-projects.vercel.app</span>
         </div>
       </div>
     ),

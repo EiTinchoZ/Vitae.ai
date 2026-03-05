@@ -48,7 +48,7 @@ export function Education() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45, delay: index * 0.08 }}
-          className="rounded-[2rem] border bg-card/80 p-6 md:p-8 nura-hover-card"
+          className="rounded-[2rem] border bg-card/80 p-6 md:p-8 hover-card"
           style={{ borderColor: 'oklch(0.282 0.038 152 / 0.18)' }}
         >
           <div className="flex flex-wrap items-start justify-between gap-4">
@@ -175,7 +175,7 @@ export function Education() {
           }}
         >
           <Image
-            src="/images/backgrounds/education-nura-bg.jpeg"
+            src="/images/backgrounds/section-bg.jpeg"
             alt=""
             aria-hidden
             fill
@@ -225,7 +225,7 @@ export function Education() {
         }}
       >
         <Image
-          src="/images/backgrounds/education-nura-bg.jpeg"
+          src="/images/backgrounds/section-bg.jpeg"
           alt=""
           aria-hidden
           fill

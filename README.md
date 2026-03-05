@@ -44,7 +44,7 @@ Instead of handing a recruiter a boring PDF, you give them a full web experience
 | Static HTML page | Interactive, animated, cinematic |
 | Recruiter reads passively | Recruiter can ask questions to an AI |
 | One language | 10 languages, with switcher in navbar |
-| Generic Tailwind design | Custom "Nura-style" design system |
+| Generic Tailwind design | Custom editorial design system |
 | No AI | AI chatbot powered by Llama 3.1 via Groq |
 
 ---
@@ -64,9 +64,9 @@ You don't need to be a developer to understand this. Here's what each piece does
 | **Groq API** | Runs the AI inference (the chatbot's brain) | **Free tier**, much faster than OpenAI |
 | **Llama 3.1 70B** | The AI language model powering the chatbot | Open-source, high quality, free via Groq |
 
-### Design System — "Cinematic Nura-style"
+### Design System — Cinematic Editorial
 
-The visual identity is inspired by editorial and premium health-tech aesthetics.
+The visual identity is inspired by editorial and premium tech aesthetics.
 Everything is intentional: organic backgrounds, dramatic typography contrast, warm palette.
 
 ```

@@ -377,7 +377,7 @@ function TechDashboardCard({ skills, label }: { skills: string[]; label: string 
         tools and tech.
       </p>
 
-      <div className="flex-1 grid grid-cols-2 gap-2">
+      <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-2">
         {skills.slice(0, 8).map((skill, i) => (
           <motion.div
             key={skill}
@@ -402,7 +402,7 @@ function TechDashboardCard({ skills, label }: { skills: string[]; label: string 
                       : 'oklch(0.282 0.038 152 / 0.35)',
               }}
             />
-            <span className="text-xs font-medium text-foreground/75 truncate leading-tight">{skill}</span>
+            <span className="text-xs font-medium text-foreground/75 leading-tight">{skill}</span>
           </motion.div>
         ))}
       </div>

@@ -15,12 +15,13 @@ if (typeof window !== 'undefined') {
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   const { cvData } = useCvData();
 
+  const cvFile = language === 'en' ? '/cv/CV_Martin_Bundy_2026_EN.pdf' : '/cv/CV_Martin_Bundy_2026_ES.pdf';
   const primaryCta = IS_DEMO
     ? { href: '/demo', label: t('hero.demoCta') }
-    : { href: '/cv/CV_Martin_Bundy_2026.pdf', label: t('hero.downloadCV'), download: true };
+    : { href: cvFile, label: t('hero.downloadCV'), download: true };
 
   const secondaryCtaHref = IS_DEMO ? PERSONAL_URL : null;
 
@@ -237,8 +238,8 @@ export function Hero() {
         }}
       />
 
-      <div data-hero-profile-shell className="absolute inset-0 z-[8] pointer-events-none flex items-center justify-center">
-        <div className="relative w-[clamp(230px,30vw,420px)] aspect-square">
+      <div data-hero-profile-shell className="absolute inset-0 z-[8] pointer-events-none flex flex-col items-center justify-start sm:justify-center pt-32 sm:pt-0">
+        <div className="relative w-[clamp(160px,42vw,420px)] aspect-square">
           <div
             className="absolute inset-0 rounded-full"
             style={{
@@ -259,16 +260,48 @@ export function Hero() {
             />
           </div>
         </div>
+        {/* Badge: below the photo on both mobile and desktop */}
+        <div
+          data-hero-status
+          className="mt-4 sm:mt-5 flex items-center gap-2 px-3 py-1.5 rounded-full"
+          style={{
+            backgroundColor: 'rgba(26,26,26,0.45)',
+            backdropFilter: 'blur(10px)',
+            border: '1px solid rgba(242,240,233,0.14)',
+          }}
+        >
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
+          <span
+            className="text-xs tracking-[0.22em] uppercase"
+            style={{
+              fontFamily: 'var(--font-geist-mono), monospace',
+              color: 'rgba(242,240,233,0.88)',
+            }}
+          >
+            {t('hero.availableForHire')}
+          </span>
+        </div>
+      </div>
+
+      {/* Mobile-only slogan: above the photo */}
+      <div data-hero-reveal className="sm:hidden absolute top-24 left-0 right-0 z-10 flex items-center justify-center gap-3">
+        <span className="text-xs tracking-[0.3em] uppercase font-semibold" style={{ color: 'oklch(0.565 0.158 37)' }}>
+          Vitae.ai
+        </span>
+        <div className="h-px w-12 flex-shrink-0" style={{ backgroundColor: 'oklch(0.565 0.158 37)' }} />
+        <span className="text-xs tracking-[0.2em] uppercase font-medium" style={{ color: 'rgba(242,240,233,0.58)' }}>
+          {t('hero.slogan')}
+        </span>
       </div>
 
       <div className="relative z-10 w-full px-6 md:px-12 lg:px-20 pb-20 md:pb-28">
         <div className="max-w-3xl">
-          <div data-hero-reveal className="flex items-center gap-3 mb-6">
+          <div data-hero-reveal className="hidden sm:flex items-center gap-3 mb-6">
             <span className="text-xs tracking-[0.3em] uppercase font-semibold" style={{ color: 'oklch(0.565 0.158 37)' }}>
               Vitae.ai
             </span>
             <div className="h-px w-12 flex-shrink-0" style={{ backgroundColor: 'oklch(0.565 0.158 37)' }} />
-            <span className="text-xs tracking-[0.2em] uppercase font-medium" style={{ color: 'rgba(242,240,233,0.58)' }}>
+            <span className="hidden sm:inline text-xs tracking-[0.2em] uppercase font-medium" style={{ color: 'rgba(242,240,233,0.58)' }}>
               {t('hero.slogan')}
             </span>
           </div>
@@ -438,19 +471,6 @@ export function Hero() {
             ))}
           </div>
         </div>
-      </div>
-
-      <div data-hero-status className="absolute bottom-8 right-6 md:right-10 z-10 flex items-center gap-2">
-        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-        <span
-          className="text-xs tracking-[0.22em] uppercase"
-          style={{
-            fontFamily: 'var(--font-geist-mono), monospace',
-            color: 'rgba(242,240,233,0.62)',
-          }}
-        >
-          {t('hero.availableForHire')}
-        </span>
       </div>
 
       <button

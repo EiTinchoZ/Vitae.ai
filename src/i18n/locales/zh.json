@@ -81,7 +81,8 @@
       "specialization": "专业化",
       "technical": "技术",
       "languages": "语言",
-      "programming": "编程"
+      "programming": "编程",
+      "anthropic": "Anthropic"
     },
     "completed": "已完成",
     "inProgress": "进行中",

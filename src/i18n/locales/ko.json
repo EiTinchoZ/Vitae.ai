@@ -81,7 +81,8 @@
       "specialization": "전문화",
       "technical": "기술",
       "languages": "언어",
-      "programming": "프로그래밍"
+      "programming": "프로그래밍",
+      "anthropic": "Anthropic"
     },
     "completed": "취득",
     "inProgress": "진행 중",

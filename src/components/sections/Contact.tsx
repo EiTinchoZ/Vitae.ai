@@ -94,7 +94,7 @@ export function Contact() {
         }}
       >
         <Image
-          src="/images/backgrounds/education-nura-bg.jpeg"
+          src="/images/backgrounds/section-bg.jpeg"
           alt=""
           aria-hidden
           fill
@@ -148,7 +148,7 @@ export function Contact() {
                 {t('contact.letsConnect')}
               </h3>
               <p
-                className="text-3xl md:text-4xl italic text-primary/85 mb-4"
+                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl italic text-primary/85 mb-4"
                 style={{ fontFamily: 'var(--font-cormorant), serif' }}
               >
                 {t('contact.tagline')}
@@ -222,7 +222,7 @@ export function Contact() {
                   {item.href ? (
                     <a
                       href={item.href}
-                      className="flex items-center gap-4 p-4 rounded-[1.25rem] border hover:-translate-y-0.5 transition-all group nura-hover-card"
+                      className="flex items-center gap-4 p-4 rounded-[1.25rem] border hover:-translate-y-0.5 transition-all group hover-card"
                       style={{
                         backgroundColor: 'oklch(0.282 0.038 152 / 0.05)',
                         borderColor: 'oklch(0.282 0.038 152 / 0.16)',
@@ -238,7 +238,7 @@ export function Contact() {
                     </a>
                   ) : (
                     <div
-                      className="flex items-center gap-4 p-4 rounded-[1.25rem] border nura-hover-card"
+                      className="flex items-center gap-4 p-4 rounded-[1.25rem] border hover-card"
                       style={{
                         backgroundColor: 'oklch(0.282 0.038 152 / 0.05)',
                         borderColor: 'oklch(0.282 0.038 152 / 0.16)',
@@ -265,7 +265,7 @@ export function Contact() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 px-5 py-3 rounded-full border hover:-translate-y-0.5 active:scale-[0.97] transition-all text-base font-semibold nura-hover-card"
+                  className="flex items-center gap-3 px-5 py-3 rounded-full border hover:-translate-y-0.5 active:scale-[0.97] transition-all text-base font-semibold hover-card"
                   style={{
                     backgroundColor: 'oklch(0.282 0.038 152 / 0.05)',
                     borderColor: 'oklch(0.282 0.038 152 / 0.20)',
@@ -285,7 +285,7 @@ export function Contact() {
             viewport={{ once: true }}
           >
             <div
-              className="h-full rounded-[2rem] border p-7 md:p-8 flex flex-col nura-hover-card"
+              className="h-full rounded-[2rem] border p-7 md:p-8 flex flex-col hover-card"
               style={{
                 backgroundColor: 'oklch(0.127 0 0)',
                 borderColor: 'rgba(242,240,233,0.14)',
@@ -299,7 +299,7 @@ export function Contact() {
                   {t('contact.cta.title')}
                 </h3>
                 <p
-                  className="text-3xl italic leading-tight mb-2"
+                  className="text-2xl sm:text-3xl italic leading-tight mb-2"
                   style={{
                     fontFamily: 'var(--font-cormorant), serif',
                     color: 'oklch(0.565 0.158 37)',
@@ -437,27 +437,45 @@ export function Contact() {
               </form>
 
               <div className="mt-6 pt-5 border-t space-y-5" style={{ borderColor: 'rgba(242,240,233,0.14)' }}>
-                <Button
-                  asChild
-                  variant="outline"
-                  size="sm"
-                  className="w-full gap-2"
-                  style={{
-                    borderColor: 'rgba(242,240,233,0.22)',
-                    color: 'rgba(242,240,233,0.88)',
-                    backgroundColor: 'transparent',
-                  }}
-                >
-                  <a href="/cv/CV_Martin_Bundy_2026.pdf" download>
-                    <Download className="h-3.5 w-3.5" />
-                    {t('contact.cta.downloadCV')}
-                  </a>
-                </Button>
+                <div className="grid grid-cols-2 gap-2">
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="sm"
+                    className="gap-2"
+                    style={{
+                      borderColor: 'rgba(242,240,233,0.22)',
+                      color: 'rgba(242,240,233,0.88)',
+                      backgroundColor: 'transparent',
+                    }}
+                  >
+                    <a href="/cv/CV_Martin_Bundy_2026_ES.pdf" download>
+                      <Download className="h-3.5 w-3.5" />
+                      CV (ES)
+                    </a>
+                  </Button>
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="sm"
+                    className="gap-2"
+                    style={{
+                      borderColor: 'rgba(242,240,233,0.22)',
+                      color: 'rgba(242,240,233,0.88)',
+                      backgroundColor: 'transparent',
+                    }}
+                  >
+                    <a href="/cv/CV_Martin_Bundy_2026_EN.pdf" download>
+                      <Download className="h-3.5 w-3.5" />
+                      CV (EN)
+                    </a>
+                  </Button>
+                </div>
 
                 <div className="grid grid-cols-3 gap-4">
                   <div className="text-center">
                     <p
-                      className="text-3xl italic leading-none"
+                      className="text-2xl sm:text-3xl italic leading-none"
                       style={{
                         fontFamily: 'var(--font-cormorant), serif',
                         color: 'oklch(0.565 0.158 37)',
@@ -471,7 +489,7 @@ export function Contact() {
                   </div>
                   <div className="text-center">
                     <p
-                      className="text-3xl italic leading-none"
+                      className="text-2xl sm:text-3xl italic leading-none"
                       style={{
                         fontFamily: 'var(--font-cormorant), serif',
                         color: 'oklch(0.565 0.158 37)',
@@ -485,7 +503,7 @@ export function Contact() {
                   </div>
                   <div className="text-center">
                     <p
-                      className="text-3xl italic leading-none"
+                      className="text-2xl sm:text-3xl italic leading-none"
                       style={{
                         fontFamily: 'var(--font-cormorant), serif',
                         color: 'oklch(0.565 0.158 37)',

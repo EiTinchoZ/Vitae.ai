@@ -12,7 +12,7 @@ function validatePayload(
   if (typeof email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return null;
   if (
     typeof message !== 'string' ||
-    message.trim().length < 10 ||
+    message.trim().length < 5 ||
     message.length > 2000
   )
     return null;

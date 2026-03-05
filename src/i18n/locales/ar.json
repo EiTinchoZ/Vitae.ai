@@ -81,7 +81,8 @@
       "specialization": "تخصص",
       "technical": "تقني",
       "languages": "لغات",
-      "programming": "برمجة"
+      "programming": "برمجة",
+      "anthropic": "Anthropic"
     },
     "completed": "مكتمل",
     "inProgress": "قيد التنفيذ",

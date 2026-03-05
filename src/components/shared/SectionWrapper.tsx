@@ -19,7 +19,7 @@ export function SectionWrapper({
 }: SectionWrapperProps) {
   const layout = useSectionLayout();
   const densityClass =
-    layout?.density === 'compact' ? 'py-12 md:py-16' : 'py-20 md:py-28';
+    layout?.density === 'compact' ? 'py-10 md:py-16' : 'py-12 sm:py-16 md:py-28';
   const containerWidth =
     layout?.containerWidth === '6xl'
       ? 'max-w-6xl'
@@ -100,9 +100,9 @@ export function SectionTitle({
         </span>
         <div className="h-px w-10" style={{ backgroundColor: 'oklch(0.565 0.158 37)' }} />
       </div>
-      <div className="flex items-center justify-center gap-4 mb-4">
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-4">
         <h2
-          className="text-3xl md:text-5xl font-bold tracking-tight text-foreground"
+          className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight text-foreground"
           style={{ fontFamily: 'var(--font-jakarta), sans-serif' }}
         >
           {children}

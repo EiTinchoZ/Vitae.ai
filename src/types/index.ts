@@ -35,7 +35,7 @@ export interface Certificate {
   period: string;
   status: 'completed' | 'in_progress';
   description: string;
-  category: 'master' | 'specialization' | 'technical' | 'languages' | 'programming';
+  category: 'master' | 'specialization' | 'technical' | 'languages' | 'programming' | 'anthropic';
   group?: string;
   module?: string;
   file?: string;

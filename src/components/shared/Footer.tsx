@@ -48,9 +48,6 @@ export function Footer() {
               Vitae.ai
             </span>
             <p className="text-sm text-[rgba(242,240,233,0.70)]">
-              {t('footer.madeWith')}
-            </p>
-            <p className="text-sm text-[rgba(242,240,233,0.70)]">
               &copy; {currentYear} {IS_DEMO ? 'Vitae.ai Demo' : cvData.personal.name}. {t('footer.rights')}
             </p>
           </div>

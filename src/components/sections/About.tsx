@@ -55,7 +55,7 @@ export function About() {
         }}
       >
         <Image
-          src="/images/backgrounds/education-nura-bg.jpeg"
+          src="/images/backgrounds/section-bg.jpeg"
           alt=""
           aria-hidden
           fill

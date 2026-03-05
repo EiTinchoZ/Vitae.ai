@@ -7,8 +7,6 @@ import {
   Trophy,
   ExternalLink,
   Github,
-  Star,
-  GitFork,
   Zap,
 } from 'lucide-react';
 import dynamic from 'next/dynamic';
@@ -37,11 +35,12 @@ const languageColors: Record<string, string> = {
 };
 
 const repoLogos: Record<string, { src: string; alt: string }> = {
-  'tin.io':   { src: '/images/projects/tin-io-logo.jpg',         alt: 'Tin.io' },
-  'tin-io':   { src: '/images/projects/tin-io-logo.jpg',         alt: 'Tin.io' },
-  'tyr':      { src: '/images/projects/tyr-logo.webp',           alt: 'TYR' },
-  'vitae.ai': { src: '/brand/vitae-logo.webp',                   alt: 'Vitae.ai' },
-  'vitae-ai': { src: '/brand/vitae-logo.webp',                   alt: 'Vitae.ai' },
+  'tin.io':   { src: '/images/projects/tin-io-logo.jpg',              alt: 'Tin.io' },
+  'tin-io':   { src: '/images/projects/tin-io-logo.jpg',              alt: 'Tin.io' },
+  'tyr':      { src: '/images/projects/tyr-logo.webp',                alt: 'TYR' },
+  'vitae.ai': { src: '/brand/vitae-logo.webp',                        alt: 'Vitae.ai' },
+  'vitae-ai': { src: '/brand/vitae-logo.webp',                        alt: 'Vitae.ai' },
+  'sena':     { src: '/images/projects/cover-sena-alertaed.png',      alt: 'SENA – ALERTA-ED' },
 };
 
 const featuredLogos: Record<string, { src: string; alt: string }> = {
@@ -66,7 +65,12 @@ export function Projects() {
   const featuredProject =
     cvData.projects.find((project) => project.isHighlighted) ?? cvData.projects[0];
   const featuredLogo = featuredProject ? featuredLogos[featuredProject.id] : null;
-  const otherProjects = cvData.projects.filter((project) => !project.isHighlighted);
+
+  // Lookup map: repo name (lowercase) → project data for card enrichment
+  const projectByRepoName = cvData.projects.reduce<Record<string, (typeof cvData.projects)[0]>>(
+    (acc, p) => { acc[p.name.toLowerCase()] = p; return acc; },
+    {}
+  );
 
   if (!featuredProject) return null;
 
@@ -82,7 +86,7 @@ export function Projects() {
         }}
       >
         <Image
-          src="/images/backgrounds/education-nura-bg.jpeg"
+          src="/images/backgrounds/section-bg.jpeg"
           alt=""
           aria-hidden
           fill
@@ -295,124 +299,6 @@ export function Projects() {
         </div>
       </motion.div>
 
-      {/* ── Other Projects ── */}
-      {otherProjects.length > 0 && (
-        <div className="mb-10 grid gap-5 md:grid-cols-2">
-          {otherProjects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="rounded-[2rem] overflow-hidden border bg-card hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
-              style={{ borderColor: 'oklch(0.282 0.038 152 / 0.14)' }}
-            >
-              {project.images?.[0] && (
-                <div
-                  className="relative w-full h-40 overflow-hidden border-b bg-muted/20"
-                  style={{ borderColor: 'oklch(0.282 0.038 152 / 0.10)' }}
-                >
-                  <Image
-                    src={project.images[0]}
-                    alt={project.name}
-                    fill
-                    className="object-contain p-5"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-              )}
-              <div className="p-6">
-                <div className="flex items-center gap-2 mb-3">
-                  <span
-                    className="text-xs tracking-[0.2em] uppercase font-medium"
-                    style={{
-                      fontFamily: 'var(--font-geist-mono), monospace',
-                      color: 'oklch(0.565 0.158 37)',
-                    }}
-                  >
-                    {project.year}
-                  </span>
-                  {project.type && (
-                    <>
-                      <span className="opacity-30">·</span>
-                      <span
-                        className="text-xs tracking-[0.12em] uppercase"
-                        style={{
-                          fontFamily: 'var(--font-geist-mono), monospace',
-                          color: 'oklch(0.282 0.038 152 / 0.55)',
-                        }}
-                      >
-                        {project.type}
-                      </span>
-                    </>
-                  )}
-                </div>
-                <h4
-                  className="font-bold text-lg mb-2 leading-tight"
-                  style={{ fontFamily: 'var(--font-jakarta), sans-serif' }}
-                >
-                  {project.name}
-                </h4>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                  {project.shortDescription}
-                </p>
-                {project.technologies.length > 0 && (
-                  <div className="flex flex-wrap gap-1.5 mb-5">
-                    {project.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2.5 py-0.5 rounded-full text-xs"
-                        style={{
-                          backgroundColor: 'oklch(0.282 0.038 152 / 0.07)',
-                          border: '1px solid oklch(0.282 0.038 152 / 0.15)',
-                          color: 'oklch(0.282 0.038 152)',
-                          fontFamily: 'var(--font-geist-mono), monospace',
-                        }}
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                )}
-                <div className="flex gap-2.5">
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-medium transition-all hover:scale-105 active:scale-95"
-                      style={{
-                        border: '1px solid oklch(0.282 0.038 152 / 0.24)',
-                        color: 'oklch(0.282 0.038 152)',
-                      }}
-                    >
-                      <Github className="h-3.5 w-3.5" />
-                      GitHub
-                    </a>
-                  )}
-                  {project.demoUrl && (
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold transition-all hover:scale-105 hover:brightness-110 active:scale-95"
-                      style={{
-                        backgroundColor: 'oklch(0.565 0.158 37)',
-                        color: 'oklch(0.962 0.007 83)',
-                      }}
-                    >
-                      Demo
-                      <ExternalLink className="h-3.5 w-3.5" />
-                    </a>
-                  )}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      )}
-
       {/* ── GitHub Repos ── */}
       <div>
         <div className="flex items-center justify-between mb-5">
@@ -452,6 +338,9 @@ export function Projects() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {repos.map((repo, index) => {
               const logo = repoLogos[repo.name.toLowerCase()];
+              const matched = projectByRepoName[repo.name.toLowerCase()];
+              const description = matched?.shortDescription || repo.description;
+
               return (
                 <motion.a
                   key={repo.id}
@@ -477,6 +366,18 @@ export function Projects() {
                     />
                   </div>
 
+                  {matched?.type && (
+                    <p
+                      className="text-xs tracking-[0.15em] uppercase mb-1"
+                      style={{
+                        fontFamily: 'var(--font-geist-mono), monospace',
+                        color: 'oklch(0.565 0.158 37)',
+                      }}
+                    >
+                      {matched.type}
+                    </p>
+                  )}
+
                   <h4
                     className="font-semibold mb-1 group-hover:text-primary transition-colors leading-tight"
                     style={{ fontFamily: 'var(--font-jakarta), sans-serif' }}
@@ -500,43 +401,31 @@ export function Projects() {
                   )}
 
                   <p
-                    className="text-muted-foreground mb-4 line-clamp-2 leading-relaxed"
+                    className="text-muted-foreground mb-3 line-clamp-2 leading-relaxed"
                     style={{ fontSize: '0.78rem' }}
                   >
-                    {repo.description || t('projects.noDescription')}
+                    {description || t('projects.noDescription')}
                   </p>
 
-                  <div
-                    className="flex items-center gap-4 text-muted-foreground"
-                    style={{
-                      fontFamily: 'var(--font-geist-mono), monospace',
-                      fontSize: '0.70rem',
-                    }}
-                  >
-                    {repo.language && (
-                      <div className="flex items-center gap-1.5">
-                        <span
-                          className="w-2 h-2 rounded-full flex-shrink-0"
-                          style={{
-                            backgroundColor:
-                              languageColors[repo.language] ?? languageColors.default,
-                          }}
-                        />
-                        {repo.language}
-                      </div>
-                    )}
-                    <div className="flex items-center gap-1">
-                      <Star className="h-3 w-3" />
-                      {repo.stargazersCount}
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <GitFork className="h-3 w-3" />
-                      {repo.forksCount}
-                    </div>
+                  <div className="flex flex-wrap gap-1.5 mb-3">
+                    {(matched?.technologies ?? (repo.language ? [repo.language] : [])).map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-2 py-0.5 rounded-full text-xs"
+                        style={{
+                          backgroundColor: 'oklch(0.282 0.038 152 / 0.07)',
+                          border: '1px solid oklch(0.282 0.038 152 / 0.15)',
+                          color: 'oklch(0.282 0.038 152)',
+                          fontFamily: 'var(--font-geist-mono), monospace',
+                        }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
                   </div>
 
                   <p
-                    className="text-muted-foreground mt-2.5"
+                    className="text-muted-foreground"
                     style={{
                       fontFamily: 'var(--font-geist-mono), monospace',
                       fontSize: '0.68rem',

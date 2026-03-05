@@ -129,12 +129,12 @@ export function ManifestoSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-32 md:py-48 overflow-hidden"
+      className="relative py-16 sm:py-24 md:py-32 lg:py-48 overflow-hidden"
       style={{ backgroundColor: 'oklch(0.127 0 0)' }}
     >
       <div data-manifesto-bg className="absolute inset-0">
         <Image
-          src="/images/backgrounds/education-nura-bg.jpeg"
+          src="/images/backgrounds/section-bg.jpeg"
           alt=""
           aria-hidden
           fill
@@ -189,7 +189,7 @@ export function ManifestoSection() {
             </p>
 
             <p
-              className="italic text-6xl md:text-8xl leading-[0.95]"
+              className="italic text-4xl sm:text-5xl md:text-6xl lg:text-8xl leading-[0.95]"
               style={{
                 fontFamily: 'var(--font-cormorant), serif',
                 color: 'oklch(0.962 0.007 83)',
@@ -211,7 +211,7 @@ export function ManifestoSection() {
           </div>
         </div>
 
-        <div className="manifesto-stats-grid mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
+        <div className="manifesto-stats-grid mt-8 sm:mt-12 md:mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
           {manifestoStats.map((item) => (
             <div
               key={item.value}

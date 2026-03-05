@@ -25,6 +25,12 @@ export function PersonalIntroGate({ children }: PersonalIntroGateProps) {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    if (isReady) {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  }, [isReady]);
+
+  useEffect(() => {
     if (!isStarting) return;
 
     let current = 0;

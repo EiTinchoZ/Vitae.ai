@@ -81,7 +81,8 @@
       "specialization": "विशेषज्ञता",
       "technical": "तकनीकी",
       "languages": "भाषाएं",
-      "programming": "प्रोग्रामिंग"
+      "programming": "प्रोग्रामिंग",
+      "anthropic": "Anthropic"
     },
     "completed": "पूर्ण",
     "inProgress": "जारी",

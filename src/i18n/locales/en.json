@@ -81,7 +81,8 @@
       "specialization": "Specialization",
       "technical": "Technical",
       "languages": "Languages",
-      "programming": "Programming"
+      "programming": "Programming",
+      "anthropic": "Anthropic"
     },
     "completed": "Completed",
     "inProgress": "In Progress",

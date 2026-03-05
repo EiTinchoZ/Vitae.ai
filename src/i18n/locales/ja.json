@@ -81,7 +81,8 @@
       "specialization": "専門",
       "technical": "技術",
       "languages": "言語",
-      "programming": "プログラミング"
+      "programming": "プログラミング",
+      "anthropic": "Anthropic"
     },
     "completed": "取得済み",
     "inProgress": "取得中",
