@@ -474,10 +474,10 @@ export function Hero() {
         </div>
       </div>
 
-      {/* QR Card — desktop only, bottom-left */}
+      {/* QR Card — desktop only, top-right */}
       <div
         data-hero-reveal
-        className="hidden lg:block absolute left-8 xl:left-14 bottom-24 z-10"
+        className="hidden lg:block absolute right-8 xl:right-14 top-24 z-10"
       >
         <QrCard
           url="https://portfolio-eitinchos-projects.vercel.app/"
