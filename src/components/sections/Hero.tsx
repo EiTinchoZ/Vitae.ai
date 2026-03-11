@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { Github, Linkedin, Mail, Download, ArrowRight } from 'lucide-react';
+import { QrCard } from '@/components/ui/QrCard';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useCvData } from '@/lib/cv-data-context';
@@ -471,6 +472,18 @@ export function Hero() {
             ))}
           </div>
         </div>
+      </div>
+
+      {/* QR Card — desktop only, bottom-left */}
+      <div
+        data-hero-reveal
+        className="hidden lg:block absolute left-8 xl:left-14 bottom-24 z-10"
+      >
+        <QrCard
+          url="https://portfolio-eitinchos-projects.vercel.app/"
+          label="Escanear · Ver CV"
+          size={88}
+        />
       </div>
 
       <button
