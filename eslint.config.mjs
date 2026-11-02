@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vendored Draco binaries and anatomy-generated browser runtimes.
+    "public/draco/**",
+    "public/fig/*.js",
   ]),
 ]);
 
