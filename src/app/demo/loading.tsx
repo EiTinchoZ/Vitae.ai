@@ -1,3 +1,5 @@
+import '../globals.css';
+
 export default function RootLoading() {
   return (
     <div className="min-h-screen bg-background flex items-center justify-center">

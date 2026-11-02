@@ -1,15 +1,29 @@
+import type { Metadata, Viewport } from 'next';
 import { redirect } from 'next/navigation';
-import { Hero } from '@/components/sections/Hero';
-import { About } from '@/components/sections/About';
-import { Skills } from '@/components/sections/Skills';
-import { Education } from '@/components/sections/Education';
-import { Certificates } from '@/components/sections/Certificates';
-import { Projects } from '@/components/sections/Projects';
-import { ManifestoSection } from '@/components/sections/ManifestoSection';
-import { Experience } from '@/components/sections/Experience';
-import { Contact } from '@/components/sections/Contact';
-import { PersonalIntroGate } from '@/components/shared/PersonalIntroGate';
 import { IS_DEMO } from '@/lib/app-config';
+import { Nav } from '@/components/landing/Nav';
+import { Hero } from '@/components/landing/Hero';
+import { Pelicula } from '@/components/landing/Pelicula';
+import { Trayectoria } from '@/components/landing/Trayectoria';
+import { Hoy } from '@/components/landing/Hoy';
+import { Proyectos } from '@/components/landing/Proyectos';
+import { Laptop } from '@/components/landing/Laptop';
+import { Formacion } from '@/components/landing/Formacion';
+import { Contacto } from '@/components/landing/Contacto';
+import { InkField } from '@/components/pieces/InkField';
+import { DecodeTitles } from '@/components/pieces/DecodeTitles';
+import { SoundProvider } from '@/components/sound/SoundProvider';
+import footer from '@/content/es/footer';
+import './landing.css';
+
+export const metadata: Metadata = {
+  title: 'Martín Bundy · Ingeniería industrial e IA aplicada',
+  description: 'Martín Bundy, Panamá. Ingeniería industrial e IA aplicada: agentes, automatización y procesos.',
+};
+
+export const viewport: Viewport = {
+  themeColor: '#09090A',
+};
 
 export default function Home() {
   if (IS_DEMO) {
@@ -17,16 +31,22 @@ export default function Home() {
   }
 
   return (
-    <PersonalIntroGate>
-      <Hero />
-      <About />
-      <Skills />
-      <Education />
-      <Certificates />
-      <Projects />
-      <ManifestoSection />
-      <Experience />
-      <Contact />
-    </PersonalIntroGate>
+    <>
+      <InkField />
+      <Nav />
+      <SoundProvider />
+      <DecodeTitles>
+        <Hero />
+        <Pelicula />
+        <Trayectoria />
+        <Hoy />
+        <Proyectos />
+        <Laptop />
+        <Formacion />
+        <Contacto />
+      </DecodeTitles>
+      <footer dangerouslySetInnerHTML={{ __html: footer }} />
+      <div className="tip" id="tip" />
+    </>
   );
 }

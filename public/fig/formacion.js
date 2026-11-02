@@ -672,6 +672,14 @@ const ISO_CSS = `
 @media (max-width:560px){.iso-plate{padding:48px 12px 70px}.iso-plate-corner[data-corner="hint"]{bottom:18px}}
 @media (prefers-reduced-motion:reduce){.iso-line[data-flow],.iso-dots circle[data-pulse]{animation:none}}
 `;
+export function mount() {
+let dead = false;
+const rafs = new Set(), timers = new Set(), observers = [];
+const requestAnimationFrame = (cb) => { if (dead) return 0; const id = window.requestAnimationFrame((t) => { rafs.delete(id); cb(t); }); rafs.add(id); return id; };
+const cancelAnimationFrame = (id) => { rafs.delete(id); window.cancelAnimationFrame(id); };
+const setTimeout = (cb, ms, ...a) => { if (dead) return 0; const id = window.setTimeout(() => { timers.delete(id); cb(...a); }, ms); timers.add(id); return id; };
+const clearTimeout = (id) => { timers.delete(id); window.clearTimeout(id); };
+class IntersectionObserver extends window.IntersectionObserver { constructor(cb, o) { super(cb, o); observers.push(this); } }
 
 const P = {"origin":[345.19528920322165,251.63962166571397],"scale":1.557403542473743,"azimuth":66,"elevation":30};
 const QUADS = [["I","matemáticas, redes, ciberseguridad"],["II","bases de datos, programación, intro a la IA"],["III","lenguajes para IA, sistemas inteligentes"],["IV","NLP y aprendizaje automatizado"],["V","ciencia de datos, visión, minería de datos"],["VI","deep learning, IoT, robótica"],["VII","práctica profesional"]];
@@ -760,3 +768,6 @@ new IntersectionObserver((es) => {
 }, { rootMargin: "0px 0px -15% 0px" }).observe(stage);
 still.addEventListener?.("change", run);
 say(REST, null);
+
+return () => { dead = true; rafs.forEach((id) => window.cancelAnimationFrame(id)); timers.forEach((id) => window.clearTimeout(id)); observers.forEach((o) => o.disconnect()); };
+}

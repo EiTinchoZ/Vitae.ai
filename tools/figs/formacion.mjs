@@ -6,6 +6,7 @@ import { writeFileSync, mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { homedir } from "node:os";
+import { asModule } from "./as-module.mjs";
 
 const SKILL = join(homedir(), ".claude", "skills", "anatomy");
 const k = await import(pathToFileURL(join(SKILL, "kit", "iso-kit.mjs")).href);
@@ -284,7 +285,7 @@ const figure = k.plateHtml({
   body: `<div class="iso-stage ed-stage" tabindex="0" role="group" aria-roledescription="figura" aria-label="Formación: con las flechas recorres las capas del chip, el estante y la cinta">${svg}${tags}</div>`,
 }).replace('<figure class="iso-figure"', '<figure class="iso-figure" id="figEdu"');
 
-const script = kitScript() + live;
+const script = kitScript() + asModule(live);
 // Conserva los saltos CRLF del fragmento de referencia.
 writeFileSync(join(OUT, "formacion.es.html"), figure.replaceAll('src="img/', 'src="/img/').replaceAll('\n', '\r\n'));
 writeFileSync(join(OUT, "formacion.js"), script);

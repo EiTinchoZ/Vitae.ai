@@ -1,0 +1,64 @@
+/* Tokens de MOTION.md v1.0 y fuentes de la landing.
+   La landing no carga Tailwind: las clases de la maqueta (ring, grid, hidden...) chocan con sus utilidades. */
+:root {
+  --color-bk: #09090A;
+  --color-bk2: #141416;
+  --color-card-iso: #0F0F11;
+  --color-paper: #FFF2DE;
+  --color-soft: #FFC98F;
+  --color-or: #FF5A14;
+  --color-or-lit: #FF6A2A;
+  --color-hz: #FFD23F;
+  --color-ok: #3FD68A;
+  --color-line: rgba(243, 238, 227, .14);
+  --color-metro-base: #B7AE9F;
+  --color-metro-edu: #F5B700;
+  --color-metro-ia: #FF4B2B;
+  --color-metro-pro: #3D6BFF;
+  --color-metro-prj: #B6F23A;
+  --ease-ease: cubic-bezier(.22, 1, .36, 1);
+  --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+  --ease-sheet: cubic-bezier(.32, .72, 0, 1);
+  --font-display: "Archivo", sans-serif;
+  --font-poster: "Big Shoulders Display", sans-serif;
+  --font-data: "IBM Plex Mono", monospace;
+}
+
+/* Nombres literales: las figuras de tools/figs piden "Archivo" e "IBM Plex Mono" por nombre,
+   y next/font los renombra con un hash. Solo el subconjunto latin. */
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 300 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url(/fonts/archivo-var.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Big Shoulders Display";
+  font-style: normal;
+  font-weight: 800 900;
+  font-display: swap;
+  src: url(/fonts/big-shoulders-display.woff2) format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/ibm-plex-mono-400.woff2) format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(/fonts/ibm-plex-mono-500.woff2) format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(/fonts/ibm-plex-mono-600.woff2) format("woff2");
+}

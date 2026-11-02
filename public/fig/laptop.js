@@ -672,6 +672,14 @@ const ISO_CSS = `
 @media (max-width:560px){.iso-plate{padding:48px 12px 70px}.iso-plate-corner[data-corner="hint"]{bottom:18px}}
 @media (prefers-reduced-motion:reduce){.iso-line[data-flow],.iso-dots circle[data-pulse]{animation:none}}
 `;
+export function mount() {
+let dead = false;
+const rafs = new Set(), timers = new Set(), observers = [];
+const requestAnimationFrame = (cb) => { if (dead) return 0; const id = window.requestAnimationFrame((t) => { rafs.delete(id); cb(t); }); rafs.add(id); return id; };
+const cancelAnimationFrame = (id) => { rafs.delete(id); window.cancelAnimationFrame(id); };
+const setTimeout = (cb, ms, ...a) => { if (dead) return 0; const id = window.setTimeout(() => { timers.delete(id); cb(...a); }, ms); timers.add(id); return id; };
+const clearTimeout = (id) => { timers.delete(id); window.clearTimeout(id); };
+class IntersectionObserver extends window.IntersectionObserver { constructor(cb, o) { super(cb, o); observers.push(this); } }
 
 const fig = document.getElementById("figLap");
 const svg = fig.querySelector("svg");
@@ -892,7 +900,9 @@ stage.addEventListener("click", (e) => {
   if (still.matches) rest();
 });
 stage.addEventListener("pointermove", () => { if (mode !== "run") idle = Math.min(idle, autoGap - 1.2); });
-document.querySelectorAll("[data-lap-rgb]").forEach((b) => b.addEventListener(b.type === "color" ? "input" : "click", () => { setColor(b.type === "color" ? b.value : b.dataset.lapRgb); window.SFX?.play("click"); }));
+// los botones de color viven fuera del fragmento: sus listeners se cortan al limpiar
+const off = new AbortController();
+document.querySelectorAll("[data-lap-rgb]").forEach((b) => b.addEventListener(b.type === "color" ? "input" : "click", () => { setColor(b.type === "color" ? b.value : b.dataset.lapRgb); window.SFX?.play("click"); }, { signal: off.signal }));
 function rest() {
   // movimiento reducido: una tarea terminada y la máquina tibia, sin animar
   wake(); const t = TASKS[0]; start(t); enter(4); setRows(t, true); scr.prog.setAttribute("width", PROG_W);
@@ -901,7 +911,7 @@ function rest() {
   load = 0.45; temp = AMB + HOT * 0.45; rpm = fanCurve(temp); tps = 0; wave = 1; draw();
 }
 // la vista de cerca (zoom.js) lee el modelo y le pide carga
-window.LAP = {
+const lap = window.LAP = {
   drive(w, t) { ext = { w, t }; if (mode === "run") enter(5); wake(); },
   release() { ext = null; idle = 0; },
   state: () => ({ tps, temp, rpm, load }),
@@ -916,3 +926,6 @@ setRows(TASKS[1], false);
 setColor(/^#[0-9a-f]{6}$/i.test(saved) || saved === "rainbow" ? saved : "rainbow");
 new IntersectionObserver((es) => { visible = es[es.length - 1].isIntersecting; if (visible) run(); else window.SFX?.hum(0); }, { rootMargin: "120px 0px" }).observe(svg);
 if (still.matches) rest(); else draw();
+
+return () => { dead = true; off.abort(); if (window.LAP === lap) delete window.LAP; window.SFX?.hum(0); rafs.forEach((id) => window.cancelAnimationFrame(id)); timers.forEach((id) => window.clearTimeout(id)); observers.forEach((o) => o.disconnect()); };
+}

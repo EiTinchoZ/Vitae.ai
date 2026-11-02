@@ -672,6 +672,14 @@ const ISO_CSS = `
 @media (max-width:560px){.iso-plate{padding:48px 12px 70px}.iso-plate-corner[data-corner="hint"]{bottom:18px}}
 @media (prefers-reduced-motion:reduce){.iso-line[data-flow],.iso-dots circle[data-pulse]{animation:none}}
 `;
+export function mount() {
+let dead = false;
+const rafs = new Set(), timers = new Set(), observers = [];
+const requestAnimationFrame = (cb) => { if (dead) return 0; const id = window.requestAnimationFrame((t) => { rafs.delete(id); cb(t); }); rafs.add(id); return id; };
+const cancelAnimationFrame = (id) => { rafs.delete(id); window.cancelAnimationFrame(id); };
+const setTimeout = (cb, ms, ...a) => { if (dead) return 0; const id = window.setTimeout(() => { timers.delete(id); cb(...a); }, ms); timers.add(id); return id; };
+const clearTimeout = (id) => { timers.delete(id); window.clearTimeout(id); };
+class IntersectionObserver extends window.IntersectionObserver { constructor(cb, o) { super(cb, o); observers.push(this); } }
 
 const P = {"origin":[393.6757455487958,200.0880850609168],"scale":1.125292226717758,"azimuth":65,"elevation":26};
 const FIELDS = ["Solicitante","Descripción","Proveedor","Cantidad","Precio","Moneda","Lugar de entrega","Fecha de entrega","Cotización","Motivo"];
@@ -838,3 +846,6 @@ btnMiss.addEventListener("change", () => { missOn = btnMiss.checked; user = true
 new IntersectionObserver((es) => { visible = es[es.length - 1].isIntersecting; if (visible) run(); }, { rootMargin: "120px 0px" }).observe(svg);
 newRequest();
 if (still.matches) rest(); else draw(pose());
+
+return () => { dead = true; rafs.forEach((id) => window.cancelAnimationFrame(id)); timers.forEach((id) => window.clearTimeout(id)); observers.forEach((o) => o.disconnect()); };
+}

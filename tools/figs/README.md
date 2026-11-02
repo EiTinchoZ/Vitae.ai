@@ -13,5 +13,7 @@ node tools/figs/formacion.mjs
 
 Cada generador escribe su fragmento `<nombre>.es.html`, su runtime
 `<nombre>.js` y los estilos compartidos `iso.css` en `public/fig/`.
-Los fragmentos no incluyen una página envolvente. Los logos se leen de
+Los fragmentos no incluyen una página envolvente. El runtime exporta
+`mount()`, que devuelve la limpieza (`as-module.mjs`); la página lo importa
+una vez y lo monta cada vez que pone el fragmento (`IsoFigure`). Los logos se leen de
 `public/img/logos/`. Los generadores no leen ni modifican la maqueta.

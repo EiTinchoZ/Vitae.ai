@@ -8,6 +8,7 @@ import { writeFileSync, mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { homedir } from "node:os";
+import { asModule } from "./as-module.mjs";
 
 const SKILL = join(homedir(), ".claude", "skills", "anatomy");
 const k = await import(pathToFileURL(join(SKILL, "kit", "iso-kit.mjs")).href);
@@ -443,7 +444,7 @@ const ctl = `<div class="po-ctl" role="group" aria-label="Tus decisiones en la d
 </div>`;
 const fragment = figure + ctl;
 
-const script = kitScript() + live;
+const script = kitScript() + asModule(live);
 // Conserva los saltos CRLF del fragmento de referencia.
 writeFileSync(join(OUT, "poguru.es.html"), fragment.replaceAll('src="img/', 'src="/img/').replaceAll('\n', '\r\n'));
 writeFileSync(join(OUT, "poguru.js"), script);

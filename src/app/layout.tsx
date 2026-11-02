@@ -1,31 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Plus_Jakarta_Sans, Cormorant_Garamond, Geist_Mono } from 'next/font/google';
-import { ThemeProvider } from '@/components/providers/theme-provider';
-import { LanguageProvider } from '@/i18n';
-import { Navbar } from '@/components/shared/Navbar';
-import { Footer } from '@/components/shared/Footer';
-import dynamic from 'next/dynamic';
-import './globals.css';
-
-const ChatBot = dynamic(() => import('@/components/chat/ChatBot').then(m => m.ChatBot));
-
-const plusJakartaSans = Plus_Jakarta_Sans({
-  variable: '--font-jakarta',
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
-});
-
-const cormorantGaramond = Cormorant_Garamond({
-  variable: '--font-cormorant',
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  style: ['normal', 'italic'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
+import './tokens.css';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -119,36 +93,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" suppressHydrationWarning>
+    <html lang="es" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
+        <link rel="preload" href="/fonts/archivo-var.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body
-        className={`${plusJakartaSans.variable} ${cormorantGaramond.variable} ${geistMono.variable} antialiased`}
-      >
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-primary focus:text-primary-foreground focus:text-sm focus:font-medium"
-        >
-          Skip to content
-        </a>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <LanguageProvider>
-            <Navbar />
-            <main id="main-content" className="min-h-screen">{children}</main>
-            <Footer />
-            <ChatBot />
-          </LanguageProvider>
-        </ThemeProvider>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

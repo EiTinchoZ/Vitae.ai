@@ -5,6 +5,7 @@ import { writeFileSync, mkdirSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { homedir } from "node:os";
+import { asModule } from "./as-module.mjs";
 
 const SKILL = join(homedir(), ".claude", "skills", "anatomy");
 const k = await import(pathToFileURL(join(SKILL, "kit", "iso-kit.mjs")).href);
@@ -541,7 +542,9 @@ stage.addEventListener("click", (e) => {
   if (still.matches) rest();
 });
 stage.addEventListener("pointermove", () => { if (mode !== "run") idle = Math.min(idle, autoGap - 1.2); });
-document.querySelectorAll("[data-lap-rgb]").forEach((b) => b.addEventListener(b.type === "color" ? "input" : "click", () => { setColor(b.type === "color" ? b.value : b.dataset.lapRgb); window.SFX?.play("click"); }));
+// los botones de color viven fuera del fragmento: sus listeners se cortan al limpiar
+const off = new AbortController();
+document.querySelectorAll("[data-lap-rgb]").forEach((b) => b.addEventListener(b.type === "color" ? "input" : "click", () => { setColor(b.type === "color" ? b.value : b.dataset.lapRgb); window.SFX?.play("click"); }, { signal: off.signal }));
 function rest() {
   // movimiento reducido: una tarea terminada y la máquina tibia, sin animar
   wake(); const t = TASKS[0]; start(t); enter(4); setRows(t, true); scr.prog.setAttribute("width", PROG_W);
@@ -550,7 +553,7 @@ function rest() {
   load = 0.45; temp = AMB + HOT * 0.45; rpm = fanCurve(temp); tps = 0; wave = 1; draw();
 }
 // la vista de cerca (zoom.js) lee el modelo y le pide carga
-window.LAP = {
+const lap = window.LAP = {
   drive(w, t) { ext = { w, t }; if (mode === "run") enter(5); wake(); },
   release() { ext = null; idle = 0; },
   state: () => ({ tps, temp, rpm, load }),
@@ -578,7 +581,7 @@ const figure = k.plateHtml({
 }).replace('<figure class="iso-figure"', '<figure class="iso-figure" id="figLap"');
 const fragment = style + figure;
 
-const script = kitScript() + live;
+const script = kitScript() + asModule(live, "off.abort(); if (window.LAP === lap) delete window.LAP; window.SFX?.hum(0);");
 // Conserva los saltos CRLF del fragmento de referencia.
 writeFileSync(join(OUT, "laptop.es.html"), fragment.replaceAll('src="img/', 'src="/img/').replaceAll('\n', '\r\n'));
 writeFileSync(join(OUT, "laptop.js"), script);
