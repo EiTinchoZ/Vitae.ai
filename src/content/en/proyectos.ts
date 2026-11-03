@@ -45,10 +45,10 @@ const tk = ticker.map((x) => `<span><b>${x[0]}</b>${x[1]}</span>`).join('').repe
 
 const html = `  <canvas id="cPrj" aria-hidden="true"></canvas>
   <div class="panel">
-    <h2>What I have built</h2>
-    <div class="pcard" id="pcard" aria-live="polite">${card(projects[0])}</div>
+    <h2 class="ink-safe">What I have built</h2>
+    <div class="pcard ink-safe" id="pcard" aria-live="polite">${card(projects[0])}</div>
   </div>
-  <span class="hint mono"><span class="hm">Hover a box to open it<br>click the belt to speed it up</span><span class="ht">Tap a box to open it · tap the belt to speed it up</span></span>
+  <span class="hint mono ink-safe"><span class="hm">Hover a box to open it<br>click the belt to speed it up</span><span class="ht">Tap a box to open it · tap the belt to speed it up</span></span>
   <div class="ticker" aria-hidden="true"><div class="r" id="tk">${tk}</div></div>`;
 
 export default html;

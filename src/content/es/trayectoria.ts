@@ -1,5 +1,5 @@
 // Marcado estático de la sección, tal cual la maqueta. Las piezas se montan sobre él.
-const html = "  <canvas id=\"cMap\" aria-label=\"Mapa en 3D de la trayectoria de Martín\"></canvas>\n  <div class=\"txt\">\n    <span class=\"mono\">2017 → 2027</span>\n    <h2 class=\"dec\">Todo lo que probé terminó <em>sumando</em>.</h2>\n    <p class=\"sub\">Cinco líneas, una sola estación.</p>\n    <div class=\"legend\" id=\"leg\"></div>\n  </div>\n  <div class=\"mcard\" id=\"mcard\" aria-live=\"polite\"></div>\n  <span class=\"hint mono\"><span class=\"hm\">Arrastra para girar · pasa sobre una estación</span><span class=\"ht\">Toca una estación · arrastra para girar</span></span>";
+const html = "  <canvas id=\"cMap\" aria-label=\"Mapa en 3D de la trayectoria de Martín\"></canvas>\n  <div class=\"txt ink-safe\">\n    <span class=\"mono\">2017 → 2027</span>\n    <h2 class=\"dec\">Todo lo que probé terminó <em>sumando</em>.</h2>\n    <p class=\"sub\">Cinco líneas, una sola estación.</p>\n    <div class=\"legend\" id=\"leg\"></div>\n  </div>\n  <div class=\"mcard ink-safe\" id=\"mcard\" aria-live=\"polite\"></div>\n  <span class=\"hint mono ink-safe\"><span class=\"hm\">Arrastra para girar · pasa sobre una estación</span><span class=\"ht\">Toca una estación · arrastra para girar</span></span>";
 
 export default html;
 

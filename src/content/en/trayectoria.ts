@@ -1,5 +1,5 @@
 // Marcado estático de la sección, tal cual la maqueta. Las piezas se montan sobre él.
-const html = "  <canvas id=\"cMap\" aria-label=\"3D map of Martín's path\"></canvas>\n  <div class=\"txt\">\n    <span class=\"mono\">2017 → 2027</span>\n    <h2 class=\"dec\">Everything I tried ended up <em>adding up</em>.</h2>\n    <p class=\"sub\">Five lines, one station.</p>\n    <div class=\"legend\" id=\"leg\"></div>\n  </div>\n  <div class=\"mcard\" id=\"mcard\" aria-live=\"polite\"></div>\n  <span class=\"hint mono\"><span class=\"hm\">Drag to rotate · hover a station</span><span class=\"ht\">Tap a station · drag to rotate</span></span>";
+const html = "  <canvas id=\"cMap\" aria-label=\"3D map of Martín's path\"></canvas>\n  <div class=\"txt ink-safe\">\n    <span class=\"mono\">2017 → 2027</span>\n    <h2 class=\"dec\">Everything I tried ended up <em>adding up</em>.</h2>\n    <p class=\"sub\">Five lines, one station.</p>\n    <div class=\"legend\" id=\"leg\"></div>\n  </div>\n  <div class=\"mcard ink-safe\" id=\"mcard\" aria-live=\"polite\"></div>\n  <span class=\"hint mono ink-safe\"><span class=\"hm\">Drag to rotate · hover a station</span><span class=\"ht\">Tap a station · drag to rotate</span></span>";
 
 export default html;
 

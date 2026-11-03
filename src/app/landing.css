@@ -819,3 +819,4 @@ body{text-shadow:var(--halo)}
 @media(max-width:900px){.rig .iso{--fx:12px;--fr:108px}.edu .iso>div{--fx:12px;--fr:80px}}
 @media(max-width:700px){.edu .iso>div{--fr:229px}}
 @media(max-width:520px){.hoy .iso{--fr:290px}.rig .iso{--fr:124px}}
+.ink-safe :is(h2,h3,p,.mono,small,b),h2.ink-safe{text-shadow:0 0 2px #09090A,0 0 8px #09090A}
