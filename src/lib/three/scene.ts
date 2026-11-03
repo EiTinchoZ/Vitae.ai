@@ -17,7 +17,7 @@ export function studio(renderer: THREE.WebGLRenderer, scene: THREE.Scene) {
 
 export function scene(canvas: HTMLCanvasElement, section: Element) {
   const r = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-  r.setPixelRatio(Math.min(devicePixelRatio, 2));
+  r.setPixelRatio(Math.min(devicePixelRatio, matchMedia('(pointer: coarse)').matches ? 1.5 : 2));
   r.toneMapping = THREE.ACESFilmicToneMapping;
   const sc = new THREE.Scene();
   studio(r, sc);

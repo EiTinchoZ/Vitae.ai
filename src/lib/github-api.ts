@@ -45,46 +45,9 @@ export async function getGitHubRepos(): Promise<GitHubRepo[]> {
   }
 }
 
-export async function getRepoLanguages(
-  repoName: string
-): Promise<Record<string, number>> {
-  try {
-    if (APP_MODE === 'demo') {
-      return {};
-    }
-
-    const response = await fetch(
-      `${GITHUB_API_BASE}/repos/${GITHUB_USERNAME}/${repoName}/languages`,
-      {
-        headers: {
-          Accept: 'application/vnd.github.v3+json',
-        },
-        next: { revalidate: 3600 },
-      }
-    );
-
-    if (!response.ok) {
-      return {};
-    }
-
-    return await response.json();
-  } catch (error) {
-    console.error('Error fetching repo languages:', error);
-    return {};
-  }
-}
-
 const localeMap: Record<LanguageCode, string> = {
   es: 'es-PA',
   en: 'en-US',
-  pt: 'pt-PT',
-  de: 'de-DE',
-  fr: 'fr-FR',
-  zh: 'zh-CN',
-  ja: 'ja-JP',
-  ar: 'ar',
-  hi: 'hi-IN',
-  ko: 'ko-KR',
 };
 
 export function formatDate(dateString: string, language: LanguageCode = 'es'): string {

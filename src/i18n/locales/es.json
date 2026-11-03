@@ -181,8 +181,10 @@
     "viewLess": "Ver menos"
   },
   "aiErrors": {
-    "apiKeyMissing": "La IA no está configurada. Agrega GROQ_API_KEY en el entorno.",
-    "rateLimited": "Demasiadas solicitudes. Espera un momento e intenta de nuevo.",
+    "mailLimit": "El buzón se llenó por hoy. Escríbeme directo a mbundy15@gmail.com.",
+    "aiBusy": "La IA llegó a su límite gratis por hoy. Vuelve en un rato; el resto de la página sigue funcionando.",
+    "apiKeyMissing": "La IA llegó a su límite gratis por hoy. Vuelve en un rato; el resto de la página sigue funcionando.",
+    "rateLimited": "Vas muy rápido. Espera un minuto y vuelve a preguntar.",
     "invalidRequest": "Solicitud inválida. Revisa la información enviada.",
     "processingFailed": "No se pudo procesar la solicitud de IA.",
     "unknown": "Ocurrió un error inesperado con la IA."

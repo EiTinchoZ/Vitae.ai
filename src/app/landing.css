@@ -32,6 +32,10 @@ h2 em{font-style:normal;color:var(--or)}
 .nav a:hover{color:var(--paper);background:rgba(243,238,227,.08)}
 .nav a.cvb{background:var(--or);color:var(--bk);font-weight:600}
 .nav a{white-space:nowrap}
+.nav .lg{display:flex;gap:2px;margin:0 4px;padding:3px;border:1px solid var(--line);border-radius:999px}
+.nav .lang-sw a{padding:6px 9px;font-weight:600;color:var(--soft)}
+.nav .lang-sw a[aria-current]{background:var(--paper);color:var(--bk)}
+.nav .lang-sw a:focus-visible,.nav a:focus-visible{outline:3px solid var(--or);outline-offset:2px}
 @media(max-width:1360px){.snd span{display:none}.snd{padding:0 10px}}
 
 /* ============ 1. PORTADA ============ */
@@ -182,6 +186,17 @@ h2 em{font-style:normal;color:var(--or)}
 .lbl.fut{transform:translate(calc(-100% - 22px),-50%);text-align:right}.lbl.fut b{color:var(--hz)}
 .mcard{position:absolute;z-index:5;right:40px;top:96px;width:320px;background:var(--paper);color:var(--bk);border-radius:14px;padding:20px;opacity:0;transform:translateY(-10px);transition:.25s var(--ease);pointer-events:none}
 .mcard.on{opacity:1;transform:none}
+/* Sin WebGL (metro-map.ts): el mapa pasa a lista legible, la sección crece con su contenido */
+.map.nogl{height:auto;overflow:visible}
+.map.nogl canvas,.map.nogl .hint,.map.nogl .mcard,.map.nogl .legend{display:none}
+.map.nogl{padding:96px 40px 80px}
+.map.nogl .txt{position:static;max-width:1080px;pointer-events:auto}
+@media(max-width:860px){.map.nogl{padding:84px 20px 64px}}
+.mlist{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.mlist li{background:var(--paper);color:var(--bk);text-shadow:none;border-radius:14px;padding:18px 20px;font-size:14px;line-height:1.45}
+.map .mlist .mono{color:var(--bk);font-size:12px;text-shadow:none}
+.mlist b{display:block;font:800 20px/1.1 "Archivo";font-stretch:var(--wd,110%);margin:8px 0 6px}
+.mlist i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
 .mcard b{display:block;font:800 22px/1.1 "Archivo";font-stretch:var(--wd,110%);margin:8px 0 6px}
 .mcard i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
 
@@ -609,7 +624,7 @@ footer{position:relative;z-index:1;padding:24px 40px 40px;display:flex;justify-c
   .po-in{grid-template-columns:1fr;gap:16px}
   .edu-grid{grid-template-columns:1fr}.ehead{grid-template-columns:1fr;gap:14px}.edu .iso-plate{padding:40px 6px 40px}
   .nav{left:12px;right:12px;transform:none;justify-content:space-between}
-  .nav a:not(.cvb){display:none}
+  .nav>a:not(.cvb){display:none}
   .hero{grid-template-columns:1fr;grid-template-rows:auto auto auto;padding:90px 20px 28px;gap:24px}
   .hero h1{font-size:clamp(60px,18.5vw,120px)}
   .core{--s:min(190px,48vw);margin:110px 0 40px}
@@ -766,3 +781,36 @@ body{text-shadow:var(--halo)}
 /* legibilidad en el build: el contador del fichero caía sobre los puntos de la tinta; el azul-violeta del ciclo RGB daba 2.7:1 en los textos grandes */
 .rdx-n b{padding:2px 7px 3px;border-radius:6px;background:#09090A;box-shadow:0 0 0 1px rgba(243,238,227,.16)}
 .rig h2 em,.rnums div:first-child b{color:color-mix(in srgb,var(--rig-c,var(--or)) 80%,#FFF2DE)}
+/* celular, punto 6: el sello "Aprobado" de Hoy pisaba el título; en 640 o menos entra al flujo, arriba de la etiqueta */
+@media(max-width:640px){.det{gap:0}.det .st{position:relative;right:auto;top:auto;justify-self:start;margin:4px 0 16px}}
+/* celular, punto 4: la ficha tapaba la cinta. En 640 o menos se apilan: título, cinta en su franja, ficha y ticker.
+   project-belt.ts mide cámara y taps con el canvas, así que la franja no deforma ni corre los toques */
+@media(max-width:640px){
+  .prj{display:flex;flex-direction:column;height:auto;min-height:0;padding:84px 0 0}
+  .prj .panel{display:contents}
+  .prj h2{padding:0 20px;order:-1}
+  .prj canvas{position:relative;inset:auto;flex:none;height:55svh;-webkit-mask-image:linear-gradient(#000 82%,transparent);mask-image:linear-gradient(#000 82%,transparent)}
+  .prj .pcard{margin:0 20px 40px}
+  .prj .ticker{position:relative}
+}
+/* celular, puntos 2 y 4: pista táctil en lugar de la de mouse. En el mapa queda abajo y la ficha la cubre al abrirse */
+.hint .ht{display:none}
+@media(pointer:coarse){.hint .hm{display:none}.hint .ht{display:inline}}
+@media(max-width:640px){
+  .map .hint{display:block;left:20px;right:20px;bottom:24px;text-align:center}
+  .prj .hint{display:block;position:static;order:1;margin:-6px 20px 18px;text-align:left}
+  .prj .pcard{order:2}.prj .ticker{order:3}
+}
+/* la etiqueta de la ficha del mapa salía en amarillo sobre crema; va en el café de la ficha de Hoy */
+.mcard .mono{color:#3B2716}
+@media(max-width:640px){.map .lbl.hub b{font-size:17px}.map .lbl.hub small{display:none}}
+/* C7: alto de las figuras diferidas reservado hasta que llegan (CLS). SVG = ancho del host menos el padding de la placa
+   (--fx) con la proporción del viewBox; --fr = placa, leyenda y controles, medidos por franja en 360 a 1920 */
+.hoy .iso:not(:has(.iso-figure))::before,.rig .iso:not(:has(.iso-figure))::before,.edu .iso>div:not(:has(.iso-figure))::before{content:'';display:block;box-sizing:content-box;margin:0 calc(var(--fx)/2);padding-top:var(--fr);aspect-ratio:var(--fa)}
+.hoy .iso{--fa:760/350;--fx:20px;--fr:250px}
+.rig .iso{--fa:640/600;--fx:20px;--fr:116px}
+.edu .iso>div{--fa:640/430;--fx:28px;--fr:92px}
+@media(max-width:1270px){.edu .iso>div{--fr:237px}}
+@media(max-width:900px){.rig .iso{--fx:12px;--fr:108px}.edu .iso>div{--fx:12px;--fr:80px}}
+@media(max-width:700px){.edu .iso>div{--fr:229px}}
+@media(max-width:520px){.hoy .iso{--fr:290px}.rig .iso{--fr:124px}}

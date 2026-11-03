@@ -681,6 +681,7 @@ const setTimeout = (cb, ms, ...a) => { if (dead) return 0; const id = window.set
 const clearTimeout = (id) => { timers.delete(id); window.clearTimeout(id); };
 class IntersectionObserver extends window.IntersectionObserver { constructor(cb, o) { super(cb, o); observers.push(this); } }
 
+const TEXT = {"rest":"Industrial 90 % · IA: VI de VII","chip":"ITSE · {n} · {what} · {state}","passed":"aprobado","current":"en curso","pending":"falta","rack":"ADEN · {done} de {total} materias aprobadas","missing":"ADEN · faltan 6 · ene a abr 2027","cross":"el cruce · Industrial mide, IA cambia"};
 const P = {"origin":[345.19528920322165,251.63962166571397],"scale":1.557403542473743,"azimuth":66,"elevation":30};
 const QUADS = [["I","matemáticas, redes, ciberseguridad"],["II","bases de datos, programación, intro a la IA"],["III","lenguajes para IA, sistemas inteligentes"],["IV","NLP y aprendizaje automatizado"],["V","ciencia de datos, visión, minería de datos"],["VI","deep learning, IoT, robótica"],["VII","práctica profesional"]];
 const NOW_Q = 5, HECHAS = 54, MATERIAS = 60, RUN = [-36,22];
@@ -693,7 +694,7 @@ const boxes = [...svg.querySelectorAll(".ed-box")].sort((a, b) => a.dataset.b - 
 const quads = [...svg.querySelectorAll(".ed-q")].sort((a, b) => a.dataset.q - b.dataset.q);
 const cbs = [...svg.querySelectorAll('[data-part="cb"]')];
 const cards = { ind: document.querySelector('.deg[data-deg="ind"]'), ia: document.querySelector('.deg[data-deg="ia"]') };
-const REST = "Industrial 90 % · IA: VI de VII";
+const REST = TEXT.rest;
 const say = (text, deg) => {
   if (readout.textContent !== text) readout.textContent = text;
   stage.setAttribute("aria-valuetext", text);
@@ -704,10 +705,10 @@ const say = (text, deg) => {
 const textOf = (el) => {
   if (el.dataset.q !== undefined) {
     const i = +el.dataset.q, [n, what] = QUADS[i];
-    return ["ITSE · " + n + " · " + what + " · " + (i < NOW_Q ? "aprobado" : i === NOW_Q ? "en curso" : "falta"), "ia"];
+    return [TEXT.chip.replace("{n}", n).replace("{what}", what).replace("{state}", i < NOW_Q ? TEXT.passed : i === NOW_Q ? TEXT.current : TEXT.pending), "ia"];
   }
-  if (el.dataset.b !== undefined) return +el.dataset.b < HECHAS ? ["ADEN · " + HECHAS + " de " + MATERIAS + " materias aprobadas", "ind"] : ["ADEN · faltan 6 · ene a abr 2027", "ind"];
-  if (el.dataset.c) return ["el cruce · Industrial mide, IA cambia", null];
+  if (el.dataset.b !== undefined) return +el.dataset.b < HECHAS ? [TEXT.rack.replace("{done}", HECHAS).replace("{total}", MATERIAS), "ind"] : [TEXT.missing, "ind"];
+  if (el.dataset.c) return [TEXT.cross, null];
   return null;
 };
 let current = null;

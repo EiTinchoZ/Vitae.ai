@@ -181,8 +181,10 @@
     "viewLess": "View less"
   },
   "aiErrors": {
-    "apiKeyMissing": "AI is not configured. Add GROQ_API_KEY in the environment.",
-    "rateLimited": "Too many requests. Please wait and try again.",
+    "mailLimit": "The inbox is full for today. Write to me directly at mbundy15@gmail.com.",
+    "aiBusy": "The AI hit its free limit for today. Come back later; the rest of the page still works.",
+    "apiKeyMissing": "The AI hit its free limit for today. Come back later; the rest of the page still works.",
+    "rateLimited": "You're going fast. Give it a minute and ask again.",
     "invalidRequest": "Invalid request. Check the submitted information.",
     "processingFailed": "Unable to process the AI request.",
     "unknown": "An unexpected AI error occurred."

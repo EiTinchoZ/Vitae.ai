@@ -701,24 +701,7 @@ const DOWN = "translate(0 2.45)";
 const PROG_W = 40;
 
 // tareas de ejemplo: lo que de verdad le pido a Claude Code en mis proyectos
-const TASKS = [
-  { p: "Arregla el menú en móvil", read: ["index.html", "styles.css"], file: "styles.css", line: 212,
-    ctx: [".nav{display:flex;gap:28px}", ".nav a{white-space:nowrap}", "", "@media (max-width:1360px){", "  .snd span{display:none}", "}", "", ".hero{min-height:100svh}", ".hero h1{font:900 9vw/.85 Archivo}", ".hero .lead{max-width:34ch}", "", ".rig{padding:120px 40px}", ".rnums{display:grid;gap:4px}"],
-    at: 6, add: ["@media (max-width:860px){", "  .nav{overflow-x:auto}", "}"], del: 1,
-    plan: "1 archivo, 3 líneas", cmd: "npx playwright test --project=movil", ok: "menú en una línea a 390 px ✓" },
-  { p: "Que el RGB siga la carga", read: ["laptop.mjs", "sfx.js"], file: "laptop.mjs", line: 318,
-    ctx: ["function draw(tps) {", "  for (const l of leds) {", "    const h = hue(l.p);", "    l.g.style.color = h;", "  }", "  svg.style.setProperty(", "    \"--lap-on\", on);", "}", "", "function tick(now) {", "  const dt = (now - last) / 1000;", "  draw(step(dt));", "}"],
-    at: 3, add: ["    const light = 52 + 14 * load;", "    const h = hsl(l.p, light);"], del: 2,
-    plan: "lee el modelo de carga, 2 líneas", cmd: "node fig/laptop.mjs", ok: "line ends: 0 ✓" },
-  { p: "Pasa el CV a inglés", read: ["cv/", "es.md", "en.md"], file: "en.md", line: 12,
-    ctx: ["# Martín Bundy", "AI & Industrial Engineering · Panamá", "", "## Education", "- AI Technician · ITSE · 2026", "- Industrial Engineering · ADEN", "", "## Certificates", "- Claude Code in Action · Anthropic", "- AI Fluency · Anthropic", "", "## Languages", "- Spanish · English C2"],
-    at: 7, add: ["## Skills", "- Python · SQL · Power BI · Claude Code", ""], del: -1,
-    plan: "mismo orden que el CV en español", cmd: "node scripts/ats-check.mjs en.md", ok: "legible por ATS ✓" },
-  { p: "Que las fotos carguen después", read: ["index.html"], file: "index.html", line: 451,
-    ctx: ["<section class=\"hoy\" id=\"hoy\">", "  <div class=\"wrap\">", "    <figure class=\"shot\">", "      <img src=\"img/expo.jpg\" alt=\"\">", "    </figure>", "    <h2>Hoy</h2>", "  </div>", "</section>", "", "<section id=\"proyectos\">", "  <div class=\"wrap\">", "    <h2>Proyectos</h2>", "  </div>"],
-    at: 4, add: ["      <img src=\"img/expo.jpg\" alt=\"\"", "           loading=\"lazy\" decoding=\"async\">"], del: 3,
-    plan: "solo las fotos bajo el pliegue", cmd: "npx playwright test --project=web", ok: "carga diferida ✓" },
-];
+const TASKS = [{"p":"Arregla el menú en móvil","read":["index.html","styles.css"],"file":"styles.css","line":212,"ctx":[".nav{display:flex;gap:28px}",".nav a{white-space:nowrap}","","@media (max-width:1360px){","  .snd span{display:none}","}","",".hero{min-height:100svh}",".hero h1{font:900 9vw/.85 Archivo}",".hero .lead{max-width:34ch}","",".rig{padding:120px 40px}",".rnums{display:grid;gap:4px}"],"at":6,"add":["@media (max-width:860px){","  .nav{overflow-x:auto}","}"],"del":1,"plan":"1 archivo, 3 líneas","cmd":"npx playwright test --project=movil","ok":"menú en una línea a 390 px ✓"},{"p":"Que el RGB siga la carga","read":["laptop.mjs","sfx.js"],"file":"laptop.mjs","line":318,"ctx":["function draw(tps) {","  for (const l of leds) {","    const h = hue(l.p);","    l.g.style.color = h;","  }","  svg.style.setProperty(","    \"--lap-on\", on);","}","","function tick(now) {","  const dt = (now - last) / 1000;","  draw(step(dt));","}"],"at":3,"add":["    const light = 52 + 14 * load;","    const h = hsl(l.p, light);"],"del":2,"plan":"lee el modelo de carga, 2 líneas","cmd":"node fig/laptop.mjs","ok":"line ends: 0 ✓"},{"p":"Pasa el CV a inglés","read":["cv/","es.md","en.md"],"file":"en.md","line":12,"ctx":["# Martín Bundy","AI & Industrial Engineering · Panamá","","## Education","- AI Technician · ITSE · 2026","- Industrial Engineering · ADEN","","## Certificates","- Claude Code in Action · Anthropic","- AI Fluency · Anthropic","","## Languages","- Spanish · English C2"],"at":7,"add":["## Skills","- Python · SQL · Power BI · Claude Code",""],"del":-1,"plan":"mismo orden que el CV en español","cmd":"node scripts/ats-check.mjs en.md","ok":"legible por ATS ✓"},{"p":"Que las fotos carguen después","read":["index.html"],"file":"index.html","line":451,"ctx":["<section class=\"hoy\" id=\"hoy\">","  <div class=\"wrap\">","    <figure class=\"shot\">","      <img src=\"img/expo.jpg\" alt=\"\">","    </figure>","    <h2>Hoy</h2>","  </div>","</section>","","<section id=\"proyectos\">","  <div class=\"wrap\">","    <h2>Proyectos</h2>","  </div>"],"at":4,"add":["      <img src=\"img/expo.jpg\" alt=\"\"","           loading=\"lazy\" decoding=\"async\">"],"del":3,"plan":"solo las fotos bajo el pliegue","cmd":"npx playwright test --project=web","ok":"carga diferida ✓"}];
 const SUBS = (t) => [t.plan, "lee " + t.read.filter((f) => !f.endsWith("/")).join(", "), t.file + "  +" + t.add.filter(Boolean).length + (t.del >= 0 ? " −1" : ""), "corre las pruebas", "listo para revisar"];
 const DUR = [1.6, 1.4, 2.2, 2.8, 2.6];
 
@@ -836,8 +819,8 @@ function typeStep(dt) {
 }
 function custom(text) {
   // la tarea del visitante: Claude la anota en notas.md y la verifica
-  return { p: text, read: ["agents.md", "notas.md"], file: "notas.md", line: 1,
-    ctx: ["# Notas de la sesión", "", "## Hoy", "- maqueta de la laptop", "- revisar en móvil", "", "## Después", "- MOTION.md", "- CV en PDF", "", "## Hecho", "- torre RGB", "- sonido"],
+  return { p: text, read: ["agents.md","notas.md"], file: "notas.md", line: 1,
+    ctx: ["# Notas de la sesión","","## Hoy","- maqueta de la laptop","- revisar en móvil","","## Después","- MOTION.md","- CV en PDF","","## Hecho","- torre RGB","- sonido"],
     at: 5, add: ["- " + clip(text, 40)], del: -1, plan: "1 nota nueva, sin tocar código", cmd: "node scripts/check.mjs", ok: "verificado ✓" };
 }
 

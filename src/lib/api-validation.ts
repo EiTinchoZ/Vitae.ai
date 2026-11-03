@@ -1,7 +1,7 @@
 import type { LanguageCode } from '@/i18n';
 
 const VALID_LANGUAGES: LanguageCode[] = [
-  'es', 'en', 'pt', 'de', 'fr', 'zh', 'ja', 'ar', 'hi', 'ko'
+  'es', 'en'
 ];
 
 const VALID_SECTIONS = ['skills', 'projects', 'experience', 'education'];
@@ -30,16 +30,6 @@ export function validateQuestion(question: unknown): string | null {
   return question.trim();
 }
 
-export function validateMessage(message: unknown): string | null {
-  if (typeof message !== 'string' || message.trim().length === 0) {
-    return null;
-  }
-  if (message.length > 2000) {
-    return message.slice(0, 2000);
-  }
-  return message.trim();
-}
-
 export function createErrorResponse(
   message: string,
   status: number = 400,
@@ -49,4 +39,26 @@ export function createErrorResponse(
     JSON.stringify({ error: message, errorCode }),
     { status, headers: { 'Content-Type': 'application/json' } }
   );
+}
+
+export function validateMessages(messages: unknown): messages is Array<{ role: 'user' | 'assistant'; content: string }> {
+  return Array.isArray(messages) && messages.length >= 1 && messages.length <= 12
+    && messages.every((message) => message && typeof message === 'object'
+      && (message.role === 'user' || message.role === 'assistant')
+      && typeof message.content === 'string' && message.content.trim().length >= 1
+      && message.content.length <= 1_000);
+}
+
+export function validateCvDataSize(cvData: unknown): boolean {
+  return cvData === undefined || JSON.stringify(cvData).length <= 20_000;
+}
+
+export async function readJsonObject(request: Request): Promise<Record<string, unknown> | null> {
+  try {
+    const body: unknown = await request.json();
+    return body !== null && typeof body === 'object' && !Array.isArray(body)
+      ? body as Record<string, unknown> : null;
+  } catch {
+    return null;
+  }
 }

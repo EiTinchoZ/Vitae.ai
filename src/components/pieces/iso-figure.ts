@@ -1,12 +1,12 @@
-// Figuras isométricas: archivos generados por tools/figs (public/fig/<nombre>.<lang>.html + <nombre>.js + iso.css).
+// Figuras isométricas: tools/figs genera <nombre>.<lang>.html, <nombre>.<lang>.js e iso.css en public/fig/.
 // El marcado estático deja un comentario <!--fig:nombre--> donde va la figura. Unos 600 px antes de que se vea, se
 // traen iso.css (una vez por página) y el fragmento, se pone en su lugar y se importa el runtime, que exporta mount().
 // El runtime se importa una sola vez; mount() se llama en cada montaje. La limpieza deja el comentario como estaba.
 type Runtime = { mount: () => () => void };
 
 const runtimes = new Map<string, Promise<Runtime>>();
-const runtime = (name: string) => {
-  const url = `/fig/${name}.js`;
+const runtime = (name: string, lang: 'es' | 'en') => {
+  const url = `/fig/${name}.${lang}.js`;
   if (!runtimes.has(url)) runtimes.set(url, import(/* webpackIgnore: true */ /* turbopackIgnore: true */ url));
   return runtimes.get(url)!;
 };
@@ -43,7 +43,7 @@ export function mount(root: ParentNode, name: string, lang: 'es' | 'en'): () => 
       isoCss(),
     ]);
     if (ctl.signal.aborted) return;
-    const rt = await runtime(name);
+    const rt = await runtime(name, lang);
     if (ctl.signal.aborted) return;
     host!.innerHTML = `<!--fig:${name}-->` + html;
     stop = rt.mount();

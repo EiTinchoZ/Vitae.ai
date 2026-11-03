@@ -1,7 +1,10 @@
 ﻿import { NextResponse } from 'next/server';
-import { enforceRateLimit } from '@/lib/api-rate-limit';
+import { createHash } from 'node:crypto';
+import { enforceGlobalDailyLimit, enforceRateLimit } from '@/lib/api-rate-limit';
 
 export const runtime = 'nodejs';
+
+const recentMessages = new Map<string, { expiresAt: number; result: Promise<Response> }>();
 
 function validatePayload(
   body: unknown,
@@ -28,12 +31,6 @@ function escapeHtml(str: string) {
 }
 
 export async function POST(request: Request) {
-  const rateLimitResponse = enforceRateLimit(request, {
-    windowMs: 60_000,
-    max: 3,
-    keyPrefix: 'contact',
-  });
-  if (rateLimitResponse) return rateLimitResponse;
 
   let body: unknown;
   try {
@@ -49,6 +46,35 @@ export async function POST(request: Request) {
 
   const { name, email, message } = payload;
 
+  const now = Date.now();
+  for (const [key, entry] of recentMessages) {
+    if (entry.expiresAt <= now) recentMessages.delete(key);
+  }
+  const hash = createHash('sha256').update(JSON.stringify([email.toLowerCase(), message])).digest('hex');
+  const duplicate = recentMessages.get(hash);
+  if (duplicate) {
+    console.log('[contact] Duplicate suppressed');
+    return (await duplicate.result).clone();
+  }
+  const rateLimitResponse = enforceRateLimit(request, {
+    windowMs: 60_000,
+    max: 3,
+    keyPrefix: 'contact',
+  });
+  if (rateLimitResponse) return rateLimitResponse;
+
+  const globalLimit = enforceGlobalDailyLimit('contact', 50, 'mail_limit');
+  if (globalLimit) return globalLimit;
+
+  // Install the reservation synchronously; concurrent requests await the same result.
+  const result = sendContact(name, email, message);
+  recentMessages.set(hash, { expiresAt: now + 600_000, result });
+  const response = await result;
+  if (!response.ok) recentMessages.delete(hash);
+  return response.clone();
+}
+
+async function sendContact(name: string, email: string, message: string): Promise<Response> {
   const resendApiKey = process.env.RESEND_API_KEY;
   if (resendApiKey) {
     try {
@@ -76,10 +102,12 @@ export async function POST(request: Request) {
       });
 
       if (!res.ok) {
-        console.error('[contact] Resend error:', await res.text());
+        console.error('[contact] Resend error:', res.status);
+        return NextResponse.json({ error: 'Mail unavailable', errorCode: res.status === 429 ? 'mail_limit' : 'processing_failed' }, { status: 503 });
       }
     } catch (err) {
       console.error('[contact] Resend fetch error:', err);
+      return NextResponse.json({ error: 'Mail unavailable', errorCode: 'processing_failed' }, { status: 503 });
     }
   } else {
     // No Resend key - log submission for development

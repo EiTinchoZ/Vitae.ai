@@ -681,6 +681,7 @@ const setTimeout = (cb, ms, ...a) => { if (dead) return 0; const id = window.set
 const clearTimeout = (id) => { timers.delete(id); window.clearTimeout(id); };
 class IntersectionObserver extends window.IntersectionObserver { constructor(cb, o) { super(cb, o); observers.push(this); } }
 
+const T = {"fields":["Solicitante","Descripción","Proveedor","Cantidad","Precio","Moneda","Lugar de entrega","Fecha de entrega","Cotización","Motivo"],"label":"Una línea de producción en seis estaciones. Una tolva suelta los diez campos de una solicitud en el carro del agente. Diez palpadores revisan cada campo y un reloj cuenta los que faltan; si falta alguno, el carro vuelve y el solicitante lo agrega. Un sello la marca lista para revisión, una cápsula sube por un tubo con el aviso al comprador, y una compuerta espera la aprobación mientras una campana suena cada día hábil. Al final la orden sale al proveedor. Seis luces al frente muestran el estado.","fig":"Fig 2","title":"PO Guru, de punta a punta","hint":"Tú decides en 3 y en 6","enter":"entra la cotización","check":"revisa 10 puntos","missing":"falta {fields}","join":" y ","complete":"10 de 10 · completa","ask":"te pregunta: falta {fields}","add":"el solicitante agrega {fields}","ready":"lista para revisión","brief":"brief al buyer en Teams","wait":"espera la aprobación","firstDay":"día hábil 1 · espera al aprobador","oneReminder":"día hábil {day} · {count} recordatorio","reminders":"día hábil {day} · {count} recordatorios","approved":"aprobada por una persona","out":"la orden sale al proveedor","announceAdd":"Falta un dato. Te toca: agrégalo.","announceWait":"Espera tu aprobación.","legend":"Verde: el agente trabajando o un paso cumplido","caption":"Demo con datos de ejemplo.","controls":"Tus decisiones en la demo","requester":"3 · Solicitante","addButton":"Agregar el dato","approver":"6 · Aprobador","approveButton":"Aprobar","missingToggle":"Que le falte un dato"};
 const P = {"origin":[393.6757455487958,200.0880850609168],"scale":1.125292226717758,"azimuth":65,"elevation":26};
 const FIELDS = ["Solicitante","Descripción","Proveedor","Cantidad","Precio","Moneda","Lugar de entrega","Fecha de entrega","Cotización","Motivo"];
 const X = { in: -212, chk: -124, stamp: -71.5, brief: 40, wait: 82, out: 192 };
@@ -757,17 +758,17 @@ const days = () => Math.floor(t / DAY) + 1;
 function textOf() {
   const id = PH[ph].id, m = missing();
   const gone = FIELDS.filter((_, i) => !have[i]).map((f) => f.toLowerCase());
-  if (id === "llena") return "entra la cotización";
-  if (["a-rev", "baja"].includes(id)) return "revisa 10 puntos";
-  if (id === "lee" || id === "sube") return m ? "falta " + gone.join(" y ") : "10 de 10 · completa";
-  if (id === "pregunta") return "te pregunta: falta " + gone.join(" y ");
-  if (id === "vuelve" || id === "agrega") return "el solicitante agrega " + gone.join(" y ");
-  if (id === "a-sello" || id === "sella") return "lista para revisión";
-  if (id === "a-brief" || id === "brief") return "brief al buyer en Teams";
-  if (id === "a-puerta") return "espera la aprobación";
-  if (id === "espera") return days() === 1 ? "día hábil 1 · espera al aprobador" : "día hábil " + days() + " · " + (days() - 1) + " recordatorio" + (days() - 1 === 1 ? "" : "s");
-  if (id === "abre") return "aprobada por una persona";
-  return "la orden sale al proveedor";
+  if (id === "llena") return T.enter;
+  if (["a-rev", "baja"].includes(id)) return T.check;
+  if (id === "lee" || id === "sube") return m ? T.missing.replace("{fields}", gone.join(T.join)) : T.complete;
+  if (id === "pregunta") return T.ask.replace("{fields}", gone.join(T.join));
+  if (id === "vuelve" || id === "agrega") return T.add.replace("{fields}", gone.join(T.join));
+  if (id === "a-sello" || id === "sella") return T.ready;
+  if (id === "a-brief" || id === "brief") return T.brief;
+  if (id === "a-puerta") return T.wait;
+  if (id === "espera") return days() === 1 ? T.firstDay : (days() - 1 === 1 ? T.oneReminder : T.reminders).replace("{day}", days()).replace("{count}", days() - 1);
+  if (id === "abre") return T.approved;
+  return T.out;
 }
 let last = 0, frame = 0, visible = false, lastDay = 0, said = "";
 function draw(o) {
@@ -816,7 +817,7 @@ function draw(o) {
   steps.forEach((s, i) => s.toggleAttribute("data-on", i === st));
   steps.forEach((s, i) => s.toggleAttribute("data-done", i < st && (i !== 2 || asked)));
   btnAdd.disabled = id !== "pregunta"; btnOk.disabled = id !== "espera";
-  const say = id === "pregunta" ? "Falta un dato. Te toca: agrégalo." : id === "espera" ? "Espera tu aprobación." : "";
+  const say = id === "pregunta" ? T.announceAdd : id === "espera" ? T.announceWait : "";
   if (say !== said) { said = say; live.textContent = say; }
 }
 let asked = false;

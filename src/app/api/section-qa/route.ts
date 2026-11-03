@@ -1,8 +1,7 @@
-import { createGroq } from '@ai-sdk/groq';
-import { streamText } from 'ai';
+import { guardedStream } from '@/lib/ai-guard';
 import { getCvData } from '@/data/cv-data';
 import { getLanguageInstruction } from '@/lib/ai-language';
-import { validateLanguage, validateSection, validateQuestion, createErrorResponse } from '@/lib/api-validation';
+import { readJsonObject, validateCvDataSize, validateLanguage, validateSection, validateQuestion, createErrorResponse } from '@/lib/api-validation';
 import { enforceRateLimit } from '@/lib/api-rate-limit';
 import type { CVData } from '@/types';
 import { IS_DEMO } from '@/lib/app-config';
@@ -60,6 +59,8 @@ ${!IS_DEMO && educationNarrative ? `\n${educationNarrative}` : ''}\n\nUse this t
   }
 }
 
+export const maxDuration = 30;
+
 export async function POST(req: Request) {
   try {
     const rateLimitResponse = enforceRateLimit(req, {
@@ -69,15 +70,10 @@ export async function POST(req: Request) {
     });
     if (rateLimitResponse) return rateLimitResponse;
 
-    if (!process.env.GROQ_API_KEY) {
-      return createErrorResponse('API key not configured', 500, 'api_key_missing');
+    const body = await readJsonObject(req);
+    if (!body || !validateCvDataSize(body.cvData)) {
+      return createErrorResponse('Invalid request', 400, 'invalid_request');
     }
-
-    const groq = createGroq({
-      apiKey: process.env.GROQ_API_KEY,
-    });
-
-    const body = await req.json();
     const language = validateLanguage(body.language);
     const section = validateSection(body.section);
     const question = validateQuestion(body.question);
@@ -90,7 +86,7 @@ export async function POST(req: Request) {
     }
 
     const override = IS_DEMO && body?.cvData && typeof body.cvData === 'object' ? body.cvData : null;
-    const cvData = override ? mergeCvData(EMPTY_CV_DATA, override) : getCvData(language);
+    const cvData = override ? mergeCvData(EMPTY_CV_DATA, override as Partial<import('@/types').CVData>) : getCvData(language);
     const candidateName = cvData.personal.fullName || cvData.personal.name || 'the candidate';
     const hasElectricInternship = cvData.experience.some(
       (exp) =>
@@ -113,13 +109,11 @@ INSTRUCTIONS:
 - Prioritize AI, ML, generative AI, data science, automation, and industrial engineering.
 ${hasElectricInternship ? '- The electrical distribution internship was a learning experience; do not present it as a core specialization.' : ''}`;
 
-    const result = streamText({
-      model: groq('llama-3.3-70b-versatile'),
+    return await guardedStream({
       system: systemPrompt,
       prompt: question,
     });
 
-    return result.toTextStreamResponse();
   } catch (error) {
     console.error('Section QA API error:', error);
     return createErrorResponse('Failed to process question', 500, 'processing_failed');

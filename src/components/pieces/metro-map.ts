@@ -5,6 +5,7 @@
 // mount() devuelve la limpieza: si three o el GLB llegan tarde, se descartan al llegar.
 import type { Mesh, Object3D, Quaternion, Vector3 } from 'three';
 import { loadThree } from '@/lib/three/load';
+import { hasWebGL } from '@/lib/three/webgl';
 import type { Station } from '@/content/es/trayectoria';
 
 type Kit = Awaited<ReturnType<typeof loadThree>>;
@@ -19,6 +20,7 @@ const freeAll = (o: Object3D) => o.traverse((n) => {
 });
 
 export function mount(sec: HTMLElement, data: Data): () => void {
+  if (!hasWebGL()) return list(sec, data);
   let alive = true;
   let stop: (() => void) | null = null;
   loadThree()
@@ -28,6 +30,20 @@ export function mount(sec: HTMLElement, data: Data): () => void {
   return () => {
     alive = false;
     stop?.();
+  };
+}
+
+// Sin WebGL: las estaciones como lista, con el color de su línea y el mismo marcado de la ficha. Cierra con HOY.
+function list(sec: HTMLElement, D: Data): () => void {
+  const ol = document.createElement('ol');
+  ol.className = 'mlist';
+  ol.innerHTML = D.stations.map((s) => `<li><span class="mono"><i style="background:${C[s[0]]}"></i>${D.lines[s[0]]} · ${s[1]}</span><b>${s[2]}</b>${s[3]}</li>`).join('')
+    + `<li><span class="mono"><i style="background:#FF5A14"></i>${D.hub[0]}</span><b>${D.hub[1]}</b></li>`;
+  sec.querySelector('.txt')?.append(ol);
+  sec.classList.add('nogl');
+  return () => {
+    ol.remove();
+    sec.classList.remove('nogl');
   };
 }
 
@@ -184,18 +200,56 @@ async function start({ THREE, TOOLS, makeKey, scene, loadGLB }: Kit, sec: HTMLEl
 
   let rotY = -0.35, tRotY = -0.35, drag: number | null = null, mx = 0, my = 0, sel = -1, focus: string | null = null, small = false;
   const ray = new THREE.Raycaster(), m = new THREE.Vector2(9, 9);
-  const onDown = (e: PointerEvent) => { drag = e.clientX; };
-  const onUp = () => { drag = null; };
-  const onMove = (e: PointerEvent) => {
+  let down: { id: number; x: number; y: number; travel: number } | null = null;
+  let touch = false;
+  const originalSelection = sec.getAttribute('data-sel');
+  sec.dataset.sel = '-1';
+  const select = (i: number) => {
+    if (i === sel) return;
+    sel = i;
+    sec.dataset.sel = String(i);
+    if (i >= 0) {
+      const s = S[i];
+      card.innerHTML = `<span class="mono"><i style="background:${C[s[0]]}"></i>${LINES[s[0]]} · ${s[1]}</span><b>${s[2]}</b>${s[3]}`;
+      card.classList.add('on');
+    } else card.classList.remove('on');
+  };
+  const pointer = (e: PointerEvent) => {
     const b = sec.getBoundingClientRect();
     m.set(((e.clientX - b.left) / b.width) * 2 - 1, -((e.clientY - b.top) / b.height) * 2 + 1);
+  };
+  const onDown = (e: PointerEvent) => {
+    touch = e.pointerType !== 'mouse';
+    down = { id: e.pointerId, x: e.clientX, y: e.clientY, travel: 0 };
+    drag = e.clientX;
+  };
+  const onUp = (e: PointerEvent) => {
+    if (!down || down.id !== e.pointerId) return;
+    if (touch && Math.max(down.travel, Math.hypot(e.clientX - down.x, e.clientY - down.y)) < 8) {
+      pointer(e);
+      sc.updateMatrixWorld(true);
+      cam.updateMatrixWorld();
+      ray.setFromCamera(m, cam);
+      const hit = ray.intersectObjects(st, false)[0];
+      select(hit ? hit.object.userData.i : -1);
+    }
+    drag = null;
+    down = null;
+  };
+  const onCancel = () => { drag = null; down = null; };
+  const onMove = (e: PointerEvent) => {
+    if (e.pointerType === 'mouse') touch = false;
+    const b = sec.getBoundingClientRect();
+    pointer(e);
     mx = (e.clientX - b.left) / b.width - 0.5;
     my = (e.clientY - b.top) / b.height - 0.5;
+    if (down && down.id === e.pointerId) down.travel = Math.max(down.travel, Math.hypot(e.clientX - down.x, e.clientY - down.y));
     if (drag !== null) { tRotY += (e.clientX - drag) * 0.005; drag = e.clientX; }
   };
   const onLeave = () => m.set(9, 9);
   cv.addEventListener('pointerdown', onDown);
   addEventListener('pointerup', onUp);
+  addEventListener('pointercancel', onCancel);
   cv.addEventListener('pointermove', onMove);
   cv.addEventListener('pointerleave', onLeave);
   const legOn = (e: Event) => { focus = (e.currentTarget as HTMLElement).dataset.l!; };
@@ -211,8 +265,36 @@ async function start({ THREE, TOOLS, makeKey, scene, loadGLB }: Kit, sec: HTMLEl
     cam.aspect = w / hh;
     cam.updateProjectionMatrix();
     small = w < 900;
-    cam.position.set(small ? 5 : 6, small ? 34 : 21, small ? 20 : 20);
-    cam.lookAt(small ? 1.5 : -4.6, 0, small ? -9.5 : 0.4);
+    cam.clearViewOffset();
+    if (!small) {
+      cam.position.set(6, 21, 20);
+      cam.lookAt(-4.6, 0, 0.4);
+      return;
+    }
+    // Celular: encaja estaciones, hub y personaje entre la leyenda y el espacio que ocupa la ficha abajo.
+    const top = sec.querySelector('.txt')!.getBoundingClientRect().bottom - b.top + 28;
+    const bot = hh - Math.min(195, hh * 0.25);
+    map.rotation.set(0, rotY, 0);
+    map.updateMatrixWorld(true);
+    const pts = [...st, hub, hubA].map((o) => o.getWorldPosition(new THREE.Vector3()));
+    pts.push(pts[st.length].clone().setY(3.2)); // cabeza del personaje
+    const c = pts.reduce((a, p) => a.add(p), new THREE.Vector3()).divideScalar(pts.length);
+    const dir = new THREE.Vector3(3.5, 34, 29.5).normalize();
+    const q = new THREE.Vector3();
+    let d = 45, box = [0, 0, 0, 0];
+    for (let k = 0; k < 7; k++) {
+      cam.position.copy(c).addScaledVector(dir, d);
+      cam.lookAt(c);
+      cam.updateMatrixWorld();
+      box = [1, -1, 1, -1];
+      pts.forEach((p) => {
+        q.copy(p).project(cam);
+        box = [Math.min(box[0], q.x), Math.max(box[1], q.x), Math.min(box[2], q.y), Math.max(box[3], q.y)];
+      });
+      if (k < 6) d *= Math.max((box[1] - box[0]) / 1.7, (box[3] - box[2]) / (((bot - top) / hh) * 2 * 0.9));
+    }
+    const cx = ((box[0] + box[1]) / 4 + 0.5) * w, cy = (0.5 - (box[2] + box[3]) / 4) * hh;
+    cam.setViewOffset(w, hh, cx - w / 2, cy - (top + bot) / 2, w, hh);
   }
   size();
   addEventListener('resize', size);
@@ -240,15 +322,9 @@ async function start({ THREE, TOOLS, makeKey, scene, loadGLB }: Kit, sec: HTMLEl
     });
     hub.scale.y = 1 + Math.sin(t * 0.004) * 0.08 * f;
     ray.setFromCamera(m, cam);
-    const hit = ray.intersectObjects(st, false)[0];
-    const i = hit ? hit.object.userData.i : -1;
-    if (i !== sel) {
-      sel = i;
-      if (i >= 0) {
-        const s = S[i];
-        card.innerHTML = `<span class="mono"><i style="background:${C[s[0]]}"></i>${LINES[s[0]]} · ${s[1]}</span><b>${s[2]}</b>${s[3]}`;
-        card.classList.add('on');
-      } else card.classList.remove('on');
+    if (!touch) {
+      const hit = ray.intersectObjects(st, false)[0];
+      select(hit ? hit.object.userData.i : -1);
     }
     st.forEach((s, j) => { const w = j === sel ? 1.35 : focus && S[j][0] === focus ? 1.2 : 1; s.scale.lerp(v.set(w, w, w), 0.2); });
     const b = sec.getBoundingClientRect();
@@ -257,7 +333,7 @@ async function start({ THREE, TOOLS, makeKey, scene, loadGLB }: Kit, sec: HTMLEl
       v.project(cam);
       el.style.left = (v.x * 0.5 + 0.5) * b.width + 'px';
       el.style.top = (-v.y * 0.5 + 0.5) * b.height + 'px';
-      el.style.opacity = v.z < 1 && !(small && el !== hl) ? '1' : '0';
+      el.style.opacity = v.z < 1 && (!small || el === hl || (sel >= 0 && o === st[sel])) ? '1' : '0';
     });
     tinTick(t, f);
     r.render(sc, cam);
@@ -266,6 +342,7 @@ async function start({ THREE, TOOLS, makeKey, scene, loadGLB }: Kit, sec: HTMLEl
   return () => {
     removeEventListener('resize', size);
     removeEventListener('pointerup', onUp);
+    removeEventListener('pointercancel', onCancel);
     cv.removeEventListener('pointerdown', onDown);
     cv.removeEventListener('pointermove', onMove);
     cv.removeEventListener('pointerleave', onLeave);
@@ -273,6 +350,8 @@ async function start({ THREE, TOOLS, makeKey, scene, loadGLB }: Kit, sec: HTMLEl
     leg.innerHTML = '';
     card.innerHTML = '';
     card.classList.remove('on');
+    if (originalSelection === null) sec.removeAttribute('data-sel');
+    else sec.setAttribute('data-sel', originalSelection);
     dispose();
   };
 }

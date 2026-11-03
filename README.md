@@ -35,7 +35,7 @@ Instead of handing a recruiter a boring PDF, you give them a full web experience
 - Read your profile, skills, education, experience, and projects — all beautifully animated
 - **Ask the AI chatbot** questions like *"What projects has Martin worked on?"* or *"Does he speak English?"*
 - Download the PDF CV in one click
-- Switch between **10 languages** (ES, EN, DE, FR, PT, JA, ZH, KO, AR, HI)
+- Switch between **Spanish and English** (ES, EN)
 
 ### How is this different from a regular portfolio?
 
@@ -43,7 +43,7 @@ Instead of handing a recruiter a boring PDF, you give them a full web experience
 |---|---|
 | Static HTML page | Interactive, animated, cinematic |
 | Recruiter reads passively | Recruiter can ask questions to an AI |
-| One language | 10 languages, with switcher in navbar |
+| One language | Spanish and English, with switcher in navbar |
 | Generic Tailwind design | Custom editorial design system |
 | No AI | AI chatbot powered by Llama 3.1 via Groq |
 
@@ -259,7 +259,7 @@ You can then connect a custom domain for free.
 | Feature | Description |
 |---|---|
 | 🤖 **AI Chatbot** | Ask anything about the candidate — powered by Llama 3.1 70B |
-| 🌍 **10 Languages** | Auto-detects browser language, manual switcher in navbar |
+| 🌍 **Spanish and English** | Auto-detects browser language, manual switcher in navbar |
 | 🎬 **Cinematic animations** | GSAP word-split reveals, parallax, sticky scroll stacking |
 | 📄 **PDF Download** | One-click CV download |
 | 🐙 **GitHub integration** | Live repo data pulled from GitHub API |

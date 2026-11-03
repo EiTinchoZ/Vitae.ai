@@ -1,10 +1,10 @@
-import { createGroq } from '@ai-sdk/groq';
-import { generateText } from 'ai';
+import { guardedText, aiBusyResponse } from '@/lib/ai-guard';
 import { getLanguageInstruction } from '@/lib/ai-language';
 import { validateLanguage } from '@/lib/api-validation';
 import { enforceRateLimit } from '@/lib/api-rate-limit';
 import type { LanguageCode } from '@/i18n';
 
+export const maxDuration = 30;
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
@@ -107,7 +107,8 @@ export async function POST(request: Request) {
     }
 
     if (!process.env.GROQ_API_KEY) {
-      return createDemoError('api_key_missing', 500);
+      console.error('GROQ_API_KEY is not configured');
+      return aiBusyResponse();
     }
 
     const contentType = request.headers.get('content-type') ?? '';
@@ -146,16 +147,15 @@ export async function POST(request: Request) {
       cvText = cvText.slice(0, MAX_TEXT_LENGTH);
     }
 
-    const groq = createGroq({ apiKey: process.env.GROQ_API_KEY });
     const prompt = buildPrompt(language, cvText);
 
-    const result = await generateText({
-      model: groq('llama-3.3-70b-versatile'),
+    const text = await guardedText({
+      maxOutputTokens: 2_000,
       prompt,
       temperature: 0.2,
     });
 
-    const jsonMatch = result.text.match(/\{[\s\S]*\}/);
+    const jsonMatch = text.match(/\{[\s\S]*\}/);
     if (!jsonMatch) {
       return createDemoError('invalid_model_response', 500);
     }
@@ -172,6 +172,6 @@ export async function POST(request: Request) {
     });
   } catch (error) {
     console.error('Demo parse CV error:', error);
-    return createDemoError('processing_failed', 500);
+    return aiBusyResponse();
   }
 }

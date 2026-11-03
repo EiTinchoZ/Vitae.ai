@@ -30,18 +30,24 @@ export function Contact() {
   const [formName, setFormName] = useState('');
   const [formEmail, setFormEmail] = useState('');
   const [formMessage, setFormMessage] = useState('');
+  const [errorCode, setErrorCode] = useState<string>();
   const [formStatus, setFormStatus] = useState<FormStatus>('idle');
 
   const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus('loading');
+    setErrorCode(undefined);
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ name: formName, email: formEmail, message: formMessage }),
       });
-      if (!res.ok) throw new Error('server error');
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        setErrorCode(body.errorCode);
+        throw new Error('server error');
+      }
       setFormStatus('success');
       setFormName('');
       setFormEmail('');
@@ -431,7 +437,7 @@ export function Contact() {
                     style={{ color: '#f87171' }}
                   >
                     <AlertCircle className="h-3.5 w-3.5 shrink-0" />
-                    {t('contact.form.error')}
+                    {errorCode === 'mail_limit' ? t('aiErrors.mailLimit') : errorCode === 'rate_limited' ? t('aiErrors.rateLimited') : t('contact.form.error')}
                   </p>
                 )}
               </form>

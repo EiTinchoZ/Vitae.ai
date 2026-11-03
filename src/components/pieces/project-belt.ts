@@ -4,12 +4,14 @@
 // mount() devuelve la limpieza; la ficha vuelve a la del primer proyecto, como sale del servidor.
 import type { Mesh } from 'three';
 import { loadThree } from '@/lib/three/load';
+import { hasWebGL } from '@/lib/three/webgl';
 import type { Project } from '@/content/es/proyectos';
 
 type Kit = Awaited<ReturnType<typeof loadThree>>;
 type Data = { projects: Project[]; card: (d: Project) => string; lidText: { made: string } };
 
 export function mount(sec: HTMLElement, data: Data): () => void {
+  if (!hasWebGL()) return () => {};
   let alive = true;
   let stop: (() => void) | null = null;
   loadThree()
@@ -124,14 +126,24 @@ async function start({ THREE, scene }: Kit, sec: HTMLElement, D: Data, alive: ()
   let speed = 1.2, target = 1.2, mx = 0, my = 0, hover: Mesh | null = null, slow = 0;
   const ray = new THREE.Raycaster(), m = new THREE.Vector2(9, 9);
   const onMove = (e: PointerEvent) => {
-    const b = sec.getBoundingClientRect();
+    const b = cv.getBoundingClientRect();
     m.set((e.clientX - b.left) / b.width * 2 - 1, -((e.clientY - b.top) / b.height) * 2 + 1);
     mx = (e.clientX - b.left) / b.width - 0.5;
-    my = (e.clientY - b.top) / b.height - 0.5;
+    my = Math.max(-0.5, Math.min(0.5, (e.clientY - b.top) / b.height - 0.5));
   };
   const onLeave = () => m.set(9, 9);
-  const onDown = () => {
-    if (hover) { card(hover.userData.i); return; }
+  const onDown = (e: PointerEvent) => {
+    let box = hover;
+    if (e.pointerType !== 'mouse') {
+      const b = cv.getBoundingClientRect();
+      m.set((e.clientX - b.left) / b.width * 2 - 1, -((e.clientY - b.top) / b.height) * 2 + 1);
+      sc.updateMatrixWorld(true);
+      cam.updateMatrixWorld();
+      ray.setFromCamera(m, cam);
+      const hit = ray.intersectObjects(hits, false)[0];
+      box = hit ? (hit.object.userData.box as Mesh) : null;
+    }
+    if (box) { card(box.userData.i); return; }
     target = 8;
     boxes.forEach((b) => { b.userData.hop = 1; });
     clearTimeout(slow);
@@ -141,7 +153,7 @@ async function start({ THREE, scene }: Kit, sec: HTMLElement, D: Data, alive: ()
   sec.addEventListener('pointerleave', onLeave);
   cv.addEventListener('pointerdown', onDown);
   function size() {
-    const b = sec.getBoundingClientRect(), w = b.width, hh = b.height;
+    const b = cv.getBoundingClientRect(), w = b.width, hh = b.height;
     r.setSize(w, hh, false);
     cam.aspect = w / hh;
     cam.updateProjectionMatrix();
@@ -151,6 +163,9 @@ async function start({ THREE, scene }: Kit, sec: HTMLElement, D: Data, alive: ()
   }
   size();
   addEventListener('resize', size);
+  // Cámara, buffer y taps se miden con el canvas: en celular es una franja arriba de la ficha, no toda la sección.
+  const resize = new ResizeObserver(size);
+  resize.observe(cv);
 
   const clock = new THREE.Clock();
   run(() => {
@@ -183,6 +198,7 @@ async function start({ THREE, scene }: Kit, sec: HTMLElement, D: Data, alive: ()
   return () => {
     clearTimeout(slow);
     removeEventListener('resize', size);
+    resize.disconnect();
     sec.removeEventListener('pointermove', onMove);
     sec.removeEventListener('pointerleave', onLeave);
     cv.removeEventListener('pointerdown', onDown);

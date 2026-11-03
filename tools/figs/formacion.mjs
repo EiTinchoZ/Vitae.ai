@@ -7,6 +7,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { homedir } from "node:os";
 import { asModule } from "./as-module.mjs";
+import strings from "./strings/formacion.mjs";
 
 const SKILL = join(homedir(), ".claude", "skills", "anatomy");
 const k = await import(pathToFileURL(join(SKILL, "kit", "iso-kit.mjs")).href);
@@ -16,17 +17,12 @@ const PUBLIC = join(HERE, "..", "..", "public");
 const OUT = join(PUBLIC, "fig");
 mkdirSync(OUT, { recursive: true });
 
+for (const lang of ["es", "en"]) {
+const t = strings[lang];
+
 // ---------- la verdad ----------
 const MATERIAS = 60, HECHAS = 54; // ~60 en el plan, 54 contando las 7 de este cuatrimestre (Tín, 2026-11-01)
-const QUADS = [ // plan oficial ITSE, CD-001-2024; Tín cursa el VI, el penúltimo (2026-11-02)
-  ["I", "matemáticas, redes, ciberseguridad"],
-  ["II", "bases de datos, programación, intro a la IA"],
-  ["III", "lenguajes para IA, sistemas inteligentes"],
-  ["IV", "NLP y aprendizaje automatizado"],
-  ["V", "ciencia de datos, visión, minería de datos"],
-  ["VI", "deep learning, IoT, robótica"],
-  ["VII", "práctica profesional"],
-];
+const QUADS = t.quads; // plan oficial ITSE, CD-001-2024
 const NOW_Q = 5;
 
 // ---------- mundo ----------
@@ -174,7 +170,7 @@ function chip() {
 const svg = k.figureSvg({
   width: WIDTH,
   height: HEIGHT,
-  label: "Un banco con dos objetos. A la izquierda, Ingeniería Industrial en ADEN: un estante con 60 cajas, una por materia; 54 están puestas y 6 huecos esperan de enero a abril de 2027. A la derecha, el Técnico Superior en Inteligencia Artificial del ITSE: un chip de 7 capas, una por cuatrimestre; cinco encendidas y la sexta en curso. Una cinta lleva cajas del estante al chip.",
+  label: t.label,
   body: [bench(), rack(), conveyor(), ...[0, 1, 2].map((i) => `<g data-part="cb" data-n="${i}" transform="${k.translateAlong(P, [RUN[0], 0, 0])}">${cbox()}</g>`), chip()],
 });
 
@@ -182,10 +178,11 @@ const svg = k.figureSvg({
 const tagAt = (x) => pct(at([x, PLATE.y + PLATE.d, -PLATE_H - FOOT_H - 6]));
 const [ix, iy] = tagAt((RX0 + RX1) / 2), [cx, cy] = tagAt(DIE.x + DIE.w / 2);
 const tags = `
-<a class="ed-tag" data-deg="ind" href="#deg-ind" style="left:${ix}%"><img src="img/logos/aden.png" alt="ADEN University" width="70" height="22"><span><b>Ingeniería Industrial</b><i>90 % · 54 de 60 materias</i></span></a>
-<a class="ed-tag" data-deg="ia" href="#deg-ia" style="left:${cx}%"><img src="img/logos/itse.png" alt="ITSE" width="40" height="28"><span><b>Técnico Superior en IA</b><i>cuatrimestre VI de VII</i></span></a>`;
+<a class="ed-tag" data-deg="ind" href="#deg-ind" style="left:${ix}%"><img src="img/logos/aden.png" alt="${t.aden}" width="70" height="22"><span><b>${t.industrial}</b><i>${t.progress}</i></span></a>
+<a class="ed-tag" data-deg="ia" href="#deg-ia" style="left:${cx}%"><img src="img/logos/itse.png" alt="${t.itse}" width="40" height="28"><span><b>${t.ai}</b><i>${t.quarter}</i></span></a>`;
 
 const live = `
+const TEXT = ${JSON.stringify(Object.fromEntries(["rest", "chip", "passed", "current", "pending", "rack", "missing", "cross"].map((key) => [key, t[key]])))};
 const P = ${JSON.stringify(P)};
 const QUADS = ${JSON.stringify(QUADS)};
 const NOW_Q = ${NOW_Q}, HECHAS = ${HECHAS}, MATERIAS = ${MATERIAS}, RUN = ${JSON.stringify(RUN)};
@@ -198,7 +195,7 @@ const boxes = [...svg.querySelectorAll(".ed-box")].sort((a, b) => a.dataset.b - 
 const quads = [...svg.querySelectorAll(".ed-q")].sort((a, b) => a.dataset.q - b.dataset.q);
 const cbs = [...svg.querySelectorAll('[data-part="cb"]')];
 const cards = { ind: document.querySelector('.deg[data-deg="ind"]'), ia: document.querySelector('.deg[data-deg="ia"]') };
-const REST = "Industrial 90 % · IA: VI de VII";
+const REST = TEXT.rest;
 const say = (text, deg) => {
   if (readout.textContent !== text) readout.textContent = text;
   stage.setAttribute("aria-valuetext", text);
@@ -209,10 +206,10 @@ const say = (text, deg) => {
 const textOf = (el) => {
   if (el.dataset.q !== undefined) {
     const i = +el.dataset.q, [n, what] = QUADS[i];
-    return ["ITSE · " + n + " · " + what + " · " + (i < NOW_Q ? "aprobado" : i === NOW_Q ? "en curso" : "falta"), "ia"];
+    return [TEXT.chip.replace("{n}", n).replace("{what}", what).replace("{state}", i < NOW_Q ? TEXT.passed : i === NOW_Q ? TEXT.current : TEXT.pending), "ia"];
   }
-  if (el.dataset.b !== undefined) return +el.dataset.b < HECHAS ? ["ADEN · " + HECHAS + " de " + MATERIAS + " materias aprobadas", "ind"] : ["ADEN · faltan 6 · ene a abr 2027", "ind"];
-  if (el.dataset.c) return ["el cruce · Industrial mide, IA cambia", null];
+  if (el.dataset.b !== undefined) return +el.dataset.b < HECHAS ? [TEXT.rack.replace("{done}", HECHAS).replace("{total}", MATERIAS), "ind"] : [TEXT.missing, "ind"];
+  if (el.dataset.c) return [TEXT.cross, null];
   return null;
 };
 let current = null;
@@ -276,18 +273,20 @@ say(REST, null);
 `;
 
 const figure = k.plateHtml({
-  fig: "Fig 1",
-  title: "Dos carreras, un banco",
-  hint: "Toca cajas y capas",
-  readout: "Industrial 90 % · IA: VI de VII",
+  fig: t.figure,
+  title: t.title,
+  hint: t.hint,
+  readout: t.rest,
   keys: [],
-  caption: "",
-  body: `<div class="iso-stage ed-stage" tabindex="0" role="group" aria-roledescription="figura" aria-label="Formación: con las flechas recorres las capas del chip, el estante y la cinta">${svg}${tags}</div>`,
+  caption: t.caption,
+  body: `<div class="iso-stage ed-stage" tabindex="0" role="group" aria-roledescription="${t.role}" aria-label="${t.navigation}">${svg}${tags}</div>`,
 }).replace('<figure class="iso-figure"', '<figure class="iso-figure" id="figEdu"');
 
 const script = kitScript() + asModule(live);
 // Conserva los saltos CRLF del fragmento de referencia.
-writeFileSync(join(OUT, "formacion.es.html"), figure.replaceAll('src="img/', 'src="/img/').replaceAll('\n', '\r\n'));
-writeFileSync(join(OUT, "formacion.js"), script);
+writeFileSync(join(OUT, `formacion.${lang}.html`), figure.replaceAll('src="img/', 'src="/img/').replaceAll('\n', '\r\n'));
+writeFileSync(join(OUT, `formacion.${lang}.js`), script);
+if (lang === "es") writeFileSync(join(OUT, "formacion.js"), script);
+console.log(`Generado: formacion.${lang}.html, formacion.${lang}.js`);
+}
 writeFileSync(join(OUT, "iso.css"), k.ISO_CSS);
-console.log("Generado: formacion.es.html, formacion.js, iso.css");

@@ -6,6 +6,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { homedir } from "node:os";
 import { asModule } from "./as-module.mjs";
+import strings from "./strings/laptop.mjs";
 
 const SKILL = join(homedir(), ".claude", "skills", "anatomy");
 const k = await import(pathToFileURL(join(SKILL, "kit", "iso-kit.mjs")).href);
@@ -15,6 +16,9 @@ const PUBLIC = join(HERE, "..", "..", "public");
 const OUT = join(PUBLIC, "fig");
 mkdirSync(OUT, { recursive: true });
 const logo = (name) => readFileSync(join(PUBLIC, "img", "logos", name + ".svg"), "utf8").match(/ d="([^"]+)"/)[1];
+
+for (const lang of ["es", "en"]) {
+const T = strings[lang];
 
 // mundo: 1 unidad = 2,5 mm. x ancho de la laptop, y fondo (frente en +y), z alto
 const WIDTH = 640, HEIGHT = 600;
@@ -146,16 +150,16 @@ function screen() {
   win.push(`<path class="lap-vs" d="${rect(0, 0, W, 81)}"/>`);
   win.push(`<path class="lap-bar" d="${rect(0, 0, W, 3.2)}"/>`);
   win.push(icon(logo("visualstudiocode"), 1, 0.45, 2.3, "lap-vscode"));
-  win.push(txt(W / 2, 2.25, 1.6, "laptop.mjs · vitae-cv · Visual Studio Code", "lap-dim", ' text-anchor="middle" data-title'));
+  win.push(txt(W / 2, 2.25, 1.6, T.screenTitle, "lap-dim", ' text-anchor="middle" data-title'));
   win.push(`<path class="lap-ui" d="M${W - 11} 1.6h1.6M${W - 6.8} 0.9h1.4v1.4h-1.4zM${W - 2.9} 0.9l1.4 1.4M${W - 1.5} 0.9l-1.4 1.4"/>`);
   // barra de actividad
   win.push(`<path class="lap-act" d="${rect(0, 3.2, 4, 78)}"/>`);
   win.push(`<path class="lap-ui" d="M1.1 5.2h1.4l0.8 0.8v2h-2.2zM2 11.4a0.9 0.9 0 1 0 0.01 0M2.6 12l0.8 0.8M1.4 16.2v2.4M2.8 16.6a0.6 0.6 0 1 0 0.01 0M1.4 18.6a0.6 0.6 0 1 0 0.01 0M1.4 17.4q0 1 1.4 -0.2"/>`);
   win.push(icon(logo("claude"), 0.8, 21.4, 2.4, "lap-claude"));
   // explorador
-  const files = ["agents.md", "fig/", "laptop.mjs", "rig.mjs", "sfx.js", "index.html", "styles.css", "cv/", "en.md", "es.md", "notas.md", "README.md"];
+  const files = T.files;
   win.push(`<path class="lap-side" d="${rect(4, 3.2, 22, 78)}"/>`);
-  win.push(txt(5.4, 6, 1.5, "VITAE-CV", "lap-dim"));
+  win.push(txt(5.4, 6, 1.5, T.project, "lap-dim"));
   files.forEach((f, i) => {
     const v = 8.6 + i * 2.6, sub = !f.endsWith("/") && i > 1 && i < 5 || i === 8 || i === 9;
     win.push(`<rect class="lap-fh" data-f="${f}" x="4.3" y="${f2(v - 1.9)}" width="17.4" height="2.5" rx="0.3"/>`);
@@ -163,7 +167,7 @@ function screen() {
   });
   // editor
   win.push(`<path class="lap-tabs" d="${rect(22, 3.2, 79.4, 6)}"/>`);
-  win.push(`<path class="lap-tab" d="${rect(22, 3.2, 37.4, 6)}"/>${txt(23.4, 5.1, 1.55, "laptop.mjs", "lap-file", " data-tab")}`);
+  win.push(`<path class="lap-tab" d="${rect(22, 3.2, 37.4, 6)}"/>${txt(23.4, 5.1, 1.55, T.files[2], "lap-file", " data-tab")}`);
   for (let i = 0; i < ROWS; i++) {
     const v = ED.v + i * ROW;
     win.push(`<rect class="lap-row" data-rowbg="${i}" x="${ED.u}" y="${f2(v - 1.95)}" width="${ED.w}" height="${ROW}"/>`);
@@ -173,8 +177,8 @@ function screen() {
   // terminal
   win.push(`<path class="lap-term" d="${rect(22, 55, 79.4, 78)}"/>`);
   win.push(`<path class="lap-ui" d="M22 55H79.4"/>`);
-  win.push(txt(23.4, 58, 1.45, "TERMINAL", "lap-dim"));
-  for (let i = 0; i < 4; i++) win.push(txt(23.4, 61.6 + i * 3, 1.7, i ? "" : "PS C:\\vitae-cv>", "lap-code", ` data-term="${i}"`));
+  win.push(txt(23.4, 58, 1.45, T.terminal, "lap-dim"));
+  for (let i = 0; i < 4; i++) win.push(txt(23.4, 61.6 + i * 3, 1.7, i ? "" : T.prompt, "lap-code", ` data-term="${i}"`));
   win.push(`<rect class="lap-progbg" x="23.4" y="74.6" width="40" height="1.1" rx="0.5"/><rect class="lap-prog" data-prog x="23.4" y="74.6" width="0" height="1.1" rx="0.5"/>`);
   // Claude Code
   win.push(`<path class="lap-cc" d="${rect(CL.u - 0.6, 3.2, W, 78)}"/>`);
@@ -182,7 +186,7 @@ function screen() {
   win.push(txt(CL.u + 6.2, 7.1, 2.5, "Claude Code", "lap-cct"));
   win.push(`<rect class="lap-bubble" data-bubble x="${CL.u + 1}" y="10.6" width="${CL.w - 3}" height="9.4" rx="1.2"/>`);
   win.push(txt(CL.u + 2.6, 14.3, 2.4, "", "lap-msg", ' data-user="0"') + txt(CL.u + 2.6, 17.9, 2.4, "", "lap-msg", ' data-user="1"'));
-  ["Plan", "Lee", "Edita", "Verifica", "Listo"].forEach((s, i) => {
+  T.steps.forEach((s, i) => {
     const v = 26.5 + i * 8;
     win.push(`<g class="lap-step" data-step="${i}"><circle class="lap-sdot" cx="${CL.u + 3.2}" cy="${f2(v - 1.1)}" r="1.4"/>${txt(CL.u + 6.4, v, 3.4, s, "lap-stxt")}${txt(CL.u + 6.4, v + 3.2, 2.1, "", "lap-sub", ` data-sub="${i}"`)}</g>`);
   });
@@ -190,7 +194,7 @@ function screen() {
   win.push(txt(CL.u + 2.4, 73.2, 2.4, "›", "lap-cct") + txt(CL.u + 5, 73.2, 2.4, "", "lap-msg", " data-input") + `<rect class="lap-caret" data-caret x="${CL.u + 5}" y="70.8" width="1" height="3.2"/>`);
   // barra de estado
   win.push(`<path class="lap-status" d="${rect(0, 78, W, 81)}"/>`);
-  win.push(txt(2, 80, 1.5, "main  ✓ 0 ⚠ 0", "lap-stat") + txt(W - 2, 80, 1.5, "Ln 42  UTF-8  JavaScript", "lap-stat", ' text-anchor="end"'));
+  win.push(txt(2, 80, 1.5, T.status, "lap-stat") + txt(W - 2, 80, 1.5, T.position, "lap-stat", ' text-anchor="end"'));
   o.push(`<g data-win class="lap-win" style="opacity:0">${win.join("")}</g>`);
   // barra de tareas
   o.push(`<path class="lap-task" d="${rect(0, 81, W, H)}"/>`);
@@ -213,7 +217,7 @@ const ROWS_KB = [
   { y: 3.2, keys: [["ctrl", 1], ["fn", 1], ["win", 1], ["alt", 1], [" ", 6], ["alt gr", 1], ["ctrl ", 1], ["←", 1], ["↓", 1], ["→", 1]] },
 ];
 const CLEAR = new Set(["w", "a", "s", "d"]);
-const LABEL = { " vol-": "−", "vol+": "+", mic: "◉", rog: "R", " ": "", "↵ ": "", "⇧ ": "⇧", "ctrl ": "ctrl", win: "⊞", "alt gr": "alt gr" };
+const LABEL = T.keyLabels;
 function keyboard() {
   const keys = [];
   for (const row of ROWS_KB) {
@@ -318,7 +322,7 @@ const defs = `<defs>
 
 const svg = k.figureSvg({
   width: WIDTH, height: HEIGHT,
-  label: "Una laptop gamer abierta. En la pantalla, Visual Studio Code con Claude Code: una tarea pasa por plan, lectura, edición y verificación. Al verificar, la CPU se calienta y los ventiladores suben. El teclado y la barra de luz brillan en arcoíris o en el color que elijas.",
+  label: T.description,
   body: [defs, mat(), base(), hinge(), lid(), keyboard(), deck()],
 });
 
@@ -343,25 +347,8 @@ const DOWN = "${k.translateAlong(P, [0, 0, -0.9])}";
 const PROG_W = 40;
 
 // tareas de ejemplo: lo que de verdad le pido a Claude Code en mis proyectos
-const TASKS = [
-  { p: "Arregla el menú en móvil", read: ["index.html", "styles.css"], file: "styles.css", line: 212,
-    ctx: [".nav{display:flex;gap:28px}", ".nav a{white-space:nowrap}", "", "@media (max-width:1360px){", "  .snd span{display:none}", "}", "", ".hero{min-height:100svh}", ".hero h1{font:900 9vw/.85 Archivo}", ".hero .lead{max-width:34ch}", "", ".rig{padding:120px 40px}", ".rnums{display:grid;gap:4px}"],
-    at: 6, add: ["@media (max-width:860px){", "  .nav{overflow-x:auto}", "}"], del: 1,
-    plan: "1 archivo, 3 líneas", cmd: "npx playwright test --project=movil", ok: "menú en una línea a 390 px ✓" },
-  { p: "Que el RGB siga la carga", read: ["laptop.mjs", "sfx.js"], file: "laptop.mjs", line: 318,
-    ctx: ["function draw(tps) {", "  for (const l of leds) {", "    const h = hue(l.p);", "    l.g.style.color = h;", "  }", "  svg.style.setProperty(", "    \\"--lap-on\\", on);", "}", "", "function tick(now) {", "  const dt = (now - last) / 1000;", "  draw(step(dt));", "}"],
-    at: 3, add: ["    const light = 52 + 14 * load;", "    const h = hsl(l.p, light);"], del: 2,
-    plan: "lee el modelo de carga, 2 líneas", cmd: "node fig/laptop.mjs", ok: "line ends: 0 ✓" },
-  { p: "Pasa el CV a inglés", read: ["cv/", "es.md", "en.md"], file: "en.md", line: 12,
-    ctx: ["# Martín Bundy", "AI & Industrial Engineering · Panamá", "", "## Education", "- AI Technician · ITSE · 2026", "- Industrial Engineering · ADEN", "", "## Certificates", "- Claude Code in Action · Anthropic", "- AI Fluency · Anthropic", "", "## Languages", "- Spanish · English C2"],
-    at: 7, add: ["## Skills", "- Python · SQL · Power BI · Claude Code", ""], del: -1,
-    plan: "mismo orden que el CV en español", cmd: "node scripts/ats-check.mjs en.md", ok: "legible por ATS ✓" },
-  { p: "Que las fotos carguen después", read: ["index.html"], file: "index.html", line: 451,
-    ctx: ["<section class=\\"hoy\\" id=\\"hoy\\">", "  <div class=\\"wrap\\">", "    <figure class=\\"shot\\">", "      <img src=\\"img/expo.jpg\\" alt=\\"\\">", "    </figure>", "    <h2>Hoy</h2>", "  </div>", "</section>", "", "<section id=\\"proyectos\\">", "  <div class=\\"wrap\\">", "    <h2>Proyectos</h2>", "  </div>"],
-    at: 4, add: ["      <img src=\\"img/expo.jpg\\" alt=\\"\\"", "           loading=\\"lazy\\" decoding=\\"async\\">"], del: 3,
-    plan: "solo las fotos bajo el pliegue", cmd: "npx playwright test --project=web", ok: "carga diferida ✓" },
-];
-const SUBS = (t) => [t.plan, "lee " + t.read.filter((f) => !f.endsWith("/")).join(", "), t.file + "  +" + t.add.filter(Boolean).length + (t.del >= 0 ? " −1" : ""), "corre las pruebas", "listo para revisar"];
+const TASKS = ${JSON.stringify(T.tasks)};
+const SUBS = (t) => [t.plan, ${JSON.stringify(T.readPrefix)} + t.read.filter((f) => !f.endsWith("/")).join(", "), t.file + "  +" + t.add.filter(Boolean).length + (t.del >= 0 ? " −1" : ""), ${JSON.stringify(T.testStep)}, ${JSON.stringify(T.readyStep)}];
 const DUR = [1.6, 1.4, 2.2, 2.8, 2.6];
 
 // el modelo: la CPU se calienta con la carga (primer orden) y la curva de ventilador responde
@@ -428,10 +415,10 @@ function start(t) {
   setInput(""); typed = ""; queue = "";
   scr.steps.forEach((s) => { s.removeAttribute("data-on"); s.removeAttribute("data-done"); });
   scr.subs.forEach((s) => (s.textContent = ""));
-  scr.term.forEach((r, i) => (r.textContent = i ? "" : "PS C:\\\\vitae-cv>"));
+  scr.term.forEach((r, i) => (r.textContent = i ? "" : ${JSON.stringify(T.prompt)}));
   scr.prog.setAttribute("width", 0);
   scr.files.forEach((f) => f.removeAttribute("data-on"));
-  scr.tab.textContent = t.file; scr.title.textContent = t.file + " · vitae-cv · Visual Studio Code";
+  scr.tab.textContent = t.file; scr.title.textContent = t.file + ${JSON.stringify(T.titleSuffix)};
   setRows(t, false);
   enter(0);
 }
@@ -440,7 +427,7 @@ function enter(i) {
   scr.steps.forEach((s, j) => { s.toggleAttribute("data-on", j <= i); s.toggleAttribute("data-done", j < i || (i === 4 && j === 4)); });
   if (i < 5) scr.subs[i].textContent = SUBS(task)[i];
   if (i === 2) setRows(task, false);
-  if (i === 3) { scr.term[0].textContent = "PS C:\\\\vitae-cv> " + clip(task.cmd, 30); scr.term[1].textContent = "corriendo…"; }
+  if (i === 3) { scr.term[0].textContent = ${JSON.stringify(T.prompt + " ")} + clip(task.cmd, 30); scr.term[1].textContent = ${JSON.stringify(T.runningStart)}; }
   if (i === 4) { scr.subs[3].textContent = task.ok; scr.term[2].textContent = task.ok; window.SFX?.play("stamp"); }
   if (i === 5) { mode = "type"; phase = -1; idle = 0; }
 }
@@ -460,7 +447,7 @@ function runPhase(dt) {
   if (phase === 3) {
     wantTps = 0; want = 1;
     scr.prog.setAttribute("width", (PROG_W * Math.min(1, pt / d)).toFixed(2));
-    scr.term[1].textContent = "corriendo" + ".".repeat(1 + Math.floor(pt * 3) % 3);
+    scr.term[1].textContent = ${JSON.stringify(T.running)} + ".".repeat(1 + Math.floor(pt * 3) % 3);
   }
   if (phase === 4) { wantTps = 0; want = 0.08; scr.files.forEach((f) => f.removeAttribute("data-on")); }
   if (pt >= d) enter(phase + 1);
@@ -478,9 +465,9 @@ function typeStep(dt) {
 }
 function custom(text) {
   // la tarea del visitante: Claude la anota en notas.md y la verifica
-  return { p: text, read: ["agents.md", "notas.md"], file: "notas.md", line: 1,
-    ctx: ["# Notas de la sesión", "", "## Hoy", "- maqueta de la laptop", "- revisar en móvil", "", "## Después", "- MOTION.md", "- CV en PDF", "", "## Hecho", "- torre RGB", "- sonido"],
-    at: 5, add: ["- " + clip(text, 40)], del: -1, plan: "1 nota nueva, sin tocar código", cmd: "node scripts/check.mjs", ok: "verificado ✓" };
+  return { p: text, read: ${JSON.stringify(T.noteFiles)}, file: ${JSON.stringify(T.noteFile)}, line: 1,
+    ctx: ${JSON.stringify(T.notes)},
+    at: 5, add: ["- " + clip(text, 40)], del: -1, plan: ${JSON.stringify(T.notePlan)}, cmd: ${JSON.stringify(T.noteCommand)}, ok: ${JSON.stringify(T.noteOk)} };
 }
 
 function step(dt) {
@@ -508,7 +495,7 @@ function draw() {
   heat?.querySelectorAll("path").forEach((p) => p.style.strokeDashoffset = (-wave * 18 * (0.4 + (rpm - 1800) / 2000)).toFixed(1));
   const now = new Date(), ct = String(now.getHours()).padStart(2, "0") + ":" + String(now.getMinutes()).padStart(2, "0");
   if (ct !== clockText) { clockText = ct; scr.clocks.forEach((e) => (e.textContent = ct)); }
-  const text = Math.round(tps) + " tok/s · CPU " + Math.round(temp) + " °C · " + (Math.round(rpm / 50) * 50) + " rpm";
+  const text = Math.round(tps) + ${JSON.stringify(T.tokenCpu)} + Math.round(temp) + ${JSON.stringify(T.temperatureFan)} + (Math.round(rpm / 50) * 50) + ${JSON.stringify(T.rpm)};
   if (readout.textContent !== text) readout.textContent = text;
   window.SFX?.hum(0.2 + 0.8 * (rpm - 1800) / 4200, rpm * 0.45);
   if (nums.tps) { nums.tps.textContent = Math.round(tps); nums.temp.textContent = Math.round(temp); nums.rpm.textContent = Math.round(rpm / 50) * 50; nums.box.style.setProperty("--rig-c", c); nums.box.style.setProperty("--rig-load", load.toFixed(3)); }
@@ -571,19 +558,21 @@ if (still.matches) rest(); else draw();
 `;
 
 const figure = k.plateHtml({
-  fig: "Fig 3",
-  title: "Donde construyo",
-  hint: "Clic en la pantalla para entrar · o escribe y Enter",
-  readout: "0 tok/s · CPU 42 °C · 1800 rpm",
-  keys: [{ mark: "lit", label: "RGB: arcoíris o tu color" }],
+  fig: T.figure,
+  title: T.title,
+  hint: T.hint,
+  readout: T.readout,
+  keys: [{ mark: "lit", label: T.rgb }],
   caption: "",
-  body: `<div class="iso-stage" tabindex="0" role="button" aria-label="Laptop: escribe una tarea para Claude Code y pulsa Enter, o haz clic para ver una">${svg}</div>`,
+  body: `<div class="iso-stage" tabindex="0" role="button" aria-label="${T.aria}">${svg}</div>`,
 }).replace('<figure class="iso-figure"', '<figure class="iso-figure" id="figLap"');
 const fragment = style + figure;
 
 const script = kitScript() + asModule(live, "off.abort(); if (window.LAP === lap) delete window.LAP; window.SFX?.hum(0);");
 // Conserva los saltos CRLF del fragmento de referencia.
-writeFileSync(join(OUT, "laptop.es.html"), fragment.replaceAll('src="img/', 'src="/img/').replaceAll('\n', '\r\n'));
-writeFileSync(join(OUT, "laptop.js"), script);
+writeFileSync(join(OUT, `laptop.${lang}.html`), fragment.replaceAll('src="img/', 'src="/img/').replaceAll('\n', '\r\n'));
+writeFileSync(join(OUT, `laptop.${lang}.js`), script);
+if (lang === "es") writeFileSync(join(OUT, "laptop.js"), script);
 writeFileSync(join(OUT, "iso.css"), k.ISO_CSS);
-console.log("Generado: laptop.es.html, laptop.js, iso.css");
+console.log(`Generado: laptop.${lang}.html, laptop.${lang}.js, iso.css`);
+}

@@ -13,6 +13,8 @@ const demoAlias: Record<string, string> = isDemoMode
 const nextConfig: NextConfig = {
   // Claude y Codex compilan en la misma carpeta: Codex usa NEXT_DIST_DIR=.next-codex para no pisar el build de Claude.
   distDir: process.env.NEXT_DIST_DIR || ".next",
+  // Dos layouts raíz (es y en): la 404 de URLs inexistentes vive en app/global-not-found.tsx.
+  experimental: { globalNotFound: true },
   images: {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200],
@@ -52,8 +54,8 @@ const nextConfig: NextConfig = {
             value: "SAMEORIGIN",
           },
           {
-            key: "X-XSS-Protection",
-            value: "1; mode=block",
+            key: "Content-Security-Policy",
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self' blob:; connect-src 'self'; worker-src 'self' blob:; frame-ancestors 'self'; base-uri 'self'; form-action 'self'",
           },
           {
             key: "Referrer-Policy",

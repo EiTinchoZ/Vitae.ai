@@ -9,6 +9,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { homedir } from "node:os";
 import { asModule } from "./as-module.mjs";
+import strings from "./strings/poguru.mjs";
 
 const SKILL = join(homedir(), ".claude", "skills", "anatomy");
 const k = await import(pathToFileURL(join(SKILL, "kit", "iso-kit.mjs")).href);
@@ -18,8 +19,11 @@ const PUBLIC = join(HERE, "..", "..", "public");
 const OUT = join(PUBLIC, "fig");
 mkdirSync(OUT, { recursive: true });
 
+for (const lang of ["es", "en"]) {
+const T = strings[lang];
+
 // diez campos de ejemplo, genéricos de cualquier compra: nada interno de Philips (Tín, 2026-11-02)
-const FIELDS = ["Solicitante", "Descripción", "Proveedor", "Cantidad", "Precio", "Moneda", "Lugar de entrega", "Fecha de entrega", "Cotización", "Motivo"];
+const FIELDS = T.fields;
 const COLS = [-26, -13, 0, 13, 26], ROWS = [-8, 8];
 const SLOT = (i) => [COLS[i % 5], ROWS[Math.floor(i / 5)]];
 
@@ -235,7 +239,7 @@ const carGroup = (name, inner) => `<g data-part="${name}" transform="${k.transla
 const backY = NEAR_Y > 0 ? -37 : 37, frontY = -backY;
 const svg = k.figureSvg({
   width: WIDTH, height: HEIGHT,
-  label: "Una línea de producción en seis estaciones. Una tolva suelta los diez campos de una solicitud en el carro del agente. Diez palpadores revisan cada campo y un reloj cuenta los que faltan; si falta alguno, el carro vuelve y el solicitante lo agrega. Un sello la marca lista para revisión, una cápsula sube por un tubo con el aviso al comprador, y una compuerta espera la aprobación mientras una campana suena cada día hábil. Al final la orden sale al proveedor. Seis luces al frente muestran el estado.",
+  label: T.label,
   body: [
     plate(), lamps(), rails(),
     column(HOP_X, 60), column(CHK_X, ARM_Z), column(STAMP_X, 56),
@@ -261,6 +265,7 @@ const svg = k.figureSvg({
 });
 
 const live = `
+const T = ${JSON.stringify(T)};
 const P = ${JSON.stringify(P)};
 const FIELDS = ${JSON.stringify(FIELDS)};
 const X = { in: ${X_IN}, chk: ${X_CHK}, stamp: ${X_STAMP}, brief: ${X_BRIEF}, wait: ${X_WAIT}, out: ${X_OUT} };
@@ -334,17 +339,17 @@ const days = () => Math.floor(t / DAY) + 1;
 function textOf() {
   const id = PH[ph].id, m = missing();
   const gone = FIELDS.filter((_, i) => !have[i]).map((f) => f.toLowerCase());
-  if (id === "llena") return "entra la cotización";
-  if (["a-rev", "baja"].includes(id)) return "revisa 10 puntos";
-  if (id === "lee" || id === "sube") return m ? "falta " + gone.join(" y ") : "10 de 10 · completa";
-  if (id === "pregunta") return "te pregunta: falta " + gone.join(" y ");
-  if (id === "vuelve" || id === "agrega") return "el solicitante agrega " + gone.join(" y ");
-  if (id === "a-sello" || id === "sella") return "lista para revisión";
-  if (id === "a-brief" || id === "brief") return "brief al buyer en Teams";
-  if (id === "a-puerta") return "espera la aprobación";
-  if (id === "espera") return days() === 1 ? "día hábil 1 · espera al aprobador" : "día hábil " + days() + " · " + (days() - 1) + " recordatorio" + (days() - 1 === 1 ? "" : "s");
-  if (id === "abre") return "aprobada por una persona";
-  return "la orden sale al proveedor";
+  if (id === "llena") return T.enter;
+  if (["a-rev", "baja"].includes(id)) return T.check;
+  if (id === "lee" || id === "sube") return m ? T.missing.replace("{fields}", gone.join(T.join)) : T.complete;
+  if (id === "pregunta") return T.ask.replace("{fields}", gone.join(T.join));
+  if (id === "vuelve" || id === "agrega") return T.add.replace("{fields}", gone.join(T.join));
+  if (id === "a-sello" || id === "sella") return T.ready;
+  if (id === "a-brief" || id === "brief") return T.brief;
+  if (id === "a-puerta") return T.wait;
+  if (id === "espera") return days() === 1 ? T.firstDay : (days() - 1 === 1 ? T.oneReminder : T.reminders).replace("{day}", days()).replace("{count}", days() - 1);
+  if (id === "abre") return T.approved;
+  return T.out;
 }
 let last = 0, frame = 0, visible = false, lastDay = 0, said = "";
 function draw(o) {
@@ -393,7 +398,7 @@ function draw(o) {
   steps.forEach((s, i) => s.toggleAttribute("data-on", i === st));
   steps.forEach((s, i) => s.toggleAttribute("data-done", i < st && (i !== 2 || asked)));
   btnAdd.disabled = id !== "pregunta"; btnOk.disabled = id !== "espera";
-  const say = id === "pregunta" ? "Falta un dato. Te toca: agrégalo." : id === "espera" ? "Espera tu aprobación." : "";
+  const say = id === "pregunta" ? T.announceAdd : id === "espera" ? T.announceWait : "";
   if (say !== said) { said = say; live.textContent = say; }
 }
 let asked = false;
@@ -426,27 +431,29 @@ if (still.matches) rest(); else draw(pose());
 `;
 
 const figure = k.plateHtml({
-  fig: "Fig 2",
-  title: "PO Guru, de punta a punta",
-  hint: "Tú decides en 3 y en 6",
-  readout: "entra la cotización",
+  fig: T.fig,
+  title: T.title,
+  hint: T.hint,
+  readout: T.enter,
   keys: [
-    { mark: "lit", label: "Verde: el agente trabajando o un paso cumplido" },
+    { mark: "lit", label: T.legend },
   ],
-  caption: "Demo con datos de ejemplo.",
+  caption: T.caption,
   body: `<div class="iso-stage">${svg}</div>`,
 }).replace('<figure class="iso-figure"', '<figure class="iso-figure" id="figPo"');
-const ctl = `<div class="po-ctl" role="group" aria-label="Tus decisiones en la demo">
-<button type="button" id="poAdd" disabled><small>3 · Solicitante</small>Agregar el dato</button>
-<button type="button" id="poOk" disabled><small>6 · Aprobador</small>Aprobar</button>
-<label class="po-miss"><input type="checkbox" id="poMiss" checked><span>Que le falte un dato</span></label>
+const ctl = `<div class="po-ctl" role="group" aria-label="${T.controls}">
+<button type="button" id="poAdd" disabled><small>${T.requester}</small>${T.addButton}</button>
+<button type="button" id="poOk" disabled><small>${T.approver}</small>${T.approveButton}</button>
+<label class="po-miss"><input type="checkbox" id="poMiss" checked><span>${T.missingToggle}</span></label>
 <p class="po-live" id="poLive" aria-live="polite"></p>
 </div>`;
 const fragment = figure + ctl;
 
 const script = kitScript() + asModule(live);
 // Conserva los saltos CRLF del fragmento de referencia.
-writeFileSync(join(OUT, "poguru.es.html"), fragment.replaceAll('src="img/', 'src="/img/').replaceAll('\n', '\r\n'));
-writeFileSync(join(OUT, "poguru.js"), script);
+writeFileSync(join(OUT, `poguru.${lang}.html`), fragment.replaceAll('src="img/', 'src="/img/').replaceAll('\n', '\r\n'));
+writeFileSync(join(OUT, `poguru.${lang}.js`), script);
+if (lang === "es") writeFileSync(join(OUT, "poguru.js"), script);
+}
 writeFileSync(join(OUT, "iso.css"), k.ISO_CSS);
-console.log("Generado: poguru.es.html, poguru.js, iso.css");
+console.log("Generado: poguru.{es,en}.html, poguru.{es,en}.js, poguru.js, iso.css");

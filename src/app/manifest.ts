@@ -2,20 +2,17 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Vitae.ai | Martin Bundy - CV Digital con IA",
-    short_name: "Vitae.ai",
-    description:
-      "CV digital interactivo de Martin Bundy con analisis de IA, recomendaciones personalizadas y chat inteligente.",
+    name: "Martín Bundy · Ingeniería industrial e IA aplicada",
+    short_name: "Martín Bundy",
+    description: "Martín Bundy, Panamá. Ingeniería industrial e IA aplicada: agentes, automatización y procesos.",
+    lang: "es",
     start_url: "/",
     display: "standalone",
-    background_color: "#0a0a0a",
-    theme_color: "#0a0a0a",
+    background_color: "#09090A",
+    theme_color: "#09090A",
     icons: [
-      {
-        src: "/favicon.ico",
-        sizes: "any",
-        type: "image/x-icon",
-      },
+      { src: "/icon.svg", sizes: "any", type: "image/svg+xml" },
+      { src: "/apple-icon.png", sizes: "180x180", type: "image/png" },
     ],
   };
 }

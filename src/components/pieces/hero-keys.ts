@@ -3,6 +3,7 @@
 // al pasar suena y muestra su tooltip, el clic la hace girar. three llega por loadThree (chunk aparte, compartido).
 // mount() devuelve la limpieza: si three todavía no llegó, la carga se descarta al llegar.
 import { loadThree } from '@/lib/three/load';
+import { hasWebGL } from '@/lib/three/webgl';
 import type { Tool } from '@/lib/three/kit';
 
 type Kit = Awaited<ReturnType<typeof loadThree>>;
@@ -15,6 +16,7 @@ declare global {
 }
 
 export function mount(hero: HTMLElement, tips: Tips): () => void {
+  if (!hasWebGL()) return () => {};
   let alive = true;
   let stop: (() => void) | null = null;
   loadThree()

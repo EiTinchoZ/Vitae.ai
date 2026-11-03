@@ -1,12 +1,13 @@
-import { createGroq } from '@ai-sdk/groq';
-import { streamText } from 'ai';
+import { guardedStream } from '@/lib/ai-guard';
 import { buildSystemPrompt } from '@/lib/ai-system-prompt';
 import { getCvData } from '@/data/cv-data';
-import { validateLanguage, createErrorResponse } from '@/lib/api-validation';
+import { readJsonObject, validateCvDataSize, validateMessages, validateLanguage, createErrorResponse } from '@/lib/api-validation';
 import { enforceRateLimit } from '@/lib/api-rate-limit';
 import { IS_DEMO } from '@/lib/app-config';
 import { EMPTY_CV_DATA, mergeCvData } from '@/lib/cv-data-utils';
 
+
+export const maxDuration = 30;
 
 export async function POST(req: Request) {
   try {
@@ -17,34 +18,25 @@ export async function POST(req: Request) {
     });
     if (rateLimitResponse) return rateLimitResponse;
 
-    // Check if API key is configured
-    if (!process.env.GROQ_API_KEY) {
-      console.error('GROQ_API_KEY is not configured');
-      return createErrorResponse('API key not configured', 500, 'api_key_missing');
+    const body = await readJsonObject(req);
+    if (!body || !validateCvDataSize(body.cvData)) {
+      return createErrorResponse('Invalid request', 400, 'invalid_request');
     }
-
-    const groq = createGroq({
-      apiKey: process.env.GROQ_API_KEY,
-    });
-
-    const body = await req.json();
     const language = validateLanguage(body.language);
 
-    if (!body.messages || !Array.isArray(body.messages)) {
+    if (!validateMessages(body.messages)) {
       return createErrorResponse('Invalid messages format', 400, 'invalid_messages');
     }
 
     const override = IS_DEMO && body?.cvData && typeof body.cvData === 'object' ? body.cvData : null;
-    const cvData = override ? mergeCvData(EMPTY_CV_DATA, override) : getCvData(language);
+    const cvData = override ? mergeCvData(EMPTY_CV_DATA, override as Partial<import('@/types').CVData>) : getCvData(language);
     const enhancedSystemPrompt = buildSystemPrompt(language, cvData);
 
-    const result = streamText({
-      model: groq('llama-3.3-70b-versatile'),
+    return await guardedStream({
       system: enhancedSystemPrompt,
       messages: body.messages,
     });
 
-    return result.toTextStreamResponse();
   } catch (error) {
     console.error('Chat API error:', error);
     return createErrorResponse('Failed to process chat request', 500, 'processing_failed');

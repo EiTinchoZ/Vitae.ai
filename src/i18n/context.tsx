@@ -11,28 +11,12 @@ import { LanguageCode, defaultLanguage, languages } from './config';
 
 import es from './locales/es.json';
 import en from './locales/en.json';
-import pt from './locales/pt.json';
-import de from './locales/de.json';
-import fr from './locales/fr.json';
-import zh from './locales/zh.json';
-import ja from './locales/ja.json';
-import ar from './locales/ar.json';
-import hi from './locales/hi.json';
-import ko from './locales/ko.json';
 
 type TranslationData = typeof es;
 
-const translations: Record<string, TranslationData> = {
+const translations: Record<LanguageCode, TranslationData> = {
   es,
   en,
-  pt,
-  de,
-  fr,
-  zh,
-  ja,
-  ar,
-  hi,
-  ko,
 };
 
 interface LanguageContextType {
@@ -40,7 +24,6 @@ interface LanguageContextType {
   setLanguage: (lang: LanguageCode) => void;
   t: (key: string) => string;
   tArray: (key: string) => string[];
-  dir: 'ltr' | 'rtl';
   isLoading: boolean;
 }
 
@@ -89,7 +72,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     const langConfig = languages.find((l) => l.code === lang);
     if (langConfig) {
       document.documentElement.lang = lang;
-      document.documentElement.dir = langConfig.dir;
+      document.documentElement.dir = 'ltr';
     }
   };
 
@@ -111,11 +94,9 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     return Array.isArray(value) ? value.map(String) : [];
   };
 
-  const dir = languages.find((l) => l.code === language)?.dir || 'ltr';
-
   return (
     <LanguageContext.Provider
-      value={{ language, setLanguage, t, tArray, dir, isLoading }}
+      value={{ language, setLanguage, t, tArray, isLoading }}
     >
       {children}
     </LanguageContext.Provider>
@@ -131,6 +112,6 @@ export function useLanguage() {
 }
 
 export function useTranslation() {
-  const { t, tArray, language, dir } = useLanguage();
-  return { t, tArray, language, dir };
+  const { t, tArray, language } = useLanguage();
+  return { t, tArray, language };
 }

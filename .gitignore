@@ -51,3 +51,6 @@ next-env.d.ts
 # to keep your personal CV data private
 # ===========================================
 # src/data/cv-data.ts
+
+# PDF del CV con teléfono (scripts/cv-pdf.mjs --private): nunca al repo
+/private/

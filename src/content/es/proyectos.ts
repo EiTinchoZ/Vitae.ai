@@ -47,7 +47,7 @@ const html = `  <canvas id="cPrj" aria-hidden="true"></canvas>
     <h2>Lo que he construido</h2>
     <div class="pcard" id="pcard" aria-live="polite">${card(projects[0])}</div>
   </div>
-  <span class="hint mono">Pasa sobre una caja para abrirla<br>clic en la cinta para acelerarla</span>
+  <span class="hint mono"><span class="hm">Pasa sobre una caja para abrirla<br>clic en la cinta para acelerarla</span><span class="ht">Toca una caja para abrirla · toca la cinta para acelerarla</span></span>
   <div class="ticker" aria-hidden="true"><div class="r" id="tk">${tk}</div></div>`;
 
 export default html;

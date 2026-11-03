@@ -6,6 +6,8 @@ export function resolveAiError(
   fallback?: string
 ) {
   const map: Record<string, string> = {
+    ai_busy: t('aiErrors.aiBusy'),
+    mail_limit: t('aiErrors.mailLimit'),
     api_key_missing: t('aiErrors.apiKeyMissing'),
     rate_limited: t('aiErrors.rateLimited'),
     invalid_request: t('aiErrors.invalidRequest'),
