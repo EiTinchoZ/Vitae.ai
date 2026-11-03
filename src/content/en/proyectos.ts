@@ -13,6 +13,7 @@ export type Project = {
   org?: string; // nombre de la organización como logo (escudo + nombre), solo Philips
   img?: string;
   fp?: string; // encuadre de la foto
+  u?: string; // enlace externo: la ficha pinta un botón
   t: string[];
 };
 
@@ -21,7 +22,7 @@ export const projects: Project[] = [
   { n: 'Conecta Panamá', l: 'ITSE x Panama City Municipality Hackathon 2025 · interface and code', s: '1st place', p: 'An AI civic super app, built in two weeks. We won and the Municipality wanted to take it further: we sat down with the mayor to plan how to implement it.', k: ['1st', 'place'], t: ['React', 'Node.js', 'AI'] },
   { n: 'TYR', l: 'ITSE · 2025', s: 'Demo', p: 'A university assistant with a fine-tuned BERT model. It answers the questions students used to send by email.', k: ['98.93%', 'accuracy'], t: ['Python', 'BERT', 'FastAPI'] },
   { n: 'TYR AI', l: 'Expo Logística Panamá 2026 · speaker', s: 'Live', p: 'A copilot for logistics operations on LLaMA 3.3 70B. I demoed it live to transport, freight and 3PL companies.', k: ['100+', 'companies'], img: '/img/expo.jpg', fp: '50% 4%', t: ['LLaMA 3.3', 'Groq', 'React'] },
-  { n: 'tincho.ia', l: 'Side project · 2026', s: 'Starting up', p: 'I teach Claude, Claude Code, Codex and agents from scratch on TikTok and Instagram.', k: ['Day 1', 'of a long plan'], t: ['Claude', 'Claude Code', 'Codex'] },
+  { n: 'tincho.ia', l: 'Side project · 2026', s: 'Starting up', p: 'I teach Claude, Claude Code, Codex and agents from scratch on TikTok and Instagram.', k: ['Day 1', 'of a long plan'], t: ['Claude', 'Claude Code', 'Codex'], u: 'https://tincho-ia.pages.dev' },
   { n: 'Vitae.ai', l: 'This site · 2026', s: 'Live', p: 'My resume in English and Spanish, with an assistant that answers questions about me.', k: ['2', 'languages'], t: ['Next.js', 'TypeScript', 'Groq'] },
 ];
 
@@ -38,7 +39,7 @@ export const ticker: [string, string][] = [
 export const lidText = { made: 'MADE IN PANAMA' };
 
 export const card = (d: Project) =>
-  `<div class="swap">${d.logo ? `<img class="logo" src="${d.logo}" alt="${d.logoAlt}">` : ''}${d.org ? `<span class="org"><img src="/img/logos/philips-shield.png" alt=""><img src="${d.org}" alt="Philips"></span>` : ''}<span class="mono">${d.l}</span>${d.logo ? '' : `<h3>${d.n}</h3>`}<p>${d.p}</p><div class="row">${d.img ? `<img src="${d.img}" alt="" style="--fp:${d.fp}">` : ''}<div class="n"><b>${d.k[0]}</b><span>${d.k[1]}</span></div></div><div class="tags">${d.t.map((x) => `<span>${x}</span>`).join('')}</div></div>`;
+  `<div class="swap">${d.logo ? `<img class="logo" src="${d.logo}" alt="${d.logoAlt}">` : ''}${d.org ? `<span class="org"><img src="/img/logos/philips-shield.png" alt=""><img src="${d.org}" alt="Philips"></span>` : ''}<span class="mono">${d.l}</span>${d.logo ? '' : `<h3>${d.n}</h3>`}<p>${d.p}</p><div class="row">${d.img ? `<img src="${d.img}" alt="" style="--fp:${d.fp}">` : ''}<div class="n"><b>${d.k[0]}</b><span>${d.k[1]}</span></div></div><div class="tags">${d.t.map((x) => `<span>${x}</span>`).join('')}</div>${d.u ? `<a class="go" href="${d.u}" target="_blank" rel="noopener">Visit tincho.ia<span aria-hidden="true">↗</span></a>` : ''}</div>`;
 
 const tk = ticker.map((x) => `<span><b>${x[0]}</b>${x[1]}</span>`).join('').repeat(2);
 

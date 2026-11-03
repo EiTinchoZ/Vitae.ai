@@ -258,6 +258,9 @@ h2 em{font-style:normal;color:var(--or)}
 .pcard .n span{font:500 12px "IBM Plex Mono";letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
 .tags span{font:500 12px "IBM Plex Mono";letter-spacing:.06em;border:1px solid var(--line);padding:4px 8px}
+.pcard .go{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:10px 14px;background:var(--or);color:#09090A;font:600 13px "IBM Plex Mono";letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:transform .2s cubic-bezier(.2,.8,.2,1)}
+.pcard .go:hover{transform:translate(-2px,-2px)}
+.pcard .go:focus-visible{outline:2px solid var(--paper);outline-offset:3px}
 .prj .hint{position:absolute;right:40px;top:100px;z-index:4;text-align:right;color:var(--soft)}
 .ticker{position:absolute;left:0;right:0;bottom:0;z-index:5;background:var(--hz);color:var(--bk);overflow:hidden;border-top:8px solid;border-image:repeating-linear-gradient(45deg,var(--bk) 0 14px,var(--hz) 14px 28px) 8}
 .ticker .r{display:flex;gap:56px;width:max-content;padding:14px 0;animation:roll 44s linear infinite}
