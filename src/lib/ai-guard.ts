@@ -4,7 +4,7 @@ import { createErrorResponse } from '@/lib/api-validation';
 
 type Input = { system?: string; maxOutputTokens?: number; temperature?: number }
   & ({ prompt: string; messages?: never } | { messages: ModelMessage[]; prompt?: never });
-const MODELS = ['llama-3.3-70b-versatile', 'llama-3.1-8b-instant'] as const;
+const MODELS = ['openai/gpt-oss-120b', 'openai/gpt-oss-20b'] as const;
 
 export function aiBusyResponse() {
   return createErrorResponse('AI temporarily unavailable', 503, 'ai_busy');
