@@ -66,7 +66,13 @@ export function mount(sec: HTMLElement, z: typeof Z): () => void {
     if (lines.length > 1 && lines[lines.length - 1] === '') lines.pop();
     const typing = cur?.kind === 'type' && cur.file === active;
     el.code.innerHTML = lines.map((l, i) => '<span class="zl' + (fresh[active]?.has(i) ? ' zn' : '') + '"><i class="zg">' + (i + 1) + '</i>' + hl(l, ext) + (typing && i === cur!.line ? '<i class="zc"></i>' : '') + '</span>').join('') || '<span class="zl"><i class="zg">1</i><i class="zc"></i></span>';
-    if (typing) el.code.querySelector('.zc')?.scrollIntoView({ block: 'nearest' });
+    // solo mueve el panel de código: scrollIntoView también arrastraba la página hacia la laptop
+    const zc = typing ? el.code.querySelector('.zc') : null;
+    if (zc) {
+      const c = zc.getBoundingClientRect(), b = el.code.getBoundingClientRect();
+      if (c.bottom > b.bottom) el.code.scrollTop += c.bottom - b.bottom + 8;
+      else if (c.top < b.top) el.code.scrollTop -= b.top - c.top + 8;
+    }
     el.ln.textContent = 'Ln ' + (typing ? cur!.line! + 1 : lines.length) + ' · ' + z.langs[ext];
   }
   function renderTabs() {
@@ -97,10 +103,31 @@ export function mount(sec: HTMLElement, z: typeof Z): () => void {
     else el.site.querySelector('[data-piece="' + name + '"]')?.classList.add('on');
   }
   function addButton(label: string) {
+    // un botón por etiqueta y como mucho 6 extra, para que la mini web siga cabiendo en el teléfono
+    if ([...el.extra.children].some((x) => x.textContent === label)) return;
+    if (el.extra.children.length >= 8) el.extra.firstElementChild?.remove();
     const a = document.createElement('a');
     a.textContent = label; a.className = 'on';
     el.extra.append(a);
+    const nav = el.extra.closest('nav');
+    nav?.classList.toggle('many', nav.querySelectorAll('a').length > 3);
   }
+  // achica la tarjeta lo justo para que todo quepa en la pantalla del teléfono, pidan lo que pidan
+  function fitSite() {
+    const card = el.site.querySelector<HTMLElement>('.mq-card');
+    if (!card) return;
+    card.style.zoom = '';
+    const kids = [...card.children].map((k) => k.getBoundingClientRect()).filter((r) => r.height);
+    if (!kids.length) return;
+    const pad = parseFloat(getComputedStyle(card).paddingTop) * 2;
+    const need = Math.max(...kids.map((r) => r.bottom)) - Math.min(...kids.map((r) => r.top)) + pad;
+    const room = el.site.clientHeight;
+    if (need > room) card.style.zoom = String(Math.max(0.5, room / need));
+  }
+  let fitQ = 0;
+  let fitT = 0;
+  const fitObs = new MutationObserver(() => { cancelAnimationFrame(fitQ); fitQ = requestAnimationFrame(fitSite); clearTimeout(fitT); fitT = window.setTimeout(fitSite, 600); });
+  fitObs.observe(el.site, { subtree: true, childList: true, attributes: true, attributeFilter: ['class'] });
 
   // cada acción devuelve { update(dt) -> terminó, finish() }
   const wait = (s: number): Act => { let t = 0; return { update(dt) { return (t += dt) >= s; }, finish() {} }; };
@@ -164,7 +191,7 @@ export function mount(sec: HTMLElement, z: typeof Z): () => void {
     steps = z.script.slice(); si = 0; ai = 0; cur = null; finished = false;
     el.chat.claude.textContent = ''; el.chat.codex.textContent = '';
     el.term.innerHTML = '<div class="zdim">' + esc(z.prompt) + '</div>';
-    el.site.className = 'mq'; el.site.querySelectorAll('[data-piece]').forEach((p) => p.classList.remove('on')); el.extra.textContent = '';
+    el.site.className = 'mq'; el.site.querySelectorAll('[data-piece]').forEach((p) => p.classList.remove('on')); el.extra.textContent = ''; el.extra.closest('nav')?.classList.remove('many');
     el.next.textContent = z.ui.next;
     agent('claude'); renderTabs(); render(); setStep();
   }
@@ -223,7 +250,8 @@ export function mount(sec: HTMLElement, z: typeof Z): () => void {
       run.push(['open', 'index.html'], ['type', 'index.html', q.mail.code], ['btn', q.mail.label]);
       doneMsg = q.mail.done;
     } else if (social || q.isLink.test(low)) {
-      const label = social ? social[0].toUpperCase() + social.slice(1) : q.link.label;
+      const brand: Record<string, string> = { tiktok: 'TikTok', youtube: 'YouTube', whatsapp: 'WhatsApp', linkedin: 'LinkedIn', github: 'GitHub' };
+      const label = social ? brand[social] ?? social[0].toUpperCase() + social.slice(1) : q.link.label;
       run.push(['open', 'index.html'], ['type', 'index.html', '<a href="/' + (social || q.link.slug) + '">' + label + '</a>\n'], ['btn', label]);
       doneMsg = q.link.done(label);
     } else if (q.isPhoto.test(low)) {
@@ -310,6 +338,7 @@ export function mount(sec: HTMLElement, z: typeof Z): () => void {
   return () => {
     off.abort();
     cancelAnimationFrame(frame); frame = 0;
+    fitObs.disconnect(); cancelAnimationFrame(fitQ); clearTimeout(fitT);
     if (isOpen) LAP()?.release();
     isOpen = false;
     anims.forEach((a) => a.onfinish = null);
