@@ -81,8 +81,41 @@ export function mount(hero: HTMLElement, { wins: WINS, clockLocale }: Copy): () 
   tick();
   const clkT = setInterval(tick, 15000);
 
+  /* carreras (R2): la moneda gira sola al logo oficial, una y después la otra, y gira y se inclina hacia el cursor */
+  const coins = [...hero.querySelectorAll<HTMLElement>('.cr')].map((cr) => ({ cr, in: cr.querySelector<HTMLElement>('.coin .in')!, near: false, idle: false }));
+  const coinT: number[] = [];
+  const paint = (c: (typeof coins)[number]) => c.in.style.setProperty('--flip', RM || c.near || c.idle ? '180deg' : '0deg');
+  coins.forEach(paint);
+  let coinI = 0;
+  if (!RM) {
+    const cycle = () => coins.forEach((c, i) => coinT.push(window.setTimeout(() => {
+      if (c.near) return;
+      c.idle = true; paint(c);
+      coinT.push(window.setTimeout(() => { c.idle = false; paint(c); }, 2600));
+    }, i * 1300)));
+    coinT.push(window.setTimeout(cycle, 1200));
+    coinI = window.setInterval(() => { coinT.length = 0; cycle(); }, 7000);
+    if (FINE) on(window, 'pointermove', (e) => {
+      if (scrollY > innerHeight) return;
+      for (const c of coins) {
+        const r = c.cr.getBoundingClientRect();
+        const d = Math.hypot(Math.max(r.left - e.clientX, 0, e.clientX - r.right), Math.max(r.top - e.clientY, 0, e.clientY - r.bottom));
+        const near = d < 70;
+        if (near !== c.near) { c.near = near; paint(c); }
+        const b = c.in.getBoundingClientRect(), k = Math.max(0, 1 - d / 260);
+        const x = (e.clientX - b.left - b.width / 2) / 260, y = (e.clientY - b.top - b.height / 2) / 260;
+        c.in.style.setProperty('--tx', (-y * 22 * k).toFixed(1) + 'deg');
+        c.in.style.setProperty('--ty', (x * 22 * k).toFixed(1) + 'deg');
+        c.in.style.setProperty('--gx', (140 - k * 100 - x * 40).toFixed(0) + '%');
+      }
+    });
+  }
+
   return () => {
     off.forEach((f) => f());
+    coinT.forEach(clearTimeout);
+    clearInterval(coinI);
+    coins.forEach((c) => ['--flip', '--tx', '--ty', '--gx'].forEach((p) => c.in.style.removeProperty(p)));
     clearInterval(rot);
     clearInterval(clkT);
     clearTimeout(flipT);

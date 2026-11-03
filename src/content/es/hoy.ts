@@ -11,15 +11,16 @@ export type Step = {
   p: string;
   k: [string, string][];
   img?: [src: string, caption: string, cls?: string];
+  fx?: 'day' | 'dash' | 'docs' | 'chat';
 };
 
 // Sin cifras internas de Philips: nada de tiempos del proceso, tamaño del equipo ni mediciones del trabajo a mano
 // (Tín, 2026-11-02). La lógica y los nombres se quedan si cumplen la política de confidencialidad. El hackathon es público.
 export const steps: Step[] = [
-  { w: '21.04.2026', t: 'Entro al equipo de compras', s: 'Aprobado', p: 'Operational Procurement en Philips Panamá: el equipo que mueve las compras de punta a punta.', k: [['21.04', 'primer día']] },
-  { w: 'Abr a hoy', t: 'Cada compra, medida', s: 'Aprobado', p: 'Sigo cada solicitud hasta la orden de compra, con cuatro KPIs. Armé un dashboard sin código y se acabaron los reportes a mano.', k: [] },
-  { w: 'En pruebas', t: 'Todo el proceso en un solo lugar', s: 'En pruebas', p: 'Lideré la plataforma que junta SOP, work instructions y harmonized work instructions, para que el equipo encuentre todo en un solo sitio.', k: [] },
-  { w: 'Oct 2026', t: 'Un agente que responde en segundos', s: 'Aprobado', p: 'Lo armé en Microsoft Copilot: guía a buyers y solicitantes y cita la fuente exacta.', k: [] },
+  { w: '21.04.2026', t: 'Entro al equipo de compras', s: 'Aprobado', p: 'Operational Procurement en Philips Panamá: el equipo que mueve las compras de punta a punta.', k: [['21.04', 'primer día']], fx: 'day' },
+  { w: 'Abr a hoy', t: 'Cada compra, medida', s: 'Aprobado', p: 'Sigo cada solicitud hasta la orden de compra, con cuatro KPIs. Armé un dashboard sin código y se acabaron los reportes a mano.', k: [], fx: 'dash' },
+  { w: 'En pruebas', t: 'Todo el proceso en un solo lugar', s: 'En pruebas', p: 'Lideré la plataforma que junta SOP, work instructions y harmonized work instructions, para que el equipo encuentre todo en un solo sitio.', k: [], fx: 'docs' },
+  { w: 'Oct 2026', t: 'Un agente que responde en segundos', s: 'Aprobado', p: 'Lo armé en Microsoft Copilot: guía a buyers y solicitantes y cita la fuente exacta.', k: [], fx: 'chat' },
   { w: 'Oct 2026', t: 'Ganamos el AI Hackathon LATAM', s: 'Aprobado', p: 'Nos tocó Procurement por sorteo. Lideré al equipo y construí toda la parte de IA de PO Guru en 24 horas. Pitch de 4 minutos y 2 de preguntas: 1.º de Panamá. Una semana después, 1.º de LATAM entre 12 finalistas.', k: [['24 h', 'para el MVP'], ['1.º', 'de ~30 en Panamá'], ['1.º', 'de 12 en LATAM']], img: ['/img/hackathon-challenge.jpg', 'Reto aceptado · semifinal Panamá'] },
 ];
 
@@ -27,4 +28,12 @@ export const steps: Step[] = [
 export const ui = {
   done: 'Aprobado',
   first: 3,
+};
+
+// Piezas de los hitos 1 a 4 (Ronda 2, R5): un objeto en el hueco derecho de la ficha. El chat es ilustrativo, sin datos internos.
+export const fx = {
+  day: { src: '/img/philips-dia-1.webp', alt: 'Martín el primer día en Philips Panamá, frente al escudo', cap: 'Primer día · 21.04.2026' },
+  dash: { title: 'Seguimiento de compras', stages: ['Solicitud', 'Cotización', 'Aprobación', 'Orden de compra'], kpi: '4 KPIs por compra', nc: 'Sin código' },
+  docs: { sheets: ['SOP', 'WI', 'HWI'], fold: 'Un solo lugar' },
+  chat: { name: 'Agente de compras', by: 'Microsoft Copilot', q: '¿Qué necesito para pedir una compra nueva?', a: 'Tres pasos: la solicitud, la cotización y la aprobación. Te dejo cada uno.', src: 'Fuente exacta · instrucción de trabajo', t: 'Respondió en segundos' },
 };

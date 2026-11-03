@@ -101,6 +101,18 @@ h2 em{font-style:normal;color:var(--or)}
 .nn circle{animation:nd 1.8s ease-in-out infinite}
 .nn circle:nth-child(n+3){animation-delay:.3s}.nn circle:nth-child(n+6){animation-delay:.6s}
 .cr:hover .nn circle{animation-duration:.7s}
+/* R2: la caja es una moneda: tuerca o red de un lado, logo oficial del otro. Gira sola y hacia el cursor (hero-live).
+   Sin mix-blend-mode dentro: Firefox aplana el 3D (ver .idc .face). */
+.cr .ic.coin{position:relative;display:block;background:none;perspective:360px}
+.coin .in{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(var(--tx,0deg)) rotateY(calc(var(--flip,0deg) + var(--ty,0deg)));transition:transform .9s var(--spring)}
+.coin .in::before{content:"";position:absolute;inset:1px;border-radius:11px;background:color-mix(in srgb,var(--c) 45%,#000)}
+.coin .cf{position:absolute;inset:0;border-radius:11px;display:grid;place-items:center;backface-visibility:hidden;isolation:isolate;overflow:hidden}
+.coin .cf.a{background:var(--c);color:var(--bk);transform:translateZ(2.5px)}
+.coin .cf.b{transform:rotateY(180deg) translateZ(2.5px);box-shadow:inset 0 0 0 2px var(--c)}
+.cr.ind .cf.b{background:var(--paper)}.cr.ind .cf.b img{height:72%;width:auto}
+.cr.ia .cf.b{background:#0B0B0D}.cr.ia .cf.b img{width:82%;height:auto}
+.coin .cf::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.6) 50%,transparent 62%) var(--gx,140%) 0/260% 100% no-repeat}
+@media(prefers-reduced-motion:reduce){.coin .in{transition:none}}
 @keyframes nd{0%,100%{opacity:.35}45%{opacity:1}}
 .acts{display:flex;gap:16px;align-items:center}
 /* película: miniatura viva con su cinta de cine */
@@ -228,6 +240,72 @@ h2 em{font-style:normal;color:var(--or)}
 .kpis{display:flex;gap:34px;margin-top:26px;flex-wrap:wrap}
 .kpis b{display:block;font:900 clamp(34px,4vw,54px)/1 "Archivo";font-stretch:var(--wd,120%);letter-spacing:-.02em}
 .kpis span{font:500 12px "IBM Plex Mono";letter-spacing:.1em;text-transform:uppercase;color:#3B2716}
+/* Hoy, Ronda 2 (R5): piezas nuevas: un objeto físico por hito, en el hueco de la derecha. Se inclinan hacia el cursor. */
+.fx{align-self:end;width:280px;margin-top:40px;perspective:900px;animation:sw .5s var(--ease)}
+.fx .obj{transform:rotateX(var(--tx,0deg)) rotateY(var(--ty,0deg)) rotate(var(--rz,0deg));transition:transform .5s var(--ease);transform-style:preserve-3d}
+
+/* 1 · foto del primer día */
+.fx.day .obj{--rz:3deg;background:#fff;padding:9px 9px 34px;box-shadow:0 18px 34px rgba(0,0,0,.28);position:relative}
+.fx.day img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover}
+.fx.day small{position:absolute;left:12px;bottom:9px;font:500 12px "IBM Plex Mono";letter-spacing:.06em;color:#3B2716}
+.fx.day .glare{position:absolute;inset:9px 9px 34px;pointer-events:none;background:radial-gradient(circle at var(--sx,30%) var(--sy,20%),rgba(255,255,255,.42),transparent 45%);opacity:var(--so,0);transition:opacity .3s}
+.fx.day .tape{position:absolute;left:50%;top:-12px;width:92px;height:26px;margin-left:-46px;background:rgba(255,210,63,.85);transform:rotate(-4deg)}
+
+/* 2 · cada compra, medida: una solicitud que avanza por las etapas y enciende su lámpara */
+.fx.dash .obj{--rz:-2deg;background:#141416;color:var(--paper);border-radius:16px;padding:16px 16px 18px;box-shadow:0 20px 36px rgba(0,0,0,.32),inset 0 0 0 1px rgba(255,242,222,.1)}
+.dash .top{display:flex;align-items:center;gap:6px;margin-bottom:14px}
+.dash .top i{width:9px;height:9px;border-radius:50%;background:#3A3A40}.dash .top i:first-child{background:var(--or)}
+.dash .top span{margin-left:8px;font:600 12px "IBM Plex Mono";letter-spacing:.06em;color:var(--soft)}
+.pw{position:relative}.pipe{list-style:none;position:relative;display:grid;gap:10px}
+.pipe::before{content:"";position:absolute;left:13px;top:14px;bottom:14px;width:3px;border-radius:2px;background:#2A2A30}
+.pipe li{position:relative;display:flex;align-items:center;gap:12px;padding:8px 10px 8px 0;border-radius:10px;cursor:default;transition:background .25s}
+.pipe li .n{width:29px;height:29px;flex:none;border-radius:50%;display:grid;place-items:center;background:#1E1E22;border:2px solid #3A3A40;font:600 12px "IBM Plex Mono";color:var(--paper);z-index:1;transition:background .25s,border-color .25s,color .25s}
+.pipe li b{font:700 15px "Archivo";flex:1}
+.pipe li .lamp{width:12px;height:12px;border-radius:50%;background:#2A2A30;transition:background .25s,box-shadow .25s}
+.pipe li.on .n{background:var(--or);border-color:var(--or);color:var(--bk)}
+.pipe li.on .lamp{background:#3FD68A;box-shadow:0 0 12px #3FD68A}
+.pipe li.here{background:rgba(255,90,20,.14)}
+.pipe .tok{position:absolute;left:0;top:0;width:29px;height:29px;border-radius:50%;box-shadow:0 0 0 4px rgba(255,90,20,.35),0 0 22px var(--or);transform:translateY(var(--y,0px));transition:transform .7s var(--ease);pointer-events:none;z-index:2}
+.dash .dfoot{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:12px;border-top:1px solid #2A2A30}
+.dash .dfoot span{font:600 12px "IBM Plex Mono";letter-spacing:.06em;color:var(--paper)}
+.dash .dfoot .nc{background:var(--hz);color:var(--bk);padding:4px 9px;border-radius:6px}
+
+/* 3 · todo el proceso en un solo lugar: tres hojas que se juntan en una carpeta */
+.fx.docs .obj{height:300px;position:relative}
+.docs .sheet{position:absolute;left:50%;top:10px;width:150px;height:190px;margin-left:-75px;background:#fff;border-radius:8px;padding:14px;box-shadow:0 10px 24px rgba(0,0,0,.2),inset 0 0 0 1px rgba(9,9,10,.08);
+  transform:translate(calc(var(--k)*var(--f)*78px),calc((1 - var(--f))*96px + var(--k)*var(--k)*var(--f)*14px)) rotate(calc(var(--k)*var(--f)*11deg)) scale(calc(.72 + var(--f)*.28));transition:transform .8s var(--spring)}
+.docs .sheet b{display:inline-block;font:800 15px "Archivo";padding:3px 8px;border-radius:6px;color:#fff;margin-bottom:12px}
+.docs .sheet i{display:block;height:7px;border-radius:4px;background:#E7DCCB;margin-bottom:9px}
+.docs .sheet i:nth-of-type(2){width:80%}.docs .sheet i:nth-of-type(4){width:60%}
+.docs .s1{--k:-1}.docs .s1 b{background:#3D6BFF}
+.docs .s2{--k:0;z-index:2}.docs .s2 b{background:var(--or)}
+.docs .s3{--k:1}.docs .s3 b{background:#0E8F63}
+.docs .fold{position:absolute;left:50%;bottom:0;width:230px;margin-left:-115px;height:120px;z-index:3;border-radius:6px 6px 14px 14px;background:linear-gradient(#FFB347,#F59A1B);box-shadow:0 16px 30px rgba(0,0,0,.25);display:flex;align-items:flex-end;justify-content:center;padding-bottom:16px}
+.docs .fold::before{content:"";position:absolute;left:0;top:-14px;width:88px;height:20px;border-radius:8px 8px 0 0;background:#F59A1B;z-index:-1}
+.docs .fold span{font:700 13px "IBM Plex Mono";letter-spacing:.06em;color:var(--bk);background:var(--paper);padding:5px 10px;border-radius:7px}
+
+/* 4 · un agente que responde en segundos */
+.fx.chat .obj{--rz:2deg;background:#fff;border-radius:18px;padding:16px;box-shadow:0 20px 36px rgba(0,0,0,.26),inset 0 0 0 1px rgba(9,9,10,.08)}
+.chat .hd{display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid #EFE6D8;margin-bottom:12px}
+.chat .av{width:36px;height:36px;display:grid;place-items:center;border-radius:10px;background:#F4F0FF;flex:none}
+.chat .av img{width:26px;height:26px;transition:transform .9s var(--spring)}
+.chat.think .av img{transform:rotate(360deg)}
+.chat .hd b{font:800 15px "Archivo";display:block}.chat .hd small{font:500 12px "IBM Plex Mono";color:#3B2716}
+.chat .msgs{display:grid;gap:10px;min-height:196px;align-content:start}
+.chat .q,.chat .a{max-width:92%;padding:9px 12px;border-radius:14px;font:600 14px/1.35 "Archivo";opacity:0;transform:translateY(8px);transition:opacity .3s,transform .4s var(--ease)}
+.chat .q{justify-self:end;background:#5B5FC7;color:#fff;border-bottom-right-radius:4px}
+.chat .a{justify-self:start;background:#F3EEE3;color:var(--bk);border-bottom-left-radius:4px}
+.chat .show{opacity:1;transform:none}
+.chat .dots{justify-self:start;display:none;gap:4px;padding:10px 12px;background:#F3EEE3;border-radius:14px}
+.chat.think .dots{display:flex}
+.chat .dots i{width:7px;height:7px;border-radius:50%;background:#3B2716;animation:nd 1s infinite}.chat .dots i:nth-child(2){animation-delay:.15s}.chat .dots i:nth-child(3){animation-delay:.3s}
+.chat .src{display:flex;align-items:center;gap:6px;margin-top:8px;font:600 12px "IBM Plex Mono";letter-spacing:.04em;color:#0A6B49}
+.chat .src svg{width:14px;height:14px;flex:none}
+.chat .t{font:600 12px "IBM Plex Mono";color:#3B2716;justify-self:start;opacity:0;transition:opacity .3s}.chat .t.show{opacity:1}
+
+@media(max-width:900px){.fx{justify-self:center;width:min(280px,100%);margin-top:6px}}
+@media(max-width:640px){.fx{margin-top:26px}}
+@media(prefers-reduced-motion:reduce){.chat .dots i{animation:none}.fx .obj,.docs .sheet,.pipe .tok,.chat .av img{transition:none}}
 .race{margin-top:26px;border-top:2px solid rgba(9,9,10,.12);padding-top:20px}
 .race .q{display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
 .race q{font:600 17px/1.35 "Archivo"}
@@ -750,6 +828,8 @@ body{text-shadow:var(--halo)}
 /* el giro no depende de backface-visibility: el JS cambia de cara a mitad de vuelta */
 .idc .face.back,.idc.bk .face:not(.back){visibility:hidden}
 .idc.bk .face.back{visibility:visible}
+/* Firefox aplana el 3D de la tarjeta si la mezcla del brillo (.holo) sale de su cara: reverso en espejo o vacío (R10) */
+.idc .face{isolation:isolate}
 /* legibilidad medida (punto 5): texto que caía sobre fondos claros o del mismo tono */
 .lbl{padding:3px 8px 4px;border-radius:7px;background:#09090A;box-shadow:0 0 0 1px rgba(243,238,227,.16)}
 .det .st.ok{color:#0A6B49}.det .st.pend{color:#8A5F00}
@@ -785,7 +865,7 @@ body{text-shadow:var(--halo)}
 @keyframes chBody{from{translate:0 34px}to{translate:0 0}}
 /* legibilidad en el build: el contador del fichero caía sobre los puntos de la tinta; el azul-violeta del ciclo RGB daba 2.7:1 en los textos grandes */
 .rdx-n b{padding:2px 7px 3px;border-radius:6px;background:#09090A;box-shadow:0 0 0 1px rgba(243,238,227,.16)}
-.rig h2 em,.rnums div:first-child b{color:color-mix(in srgb,var(--rig-c,var(--or)) 80%,#FFF2DE)}
+.rig h2 em,.rnums div:first-child b{color:color-mix(in srgb,var(--rig-c,var(--or)) 62%,#FFF2DE)}
 /* celular, punto 6: el sello "Aprobado" de Hoy pisaba el título; en 640 o menos entra al flujo, arriba de la etiqueta */
 @media(max-width:640px){.det{gap:0}.det .st{position:relative;right:auto;top:auto;justify-self:start;margin:4px 0 16px}}
 /* celular, punto 4: la ficha tapaba la cinta. En 640 o menos se apilan: título, cinta en su franja, ficha y ticker.
@@ -819,4 +899,5 @@ body{text-shadow:var(--halo)}
 @media(max-width:900px){.rig .iso{--fx:12px;--fr:108px}.edu .iso>div{--fx:12px;--fr:80px}}
 @media(max-width:700px){.edu .iso>div{--fr:229px}}
 @media(max-width:520px){.hoy .iso{--fr:290px}.rig .iso{--fr:124px}}
-.ink-safe :is(h2,h3,p,.mono,small,b),h2.ink-safe{text-shadow:0 0 2px #09090A,0 0 8px #09090A}
+/* contorno solo para texto sobre el fondo: en placas claras (fichas de Hoy y del mapa, tecla de correo) ensucia la letra oscura */
+.ink-safe :is(h2,h3,p,.mono,small,b):not(.det *,.mcard *,.kc.kmail *),h2.ink-safe{text-shadow:0 0 2px #09090A,0 0 8px #09090A}

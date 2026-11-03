@@ -11,15 +11,16 @@ export type Step = {
   p: string;
   k: [string, string][];
   img?: [src: string, caption: string, cls?: string];
+  fx?: 'day' | 'dash' | 'docs' | 'chat';
 };
 
 // Sin cifras internas de Philips: nada de tiempos del proceso, tamaño del equipo ni mediciones del trabajo a mano
 // (Tín, 2026-11-02). La lógica y los nombres se quedan si cumplen la política de confidencialidad. El hackathon es público.
 export const steps: Step[] = [
-  { w: '21.04.2026', t: 'I join the procurement team', s: 'Done', p: 'Operational Procurement at Philips Panama: the team that runs purchasing end to end.', k: [['Apr 21', 'first day']] },
-  { w: 'Apr to today', t: 'Every purchase, measured', s: 'Done', p: 'I follow each request through to the purchase order, against four KPIs. I built a no-code dashboard and the manual reports went away.', k: [] },
-  { w: 'In testing', t: 'The whole process in one place', s: 'In testing', p: 'I led the platform that brings the SOP, work instructions and harmonized work instructions together, so the team finds everything in one spot.', k: [] },
-  { w: 'Oct 2026', t: 'An agent that answers in seconds', s: 'Done', p: 'I built it in Microsoft Copilot: it guides buyers and requesters and cites the exact source.', k: [] },
+  { w: '21.04.2026', t: 'I join the procurement team', s: 'Done', p: 'Operational Procurement at Philips Panama: the team that runs purchasing end to end.', k: [['Apr 21', 'first day']], fx: 'day' },
+  { w: 'Apr to today', t: 'Every purchase, measured', s: 'Done', p: 'I follow each request through to the purchase order, against four KPIs. I built a no-code dashboard and the manual reports went away.', k: [], fx: 'dash' },
+  { w: 'In testing', t: 'The whole process in one place', s: 'In testing', p: 'I led the platform that brings the SOP, work instructions and harmonized work instructions together, so the team finds everything in one spot.', k: [], fx: 'docs' },
+  { w: 'Oct 2026', t: 'An agent that answers in seconds', s: 'Done', p: 'I built it in Microsoft Copilot: it guides buyers and requesters and cites the exact source.', k: [], fx: 'chat' },
   { w: 'Oct 2026', t: 'We win the LATAM AI Hackathon', s: 'Done', p: 'We drew Procurement as our challenge. I led the team and built all of the AI in PO Guru in 24 hours. A 4-minute pitch and 2 minutes of questions: 1st in Panama. A week later, 1st in LATAM out of 12 finalists.', k: [['24 h', 'to build the MVP'], ['1st', 'of ~30 in Panama'], ['1st', 'of 12 in LATAM']], img: ['/img/hackathon-challenge.jpg', 'Challenge accepted · Panama semifinal'] },
 ];
 
@@ -27,4 +28,12 @@ export const steps: Step[] = [
 export const ui = {
   done: 'Done',
   first: 3,
+};
+
+// Pieces for milestones 1 to 4 (Round 2, R5): one object in the card's right-hand space. The chat is illustrative, no internal data.
+export const fx = {
+  day: { src: '/img/philips-dia-1.webp', alt: 'Martín on day one at Philips Panama, in front of the shield', cap: 'Day one · Apr 21, 2026' },
+  dash: { title: 'Purchase tracking', stages: ['Request', 'Quote', 'Approval', 'Purchase order'], kpi: '4 KPIs per purchase', nc: 'No code' },
+  docs: { sheets: ['SOP', 'WI', 'HWI'], fold: 'One place' },
+  chat: { name: 'Procurement agent', by: 'Microsoft Copilot', q: 'What do I need to request a new purchase?', a: 'Three steps: the request, the quote and the approval. Here is each one.', src: 'Exact source · work instruction', t: 'Answered in seconds' },
 };
