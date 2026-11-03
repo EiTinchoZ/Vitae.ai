@@ -15,7 +15,7 @@ const cvByLanguage: Record<'es' | 'en', Omit<CVData, 'personal'>> = {
   "es": {
     "profile": "Estudio Ingeniería Industrial e Inteligencia Artificial. Soy Operational Procurement Intern en Philips Panamá desde el 21 de abril de 2026. Trabajo con procesos, automatización y agentes de IA. Lideré ProcureNation y la construcción digital de PO Guru, 1.er lugar en el AI Hackathon Philips LATAM 2026.",
     "about": {
-      "quote": "Me apasionan la tecnología, la innovación digital y los videojuegos. Hoy armo agentes de IA.",
+      "quote": "Me apasionan la tecnología, la innovación digital y los videojuegos. Hoy construyo con IA: agentes, plataformas, dashboards y apps.",
       "specialties": [
         "Machine Learning",
         "Deep Learning",
@@ -146,7 +146,7 @@ const cvByLanguage: Record<'es' | 'en', Omit<CVData, 'personal'>> = {
         "startYear": 2025,
         "endYear": "Abril 2027",
         "status": "in_progress",
-        "description": "En línea · materias hasta abril de 2027. Base técnica de Ingeniería Eléctrica y Electromecánica en UTP y USMA (2018–2024), convalidada."
+        "description": "En línea · materias hasta abril de 2027."
       }
     ],
     "certificates": [
@@ -641,11 +641,11 @@ const cvByLanguage: Record<'es' | 'en', Omit<CVData, 'personal'>> = {
       },
       {
         "id": "project-2",
-        "name": "Vitae.ai",
-        "type": "Plataforma de CV con IA",
+        "name": "Esta web (portfolio de Martín)",
+        "type": "CV interactivo, diseñado y construido con IA",
         "year": 2026,
-        "shortDescription": "Plataforma de CV digital con IA para presentar experiencia, educación y habilidades en un formato moderno y visual.",
-        "longDescription": "Mi hoja de vida en español e inglés, con un asistente que contesta preguntas sobre mí.",
+        "shortDescription": "Su CV interactivo en español e inglés, con figuras 3D y sonido.",
+        "longDescription": "Martín dirigió el diseño y la construyó con Claude Code y Codex. Es la web donde está este asistente.",
         "features": [
           "CV digital interactivo",
           "Español e inglés",
@@ -654,14 +654,13 @@ const cvByLanguage: Record<'es' | 'en', Omit<CVData, 'personal'>> = {
         "technologies": [
           "Next.js",
           "TypeScript",
-          "Tailwind CSS",
-          "Framer Motion",
+          "Three.js",
+          "Claude Code",
+          "Codex",
           "Groq AI"
         ],
         "githubUrl": "https://github.com/EiTinchoZ/Vitae.ai",
-        "images": [
-          "/brand/vitae-logo.webp"
-        ]
+        "images": []
       },
       {
         "id": "project-sena",
@@ -714,7 +713,7 @@ const cvByLanguage: Record<'es' | 'en', Omit<CVData, 'personal'>> = {
   "en": {
     "profile": "I study Industrial Engineering and Artificial Intelligence. I have been an Operational Procurement Intern at Philips Panama since April 21, 2026. I work with processes, automation and AI agents. I led ProcureNation and the digital development of PO Guru, which won 1st place at the AI Hackathon Philips LATAM 2026.",
     "about": {
-      "quote": "I am passionate about technology, digital innovation and video games. Today I build AI agents.",
+      "quote": "I am passionate about technology, digital innovation and video games. Today I build with AI: agents, platforms, dashboards and apps.",
       "specialties": [
         "Machine Learning",
         "Deep Learning",
@@ -845,7 +844,7 @@ const cvByLanguage: Record<'es' | 'en', Omit<CVData, 'personal'>> = {
         "startYear": 2025,
         "endYear": "April 2027",
         "status": "in_progress",
-        "description": "Online · coursework through April 2027. Prior technical studies in Electrical and Electromechanical Engineering at UTP and USMA (2018–2024), with credits transferred."
+        "description": "Online · coursework through April 2027."
       }
     ],
     "certificates": [
@@ -1340,11 +1339,11 @@ const cvByLanguage: Record<'es' | 'en', Omit<CVData, 'personal'>> = {
       },
       {
         "id": "project-2",
-        "name": "Vitae.ai",
-        "type": "AI CV Platform",
+        "name": "This site (Martín's portfolio)",
+        "type": "Interactive CV, designed and built with AI",
         "year": 2026,
-        "shortDescription": "AI-powered digital CV platform to present experience, education, and skills in a modern visual format.",
-        "longDescription": "My CV in Spanish and English, with an assistant that answers questions about me.",
+        "shortDescription": "His interactive CV in Spanish and English, with 3D figures and sound.",
+        "longDescription": "Martín directed the design and built it with Claude Code and Codex. It is the site where this assistant lives.",
         "features": [
           "Interactive digital CV",
           "Spanish and English",
@@ -1353,14 +1352,13 @@ const cvByLanguage: Record<'es' | 'en', Omit<CVData, 'personal'>> = {
         "technologies": [
           "Next.js",
           "TypeScript",
-          "Tailwind CSS",
-          "Framer Motion",
+          "Three.js",
+          "Claude Code",
+          "Codex",
           "Groq AI"
         ],
         "githubUrl": "https://github.com/EiTinchoZ/Vitae.ai",
-        "images": [
-          "/brand/vitae-logo.webp"
-        ]
+        "images": []
       },
       {
         "id": "project-sena",

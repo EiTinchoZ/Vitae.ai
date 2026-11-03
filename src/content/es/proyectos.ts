@@ -23,7 +23,7 @@ export const projects: Project[] = [
   { n: 'TYR', l: 'ITSE · 2025', s: 'Demo', p: 'Asistente universitario con un modelo BERT ajustado. Responde las dudas que antes llegaban por correo.', k: ['98,93 %', 'de precisión'], t: ['Python', 'BERT', 'FastAPI'] },
   { n: 'TYR AI', l: 'Expo Logística Panamá 2026 · expositor', s: 'En vivo', p: 'Copiloto para operaciones logísticas con LLaMA 3.3 70B. Lo presenté en vivo a empresas de transporte, carga y 3PL.', k: ['100+', 'empresas'], img: '/img/expo.jpg', fp: '50% 4%', t: ['LLaMA 3.3', 'Groq', 'React'] },
   { n: 'tincho.ia', l: 'Proyecto propio · 2026', s: 'Arrancando', p: 'Enseño a usar Claude, Claude Code, Codex y agentes desde cero, en TikTok e Instagram.', k: ['Día 1', 'de un plan largo'], t: ['Claude', 'Claude Code', 'Codex'], u: 'https://tincho-ia.pages.dev' },
-  { n: 'Vitae.ai', l: 'Esta web · 2026', s: 'Abierta', p: 'Mi hoja de vida en español e inglés, con un asistente que contesta preguntas sobre mí.', k: ['2', 'idiomas'], t: ['Next.js', 'TypeScript', 'Groq'] },
+  { n: 'Esta web', l: 'CV interactivo · lo diseñé y construí con IA', s: 'Abierta', p: 'Mi CV en español e inglés, con figuras 3D y sonido. La dirigí yo y la construí con Claude Code y Codex.', k: ['2', 'idiomas'], t: ['Next.js', 'Three.js', 'Claude Code'] },
 ];
 
 export const ticker: [string, string][] = [

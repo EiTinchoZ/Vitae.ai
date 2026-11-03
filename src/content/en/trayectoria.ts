@@ -7,13 +7,11 @@ export default html;
 export type Station = [string, string, string, string, number, number];
 
 export const metro = {
-  lines: { base: 'Technical groundwork', edu: 'Education', ia: 'Artificial intelligence', pro: 'Processes and procurement', prj: 'Projects and awards' } as Record<string, string>,
+  lines: { base: 'School', edu: 'Education', ia: 'Artificial intelligence', pro: 'Processes and procurement', prj: 'Projects and awards' } as Record<string, string>,
   future: 'What comes next',
   hub: ['TODAY', 'AI applied to real processes'],
   stations: [
     ['base', '2017', 'High school', 'Colegio San Agustín de Panamá', -12, -7],
-    ['base', '2018-2024', 'Technical groundwork', 'Electrical and electromechanical engineering · UTP and USMA', -9.5, -8],
-    ['base', '2024', 'The decision', 'I pick Industrial Engineering, the degree that ties it all together, and transfer my credits', -7, -6.6],
     ['edu', '2025', 'Industrial Engineering', 'ADEN University · courses through Apr 2027', -4.5, -4.6],
     ['edu', '2025', 'Higher Technical Degree in AI', 'ITSE · ends Apr 2027', -1.6, -3.2],
     ['edu', '2026', 'English C2', 'Florida State University · self-taught', 1.6, -2.4],

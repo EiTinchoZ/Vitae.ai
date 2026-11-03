@@ -23,7 +23,7 @@ export const projects: Project[] = [
   { n: 'TYR', l: 'ITSE · 2025', s: 'Demo', p: 'A university assistant with a fine-tuned BERT model. It answers the questions students used to send by email.', k: ['98.93%', 'accuracy'], t: ['Python', 'BERT', 'FastAPI'] },
   { n: 'TYR AI', l: 'Expo Logística Panamá 2026 · speaker', s: 'Live', p: 'A copilot for logistics operations on LLaMA 3.3 70B. I demoed it live to transport, freight and 3PL companies.', k: ['100+', 'companies'], img: '/img/expo.jpg', fp: '50% 4%', t: ['LLaMA 3.3', 'Groq', 'React'] },
   { n: 'tincho.ia', l: 'Side project · 2026', s: 'Starting up', p: 'I teach Claude, Claude Code, Codex and agents from scratch on TikTok and Instagram.', k: ['Day 1', 'of a long plan'], t: ['Claude', 'Claude Code', 'Codex'], u: 'https://tincho-ia.pages.dev' },
-  { n: 'Vitae.ai', l: 'This site · 2026', s: 'Live', p: 'My resume in English and Spanish, with an assistant that answers questions about me.', k: ['2', 'languages'], t: ['Next.js', 'TypeScript', 'Groq'] },
+  { n: 'This site', l: 'Interactive CV · designed and built with AI', s: 'Live', p: 'My resume in English and Spanish, with 3D figures and sound. I directed it and built it with Claude Code and Codex.', k: ['2', 'languages'], t: ['Next.js', 'Three.js', 'Claude Code'] },
 ];
 
 export const ticker: [string, string][] = [

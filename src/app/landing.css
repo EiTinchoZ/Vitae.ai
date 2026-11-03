@@ -438,7 +438,7 @@ h2 em{font-style:normal;color:var(--or)}
 .edu .iso-stage{cursor:default;outline:none}
 .ed-stage{position:relative}
 .ed-stage [data-q],.ed-stage [data-b],.ed-stage [data-c]{cursor:pointer}
-.ed-tag{position:absolute;bottom:1%;transform:translateX(-50%);display:flex;align-items:center;gap:9px;padding:6px 12px 6px 6px;border-radius:12px;background:#140D08;box-shadow:0 0 0 1.5px #5A3A1E;text-decoration:none;white-space:nowrap;transition:box-shadow .25s,transform .35s cubic-bezier(.32,.72,0,1)}
+.ed-tag{position:absolute;bottom:1%;width:max-content;transform:translateX(-50%);display:flex;align-items:center;gap:9px;padding:6px 12px 6px 6px;border-radius:12px;background:#140D08;box-shadow:0 0 0 1.5px #5A3A1E;text-decoration:none;white-space:nowrap;transition:box-shadow .25s,transform .35s cubic-bezier(.32,.72,0,1)}
 .ed-tag img{display:block;height:28px;width:auto;border-radius:8px;padding:4px 6px;background:#FFF2DE}
 .ed-tag[data-deg="ia"] img{background:#0B0B0B;box-shadow:0 0 0 1px #3A2A1A}
 .ed-tag span{display:flex;flex-direction:column;line-height:1.2}
@@ -470,7 +470,7 @@ h2 em{font-style:normal;color:var(--or)}
 .ed-intro .ed-box{opacity:0;transform:translateY(-8px)}
 .ed-go .ed-box{opacity:1;transform:none;transition:opacity .3s,transform .45s cubic-bezier(.32,.72,0,1);transition-delay:calc(var(--i) * 22ms)}
 #figEdu{container-type:inline-size}
-@container (max-width:640px){.edu #figEdu .iso-plate{padding-bottom:84px!important}.ed-stage svg{margin-bottom:-9%}.ed-stage{display:flex;flex-direction:column;gap:8px}.ed-tag{position:static;transform:none;white-space:normal}.ed-tag:hover,.ed-tag.hot,.ed-tag:focus-visible{transform:none}}
+@container (max-width:640px){.edu #figEdu .iso-plate{padding-bottom:84px!important}.ed-stage svg{margin-bottom:-9%}.ed-stage{display:flex;flex-direction:column;gap:8px}.ed-tag{position:static;transform:none;white-space:normal;width:auto}.ed-tag:hover,.ed-tag.hot,.ed-tag:focus-visible{transform:none}}
 @media (prefers-reduced-motion:reduce){.ed-q[data-s] .die>.iso-top,.ed-slot .iso-line{animation:none}.ed-tag,.ed-q .die>*{transition:none}}
 .edu .iso-stage:focus-visible{outline:3px solid var(--or);outline-offset:4px;border-radius:12px}
 .edu .iso-legend{margin-top:12px;font-size:13px;color:var(--soft)}

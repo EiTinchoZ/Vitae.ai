@@ -7,13 +7,11 @@ export default html;
 export type Station = [string, string, string, string, number, number];
 
 export const metro = {
-  lines: { base: 'Base técnica', edu: 'Formación', ia: 'Inteligencia artificial', pro: 'Procesos y compras', prj: 'Proyectos y premios' } as Record<string, string>,
+  lines: { base: 'Colegio', edu: 'Formación', ia: 'Inteligencia artificial', pro: 'Procesos y compras', prj: 'Proyectos y premios' } as Record<string, string>,
   future: 'Lo que viene',
   hub: ['HOY', 'IA aplicada a procesos reales'],
   stations: [
     ['base', '2017', 'Bachiller', 'Colegio San Agustín de Panamá', -12, -7],
-    ['base', '2018-2024', 'Base técnica', 'Ingeniería eléctrica y electromecánica · UTP y USMA', -9.5, -8],
-    ['base', '2024', 'La decisión', 'Elijo Ingeniería Industrial, la carrera que junta todo, y convalido mi base', -7, -6.6],
     ['edu', '2025', 'Ingeniería Industrial', 'ADEN University · materias hasta abr 2027', -4.5, -4.6],
     ['edu', '2025', 'Técnico Superior en IA', 'ITSE · termina abr 2027', -1.6, -3.2],
     ['edu', '2026', 'Inglés C2', 'Florida State University · aprendido por mi cuenta', 1.6, -2.4],

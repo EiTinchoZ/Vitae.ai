@@ -105,8 +105,8 @@ export const resume: Record<'es' | 'en', Resume> = {
         text: 'Enseño Claude, Claude Code, Codex y agentes desde cero en TikTok e Instagram.',
       },
       {
-        label: 'Vitae.ai (2025 - Presente).',
-        text: 'Mi CV interactivo, con 3D y un asistente de IA que responde sobre mi perfil. Este PDF sale de los mismos datos.',
+        label: 'Esta web (2025 - Presente).',
+        text: 'Mi CV interactivo, con 3D y sonido, diseñado y construido con IA (Claude Code y Codex). Este PDF sale de los mismos datos.',
       },
     ],
     skills: [
@@ -235,8 +235,8 @@ export const resume: Record<'es' | 'en', Resume> = {
         text: 'I teach Claude, Claude Code, Codex and agents from scratch on TikTok and Instagram.',
       },
       {
-        label: 'Vitae.ai (2025 - Present).',
-        text: 'My interactive CV, with 3D and an AI assistant that answers questions about my profile. This PDF comes from the same data.',
+        label: 'This site (2025 - Present).',
+        text: 'My interactive CV, with 3D and sound, designed and built with AI (Claude Code and Codex). This PDF comes from the same data.',
       },
     ],
     skills: [
