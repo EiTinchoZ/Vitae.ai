@@ -30,4 +30,5 @@ export const metro = {
     ['fut', 'Apr 2027', 'I finish both degrees', 'The Higher Technical Degree in AI at ITSE and the last Industrial Engineering courses at ADEN.', 4.3, -5.5],
     ['fut', 'After that', 'More adventures', 'The track stays open. Whatever comes next, I will build it with everything I have added up so far.', 3.4, -9.5],
   ] as Station[],
+  logos: { 'High school': '/img/logos/san-agustin.webp' } as Record<string, string>,
 };

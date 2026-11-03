@@ -30,4 +30,5 @@ export const metro = {
     ['fut', 'Abr 2027', 'Cierro las dos carreras', 'Técnico Superior en IA en el ITSE y las últimas materias de Ingeniería Industrial en ADEN.', 4.3, -5.5],
     ['fut', 'Después', 'Más aventuras', 'La vía queda abierta. Lo que venga lo voy a construir con todo lo que ya sumé.', 3.4, -9.5],
   ] as Station[],
+  logos: { 'Bachiller': '/img/logos/san-agustin.webp' } as Record<string, string>,
 };

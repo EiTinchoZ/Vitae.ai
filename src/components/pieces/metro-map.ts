@@ -9,7 +9,7 @@ import { hasWebGL } from '@/lib/three/webgl';
 import type { Station } from '@/content/es/trayectoria';
 
 type Kit = Awaited<ReturnType<typeof loadThree>>;
-type Data = { lines: Record<string, string>; future: string; hub: string[]; stations: Station[]; ghosts: Station[] };
+type Data = { lines: Record<string, string>; future: string; hub: string[]; stations: Station[]; ghosts: Station[]; logos?: Record<string, string> };
 
 const C: Record<string, string> = { base: '#B7AE9F', edu: '#F5B700', ia: '#FF4B2B', pro: '#3D6BFF', prj: '#B6F23A', fut: '#FFD23F' };
 
@@ -83,10 +83,12 @@ async function start({ THREE, TOOLS, makeKey, scene, loadGLB }: Kit, sec: HTMLEl
   const mk = (el: HTMLElement, o: Object3D) => { sec.appendChild(el); labels.push([el, o]); };
   const lbl = (cls: string, s: Station) => {
     const el = document.createElement('div');
-    el.className = cls;
+    el.className = cls + (D.logos?.[s[2]] ? ' hl' : '');
     el.innerHTML = s[2] === 'Philips'
       ? `<b class="ph"><img src="/img/logos/philips-shield.png" alt=""><img src="/img/logos/philips.png" alt="Philips"></b><small>${s[1]}</small>`
-      : `<b>${s[2]}</b><small>${s[1]}</small>`;
+      : D.logos?.[s[2]]
+        ? `<img class="sl" src="${D.logos[s[2]]}" alt=""><b>${s[2]}</b><small>${s[1]}</small>`
+        : `<b>${s[2]}</b><small>${s[1]}</small>`;
     return el;
   };
   const st: Mesh[] = S.map((s, i) => {
