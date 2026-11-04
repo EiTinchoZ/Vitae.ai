@@ -1,15 +1,10 @@
-// ¿Hay WebGL? Se prueba una vez con un canvas suelto y se suelta el contexto. Sin WebGL las piezas 3D no cargan three
-// (ni ensucian la consola): el hero y la cinta quedan con su HTML, y el mapa pinta su lista (metro-map.ts).
-let ok: boolean | null = null;
-
-export function hasWebGL() {
-  if (ok !== null) return ok;
+// Reuse the scene's canvas: a detached probe followed by loseContext() produces
+// a misleading Firefox warning. Three r170 requires WebGL2; WebGL1 is not enough.
+// WebGLRenderer reuses this same context, including after a StrictMode remount.
+export function hasWebGL(canvas: HTMLCanvasElement | null) {
   try {
-    const gl = document.createElement('canvas').getContext('webgl2') ?? document.createElement('canvas').getContext('webgl');
-    ok = !!gl;
-    gl?.getExtension('WEBGL_lose_context')?.loseContext();
+    return !!canvas?.getContext('webgl2', { antialias: true, alpha: true });
   } catch {
-    ok = false;
+    return false;
   }
-  return ok;
 }

@@ -20,7 +20,7 @@ const freeAll = (o: Object3D) => o.traverse((n) => {
 });
 
 export function mount(sec: HTMLElement, data: Data): () => void {
-  if (!hasWebGL()) return list(sec, data);
+  if (!hasWebGL(sec.querySelector<HTMLCanvasElement>('#cMap'))) return list(sec, data);
   let alive = true;
   let stop: (() => void) | null = null;
   loadThree()

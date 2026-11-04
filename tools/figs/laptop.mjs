@@ -377,7 +377,7 @@ function colorAt(p, boost = 0) {
 function setColor(m) {
   colorMode = m === "rainbow" ? "rainbow" : "fixed"; colorKey = m;
   if (colorMode === "fixed") fixed = hexHsl(m);
-  document.querySelectorAll("[data-lap-rgb]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.lapRgb === m || (b.type === "color" && colorMode === "fixed" && !document.querySelector('[data-lap-rgb="' + m + '"]:not([type=color])')))));
+  document.querySelectorAll("button[data-lap-rgb]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.lapRgb === m || (b.type === "color" && colorMode === "fixed" && !document.querySelector('[data-lap-rgb="' + m + '"]:not([type=color])')))));
   try { localStorage.setItem("vitae-rgb", m); } catch {}
   if (!frame) draw();
 }

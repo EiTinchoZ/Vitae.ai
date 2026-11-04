@@ -16,6 +16,8 @@
 # next.js
 /.next/
 /.next-codex/
+/.next-codex-turbo/
+/.next-claude/
 /out/
 
 # production

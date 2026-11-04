@@ -16,7 +16,7 @@ declare global {
 }
 
 export function mount(hero: HTMLElement, tips: Tips): () => void {
-  if (!hasWebGL()) return () => {};
+  if (!hasWebGL(hero.querySelector<HTMLCanvasElement>('#cHero'))) return () => {};
   let alive = true;
   let stop: (() => void) | null = null;
   loadThree()

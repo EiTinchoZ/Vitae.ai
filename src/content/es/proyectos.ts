@@ -46,6 +46,7 @@ const tk = ticker.map((x) => `<span><b>${x[0]}</b>${x[1]}</span>`).join('').repe
 const html = `  <canvas id="cPrj" aria-hidden="true"></canvas>
   <div class="panel">
     <h2 class="ink-safe">Lo que he construido</h2>
+    <label class="project-picker ink-safe">Ver proyecto<select id="project-choice">${projects.map((p,i)=>`<option value="${i}">${p.n}</option>`).join('')}</select></label>
     <div class="pcard ink-safe" id="pcard" aria-live="polite">${card(projects[0])}</div>
   </div>
   <span class="hint mono ink-safe"><span class="hm">Pasa sobre una caja para abrirla<br>clic en la cinta para acelerarla</span><span class="ht">Toca una caja para abrirla · toca la cinta para acelerarla</span></span>

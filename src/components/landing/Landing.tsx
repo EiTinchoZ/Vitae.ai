@@ -14,6 +14,7 @@ import { Contacto } from './Contacto';
 import { InkField } from '@/components/pieces/InkField';
 import { DecodeTitles } from '@/components/pieces/DecodeTitles';
 import { SoundProvider } from '@/components/sound/SoundProvider';
+import { BobAssistant } from './BobAssistant';
 
 // La landing completa en un idioma: / la pinta en ES y /en en EN.
 export function Landing({ lang }: { lang: Lang }) {
@@ -36,6 +37,7 @@ export function Landing({ lang }: { lang: Lang }) {
       </DecodeTitles>
       <footer dangerouslySetInnerHTML={{ __html: lang === 'en' ? footerEn : footerEs }} />
       <div className="tip" id="tip" />
+      <BobAssistant lang={lang} />
     </>
   );
 }

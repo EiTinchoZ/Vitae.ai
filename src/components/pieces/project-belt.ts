@@ -11,7 +11,15 @@ type Kit = Awaited<ReturnType<typeof loadThree>>;
 type Data = { projects: Project[]; card: (d: Project) => string; lidText: { made: string } };
 
 export function mount(sec: HTMLElement, data: Data): () => void {
-  if (!hasWebGL()) return () => {};
+  const choice=sec.querySelector<HTMLSelectElement>('#project-choice');
+  const panel=sec.querySelector<HTMLElement>('.panel')!;
+  const oldHeight=sec.style.getPropertyValue('--project-content-height');let panelHeight=0;
+  const fit=()=>{panelHeight=Math.max(panelHeight,panel.scrollHeight);sec.style.setProperty('--project-content-height',`${panelHeight}px`)};
+  const layout=new ResizeObserver(fit);layout.observe(panel);fit();
+  const select=()=>{const i=Number(choice?.value);if(!Number.isInteger(i)||!data.projects[i])return;sec.querySelector<HTMLElement>('#pcard')!.innerHTML=data.card(data.projects[i]);sec.dispatchEvent(new CustomEvent('project:select',{detail:i}))};
+  choice?.addEventListener('change',select);
+  const stopChoice=()=>{choice?.removeEventListener('change',select);layout.disconnect();if(oldHeight)sec.style.setProperty('--project-content-height',oldHeight);else sec.style.removeProperty('--project-content-height')};
+  if (!hasWebGL(sec.querySelector<HTMLCanvasElement>('#cPrj'))) return stopChoice;
   let alive = true;
   let stop: (() => void) | null = null;
   loadThree()
@@ -20,6 +28,7 @@ export function mount(sec: HTMLElement, data: Data): () => void {
     .catch((e) => console.error(e));
   return () => {
     alive = false;
+    stopChoice();
     stop?.();
   };
 }
@@ -29,8 +38,11 @@ async function start({ THREE, scene }: Kit, sec: HTMLElement, D: Data, alive: ()
   const P = D.projects;
   const cv = sec.querySelector<HTMLCanvasElement>('#cPrj')!;
   const pc = sec.querySelector<HTMLElement>('#pcard')!;
-  let shown = 0;
-  const card = (i: number) => { shown = i; pc.innerHTML = D.card(P[i]); };
+  const choice=sec.querySelector<HTMLSelectElement>('#project-choice');
+  let shown = Number(choice?.value??0);
+  const card = (i: number) => { if(!P[i])return;shown = i; pc.innerHTML = D.card(P[i]);if(choice)choice.value=String(i); };
+  const onSelect=(event:Event)=>{shown=(event as CustomEvent<number>).detail};
+  sec.addEventListener('project:select',onSelect);
 
   const logos: Record<string, HTMLImageElement> = {};
   await Promise.all([
@@ -196,6 +208,7 @@ async function start({ THREE, scene }: Kit, sec: HTMLElement, D: Data, alive: ()
   });
 
   return () => {
+    sec.removeEventListener('project:select',onSelect);
     clearTimeout(slow);
     removeEventListener('resize', size);
     resize.disconnect();

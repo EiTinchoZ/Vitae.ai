@@ -1,4 +1,3 @@
-// Marcado estático de la sección, tal cual la maqueta. Las piezas se montan sobre él.
-const html = "  <div class=\"top ink-safe\">\n    <h2 class=\"dec\">My story in <em>two minutes</em>.</h2>\n    <p>From the kid translating a video game word by word to today.</p>\n  </div>\n  <div class=\"screen\" id=\"screen\" role=\"button\" tabindex=\"0\" aria-label=\"Play the film\">\n    <div class=\"duo\"></div><div class=\"spot\"></div><div class=\"grain\"></div>\n    <div class=\"ttl\"><span>A FILM BY</span><b>Martín<br><em>Bundy</em></b><span>PANAMA · 2000 TO TODAY</span></div>\n    <span class=\"pbtn\" aria-hidden=\"true\"></span>\n    <div class=\"meta\"><span class=\"mono\">2:00 · 1920×1080 · 60 FPS · Subtitles</span>\n      <div class=\"lang\" role=\"group\" aria-label=\"Film language\"><button aria-pressed=\"false\">ES</button><button aria-pressed=\"true\">EN</button></div></div>\n    <div class=\"toast\" id=\"toast\">The film is in the edit. Coming soon, in English and Spanish.</div>\n  </div>\n  <div class=\"chap ink-safe\"><span>01 · English, one game at a time</span><span>02 · The technical groundwork</span><span>03 · 2024: choosing my path</span><span>04 · Then came AI</span><span>05 · What comes next</span></div>";
+import { filmSectionHtml } from '../film-media';
 
-export default html;
+export default filmSectionHtml('en');

@@ -21,13 +21,15 @@ function piece(kind: NonNullable<Step['fx']>, fx: typeof FX): string {
 export function mount(sec: HTMLElement, { steps, ui, fx }: Data): () => void {
   const RM = matchMedia('(prefers-reduced-motion: reduce)').matches, FINE = matchMedia('(pointer:fine)').matches;
   const line = sec.querySelector<HTMLElement>('#line')!, det = sec.querySelector<HTMLElement>('#det')!;
-  line.innerHTML = steps.map((s, i) => `<button class="stop ${s.s === ui.done ? '' : 'pend'}" role="tab" data-i="${i}"><span class="d"></span><span><span class="w">${s.w}</span><span class="t">${s.t}</span></span></button>`).join('');
+  const originalLabel=det.getAttribute('aria-labelledby');
+  line.innerHTML = steps.map((s, i) => `<button class="stop ${s.s === ui.done ? '' : 'pend'}" role="tab" id="hoy-tab-${i}" aria-controls="det" tabindex="${i===ui.first?0:-1}" data-i="${i}"><span class="d"></span><span><span class="w">${s.w}</span><span class="t">${s.t}</span></span></button>`).join('');
   let stopFx = () => {};
 
   function show(i: number) {
     stopFx();
     stopFx = () => {};
-    line.querySelectorAll<HTMLElement>('.stop').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.i === String(i))));
+    line.querySelectorAll<HTMLElement>('.stop').forEach((b) => {const selected=b.dataset.i===String(i);b.setAttribute('aria-selected',String(selected));b.tabIndex=selected?0:-1});
+    det.setAttribute('aria-labelledby',`hoy-tab-${i}`);
     const d = steps[i], c = d.s === ui.done ? 'ok' : 'pend';
     det.innerHTML = `<span class="st ${c}">${d.s}</span><div class="swap"><span class="mono" style="color:#3B2716">${d.w}</span><h3>${d.t}</h3><p>${d.p}</p>${d.k.length ? `<div class="kpis">${d.k.map((x) => `<div><b>${x[0]}</b><span>${x[1]}</span></div>`).join('')}</div>` : ''}</div>
   ${d.img ? `<figure class="pic ${d.img[2] || ''}"><img src="${d.img[0]}" alt=""><small>${d.img[1]}</small></figure>` : ''}${d.fx ? piece(d.fx, fx) : ''}`;
@@ -107,11 +109,20 @@ export function mount(sec: HTMLElement, { steps, ui, fx }: Data): () => void {
     if (b) show(Number(b.dataset.i));
   };
   line.addEventListener('click', onClick);
+  const onKey=(e:KeyboardEvent)=>{
+    const tab=(e.target as HTMLElement).closest<HTMLElement>('.stop');if(!tab)return;
+    const i=Number(tab.dataset.i),last=steps.length-1;
+    const next=e.key==='Home'?0:e.key==='End'?last:['ArrowRight','ArrowDown'].includes(e.key)?(i+1)%steps.length:['ArrowLeft','ArrowUp'].includes(e.key)?(i+last)%steps.length:null;
+    if(next===null)return;e.preventDefault();show(next);line.querySelector<HTMLElement>(`[data-i="${next}"]`)?.focus();
+  };
+  line.addEventListener('keydown',onKey);
   show(ui.first);
 
   return () => {
     stopFx();
     line.removeEventListener('click', onClick);
+    line.removeEventListener('keydown',onKey);
+    if(originalLabel===null)det.removeAttribute('aria-labelledby');else det.setAttribute('aria-labelledby',originalLabel);
     line.innerHTML = '';
     det.innerHTML = '';
   };

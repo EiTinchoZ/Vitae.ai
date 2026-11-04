@@ -1,0 +1,20 @@
+<!doctype html><html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BoB</title>
+<style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:transparent}#stage{position:relative;width:100%;height:100%}.bob-3d,.bob-px,.bob-2d{position:absolute;inset:0;width:100%;height:100%;display:none}.bob-2d svg{width:100%;height:100%}[data-style=voxel] .bob-3d,[data-style=toon] .bob-3d,[data-style=dibujo] .bob-2d,[data-style=pixel] .bob-px{display:block}.bob-sym,.bob-poof{display:none}
+</style><div id="stage" aria-hidden="true"></div>
+<script type="module">
+import * as THREE from './three.module.js';
+const stage=document.getElementById('stage');
+addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();parent.postMessage({type:'bob-close'},location.origin);}});
+// The original tincho.ia character lives in its own document. Removing the frame
+// releases its timers, observers, listeners and WebGL context together.
+window.THREE=THREE;
+const script=document.createElement('script');script.src='./bob-original.js';
+script.onload=async()=>{
+ if(document.readyState!=='complete')await new Promise(resolve=>addEventListener('load',resolve,{once:true}));
+ await new Promise(requestAnimationFrame);
+ let bob;try{bob=window.Bob.mount(stage,{style:'toon',zoom:1.35,yaw:-.3});}catch{window.THREE=null;bob=window.Bob.mount(stage,{style:'dibujo'});}
+ addEventListener('message',e=>{if(e.origin!==location.origin||e.source!==parent)return;const d=e.data;if(d?.type==='bob-style'&&['toon','voxel','dibujo','pixel'].includes(d.value))bob.style(window.THREE?d.value:'dibujo');if(d?.type==='bob-state'&&['idle','ok','signal'].includes(d.value))bob.set(d.value);});
+ parent.postMessage({type:'bob-ready'},location.origin);
+};document.head.append(script);
+</script></html>

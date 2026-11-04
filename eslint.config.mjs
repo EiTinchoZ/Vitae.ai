@@ -9,12 +9,16 @@ const eslintConfig = defineConfig([
   globalIgnores([
     // Default ignores of eslint-config-next:
     ".next/**",
+    ".next-codex*/**",
     "out/**",
     "build/**",
     "next-env.d.ts",
     // Vendored Draco binaries and anatomy-generated browser runtimes.
     "public/draco/**",
     "public/fig/*.js",
+    // Reused tincho.ia character runtime and vendored Three.js module.
+    "public/bob/bob-original.js",
+    "public/bob/three.module.js",
   ]),
 ]);
 

@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { mount } from './film-screen';
 
-// Monta la pantalla de la película sobre el marcado estático de #pelicula (servidor). No pinta nada.
+// Activa el reproductor sobre el marcado estático de #pelicula (servidor).
 export function FilmScreen() {
   useEffect(() => {
     const sec = document.getElementById('pelicula');

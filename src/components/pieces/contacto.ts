@@ -3,7 +3,7 @@ import type { contactoUI } from '@/content/es/contacto';
 export function mount(sec: HTMLElement, data: typeof contactoUI): () => void {
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches,FINE=matchMedia('(pointer:fine)').matches;
 const controller=new AbortController(),signal=controller.signal;
-const original=[...sec.querySelectorAll<HTMLElement>('#sSub,#sBody,#bMail,#bCal,#idc,#chan .kc,#vcf')].map(el=>({el,attrs:[...el.attributes].map(a=>[a.name,a.value] as const),text:el.matches('#sSub,#sBody')?el.innerHTML:null}));
+const original=[...sec.querySelectorAll<HTMLElement>('#sSub,#sBody,#bMail,#bCal,#idc,#cardFlip,#chan .kc,#vcf')].map(el=>({el,attrs:[...el.attributes].map(a=>[a.name,a.value] as const),text:el.matches('#sSub,#sBody')?el.innerHTML:null}));
 const timers=new Set<ReturnType<typeof setTimeout>>();
 const later=(fn:()=>void,ms:number)=>{const id=setTimeout(()=>{timers.delete(id);fn()},ms);timers.add(id)};
 let objectURL: string | null=null;
@@ -14,15 +14,18 @@ function compose(){const n=fName.value.trim(),c=fCo.value.trim(),w=sec.querySele
   const sub=data.subject(w,c,n);
   const body=data.body(n,c,m);
   sec.querySelector<HTMLElement>('#sSub')!.textContent=sub;sec.querySelector<HTMLElement>('#sBody')!.textContent=body;
-  bMail.href=`mailto:${data.email}?subject=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}`;bMail.classList.toggle('off',!n);bCal.href=BOOK}
-sec.querySelector<HTMLElement>('#cform')!.addEventListener('input',compose,{signal});compose();
+  bMail.href=`mailto:${data.email}?subject=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}`;bMail.classList.toggle('off',!n);bMail.setAttribute('aria-disabled',String(!n));bCal.href=BOOK}
+const form=sec.querySelector<HTMLFormElement>('#cform')!;
+form.addEventListener('input',compose,{signal});
+form.addEventListener('submit',e=>{e.preventDefault();if(form.reportValidity())bMail.focus()},{signal});
+bMail.addEventListener('click',e=>{if(!fName.value.trim()){e.preventDefault();fName.focus();fName.reportValidity()}},{signal});compose();
 
 // la cara visible sale del ángulo real del giro (cos < 0 = reverso), no de backface-visibility
-const idc=sec.querySelector<HTMLElement>('#idc')!,idIn=idc.querySelector<HTMLElement>('.in')!;let idT=0;
+const idc=sec.querySelector<HTMLElement>('#idc')!,idIn=idc.querySelector<HTMLElement>('.in')!,cardFlip=sec.querySelector<HTMLButtonElement>('#cardFlip')!;let idT=0;
 const idSide=()=>{const s=getComputedStyle(idIn).transform;idc.classList.toggle('bk',s!=='none'&&new DOMMatrix(s).m11<0)};
-const flip=()=>{idc.classList.toggle('flip');const t0=performance.now();cancelAnimationFrame(idT);
+const flip=()=>{idc.classList.toggle('flip');cardFlip.setAttribute('aria-pressed',String(idc.classList.contains('flip')));const t0=performance.now();cancelAnimationFrame(idT);
   const tick=()=>{idSide();if(performance.now()-t0<1100)idT=requestAnimationFrame(tick)};tick()};
-idc.addEventListener('click',e=>{if(!(e.target as Element).closest('a'))flip()},{signal});idc.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip()}},{signal});
+cardFlip.addEventListener('click',flip,{signal});
 
 /* ---------- teclado de canales: luz de fondo que sigue al cursor, la tecla de abajo se inclina, se hunde al tocarla ---------- */
 {const chan=sec.querySelector<HTMLElement>('#chan')!,kcs=[...chan.querySelectorAll<HTMLElement>('.kc')];

@@ -697,7 +697,7 @@ const cards = { ind: document.querySelector('.deg[data-deg="ind"]'), ia: documen
 const REST = TEXT.rest;
 const say = (text, deg) => {
   if (readout.textContent !== text) readout.textContent = text;
-  stage.setAttribute("aria-valuetext", text);
+  stage.setAttribute("aria-description", text);
   for (const [id, el] of Object.entries(cards)) el?.classList.toggle("hot", id === deg);
   fig.querySelectorAll(".ed-tag").forEach((t) => t.classList.toggle("hot", t.dataset.deg === deg));
   svg.querySelectorAll(".ed-q.sel").forEach((q) => q.classList.remove("sel"));

@@ -1,37 +1,46 @@
-// Película: pantalla con foco que sigue al cursor y aviso de placeholder al reproducir (maqueta, línea ~1180).
-// El botón de idioma solo marca cuál está elegido hasta que exista el video. mount() devuelve la limpieza.
+// Carga el master únicamente al reproducir; conserva controles nativos y fullscreen.
 export function mount(sec: HTMLElement): () => void {
-  const scr = sec.querySelector<HTMLElement>('#screen')!;
-  const toast = sec.querySelector<HTMLElement>('#toast')!;
-  const langs = [...scr.querySelectorAll<HTMLButtonElement>('.lang button')];
-  let hide = 0;
-  const onMove = (e: PointerEvent) => {
-    const r = scr.getBoundingClientRect();
-    scr.style.setProperty('--mx', (e.clientX - r.left) / r.width * 100 + '%');
-    scr.style.setProperty('--my', (e.clientY - r.top) / r.height * 100 + '%');
+  const video = sec.querySelector<HTMLVideoElement>('#film-video');
+  const start = sec.querySelector<HTMLButtonElement>('#film-start');
+  const status = sec.querySelector<HTMLElement>('#film-status');
+  if (!video || !start || !status) return () => {};
+  const errorText = document.documentElement.lang === 'en'
+    ? 'The video could not start. Try again or use “Open the video”.'
+    : 'No se pudo iniciar el video. Intenta otra vez o usa «Abrir el video».';
+  let disposed = false;
+  const onPlay = () => {
+    start.hidden = true;
+    start.disabled = false;
+    status.textContent = '';
   };
-  const play = (e: Event) => {
-    if ((e.target as Element).closest('.lang')) return;
-    toast.classList.add('on');
-    clearTimeout(hide);
-    hide = window.setTimeout(() => toast.classList.remove('on'), 2600);
+  const onError = () => {
+    if (disposed) return;
+    start.hidden = false;
+    start.disabled = false;
+    status.textContent = errorText;
   };
-  const onKey = (e: KeyboardEvent) => {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(e); }
+  const play = async () => {
+    const restoreFocus = document.activeElement === start;
+    start.disabled = true;
+    status.textContent = '';
+    if (!video.getAttribute('src')) video.src = video.dataset.src!;
+    video.controls = true;
+    if (video.error) video.load();
+    try {
+      await video.play();
+      if (!disposed && restoreFocus) video.focus();
+    } catch {
+      onError();
+    }
   };
-  const pick = (e: Event) => langs.forEach((o) => o.setAttribute('aria-pressed', String(o === e.currentTarget)));
-  scr.addEventListener('pointermove', onMove);
-  scr.addEventListener('click', play);
-  scr.addEventListener('keydown', onKey);
-  langs.forEach((b) => b.addEventListener('click', pick));
+  video.addEventListener('play', onPlay);
+  video.addEventListener('error', onError);
+  start.addEventListener('click', play);
   return () => {
-    clearTimeout(hide);
-    scr.removeEventListener('pointermove', onMove);
-    scr.removeEventListener('click', play);
-    scr.removeEventListener('keydown', onKey);
-    langs.forEach((b) => b.removeEventListener('click', pick));
-    toast.classList.remove('on');
-    scr.style.removeProperty('--mx');
-    scr.style.removeProperty('--my');
+    disposed = true;
+    start.removeEventListener('click', play);
+    video.removeEventListener('play', onPlay);
+    video.removeEventListener('error', onError);
+    video.pause();
   };
 }
