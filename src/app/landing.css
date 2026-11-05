@@ -906,6 +906,8 @@ body{text-shadow:var(--halo)}
 .film-player{cursor:auto}
 .film-player::before,.film-player::after{display:none}
 .film-player video{display:block;width:100%;height:100%;position:absolute;inset:0;object-fit:contain;background:#050505}
+/* subtítulos: mínimo 13 px en el celular, fondo sólido para que se lean sobre cualquier mundo */
+.film-player video::cue{font:600 clamp(13px,2.2vw,28px)/1.35 "Archivo",system-ui,sans-serif;color:#fff;background:#000000d9}
 .film-start{position:absolute;inset:0;z-index:4;width:100%;height:100%;border:0;background:transparent;color:var(--paper);cursor:pointer}
 .film-start[hidden]{display:none}
 .film-start:focus-visible{outline:3px solid var(--or);outline-offset:-6px}
