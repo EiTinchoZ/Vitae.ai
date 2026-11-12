@@ -12,11 +12,11 @@ export const metro = {
   hub: ['HOY', 'IA aplicada a procesos reales'],
   stations: [
     ['base', '2017', 'Bachiller', 'Colegio San Agustín de Panamá', -12, -7],
-    ['edu', '2025', 'Ingeniería Industrial', 'ADEN University · materias hasta abr 2027', -4.5, -4.6],
+    ['edu', '2025', 'Ingeniería Industrial', 'ADEN University · materias completas', -4.5, -4.6],
     ['edu', '2025', 'Técnico Superior en IA', 'ITSE · termina abr 2027', -1.6, -3.2],
-    ['edu', '2026', 'Inglés C2', 'Florida State University · aprendido por mi cuenta', 1.6, -2.4],
+    ['edu', '2026', 'Inglés C2', 'Bilingual Status · Florida State University', 1.6, -2.4],
     ['ia', '2025', 'TYR', 'Asistente con BERT · 98,93 % de precisión', -7.5, 1.2],
-    ['ia', '2026', 'Master en IA', 'Daxus Latam · más certificados de Anthropic', -4.4, 1.9],
+    ['ia', '2026', 'Programa Master en IA', 'Daxus Latam · más certificados de Anthropic', -4.4, 1.9],
     ['ia', '2026', 'tincho.ia', 'Mi proyecto para enseñar IA desde cero', -1.4, 1.7],
     ['ia', '2026', 'Agente de IA', 'Responde en segundos y cita la fuente', 1.4, 0.9],
     ['prj', '2025', '1.er lugar ITSE x Municipio', 'Conecta Panamá · reunión con el alcalde', -6.5, 4.8],
@@ -27,7 +27,7 @@ export const metro = {
   ] as Station[],
   // estaciones fantasma de la vía en construcción
   ghosts: [
-    ['fut', 'Abr 2027', 'Cierro las dos carreras', 'Técnico Superior en IA en el ITSE y las últimas materias de Ingeniería Industrial en ADEN.', 4.3, -5.5],
+    ['fut', 'Abr 2027', 'Cierro el Técnico en IA', 'Cierro el Técnico Superior en IA en el ITSE, ya dentro de la maestría en IA de ADEN, que empiezo en marzo.', 4.3, -5.5],
     ['fut', 'Después', 'Más aventuras', 'La vía queda abierta. Lo que venga lo voy a construir con todo lo que ya sumé.', 3.4, -9.5],
   ] as Station[],
   logos: { 'Bachiller': '/img/logos/san-agustin.webp' } as Record<string, string>,

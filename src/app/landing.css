@@ -577,6 +577,12 @@ h2 em{font-style:normal;color:var(--or)}
 .cross .mono{color:var(--hz)}
 .cross p{font:800 clamp(24px,2.4vw,34px)/1.15 "Archivo";margin-top:8px}
 .cross b{color:var(--or)}
+.cross p.vs{font:400 16px/1.55 "Archivo";color:var(--soft);margin-top:10px;max-width:52ch}
+.edu .ehead .lead2{max-width:58ch;font-size:17px;line-height:1.55}
+@media(min-width:901px){.edu .edu-grid>.iso{position:sticky;top:84px}}
+.deg .know{margin-top:12px;font-size:15.5px;line-height:1.55}
+.deg .used{margin-top:10px;font-size:14px;line-height:1.5;color:var(--soft)}
+.deg .used b{font:600 12px "IBM Plex Mono";letter-spacing:.08em;text-transform:uppercase;color:var(--or);margin-right:6px}
 .base{display:flex;justify-content:space-between;gap:20px;padding:20px 0;border-bottom:1px solid var(--line);flex-wrap:wrap;align-items:center}
 .base b{font:700 18px "Archivo"}
 .base .mono{color:var(--soft)}
@@ -713,7 +719,7 @@ footer{position:relative;z-index:1;padding:24px 40px 40px;display:flex;justify-c
   .core .stk{right:-18%}
   .foot{grid-template-columns:1fr;gap:18px}
   .acts{flex-wrap:wrap}
-  .film,.hoy,.edu,.contact{padding-left:20px;padding-right:20px}
+  .film,.hoy,.edu,.aporto,.contact{padding-left:20px;padding-right:20px}
   .film{padding-top:80px;padding-bottom:80px}
   .screen{border-radius:12px}.screen .pbtn{width:66px;height:66px;margin:-33px;border-radius:18px}
   .screen .meta .mono,.chap,.screen .ttl span{display:none}
@@ -891,7 +897,7 @@ body{text-shadow:var(--halo)}
 @media(max-width:640px){.map .lbl.hub b{font-size:17px}.map .lbl.hub small{display:none}}
 /* C7: alto de las figuras diferidas reservado hasta que llegan (CLS). SVG = ancho del host menos el padding de la placa
    (--fx) con la proporción del viewBox; --fr = placa, leyenda y controles, medidos por franja en 360 a 1920 */
-.hoy .iso:not(:has(.iso-figure))::before,.rig .iso:not(:has(.iso-figure))::before,.edu .iso>div:not(:has(.iso-figure))::before{content:'';display:block;box-sizing:content-box;margin:0 calc(var(--fx)/2);padding-top:var(--fr);aspect-ratio:var(--fa)}
+.hoy .iso:not(:has(.iso-figure))::before,.rig .iso:not(:has(.iso-figure))::before,.edu .iso>div:not(.cross):not(:has(.iso-figure))::before{content:'';display:block;box-sizing:content-box;margin:0 calc(var(--fx)/2);padding-top:var(--fr);aspect-ratio:var(--fa)}
 .hoy .iso{--fa:760/350;--fx:20px;--fr:250px}
 .rig .iso{--fa:640/600;--fx:20px;--fr:116px}
 .edu .iso>div{--fa:640/430;--fx:28px;--fr:92px}
@@ -927,3 +933,39 @@ body{text-shadow:var(--halo)}
 @media(min-width:641px){.prj{min-height:max(720px,calc(var(--project-content-height,800px) + 160px))}}
 @media(max-width:640px){.prj .project-picker{order:1;margin:0 20px 16px}}
 @media(prefers-reduced-motion:reduce){.film-player .pbtn{animation:none}}
+
+/* Dónde aporto: edificio de empresa, un piso por área */
+.aporto{padding:120px 40px}
+.aporto .wrap{max-width:1240px;margin:0 auto}
+.ap-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);margin-top:44px;align-items:center}
+.tower{position:relative;display:flex;flex-direction:column;gap:6px;padding:0 18px 0;max-width:520px;width:100%;justify-self:center}
+.tower .roof{display:block;height:26px;margin:0 22%;border:1px solid var(--line);border-bottom:0;border-radius:10px 10px 0 0;background:var(--bk2);position:relative}
+.tower .roof i{position:absolute;left:50%;bottom:100%;width:2px;height:34px;background:var(--line);transform:translateX(-50%)}
+.tower .roof i::after{content:'';position:absolute;top:-4px;left:-3px;width:8px;height:8px;border-radius:50%;background:var(--or);box-shadow:0 0 12px var(--or);animation:apBlink 2.4s steps(2) infinite}
+@keyframes apBlink{50%{opacity:.25}}
+.tower .base{display:block;height:14px;margin:0 -18px;border-radius:4px;background:linear-gradient(var(--line),transparent)}
+.ap-fl{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;text-align:left;padding:11px 16px;border-radius:10px;border:1px solid var(--line);background:var(--bk2);color:var(--soft);cursor:pointer;font:inherit;transition:background .25s,border-color .25s,color .25s,transform .25s}
+.ap-fl .fn{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--hz)}
+.ap-fl .fa{font:750 clamp(15px,1.4vw,18px)/1.2 "Archivo";color:var(--paper)}
+.ap-fl .win{display:grid;grid-template-columns:repeat(3,8px);gap:4px}
+.ap-fl .win i{width:8px;height:8px;border-radius:2px;background:rgba(243,238,227,.12);transition:background .2s calc(var(--k)*40ms),box-shadow .2s calc(var(--k)*40ms)}
+.ap-fl:hover{border-color:rgba(255,106,42,.5)}
+.ap-fl.on{background:linear-gradient(90deg,rgba(255,106,42,.16),var(--bk2) 70%);border-color:var(--or);transform:translateX(8px)}
+.ap-fl.on .win i{background:var(--or);box-shadow:0 0 8px rgba(255,106,42,.7)}
+.ap-fl:focus-visible{outline:3px solid var(--or);outline-offset:3px}
+.ap-card{border-left:2px solid var(--or);padding:8px 0 8px clamp(18px,2.4vw,32px);min-height:260px}
+.ap-n{color:var(--hz);font-size:13px;letter-spacing:.12em}
+.ap-card h3{font:850 clamp(28px,3.2vw,46px)/1.04 "Archivo";margin-top:14px;color:var(--paper)}
+.ap-card p{font-size:clamp(16px,1.35vw,19px);line-height:1.55;color:var(--soft);margin-top:16px;max-width:44ch}
+.ap-proof{display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:10px 14px;border-radius:10px;border:1px solid var(--line);color:var(--paper);font:650 14px "Archivo";text-decoration:none;transition:background .2s,color .2s}
+.ap-proof .mono{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--or)}
+.ap-proof:hover{background:var(--paper);color:var(--bk)}
+.ap-traits{margin-top:56px;padding-top:22px;border-top:1px solid var(--line)}
+.ap-traits>.mono{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--hz)}
+.ap-traits ul{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:16px}
+.ap-traits li{padding:18px;border-radius:14px;border:1px solid var(--line);background:var(--bk2)}
+.ap-traits b{display:block;font:850 clamp(18px,1.6vw,22px)/1.15 "Archivo";color:var(--paper)}
+.ap-traits li span{display:block;margin-top:8px;font-size:14.5px;line-height:1.5;color:var(--soft)}
+@media(max-width:900px){.ap-grid{grid-template-columns:1fr}.tower{padding:0}.tower .base{margin:0}.ap-fl.on{transform:none}.ap-card{min-height:0}.ap-traits ul{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){.tower .roof i::after{animation:none}.ap-fl,.ap-fl .win i{transition:none}}
+.hoy .prev{margin-top:14px;max-width:68ch;color:var(--soft);font-size:15.5px;line-height:1.55}.hoy .prev b{color:var(--paper)}

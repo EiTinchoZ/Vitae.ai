@@ -681,10 +681,10 @@ const setTimeout = (cb, ms, ...a) => { if (dead) return 0; const id = window.set
 const clearTimeout = (id) => { timers.delete(id); window.clearTimeout(id); };
 class IntersectionObserver extends window.IntersectionObserver { constructor(cb, o) { super(cb, o); observers.push(this); } }
 
-const TEXT = {"rest":"Industrial 90 % · IA: VI de VII","chip":"ITSE · {n} · {what} · {state}","passed":"aprobado","current":"en curso","pending":"falta","rack":"ADEN · {done} de {total} materias aprobadas","missing":"ADEN · faltan 6 · ene a abr 2027","cross":"el cruce · Industrial mide, IA cambia"};
+const TEXT = {"rest":"Industrial 100 % · IA: VI de VII","chip":"ITSE · {n} · {what} · {state}","passed":"aprobado","current":"en curso","pending":"falta","rack":"ADEN · {done} de {total} materias aprobadas","missing":"ADEN · faltan 6 · ene a abr 2027","cross":"el cruce · Industrial mide, IA cambia"};
 const P = {"origin":[345.19528920322165,251.63962166571397],"scale":1.557403542473743,"azimuth":66,"elevation":30};
 const QUADS = [["I","matemáticas, redes, ciberseguridad"],["II","bases de datos, programación, intro a la IA"],["III","lenguajes para IA, sistemas inteligentes"],["IV","NLP y aprendizaje automatizado"],["V","ciencia de datos, visión, minería de datos"],["VI","deep learning, IoT, robótica"],["VII","práctica profesional"]];
-const NOW_Q = 5, HECHAS = 54, MATERIAS = 60, RUN = [-36,22];
+const NOW_Q = 5, HECHAS = 60, MATERIAS = 60, RUN = [-36,22];
 const fig = document.getElementById("figEdu");
 const stage = fig.querySelector(".iso-stage");
 const svg = stage.querySelector("svg");

@@ -21,7 +21,7 @@ for (const lang of ["es", "en"]) {
 const t = strings[lang];
 
 // ---------- la verdad ----------
-const MATERIAS = 60, HECHAS = 54; // ~60 en el plan, 54 contando las 7 de este cuatrimestre (Tín, 2026-11-01)
+const MATERIAS = 60, HECHAS = 60; // materias completas (Tín, 2026-11-11); antes 54
 const QUADS = t.quads; // plan oficial ITSE, CD-001-2024
 const NOW_Q = 5;
 

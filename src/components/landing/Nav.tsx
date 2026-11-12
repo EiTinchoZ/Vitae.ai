@@ -4,20 +4,22 @@ import { LangSwitch } from './LangSwitch';
 const links: Record<Lang, readonly (readonly [string, string])[]> = {
   es: [
     ['#pelicula', 'Película'],
+    ['#formacion', 'Quién soy'],
+    ['#aporto', 'Dónde aporto'],
     ['#trayectoria', 'Trayectoria'],
-    ['#hoy', 'Hoy'],
+    ['#hoy', 'Experiencia'],
     ['#proyectos', 'Proyectos'],
     ['#laptop', 'RGB'],
-    ['#formacion', 'Formación'],
     ['#contacto', 'Contacto'],
   ],
   en: [
     ['#pelicula', 'Film'],
+    ['#formacion', 'About'],
+    ['#aporto', 'Where I fit'],
     ['#trayectoria', 'Path'],
-    ['#hoy', 'Now'],
+    ['#hoy', 'Experience'],
     ['#proyectos', 'Projects'],
     ['#laptop', 'RGB'],
-    ['#formacion', 'Learning'],
     ['#contacto', 'Contact'],
   ],
 };

@@ -38,7 +38,7 @@ export const resume: Record<'es' | 'en', Resume> = {
       languages: 'Idiomas',
     },
     profile:
-      'Estudio Ingeniería Industrial e Inteligencia Artificial al mismo tiempo, y me apasiona juntar las dos para resolver problemas reales de operación. En Philips construí el agente de Copilot Studio que usa mi equipo de compras; con PO Guru gané el AI Hackathon Philips LATAM 2026 y con Conecta Panamá, el hackathon ITSE x Municipio de Panamá. Aprendí inglés hasta nivel C2 por mi cuenta, y así aprendo cada herramienta nueva. Cierro las dos carreras en abril de 2027; después viene una maestría en IA.',
+      'Completé las materias de Ingeniería Industrial y cierro el Técnico Superior en IA en abril de 2027. Junto las dos para resolver problemas reales de operación: primero mido el proceso, después construyo el agente o el modelo que lo mejora. En Philips construí el agente de Copilot Studio que usa mi equipo de compras; con PO Guru gané el AI Hackathon Philips LATAM 2026 y con Conecta Panamá, el hackathon ITSE x Municipio de Panamá. Soy bilingüe, con certificación C2 de Florida State University. En marzo de 2027 empiezo la maestría en IA en ADEN.',
     core: [
       'Agentes de IA',
       'Copilot Studio',
@@ -52,7 +52,7 @@ export const resume: Record<'es' | 'en', Resume> = {
     wins: [
       {
         label: '1.er lugar, AI Hackathon Philips LATAM 2026',
-        text: '(91 equipos, más de 340 participantes, 8 países). Como team lead de ProcureNation me encargué de la IA, la arquitectura y la construcción de PO Guru: un asistente en Copilot Studio, Teams y Outlook que revisa una solicitud de compra contra las reglas y la deja lista para que una persona la apruebe. Hicimos el MVP en 24 h, ganamos la semifinal de Panamá y, una semana después, la final regional.',
+        text: '(91 equipos y más de 340 participantes de toda Latinoamérica). Como team lead de ProcureNation me encargué de la IA, la arquitectura y la construcción de PO Guru: un asistente en Copilot Studio, Teams y Outlook que revisa una solicitud de compra contra las reglas y la deja lista para que una persona la apruebe. Hicimos el MVP en 24 h, ganamos la semifinal de Panamá y, una semana después, la final regional.',
       },
       {
         label: 'Agente de IA para el proceso de compras de Philips.',
@@ -102,7 +102,7 @@ export const resume: Record<'es' | 'en', Resume> = {
       },
       {
         label: 'tincho.ia (2026 - Presente).',
-        text: 'Enseño Claude, Claude Code, Codex y agentes desde cero en TikTok e Instagram.',
+        text: 'Enseño Claude, Claude Code, Codex y agentes desde cero en TikTok e Instagram. Antes creé contenido en @eitincho: más de 80 mil seguidores en TikTok y hasta 20 mil en Instagram.',
       },
       {
         label: 'Esta web (2025 - Presente).',
@@ -118,9 +118,14 @@ export const resume: Record<'es' | 'en', Resume> = {
     ],
     education: [
       {
+        title: 'Maestría en Inteligencia Artificial',
+        org: 'ADEN University',
+        date: 'Desde mar 2027',
+      },
+      {
         title: 'Licenciatura en Ingeniería Industrial',
         org: 'ADEN University',
-        date: '2025 - Abr 2027 (estimado)',
+        date: '2025 - 2026 · materias completas',
         note: 'Incluye materias convalidadas de mi formación previa en ingeniería eléctrica y electromecánica.',
       },
       {
@@ -138,7 +143,7 @@ export const resume: Record<'es' | 'en', Resume> = {
     ],
     certs: [
       {
-        title: 'Master en Inteligencia Artificial',
+        title: 'Programa Master en Inteligencia Artificial (26 h, 4 módulos)',
         org: 'Daxus Latam',
         date: '2025 - 2026',
       },
@@ -152,7 +157,7 @@ export const resume: Record<'es' | 'en', Resume> = {
       { title: 'Introducción a la IA Moderna y Operating Systems Basics', org: 'Cisco', date: '2025' },
       { title: 'Formación esencial en Power BI', org: 'LinkedIn Learning', date: 'Sep 2026' },
     ],
-    languages: 'Español nativo · Inglés C2, Bilingual Status de Florida State University (aprendido por mi cuenta) · Portugués básico',
+    languages: 'Español nativo · Inglés C2, Bilingual Status de Florida State University · Portugués básico',
   },
   en: {
     role: 'Industrial Engineering and Applied AI',
@@ -168,7 +173,7 @@ export const resume: Record<'es' | 'en', Resume> = {
       languages: 'Languages',
     },
     profile:
-      "I study Industrial Engineering and Artificial Intelligence at the same time, and I love combining them to solve real operations problems. At Philips I built the Copilot Studio agent my procurement team uses; with PO Guru I won the Philips LATAM AI Hackathon 2026, and with Conecta Panamá, the ITSE x Panama City Municipality hackathon. I taught myself English to C2, and that is how I pick up every new tool. I finish both degrees in April 2027; next comes a master's in AI.",
+      "I've completed all Industrial Engineering courses and finish the Higher Technical Degree in AI in April 2027. I combine both to solve real operations problems: first I measure the process, then I build the agent or model that improves it. At Philips I built the Copilot Studio agent my procurement team uses; with PO Guru I won the Philips LATAM AI Hackathon 2026, and with Conecta Panamá, the ITSE x Panama City Municipality hackathon. I'm bilingual, with a C2 certification from Florida State University. In March 2027 I start a master's in AI at ADEN.",
     core: [
       'AI agents',
       'Copilot Studio',
@@ -182,7 +187,7 @@ export const resume: Record<'es' | 'en', Resume> = {
     wins: [
       {
         label: '1st place, Philips LATAM AI Hackathon 2026',
-        text: '(91 teams, 340+ participants, 8 countries). As team lead of ProcureNation I owned the AI, architecture and build of PO Guru: an assistant in Copilot Studio, Teams and Outlook that checks a purchase request against the rules and hands it over ready for a person to approve. We built the MVP in 24 hours, won the Panama semifinal and, a week later, the regional final.',
+        text: '(91 teams and 340+ participants from across Latin America). As team lead of ProcureNation I owned the AI, architecture and build of PO Guru: an assistant in Copilot Studio, Teams and Outlook that checks a purchase request against the rules and hands it over ready for a person to approve. We built the MVP in 24 hours, won the Panama semifinal and, a week later, the regional final.',
       },
       {
         label: 'AI agent for the Philips procurement process.',
@@ -232,7 +237,7 @@ export const resume: Record<'es' | 'en', Resume> = {
       },
       {
         label: 'tincho.ia (2026 - Present).',
-        text: 'I teach Claude, Claude Code, Codex and agents from scratch on TikTok and Instagram.',
+        text: 'I teach Claude, Claude Code, Codex and agents from scratch on TikTok and Instagram. Before that I created content as @eitincho: 80k+ followers on TikTok and up to 20k on Instagram.',
       },
       {
         label: 'This site (2025 - Present).',
@@ -248,9 +253,14 @@ export const resume: Record<'es' | 'en', Resume> = {
     ],
     education: [
       {
+        title: "Master's in Artificial Intelligence",
+        org: 'ADEN University',
+        date: 'Starting Mar 2027',
+      },
+      {
         title: 'BSc in Industrial Engineering',
         org: 'ADEN University',
-        date: '2025 - Apr 2027 (expected)',
+        date: '2025 - 2026 · all courses completed',
         note: 'Includes transfer credits from my previous electrical and electromechanical engineering studies.',
       },
       {
@@ -268,7 +278,7 @@ export const resume: Record<'es' | 'en', Resume> = {
     ],
     certs: [
       {
-        title: 'Master in Artificial Intelligence',
+        title: 'Master in AI Program (26 h, 4 modules)',
         org: 'Daxus Latam',
         date: '2025 - 2026',
       },
@@ -282,6 +292,6 @@ export const resume: Record<'es' | 'en', Resume> = {
       { title: 'Introduction to Modern AI and Operating Systems Basics', org: 'Cisco', date: '2025' },
       { title: 'Power BI Essential Training', org: 'LinkedIn Learning', date: 'Sep 2026' },
     ],
-    languages: 'Spanish (native) · English C2, Florida State University Bilingual Status (self-taught) · Portuguese (basic)',
+    languages: 'Spanish (native) · English C2, Florida State University Bilingual Status · Portuguese (basic)',
   },
 };

@@ -10,6 +10,7 @@ import { Hoy } from './Hoy';
 import { Proyectos } from './Proyectos';
 import { Laptop } from './Laptop';
 import { Formacion } from './Formacion';
+import { DondeAporto } from './DondeAporto';
 import { Contacto } from './Contacto';
 import { InkField } from '@/components/pieces/InkField';
 import { DecodeTitles } from '@/components/pieces/DecodeTitles';
@@ -28,11 +29,12 @@ export function Landing({ lang }: { lang: Lang }) {
       <DecodeTitles>
         <Hero lang={lang} />
         <Pelicula lang={lang} />
+        <Formacion lang={lang} />
+        <DondeAporto lang={lang} />
         <Trayectoria lang={lang} />
         <Hoy lang={lang} />
         <Proyectos lang={lang} />
         <Laptop lang={lang} />
-        <Formacion lang={lang} />
         <Contacto lang={lang} />
       </DecodeTitles>
       <footer dangerouslySetInnerHTML={{ __html: lang === 'en' ? footerEn : footerEs }} />

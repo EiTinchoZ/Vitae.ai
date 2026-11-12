@@ -681,10 +681,10 @@ const setTimeout = (cb, ms, ...a) => { if (dead) return 0; const id = window.set
 const clearTimeout = (id) => { timers.delete(id); window.clearTimeout(id); };
 class IntersectionObserver extends window.IntersectionObserver { constructor(cb, o) { super(cb, o); observers.push(this); } }
 
-const TEXT = {"rest":"Industrial 90% · AI: VI of VII","chip":"ITSE · {n} · {what} · {state}","passed":"passed","current":"in progress","pending":"to go","rack":"ADEN · {done} of {total} courses passed","missing":"ADEN · 6 to go · Jan to Apr 2027","cross":"where they meet · Industrial measures, AI changes"};
+const TEXT = {"rest":"Industrial 100% · AI: VI of VII","chip":"ITSE · {n} · {what} · {state}","passed":"passed","current":"in progress","pending":"to go","rack":"ADEN · {done} of {total} courses passed","missing":"ADEN · 6 to go · Jan to Apr 2027","cross":"where they meet · Industrial measures, AI changes"};
 const P = {"origin":[345.19528920322165,251.63962166571397],"scale":1.557403542473743,"azimuth":66,"elevation":30};
 const QUADS = [["I","math, networking, cybersecurity"],["II","databases, programming, intro to AI"],["III","languages for AI, intelligent systems"],["IV","NLP and machine learning"],["V","data science, vision, data mining"],["VI","deep learning, IoT, robotics"],["VII","professional internship"]];
-const NOW_Q = 5, HECHAS = 54, MATERIAS = 60, RUN = [-36,22];
+const NOW_Q = 5, HECHAS = 60, MATERIAS = 60, RUN = [-36,22];
 const fig = document.getElementById("figEdu");
 const stage = fig.querySelector(".iso-stage");
 const svg = stage.querySelector("svg");

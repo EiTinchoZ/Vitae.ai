@@ -12,11 +12,11 @@ export const metro = {
   hub: ['TODAY', 'AI applied to real processes'],
   stations: [
     ['base', '2017', 'High school', 'Colegio San Agustín de Panamá', -12, -7],
-    ['edu', '2025', 'Industrial Engineering', 'ADEN University · courses through Apr 2027', -4.5, -4.6],
+    ['edu', '2025', 'Industrial Engineering', 'ADEN University · all courses done', -4.5, -4.6],
     ['edu', '2025', 'Higher Technical Degree in AI', 'ITSE · ends Apr 2027', -1.6, -3.2],
-    ['edu', '2026', 'English C2', 'Florida State University · self-taught', 1.6, -2.4],
+    ['edu', '2026', 'English C2', 'Bilingual Status · Florida State University', 1.6, -2.4],
     ['ia', '2025', 'TYR', 'BERT assistant · 98.93% accuracy', -7.5, 1.2],
-    ['ia', '2026', 'Master in AI', 'Daxus Latam · plus Anthropic certificates', -4.4, 1.9],
+    ['ia', '2026', 'Master in AI Program', 'Daxus Latam · plus Anthropic certificates', -4.4, 1.9],
     ['ia', '2026', 'tincho.ia', 'My project to teach AI from scratch', -1.4, 1.7],
     ['ia', '2026', 'AI agent', 'Answers in seconds and cites the source', 1.4, 0.9],
     ['prj', '2025', '1st place ITSE x Municipality', 'Conecta Panamá · meeting with the mayor', -6.5, 4.8],
@@ -27,7 +27,7 @@ export const metro = {
   ] as Station[],
   // estaciones fantasma de la vía en construcción
   ghosts: [
-    ['fut', 'Apr 2027', 'I finish both degrees', 'The Higher Technical Degree in AI at ITSE and the last Industrial Engineering courses at ADEN.', 4.3, -5.5],
+    ['fut', 'Apr 2027', 'I finish the AI degree', 'I wrap up the Higher Technical Degree in AI at ITSE, already in the master’s in AI at ADEN that I start in March.', 4.3, -5.5],
     ['fut', 'After that', 'More adventures', 'The track stays open. Whatever comes next, I will build it with everything I have added up so far.', 3.4, -9.5],
   ] as Station[],
   logos: { 'High school': '/img/logos/san-agustin.webp' } as Record<string, string>,
