@@ -13,9 +13,9 @@ const personal = {
 
 const cvByLanguage: Record<'es' | 'en', Omit<CVData, 'personal'>> = {
   "es": {
-    "profile": "Estudio Ingeniería Industrial e Inteligencia Artificial. Soy Operational Procurement Intern en Philips Panamá desde el 21 de abril de 2026. Trabajo con procesos, automatización y agentes de IA. Lideré ProcureNation y la construcción digital de PO Guru, 1.er lugar en el AI Hackathon Philips LATAM 2026.",
+    "profile": "Panameño, 26 años. Completé las materias de Ingeniería Industrial en ADEN University y cierro el Técnico Superior en IA del ITSE en abril de 2027; en marzo de 2027 empiezo la maestría en IA en ADEN. Junto las dos disciplinas para construir agentes, apps y automatizaciones que resuelven problemas reales: primero mido el proceso, después construyo el agente o el modelo que lo mejora. Operational Procurement Intern en Philips Panamá desde el 21 de abril de 2026; lideré ProcureNation y PO Guru, 1.er lugar en el AI Hackathon Philips LATAM 2026. Antes, Data Science Intern en DETA. Creé contenido como @eitincho (más de 80 mil seguidores en TikTok; Instagram llegó a 20 mil) y hoy enseño IA en tincho.ia. Puede aportar en marketing y brand digital, supply chain y compras, logística, operaciones y calidad, finanzas, análisis de datos, tecnología e IT, y atención y formación. Aprende rápido, le gustan los retos, es creativo y se adapta rápido.",
     "about": {
-      "quote": "Me apasionan la tecnología, la innovación digital y los videojuegos. Hoy construyo con IA: agentes, plataformas, dashboards y apps.",
+      "quote": "Soy panameño y tengo 26 años. Estudié ingeniería industrial y me estoy formando como ingeniero de IA. Junto las dos cosas para construir agentes y apps que resuelven problemas de verdad.",
       "specialties": [
         "Machine Learning",
         "Deep Learning",
@@ -144,9 +144,9 @@ const cvByLanguage: Record<'es' | 'en', Omit<CVData, 'personal'>> = {
         "title": "Licenciatura en Ingeniería Industrial",
         "institution": "ADEN University",
         "startYear": 2025,
-        "endYear": "Abril 2027",
-        "status": "in_progress",
-        "description": "En línea · materias hasta abril de 2027."
+        "endYear": "2026",
+        "status": "completed",
+        "description": "En línea · materias completas."
       }
     ],
     "certificates": [
@@ -624,13 +624,15 @@ const cvByLanguage: Record<'es' | 'en', Omit<CVData, 'personal'>> = {
         ],
         "isHighlighted": false
       },
+      {"id": "project-precognia", "name": "Precogn.ia", "year": 2025, "type": "Modelo de ML", "shortDescription": "Predice qué clientes de una telefónica se van a ir, con 96,9 % de exactitud, y una interfaz que enseña cómo decide el modelo.", "features": [], "technologies": ["Python", "scikit-learn", "Flask"], "longDescription": "Predice qué clientes de una telefónica se van a ir, con 96,9 % de exactitud, y una interfaz que enseña cómo decide el modelo."},
+      {"id": "project-panalogis", "name": "PanaLogis", "year": 2026, "type": "Proyecto académico", "shortDescription": "Gestiona la operación de una empresa de carga: flota, conductores, órdenes, mantenimiento y facturación. La lógica crítica vive en la base de datos, con un copiloto de IA encima; 12 de 12 pruebas superadas.", "features": [], "technologies": ["Flask", "MariaDB", "Groq"], "longDescription": "Gestiona la operación de una empresa de carga: flota, conductores, órdenes, mantenimiento y facturación. La lógica crítica vive en la base de datos, con un copiloto de IA encima; 12 de 12 pruebas superadas."},
       {
         "id": "project-tincho-ia",
         "name": "tincho.ia",
         "year": 2026,
         "type": "Proyecto",
-        "shortDescription": "Proyecto propio de divulgación de IA en etapa temprana. Enseño a usar Claude, Claude Code, Codex y agentes desde cero, en TikTok e Instagram.",
-        "longDescription": "Proyecto propio de divulgación de IA en etapa temprana. Enseño a usar Claude, Claude Code, Codex y agentes desde cero, en TikTok e Instagram.",
+        "shortDescription": "Proyecto propio de divulgación de IA en etapa temprana. Enseño a usar Claude, Claude Code, Codex y agentes desde cero, en TikTok e Instagram. Antes creé contenido como @eitincho: más de 80 mil seguidores en TikTok y hasta 20 mil en Instagram.",
+        "longDescription": "Proyecto propio de divulgación de IA en etapa temprana. Enseño a usar Claude, Claude Code, Codex y agentes desde cero, en TikTok e Instagram. Antes creé contenido como @eitincho: más de 80 mil seguidores en TikTok y hasta 20 mil en Instagram.",
         "features": [],
         "technologies": [
           "Claude",
@@ -711,9 +713,9 @@ const cvByLanguage: Record<'es' | 'en', Omit<CVData, 'personal'>> = {
     ]
   },
   "en": {
-    "profile": "I study Industrial Engineering and Artificial Intelligence. I have been an Operational Procurement Intern at Philips Panama since April 21, 2026. I work with processes, automation and AI agents. I led ProcureNation and the digital development of PO Guru, which won 1st place at the AI Hackathon Philips LATAM 2026.",
+    "profile": "Panamanian, 26. I have completed all Industrial Engineering courses at ADEN University and finish the Higher Technical Degree in AI at ITSE in April 2027; in March 2027 I start a master’s in AI at ADEN. I combine both disciplines to build agents, apps and automations that solve real problems: first I measure the process, then I build the agent or model that improves it. Operational Procurement Intern at Philips Panama since April 21, 2026; I led ProcureNation and PO Guru, 1st place at the Philips LATAM AI Hackathon 2026. Before that, Data Science Intern at DETA. I created content as @eitincho (80k+ followers on TikTok; Instagram reached 20k) and today I teach AI at tincho.ia. I can contribute in marketing and brand digital, supply chain and procurement, logistics, operations and quality, finance, data analysis, technology and IT, and service and training. I learn fast, like a challenge, am creative and adapt fast.",
     "about": {
-      "quote": "I am passionate about technology, digital innovation and video games. Today I build with AI: agents, platforms, dashboards and apps.",
+      "quote": "I’m Panamanian and I’m 26. I studied industrial engineering and I’m training as an AI engineer. I bring both together to build agents and apps that solve real problems.",
       "specialties": [
         "Machine Learning",
         "Deep Learning",
@@ -842,9 +844,9 @@ const cvByLanguage: Record<'es' | 'en', Omit<CVData, 'personal'>> = {
         "title": "Licenciatura en Ingeniería Industrial",
         "institution": "ADEN University",
         "startYear": 2025,
-        "endYear": "April 2027",
-        "status": "in_progress",
-        "description": "Online · coursework through April 2027."
+        "endYear": "2026",
+        "status": "completed",
+        "description": "Online · all courses completed."
       }
     ],
     "certificates": [
@@ -1322,13 +1324,15 @@ const cvByLanguage: Record<'es' | 'en', Omit<CVData, 'personal'>> = {
         ],
         "isHighlighted": false
       },
+      {"id": "project-precognia", "name": "Precogn.ia", "year": 2025, "type": "ML model", "shortDescription": "Predicts which telecom customers will leave, with 96.9% accuracy, and an interface that shows how the model decides.", "features": [], "technologies": ["Python", "scikit-learn", "Flask"], "longDescription": "Predicts which telecom customers will leave, with 96.9% accuracy, and an interface that shows how the model decides."},
+      {"id": "project-panalogis", "name": "PanaLogis", "year": 2026, "type": "Academic project", "shortDescription": "Runs a freight company’s operation: fleet, drivers, orders, maintenance and billing. The critical logic lives in the database, with an AI copilot on top; 12 of 12 tests passed.", "features": [], "technologies": ["Flask", "MariaDB", "Groq"], "longDescription": "Runs a freight company’s operation: fleet, drivers, orders, maintenance and billing. The critical logic lives in the database, with an AI copilot on top; 12 of 12 tests passed."},
       {
         "id": "project-tincho-ia",
         "name": "tincho.ia",
         "year": 2026,
         "type": "Project",
-        "shortDescription": "Early-stage personal AI education project. I teach how to use Claude, Claude Code, Codex and agents from scratch on TikTok and Instagram.",
-        "longDescription": "Early-stage personal AI education project. I teach how to use Claude, Claude Code, Codex and agents from scratch on TikTok and Instagram.",
+        "shortDescription": "Early-stage personal AI education project. I teach how to use Claude, Claude Code, Codex and agents from scratch on TikTok and Instagram. Before that I created content as @eitincho: 80k+ followers on TikTok and up to 20k on Instagram.",
+        "longDescription": "Early-stage personal AI education project. I teach how to use Claude, Claude Code, Codex and agents from scratch on TikTok and Instagram. Before that I created content as @eitincho: 80k+ followers on TikTok and up to 20k on Instagram.",
         "features": [],
         "technologies": [
           "Claude",
